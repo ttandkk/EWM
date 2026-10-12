@@ -1,0 +1,43 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.venv-*/
+venv/
+env/
+
+# Isaac Sim is installed locally; never vendor its runtime.
+isaacsim*/
+third_party/isaacsim*/
+
+# Generated datasets, runs, and logs
+datasets/
+outputs/
+logs/
+runs/
+wandb/
+.dvs_tmp/
+
+# Dataset/model artifacts
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Generated previews
+*_preview.mp4
+*.avi
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/

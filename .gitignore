@@ -1,0 +1,37 @@
+# Runtime/data artifacts are transferred or installed separately.
+/datasets/
+/pretrained/
+/envs/
+/isaacsim601/
+/third_party/
+/tmp/
+/logs/
+/results/
+/OpenWAM/third_party/
+/Event-DataCollection/third_party/
+**/outputs/
+**/wandb/
+**/__pycache__/
+**/*.egg-info/
+**/.pytest_cache/
+**/.ruff_cache/
+**/.venv/
+*.py[cod]
+*.orig
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.h5
+*.hdf5
+*.npy
+*.npz
+*.mp4
+*.avi
+*.log
+.env
+.env.*
+!.env.example
+# Root AGENTS is mandatory migration documentation.
+!/AGENTS.md

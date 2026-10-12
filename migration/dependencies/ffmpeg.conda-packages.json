@@ -1,0 +1,764 @@
+[
+  {
+    "name": "_openmp_mutex",
+    "version": "4.5",
+    "build": "20_gnu",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "alsa-lib",
+    "version": "1.2.16.1",
+    "build": "h7cc23a3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "aom",
+    "version": "3.9.1",
+    "build": "hac33072_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "bzip2",
+    "version": "1.0.8",
+    "build": "hda65f42_10",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "ca-certificates",
+    "version": "2026.7.22",
+    "build": "hbd8a1cb_0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "cairo",
+    "version": "1.18.6",
+    "build": "h3c89d7e_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "dav1d",
+    "version": "1.2.1",
+    "build": "hd590300_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "dbus",
+    "version": "1.16.2",
+    "build": "he8c428d_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "ffmpeg",
+    "version": "7.1.1",
+    "build": "gpl_hbbdf940_911",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "font-ttf-dejavu-sans-mono",
+    "version": "2.37",
+    "build": "hab24e00_0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "font-ttf-inconsolata",
+    "version": "3.000",
+    "build": "h77eed37_0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "font-ttf-source-code-pro",
+    "version": "2.038",
+    "build": "h77eed37_0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "font-ttf-ubuntu",
+    "version": "0.83",
+    "build": "h77eed37_3",
+    "subdir": "noarch"
+  },
+  {
+    "name": "fontconfig",
+    "version": "2.18.3",
+    "build": "h4db4eae_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "fonts-conda-ecosystem",
+    "version": "1",
+    "build": "0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "fonts-conda-forge",
+    "version": "1",
+    "build": "hc364b38_1",
+    "subdir": "noarch"
+  },
+  {
+    "name": "freetype",
+    "version": "2.14.3",
+    "build": "ha770c72_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "fribidi",
+    "version": "1.0.17",
+    "build": "h7cc23a3_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "gdk-pixbuf",
+    "version": "2.44.8",
+    "build": "h68053f1_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "gmp",
+    "version": "6.3.0",
+    "build": "hfd2156b_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "graphite2",
+    "version": "1.3.15",
+    "build": "h54a6638_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "harfbuzz",
+    "version": "14.5.0",
+    "build": "ha770c72_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "icu",
+    "version": "78.3",
+    "build": "py310h44b86e0_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "intel-gmmlib",
+    "version": "22.10.2",
+    "build": "h7148c6a_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "intel-media-driver",
+    "version": "25.3.4",
+    "build": "hecca717_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "lame",
+    "version": "3.100",
+    "build": "h166bdaf_1003",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "lerc",
+    "version": "4.2.0",
+    "build": "hdb68285_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "level-zero",
+    "version": "1.33.1",
+    "build": "h7148c6a_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libabseil",
+    "version": "20250512.1",
+    "build": "cxx17_hba17884_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libass",
+    "version": "0.17.4",
+    "build": "h96ad9f0_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libcap",
+    "version": "2.78",
+    "build": "h084b8d7_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libdeflate",
+    "version": "1.25",
+    "build": "hd45a770_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libdrm",
+    "version": "2.4.129",
+    "build": "h7cc23a3_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libegl",
+    "version": "1.7.0",
+    "build": "ha4b6fd6_5",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libexpat",
+    "version": "2.8.5",
+    "build": "hd2095e1_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libffi",
+    "version": "3.7.0",
+    "build": "h81df57d_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libflac",
+    "version": "1.5.0",
+    "build": "he200343_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libfreetype",
+    "version": "2.14.3",
+    "build": "ha770c72_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libfreetype6",
+    "version": "2.14.3",
+    "build": "h5e6c136_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libgcc",
+    "version": "16.2.0",
+    "build": "ha9f2e26_7",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libgcc-ng",
+    "version": "16.2.0",
+    "build": "h69a702a_7",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libgl",
+    "version": "1.7.0",
+    "build": "ha4b6fd6_5",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libglib",
+    "version": "2.90.0",
+    "build": "h569388d_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libglvnd",
+    "version": "1.7.0",
+    "build": "ha4b6fd6_5",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libglx",
+    "version": "1.7.0",
+    "build": "ha4b6fd6_5",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libgomp",
+    "version": "16.2.0",
+    "build": "he0feb66_7",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libharfbuzz",
+    "version": "14.5.0",
+    "build": "h23af247_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libharfbuzz-devel",
+    "version": "14.5.0",
+    "build": "h23af247_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libhwloc",
+    "version": "2.15.0",
+    "build": "default_hd7c4d0c_1001",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libiconv",
+    "version": "1.18",
+    "build": "h0cb94f2_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libjpeg-turbo",
+    "version": "3.2.0",
+    "build": "hb03c661_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "liblzma",
+    "version": "5.8.3",
+    "build": "hb03c661_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libogg",
+    "version": "1.3.5",
+    "build": "hd0c01bc_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino",
+    "version": "2025.2.0",
+    "build": "hb617929_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-auto-batch-plugin",
+    "version": "2025.2.0",
+    "build": "hed573e4_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-auto-plugin",
+    "version": "2025.2.0",
+    "build": "hed573e4_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-hetero-plugin",
+    "version": "2025.2.0",
+    "build": "hd41364c_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-intel-cpu-plugin",
+    "version": "2025.2.0",
+    "build": "hb617929_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-intel-gpu-plugin",
+    "version": "2025.2.0",
+    "build": "hb617929_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-intel-npu-plugin",
+    "version": "2025.2.0",
+    "build": "hb617929_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-ir-frontend",
+    "version": "2025.2.0",
+    "build": "hd41364c_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-onnx-frontend",
+    "version": "2025.2.0",
+    "build": "h1862bb8_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-paddle-frontend",
+    "version": "2025.2.0",
+    "build": "h1862bb8_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-pytorch-frontend",
+    "version": "2025.2.0",
+    "build": "hecca717_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-tensorflow-frontend",
+    "version": "2025.2.0",
+    "build": "h0767aad_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopenvino-tensorflow-lite-frontend",
+    "version": "2025.2.0",
+    "build": "hecca717_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libopus",
+    "version": "1.6.1",
+    "build": "hebe6cf0_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libpciaccess",
+    "version": "0.19",
+    "build": "hb03c661_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libpng",
+    "version": "1.6.58",
+    "build": "h922cc85_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libprotobuf",
+    "version": "6.31.1",
+    "build": "hfb7daa7_5",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "librsvg",
+    "version": "2.62.4",
+    "build": "ha427ee3_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libsndfile",
+    "version": "1.2.2",
+    "build": "hc7d488a_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libstdcxx",
+    "version": "16.2.0",
+    "build": "h934c35e_7",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libstdcxx-ng",
+    "version": "16.2.0",
+    "build": "hdf11a46_7",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libsystemd0",
+    "version": "262",
+    "build": "h26e0ef7_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libtiff",
+    "version": "4.7.2",
+    "build": "hcc2c06a_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libudev1",
+    "version": "262",
+    "build": "h26e0ef7_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libunwind",
+    "version": "1.8.3",
+    "build": "h65a8314_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "liburing",
+    "version": "2.14",
+    "build": "hb700be7_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libusb",
+    "version": "1.0.30",
+    "build": "h0d1bbbc_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libuuid",
+    "version": "2.42.4",
+    "build": "hcfc3c73_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libva",
+    "version": "2.24.1",
+    "build": "hb83e432_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libvorbis",
+    "version": "1.3.7",
+    "build": "h54a6638_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libvpl",
+    "version": "2.15.0",
+    "build": "h54a6638_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libvpx",
+    "version": "1.14.1",
+    "build": "hac33072_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libvulkan-loader",
+    "version": "1.4.357.0",
+    "build": "h0e34353_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libwebp-base",
+    "version": "1.6.0",
+    "build": "hd42ef1d_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libxcb",
+    "version": "1.17.0",
+    "build": "hb83e432_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libxkbcommon",
+    "version": "1.13.2",
+    "build": "h51789e4_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libxml2-16",
+    "version": "2.15.4",
+    "build": "hf3af7cc_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libxml2",
+    "version": "2.15.4",
+    "build": "h7df9aa5_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "libzlib",
+    "version": "1.3.2",
+    "build": "h25fd6f3_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "mpg123",
+    "version": "1.32.9",
+    "build": "h8142553_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "ocl-icd",
+    "version": "2.3.4",
+    "build": "hb03c661_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "opencl-headers",
+    "version": "2025.06.13",
+    "build": "hecca717_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "openh264",
+    "version": "2.6.0",
+    "build": "h8c49934_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "openssl",
+    "version": "3.6.4",
+    "build": "h781a0a9_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pango",
+    "version": "1.58.2",
+    "build": "h7bb47b9_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pcre2",
+    "version": "10.47",
+    "build": "h8b3dc9c_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pixman",
+    "version": "0.46.4",
+    "build": "h54a6638_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pthread-stubs",
+    "version": "0.4",
+    "build": "h7cc23a3_1004",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pugixml",
+    "version": "1.15",
+    "build": "h3f63f65_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "pulseaudio-client",
+    "version": "17.0",
+    "build": "h9a6aba3_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "sdl2",
+    "version": "2.32.56",
+    "build": "h54a6638_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "sdl3",
+    "version": "3.4.16",
+    "build": "h5330f5c_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "snappy",
+    "version": "1.2.2",
+    "build": "h34e00bb_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "svt-av1",
+    "version": "3.1.2",
+    "build": "hecca717_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "tbb",
+    "version": "2023.1.0",
+    "build": "haa8c3ee_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "wayland",
+    "version": "1.26.0",
+    "build": "hc1c935e_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "wayland-protocols",
+    "version": "1.49",
+    "build": "hd8ed1ab_0",
+    "subdir": "noarch"
+  },
+  {
+    "name": "x264",
+    "version": "1!164.3095",
+    "build": "h7cc23a3_3",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "x265",
+    "version": "3.5",
+    "build": "h73f68a7_4",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xkeyboard-config",
+    "version": "2.48",
+    "build": "h280c20c_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libice",
+    "version": "1.1.2",
+    "build": "h280c20c_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libsm",
+    "version": "1.2.6",
+    "build": "h0d788c3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libx11",
+    "version": "1.8.13",
+    "build": "he1eb515_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxau",
+    "version": "1.0.12",
+    "build": "h7cc23a3_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxcursor",
+    "version": "1.2.3",
+    "build": "hb9d3cd8_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxdmcp",
+    "version": "1.1.5",
+    "build": "h7cc23a3_2",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxext",
+    "version": "1.3.7",
+    "build": "h7cc23a3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxfixes",
+    "version": "6.0.2",
+    "build": "h7cc23a3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxi",
+    "version": "1.8.3",
+    "build": "h7cc23a3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxrandr",
+    "version": "1.5.5",
+    "build": "h7cc23a3_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxrender",
+    "version": "0.9.12",
+    "build": "hb03c661_1",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxscrnsaver",
+    "version": "1.2.4",
+    "build": "hb9d3cd8_0",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "xorg-libxtst",
+    "version": "1.2.5",
+    "build": "h7cc23a3_4",
+    "subdir": "linux-64"
+  },
+  {
+    "name": "zstd",
+    "version": "1.5.7",
+    "build": "hb78ec9c_7",
+    "subdir": "linux-64"
+  }
+]

@@ -1,0 +1,95 @@
+# 从 OpenWAM 目录启动：python scripts/train.py --config-name train_ewm
+# defaults 中的 _self_ 放在最后，使本文件的参数覆盖 model/ewm 与 dataloader/ewm_dataset。
+defaults:
+  - model: ewm
+  - dataloader: ewm_dataset
+  - _self_
+
+model:
+  # --- 模型大小 ---
+  dim: 768                       # Event expert residual width and shared Q/K/V attention width
+  action_hidden_dim: 512         # Action expert residual width; Q/K/V project to Event attention width
+  layers: 12                     # 模型层数 L，每层包含独立的 Event 与 Action expert
+  heads: 8                       # 共享 head_dim=768/8=96，Event/Action QKV 均投影到 768
+  # 必须满足 Event dim 能被 heads 整除，且 head_dim 能被 8 整除。
+
+  # --- 显存与吞吐 ---
+  gradient_checkpointing: false
+  gradient_checkpointing_skip_first_blocks: 0
+  # Codec geometry comes from the selected model config.
+  event_camera_mode: wrist_only
+  codec_batch_size: 16           # Joint mode: videos (sample×camera) per VAE call; not frames.
+  dino_injection_interval: 1     # T5 每层注入；DINO visual token 每 N 层注入，1 为每层。
+  # GPU 可比较 16/32/64；CPU 小模型诊断使用 2。需按实际显存调整。
+
+  # --- 冻结编码器 ---
+  # 环境变量可覆盖本地权重目录；调 D/L 不会改变冻结 DINO/T5 的规模。
+  dino_path: ${oc.env:EWM_DINO_PATH,/projects/hdd/myproject/CVPR2027/pretrained/dinov3-vitl16}
+  text_path: ${oc.env:EWM_T5_PATH,/projects/hdd/myproject/CVPR2027/pretrained/t5-small}
+  text_max_length: 64            # T5 prompt 最大 token 长度（含 padding/truncation）
+
+dataloader:
+  # --- 数据与预测时域 ---
+  # Set EWM_DATASET_DIR to a full aligned event-frame export before training.
+  dataset_dir: ${oc.env:EWM_DATASET_DIR}
+  chunk_size: 24                 # Action 与 future voxel 共享的时间对齐预测时域 K。
+  event_camera_mode: wrist_only
+  gpu_voxelization: true
+  window_stride: 1               # 相邻训练样本起始帧的间隔，不改变单个 action/event 的时间对齐
+  event_cache_size: 8            # 数据集事件缓存项数（每个 worker 各自缓存）
+  # One-bin voxelization requires matching one-bin normalization metadata.
+  normalization_stats_path: null  # <dataset_dir>/meta/ewm_normalization_stats.json
+  # 默认采用一个 bin、双极性、当前单帧条件及归一化尺度。
+  # `voxel_bins` is mirrored in model.voxel_bins. Production default is 1.
+
+
+training:
+  # --- 优化器 ---
+  learning_rate: 0.0001
+  adam_betas: [0.9, 0.95]
+  weight_decay: 0.01
+  max_grad_norm: 1.0             # 梯度裁剪上限，应大于 0
+
+  # --- 训练步数与有效 batch ---
+  max_steps: 80000              # optimizer 更新次数；达到上限结束，不是 microbatch 数
+  batch_size: 32                 # Per GPU; two GPUs give global batch64.
+  gradient_accumulation_steps: 1 # 有效 batch = batch_size × 梯度累积步数 × 进程数
+  mixed_precision: bf16         # Accelerate: bf16 / fp16 / "no"；CPU 诊断使用 "no"
+  log_every: 50                 # 基础 loss/梯度日志间隔（optimizer steps）
+  diagnostic_every: 200         # 完整 event 诊断（x0/F1/active MSE 等）间隔
+  # Optional compile of latent DiT only; disabled until profiled for this architecture.
+  compile_core: false
+  profile_segments: false       # 同步计时，仅用于短测；正式训练保持关闭
+  profile_warmup_steps: 20
+  profile_log_every: 20
+  dataset_num_workers: 4        # 数据加载进程数；增加时注意事件缓存和主机内存开销
+
+  # --- 学习率调度 ---
+  lr_scheduler: cosine          # cosine 或 null（固定学习率）
+  lr_schedule_steps: null       # null 表示使用 max_steps；截短对照实验可保留原学习率曲线
+  warmup_ratio: 0.05            # warmup 占 max_steps 的比例
+  lr_min_ratio: 0.01            # cosine 最小学习率 / 初始学习率
+
+  # --- 输出与保存 ---
+  output_path: outputs/ewm       # 不同实验建议使用不同目录
+  save_steps: 20000              # 按 optimizer 步数保存；checkpoint.pt 始终保留最近一次
+  save_checkpoints: true          # 诊断 run 可设 false：完全不写 checkpoint
+  save_full_states_for_resume: false  # 同时保存 optimizer/scheduler/RNG/采样位置；未来断点续训需提前开启
+  resume_ckpt_path: null          # 指向原 run 目录，恢复最近一个完整 resume_state_step_* 并复用该目录
+  keep_last_k_resume_states: 2    # 仅保留最近 K 个完整训练状态
+  keep_last_k_policy_checkpoints: null  # null 不清理；正式训练可限制 policy 快照数
+  pure_noise_eval:
+    enabled: false               # 每次保存对应 checkpoint 后，在独立 GPU 上异步提交评估
+    every_steps: 5000            # optimizer 步数；开启时也在最终步评估
+    partition: cluster02
+    gres: gpu:l40:1
+    time: "00:30:00"
+  # checkpoint.pt 仍是仅供推理的 policy 权重；完整状态单独存于 resume_state_step_*。
+  # Event/Action loss 权重固定为 1，不增加未被训练脚本消费的可调参数。
+
+project:
+  seed: 42                      # 模型初始化/数据采样随机种子
+  wandb:
+    project: CVPR2027-EWM          # 启用 W&B；需预先执行 wandb login 或设置 WANDB_API_KEY
+    run_name: null              # 可选：实验显示名称
+    entity: null                # 可选：W&B 用户或团队

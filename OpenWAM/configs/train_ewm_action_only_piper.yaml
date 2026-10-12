@@ -1,0 +1,24 @@
+# Action-only ablation: current dual RGB/state/text -> action[k:k+24].
+# Run from OpenWAM: python scripts/train.py --config-name train_ewm_action_only_piper
+# No event codec/loss/attention, event payload I/O, or future RGB targets.
+defaults:
+  - train_ewm
+  - _self_
+
+model:
+  training_mode: action_only
+  event_vae_path: null  # The unused event expert has no VAE dependency.
+
+dataloader:
+  type: ewm_piper_action_only
+  dataset_dir: /projects/hdd/myproject/CVPR2027/datasets/piper_stack_fronttight_v3_50/job177683
+  gpu_voxelization: false
+  action_only_mmap_cache_dir: null  # Optional raw RGB/state/action .npy cache.
+  event_frame_cache_dir: null
+  observation_row_offset: 0
+  rgb_decode_backend: pyav
+
+training:
+  output_path: outputs/ewm_action_only_piper
+  pure_noise_eval:
+    enabled: false  # The existing joint event/action evaluator is not applicable.

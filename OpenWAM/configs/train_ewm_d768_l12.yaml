@@ -1,0 +1,23 @@
+# Explicit Event D768 / Action D512, H8/L12 trial.
+# python scripts/train.py --config-name train_ewm_d768_l12
+defaults:
+  - train_ewm
+  - _self_
+
+model:
+  dim: 768
+  action_hidden_dim: 512
+  heads: 8                       # Shared attention head_dim=96.
+  layers: 12
+  voxel_bins: 1                 # One bin over the unchanged 33.333 ms causal window.
+  event_camera_mode: wrist_only
+  event_patch_size: 4
+  event_spatial_compression: 32  # 8x8 event grid at 256px; 448 tokens at K24.
+
+dataloader:
+  voxel_bins: 1
+  event_camera_mode: wrist_only
+  normalization_stats_path: null  # Resolve from the selected dataset's meta directory.
+
+training:
+  output_path: outputs/ewm_event768_action512_l12

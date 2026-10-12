@@ -1,0 +1,9 @@
+# Frozen Wan2.2 alternative: VAE16 * latent patch2, 448 event tokens.
+defaults:
+  - ewm
+  - _self_
+event_codec_impl: wan22_joint
+event_vae_path: ${oc.env:EWM_VAE_PATH,/projects/hdd/myproject/CVPR2027/pretrained/wan2.2-vae}
+event_spatial_compression: 32
+event_patch_size: 2
+event_temporal_compression: 4

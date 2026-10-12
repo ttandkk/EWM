@@ -1,0 +1,26 @@
+# Train future Piper RGB frames and the aligned 7-D control sequence together.
+# Run from OpenWAM: python scripts/train.py --config-name train_ewm_rgb_action_piper
+defaults:
+  - train_ewm
+  - _self_
+
+model:
+  training_mode: rgb_action
+  event_codec_impl: leanvae16_rgb_joint
+  event_camera_mode: wrist_only
+  event_patch_size: 4
+  event_spatial_compression: 32
+
+dataloader:
+  type: ewm_piper_rgb_action
+  dataset_dir: /projects/hdd/myproject/CVPR2027/datasets/piper_stack_fronttight_v3_50/job177683
+  event_camera_mode: wrist_only
+  gpu_voxelization: false
+  event_frame_cache_dir: null
+  rgb_decode_backend: torchcodec
+  observation_row_offset: 0
+
+training:
+  output_path: outputs/ewm_rgb_action_piper
+  pure_noise_eval:
+    enabled: false

@@ -1,0 +1,11 @@
+# Lightweight EWM prompt encoder. It is separate from Wan's UMT5-XXL.
+name: t5_small
+class_name: openwam.model.text_encoder.t5_small.T5SmallTextEncoder
+model_path: google-t5/t5-small
+max_length: 64
+freeze: true
+local_files_only: false
+
+# Output consumed by future EWM action/event-expert cross-attention:
+# text_tokens: [B, 64, 512]
+# text_mask:   [B, 64] (True for non-padding tokens)

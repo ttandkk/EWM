@@ -1,0 +1,13 @@
+{
+  "regression_passed": 204,
+  "regression_failed": 0,
+  "regression_seconds": 78.48,
+  "dedicated_memory_tests": 16,
+  "gpu_job": 200343,
+  "gpu_state": "COMPLETED",
+  "gpu_exit_code": "0:0",
+  "deleted_sparse_scripts": 48,
+  "full_dataset_cache_generated": false,
+  "formal_training_started": false,
+  "closed_loop_evaluation_run": false
+}

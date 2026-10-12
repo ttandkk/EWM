@@ -1,0 +1,10 @@
+# Select with: --config-name train_ewm model=ewm_leanvae16
+defaults:
+  - ewm
+  - _self_
+event_codec_impl: leanvae16_joint
+event_vae_path: ${oc.env:EWM_VAE_PATH,/projects/hdd/myproject/CVPR2027/pretrained/leanvae}
+# VAE stride8 * latent patch4; 448 wrist event tokens at 256x256, current1+future24.
+event_patch_size: 4
+event_spatial_compression: 32
+event_temporal_compression: 4

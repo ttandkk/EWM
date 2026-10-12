@@ -1,0 +1,20 @@
+[submodule "third_party/IsaacLab"]
+	path = third_party/IsaacLab
+	url = https://github.com/isaac-sim/IsaacLab.git
+	shallow = true
+[submodule "third_party/robot_lab"]
+	path = third_party/robot_lab
+	url = https://github.com/agilexrobotics/robot_lab.git
+	shallow = true
+[submodule "third_party/isaac-sim-event-camera-plugin"]
+	path = third_party/isaac-sim-event-camera-plugin
+	url = https://github.com/spikelab-jhu/isaac-sim-event-camera-plugin.git
+	shallow = true
+[submodule "third_party/agilex-college"]
+	path = third_party/agilex-college
+	url = https://github.com/agilexrobotics/Agilex-College.git
+	shallow = true
+[submodule "third_party/lerobot"]
+	path = third_party/lerobot
+	url = https://github.com/huggingface/lerobot.git
+	shallow = true

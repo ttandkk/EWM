@@ -1,0 +1,8 @@
+{
+  "name": "runtime_isaaclab",
+  "source_path": "isaacsim601/IsaacLab",
+  "head": "ffff603eafc6b74264a5261cc0183d6a65390d78",
+  "patch_bytes": 0,
+  "patch_file": "tmp/migration_bundle/source_audit/runtime_isaaclab.patch",
+  "untracked": []
+}

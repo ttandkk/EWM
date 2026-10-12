@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="zh">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piper 方块堆叠遥操</title>
+<style>
+  body { background:#151922; color:#edf0f5; font:16px system-ui,sans-serif; margin:20px auto; max-width:1180px; }
+  h1 { font-size:1.35rem; } .views { display:flex; gap:12px; flex-wrap:wrap; }
+  figure { margin:0; flex:1 1 400px; } img { display:block; width:100%; image-rendering:auto; border:1px solid #59657b; }
+  figcaption { margin:5px 0; } button { background:#334b6f; color:white; border:0; border-radius:4px; padding:10px 14px; margin:5px 5px 5px 0; cursor:pointer; }
+  button:focus { outline:2px solid #9bc2ff; } button.danger { background:#8b3439; }
+  #status { white-space:pre-wrap; background:#242b38; padding:12px; min-height:72px; }
+  #diagnostic { white-space:pre-wrap; background:#242b38; padding:12px; }
+  .jog { margin:8px 0 14px; } .jog button { background:#265568; }
+  kbd { background:#323b4d; padding:2px 5px; border-radius:3px; }
+</style>
+<h1>Piper 堆叠方块遥操</h1>
+<p>点一下页面后使用键盘。W/S：腕部画面上/下，A/D：腕部画面左/右（沿桌面移动）；Q/E：世界高度下降/上升。
+Z/X：Roll，T/G：Pitch，C/V：Yaw（旋转仍为世界轴）；K：夹爪切换，空格：暂停/继续。
+松键即停止，失去焦点或断线自动暂停。</p>
+<div class="views">
+  <figure><figcaption>桌面相机</figcaption><img id="cam0" alt="桌面相机"></figure>
+  <figure><figcaption>腕部相机</figcaption><img id="wrist" alt="腕部相机"></figure>
+</div>
+<div>
+  <button type="button" data-command="resume">继续</button>
+  <button type="button" data-command="pause">暂停</button>
+  <button type="button" data-command="grip">切换夹爪</button>
+  <button type="button" data-command="save">保存成功轨迹</button>
+  <button type="button" class="danger" data-command="discard">丢弃并重置</button>
+  <button type="button" class="danger" data-command="reset">重置</button>
+</div>
+<div class="jog">
+  点动（一次执行固定步数，结束后自动暂停）：
+  <label>步数 <select id="jog-steps"><option>1</option><option selected>4</option><option>8</option></select></label>
+  <button type="button" data-jog="w">画面上 W</button>
+  <button type="button" data-jog="s">画面下 S</button>
+  <button type="button" data-jog="a">画面左 A</button>
+  <button type="button" data-jog="d">画面右 D</button>
+  <button type="button" data-jog="e">升 E</button>
+  <button type="button" data-jog="q">降 Q</button>
+</div>
+<pre id="status">正在连接……</pre>
+<pre id="diagnostic">正在检查浏览器输入……</pre>
+<script>
+  const token = "__TOKEN__";
+  const inputKeys = new Set("wsadqezxtgcv");
+  const held = new Set();
+  const status = document.getElementById("status");
+  const diagnostic = document.getElementById("diagnostic");
+  let socket;
+  let paused = true;
+  let lastCommand = "无";
+  let lastInput = 0;
+  let lastPreview = 0;
+  let inputCount = 0;
+  function refreshDiagnostic() {
+    const connected = socket && socket.readyState === WebSocket.OPEN;
+    const age = lastInput ? ((Date.now() - lastInput) / 1000).toFixed(2) + " 秒" : "尚未发送";
+    const previewAge = lastPreview ? ((Date.now() - lastPreview) / 1000).toFixed(2) + " 秒" : "尚未收到";
+    diagnostic.textContent = `页面焦点: ${document.hasFocus()} | WebSocket: ${connected ? "已连接" : "未连接"} | 输入发送: ${inputCount} 次（最近 ${age} 前）\n最近指令: ${lastCommand} | 最近画面: ${previewAge} 前`;
+  }
+  function sendCommand(name) {
+    lastCommand = name + "（" + new Date().toLocaleTimeString() + "）";
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({type:"command", name}));
+      sendKeys();
+    } else {
+      lastCommand += "；未发送：WebSocket 未连接";
+    }
+    refreshDiagnostic();
+  }
+  function sendJog(key) {
+    const steps = Number(document.getElementById("jog-steps").value);
+    lastCommand = `jog ${key} × ${steps}（${new Date().toLocaleTimeString()}）`;
+    if (socket && socket.readyState === WebSocket.OPEN)
+      socket.send(JSON.stringify({type:"jog", key, steps}));
+    else
+      lastCommand += "；未发送：WebSocket 未连接";
+    refreshDiagnostic();
+  }
+  function sendKeys() {
+    if (socket && socket.readyState === WebSocket.OPEN) {
+      socket.send(JSON.stringify({type:"input", keys:[...held]}));
+      lastInput = Date.now();
+      inputCount += 1;
+    }
+  }
+  document.addEventListener("click", event => {
+    const button = event.target.closest("button[data-command]");
+    if (button) sendCommand(button.dataset.command);
+    const jog = event.target.closest("button[data-jog]");
+    if (jog) sendJog(jog.dataset.jog);
+  });
+  document.addEventListener("keydown", event => {
+    const key = event.key.toLowerCase();
+    if (inputKeys.has(key)) { held.add(key); event.preventDefault(); sendKeys(); }
+    if (!event.repeat && key === "k") { sendCommand("grip"); event.preventDefault(); }
+    if (!event.repeat && event.code === "Space") {
+      sendCommand(paused ? "resume" : "pause"); event.preventDefault();
+    }
+  });
+  document.addEventListener("keyup", event => {
+    held.delete(event.key.toLowerCase());
+    sendKeys();
+  });
+  window.addEventListener("blur", () => { held.clear(); sendKeys(); sendCommand("pause"); });
+  setInterval(() => { sendKeys(); refreshDiagnostic(); }, 50);
+  function connect() {
+    const scheme = location.protocol === "https:" ? "wss:" : "ws:";
+    socket = new WebSocket(scheme + "//" + location.host + "/ws?token=" + encodeURIComponent(token));
+    socket.onopen = () => { held.clear(); sendKeys(); status.textContent = "已连接；点击「继续」后开始。"; refreshDiagnostic(); };
+    socket.onmessage = event => {
+      const data = JSON.parse(event.data);
+      if (data.type === "error") { status.textContent = data.message; return; }
+      if (data.type !== "preview") return;
+      lastPreview = Date.now();
+      paused = data.control.paused;
+      document.getElementById("cam0").src = "data:image/jpeg;base64," + data.cam0;
+      document.getElementById("wrist").src = "data:image/jpeg;base64," + data.wrist;
+      status.textContent = JSON.stringify(data.status, null, 2) + "\n" +
+        JSON.stringify(data.control) + "\n" + data.message;
+    };
+    socket.onclose = () => { held.clear(); paused = true; status.textContent = "连接断开；仿真已暂停。"; refreshDiagnostic(); setTimeout(connect, 1500); };
+  }
+  connect();
+</script>
+</html>

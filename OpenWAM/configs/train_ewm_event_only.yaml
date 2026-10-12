@@ -1,0 +1,30 @@
+# Event-only pretraining on the completed REASSEMBLE and DVLA 25 Hz exports.
+# Run from OpenWAM: python scripts/train.py --config-name train_ewm_event_only
+# This config does not read source action or proprio and does not compute action loss.
+defaults:
+  - train_ewm
+  - _self_
+
+model:
+  training_mode: event_only
+  event_camera_mode: wrist_only
+
+dataloader:
+  type: ewm_mixed_event_only
+  dataset_dir: null  # Clear the inherited Piper EWM_DATASET_DIR interpolation.
+  reassemble_dir: /projects/hdd/myproject/CVPR2027/datasets/reassemble_training_eventframes_10ms
+  dvla_dir: /projects/hdd/myproject/CVPR2027/datasets/dvla-place7obj-roll-25fps-events-40ms-delta-trim
+  # Match Piper sampling: current1 + future24; adjacent anchors share23 future frames.
+  # Disk event accumulations do not overlap (REASSEMBLE33.3ms, DVLA40ms).
+  chunk_size: 24
+  window_stride: 1
+  # Same source on every GPU at each micro-step; shuffle source groups each epoch.
+  homogeneous_source_batches: true
+  dvla_event_camera: opst_cam
+  gpu_voxelization: false
+  event_camera_mode: wrist_only
+
+training:
+  output_path: outputs/ewm_event_only_reassemble_dvla
+  pure_noise_eval:
+    enabled: false

@@ -1,0 +1,8 @@
+{
+  "name": "robot_lab",
+  "source_path": "Event-DataCollection/third_party/robot_lab",
+  "head": "b868140eeb1459acefef24a865587ec39a5278c3",
+  "patch_bytes": 0,
+  "patch_file": "tmp/migration_bundle/source_audit/robot_lab.patch",
+  "untracked": []
+}

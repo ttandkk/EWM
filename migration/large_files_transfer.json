@@ -1,0 +1,18 @@
+{
+  "status": "not_transferred",
+  "datasets": [
+    "datasets/piper_conveyor_front_wrist_v3_random_50",
+    "datasets/piper_conveyor_uniform_0p04_0p08_front_wrist_v3_50",
+    "datasets/piper_stack_fronttight_v3_50"
+  ],
+  "required_pretrained": [
+    "pretrained/dinov3-vitl16",
+    "pretrained/t5-small",
+    "pretrained/leanvae"
+  ],
+  "optional_pretrained": [
+    "pretrained/wan2.2-vae"
+  ],
+  "checkpoints": "User must select policy files plus run config/normalization/metrics; optimizer states were deleted by request.",
+  "verification": "Produce SHA256/file-count manifests at transfer time; no complete data checksum has been computed in this preparation."
+}

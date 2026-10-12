@@ -1,0 +1,33 @@
+# Current dual-view RGB/event condition -> future action and event-voxel target.
+type: ewm_dataset
+dataset_dir: ${oc.env:EWM_DATASET_DIR}
+
+context_frames: 1
+# Future horizon; framewise VAE preserves each action-aligned timestep.
+chunk_size: 24
+window_stride: 1
+# Direct event-frame exports align RGB, state and event-frame on the same row.
+observation_row_offset: 0
+
+# [event_cameras, channel=(OFF, ON), H, W].
+# null means one 30Hz causal interval, 33.333 ms.
+voxel_window_ms: null
+voxel_bins: 1
+# dual: cam0 + wrist; wrist_only: only wrist event voxel (RGB context remains dual-view).
+event_camera_mode: wrist_only
+count_clip: 15
+event_cache_size: 8
+event_frame_cache_dir: null  # Optional lossless predecoded PNG cache; default reads embedded Parquet PNGs.
+rgb_decode_backend: pyav     # pyav | torchcodec; exact frame indexing in both modes.
+# Direct event-frame exports bypass sparse-event voxelization; keep this enabled
+# for compatibility with the legacy sparse-event fallback.
+gpu_voxelization: true
+
+
+# Shared by training, deployment action inverse, and voxel visualization.
+# null resolves to <dataset_dir>/meta/ewm_normalization_stats.json.
+normalization_stats_path: null
+
+# RGB remains uint8 for DinoV3VideoEncoder.preprocess_video(); it alone applies
+# ImageNet mean/std. Voxel, proprio, action, and future_voxel are normalized
+# by EWMDataset through EWMNormalizer.
