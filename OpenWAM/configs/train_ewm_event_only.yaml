@@ -7,13 +7,14 @@ defaults:
 
 model:
   training_mode: event_only
+  # The mixed-source pretraining reader supplies only current RGB.
   event_camera_mode: wrist_only
 
 dataloader:
   type: ewm_mixed_event_only
   dataset_dir: null  # Clear the inherited Piper EWM_DATASET_DIR interpolation.
-  reassemble_dir: /projects/hdd/myproject/CVPR2027/datasets/reassemble_training_eventframes_10ms
-  dvla_dir: /projects/hdd/myproject/CVPR2027/datasets/dvla-place7obj-roll-25fps-events-40ms-delta-trim
+  reassemble_dir: ${oc.env:EWM_REASSEMBLE_DIR,${oc.env:EWM_PROJECT_ROOT,..}/datasets/reassemble_training_eventframes_10ms}
+  dvla_dir: ${oc.env:EWM_DVLA_DIR,${oc.env:EWM_PROJECT_ROOT,..}/datasets/dvla-place7obj-roll-25fps-events-40ms-delta-trim}
   # Match Piper sampling: current1 + future24; adjacent anchors share23 future frames.
   # Disk event accumulations do not overlap (REASSEMBLE33.3ms, DVLA40ms).
   chunk_size: 24

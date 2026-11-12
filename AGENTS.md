@@ -2,6 +2,10 @@
 
 This file defines the local conventions for agents and contributors working in this repository.
 
+> **2026-11-10 当前入口与文件保护（优先于下文历史记录）：** 当前仓库根目录为 `/projects/_hdd/isaachdd/EWM`。正式测评使用 `scripts/eval_piper_final.sh` 和 `scripts/eval_profiles/piper_eight_final.json`，详见 [正式测评协议](docs/evaluation_protocol.md)：continuous/min8、4步flow、等效延迟、编译default且关闭Graph，视觉预测回合后解码且不计入等效延迟。旧底层入口默认值仅为历史兼容，不能代替正式profile。保留Action-only、RGB-action、对称EWM间隔2/间隔1、非对称EWM五组80k模型及最终ID/OOD结果；Action-only ID由两次测评合并，见 [产物保留清单](docs/artifact_retention_20261110.md)。`tmp/` 内有正式模型、运行中的冻结源码以及event/RGB冗余度实验，不能整目录清理。FastWAM通过固定上游commit和本地补丁发布，保留本地嵌套工作树。历史文档和旧启动器已移至 [archive/](archive/README.md)；下文旧账号、旧任务、memory与迁移状态只作为历史来源，不覆盖当前用户指令和正式协议。
+
+> **2026-11-04 实验协议优先：** 用户已确认严格遵循 [简化 EWM 八任务实验计划](docs/ewm_experiment_plan_20261104.md)。后续以 action-only、RGB-action、简单 joint 三组为准，action/视觉 horizon=24、单时刻双相机 RGB；统一采用 DynamicVLA 风格 continuous 调度（30 Hz、4 步 flow、实测回复延迟折算仿真时间）。先补齐 RGB-action 与短测，再进行三组 80k 训练及 1,200 回合 ID 主评测。每 plan 实际执行长度由延迟决定，须统计；不能混用旧 checkpoint 或旧 buffered/固定长度结果。此记录优先于下文历史记忆结构与训练默认说明；具体变更以用户后续指令为准。
+
 > **2026-10-12 migration priority:** The destination account cannot access the source account directory. Follow the detailed independent-deployment handoff at the end of this file. Source-machine absolute paths below are historical references; destination jobs must use the new account workspace. Do not submit GPU jobs from the exhausted source account. The user explicitly chose fresh environment installation; do not retry cross-account sharing or permissions as the migration plan.
 
 ## Paths and layout

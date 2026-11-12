@@ -25,7 +25,7 @@ from scripts.eval_ewm.ewm_action_only_protocol import (
 from scripts.eval_ewm.ewm_eval_wire import MAX_MESSAGE, decode_message, encode_message
 from scripts.eval_ewm.ewm_eval_summary import write_summary
 from scripts.eval_ewm.ewm_eval_recovery import archive_interrupted_trial, load_completed_results
-from scripts.eval_ewm.ewm_event_replan import horizon_statistics
+from scripts.eval_ewm.ewm_eval_summary import horizon_statistics
 from scripts.eval_ewm.ewm_rgb_ood import RGBOODConfig, TrialRGBOOD, check_resume_rgb_ood
 from scripts.eval_ewm.ewm_scene_rng import restore_scene_rng, save_scene_rng, state_path
 
@@ -266,7 +266,7 @@ def test_closed_loop_outputs_fixed_horizon_and_success_contract(
     manifest = json.loads((output / "manifest.json").read_text())
     assert complete["training_mode"] == "action_only"
     assert complete["success_rate"] == float(success)
-    assert manifest["event_input"] is False and manifest["event_replan"]["enabled"] is False
+    assert manifest["event_input"] is False and "event_replan" not in manifest
     for result in complete["results"]:
         assert result["steps"] == expected_steps and result["success"] == success
         assert result["execution_chunks"][-1]["end_reason"] == reason
@@ -354,7 +354,7 @@ def test_server_handler_wire_actions_and_event_rejection(tmp_path, monkeypatch, 
             self.handler = handler
 
         def serve_forever(self):
-            assert json.loads(ready.read_text())["checkpoint_format"] == "ewm_action_only_v1"
+            assert json.loads(ready.read_text())["checkpoint_format"] == "ewm_action_only_v2"
             self.handler(connection)
 
         def shutdown(self):

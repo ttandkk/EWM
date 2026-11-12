@@ -44,7 +44,7 @@ def exported(tmp_path,monkeypatch):
             for packet in stream.encode():container.mux(packet)
     builder.build(root,cache)
     def init(self,dataset_dir,**kwargs):
-        self.dataset_dir=Path(dataset_dir);self.first_anchor=0;self.window_stride=1;self.observation_row_offset=0;self.chunk_size=2
+        self.dataset_dir=Path(dataset_dir);self.first_anchor=0;self.window_stride=1;self.observation_row_offset=0;self.chunk_size=2;self.pad_tail=False
         self.data_path='data/file0.parquet';self.video_path='videos/{video_key}/file0.mp4'
         self.height=self.width=256;self.rgb_decode_backend='pyav'
         self._cumulative=np.array([0,2,4]);self.prompts={0:'conveyor'}

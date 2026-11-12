@@ -1,0 +1,4600 @@
+{
+  "version": 1,
+  "created_at": "2026-11-10T23:36:39.035668+08:00",
+  "project_root": "/projects/_hdd/isaachdd/EWM",
+  "purpose": "只读盘点与候选清单；不是删除授权或可执行清理脚本",
+  "decisions": {
+    "keep": "完整保留",
+    "candidate": "可审阅的删除候选，本次不删除",
+    "review": "用途/引用未完全确认，默认保留待复核"
+  },
+  "retain_complete_artifacts": [
+    "video",
+    "decoded_prediction_video",
+    "trajectory",
+    "trial_result",
+    "trial_steps",
+    "initial_state",
+    "scene_manifest",
+    "planned_scenes",
+    "suite_manifest",
+    "summary",
+    "complete_marker",
+    "source_provenance",
+    "server_log"
+  ],
+  "final_id": {
+    "action_only": {
+      "roots": [
+        "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id",
+        "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id"
+      ],
+      "task_sources": {
+        "conveyor": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id/conveyor/id",
+        "moving_carton": "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id/moving_carton/id",
+        "turntable_cups": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id/turntable_cups/id",
+        "rotating_tube": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id/rotating_tube/id",
+        "tennis_rolling": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id/tennis_rolling/id",
+        "tennis_falling": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id/tennis_falling/id",
+        "tennis_parabolic": "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id/tennis_parabolic/id",
+        "tennis_container": "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id/tennis_container/id"
+      }
+    },
+    "rgb_action": {
+      "roots": [
+        "results/piper_rgb_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106/id"
+      ]
+    },
+    "ewm_stride2": {
+      "roots": [
+        "results/piper_ewm_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id"
+      ]
+    },
+    "ewm_stride1": {
+      "roots": [
+        "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/id"
+      ]
+    },
+    "ewm_asymmetric": {
+      "roots": [
+        "results/piper_ewm_eval_243038_step080000_continuous_min8_5090_20261106/id"
+      ]
+    }
+  },
+  "final_ood": {
+    "action_only": {
+      "lighting_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/action_only/ood",
+      "blur_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/action_only/ood",
+      "background_ood": "results/piper_action_eval_262022_step080000_background_greygreen_min8_5090_20261109/ood",
+      "speed_ood": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/action_only/ood"
+    },
+    "rgb_action": {
+      "lighting_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/rgb_action/ood",
+      "blur_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/rgb_action/ood",
+      "background_ood": "results/piper_three_background_greygreen_recovery_5090_20261110/rgb_action/ood",
+      "speed_ood": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/rgb_action/ood"
+    },
+    "ewm_stride2": {
+      "lighting_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/joint/ood",
+      "blur_ood": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/joint/ood",
+      "background_ood": "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109/ood",
+      "speed_ood": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_stride2/ood"
+    },
+    "ewm_stride1": {
+      "lighting_ood": "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/lighting_ood",
+      "blur_ood": "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/blur_ood",
+      "background_ood": "results/piper_three_background_greygreen_recovery_5090_20261110/ewm_stride1/ood",
+      "speed_ood": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_stride1/ood"
+    },
+    "ewm_asymmetric": {
+      "lighting_ood": "results/piper_ewm_eval_243038_step080000_continuous_min8_decode_pro6000_20261108/ood",
+      "blur_ood": "results/piper_ewm_eval_243038_step080000_continuous_min8_decode_pro6000_20261108/ood",
+      "background_ood": "results/piper_three_background_greygreen_recovery_5090_20261110/ewm_asymmetric/ood",
+      "speed_ood": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_asymmetric/ood"
+    }
+  },
+  "additional_protected_paths": [
+    "OpenWAM/outputs/ewm_eight_no_memory_no_alignment_243038",
+    "OpenWAM/outputs/ewm_joint_stride1_ada_20261106",
+    "datasets",
+    "docs/latent_representation_analysis_20261104",
+    "envs/fastwam",
+    "envs/lerobot",
+    "envs/openwam",
+    "envs/torchcodec_ffmpeg7",
+    "isaacsim601",
+    "pretrained/FastWAM",
+    "pretrained/Wan-AI",
+    "pretrained/dinov3-vitl16",
+    "pretrained/leanvae",
+    "pretrained/t5-small",
+    "results/piper_action_eval_262022_step080000_background_greygreen_min8_5090_20261109/ood",
+    "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105/id",
+    "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id",
+    "results/piper_ewm_eval_243038_step080000_continuous_min8_5090_20261106/id",
+    "results/piper_ewm_eval_243038_step080000_continuous_min8_decode_pro6000_20261108/ood",
+    "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109/ood",
+    "results/piper_ewm_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2/id",
+    "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/blur_ood",
+    "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/id",
+    "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107/lighting_ood",
+    "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/action_only/ood",
+    "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_asymmetric/ood",
+    "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_stride1/ood",
+    "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/ewm_stride2/ood",
+    "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110/rgb_action/ood",
+    "results/piper_rgb_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106/id",
+    "results/piper_three_background_greygreen_recovery_5090_20261110/ewm_asymmetric/ood",
+    "results/piper_three_background_greygreen_recovery_5090_20261110/ewm_stride1/ood",
+    "results/piper_three_background_greygreen_recovery_5090_20261110/rgb_action/ood",
+    "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/action_only/ood",
+    "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/joint/ood",
+    "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107/rgb_action/ood",
+    "third_party",
+    "tmp/event_rgb_latent_pilot_20261104",
+    "tmp/ewm_formal_ada_serial_compile_20261104/runs/action_only",
+    "tmp/ewm_formal_ada_serial_compile_20261104/runs/joint",
+    "tmp/ewm_formal_ada_serial_compile_20261104/runs/rgb_action",
+    "tmp/latent_expanded_20261104",
+    "tmp/latent_expanded_20261104_results.json",
+    "tmp/latent_expanded_20261104_subsample.json",
+    "tmp/latent_pca_decoder_20261104",
+    "tmp/latent_pca_middle_20261104",
+    "tmp/latent_pca_reconstruction_20261104",
+    "tmp/latent_predictability_probe_20261104",
+    "tmp/latent_statistics_visualization_20261104",
+    "tmp/latent_visualization_20261104"
+  ],
+  "checkpoints_note": "五组run目录完整保留，包括80k policy、config、normalization、最终resume_state_step_080000及训练元数据；checkpoint.pt与带步数文件为硬链接，单删一个不释放模型空间。",
+  "running_job_guards": {
+    "job_id": "1732584",
+    "source_root": "tmp/background_resume_three_pro6000_20261110",
+    "preserved_391_trial_root": "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109/ood",
+    "reason": "repair.py末尾再次校验391个结果JSON和steps SHA、视频size/mtime。不得删除、重编码、改名或触碰这些受保护视频。"
+  },
+  "latent_experiments": {
+    "protected_top_entries": [
+      "tmp/event_rgb_latent_pilot_20261104",
+      "tmp/latent_expanded_20261104",
+      "tmp/latent_expanded_20261104_results.json",
+      "tmp/latent_expanded_20261104_subsample.json",
+      "tmp/latent_pca_decoder_20261104",
+      "tmp/latent_pca_middle_20261104",
+      "tmp/latent_pca_reconstruction_20261104",
+      "tmp/latent_predictability_probe_20261104",
+      "tmp/latent_statistics_visualization_20261104",
+      "tmp/latent_visualization_20261104"
+    ],
+    "external_dependencies": [
+      "datasets",
+      "pretrained/leanvae",
+      "tmp/training_data_cache/piper_dynamic_v1/shared_normalization.json"
+    ],
+    "previously_removed_cache": "tmp/training_data_cache/piper_dynamic_v1/piper_*/event_frames",
+    "reproducibility_limit": "配对latent/PCA/JSON保留，可复现统计；原始事件帧缓存此前已获准清理，重新编码/部分像素级解码对比需先从原始数据重建，不声称所有实验当前可直接全量复跑。"
+  },
+  "counts": {
+    "results": {
+      "candidate": 18,
+      "keep": 15,
+      "review": 5
+    },
+    "tmp": {
+      "review": 215,
+      "keep": 54,
+      "candidate": 7
+    },
+    "logs": {
+      "review": 253,
+      "keep": 21,
+      "candidate": 13
+    }
+  },
+  "validation": {
+    "all_top_entries_accounted": true,
+    "candidate_paths_nonoverlapping": true,
+    "candidate_paths_do_not_contain_protected_paths": true,
+    "id_suite_checks": [
+      {
+        "model": "action_only",
+        "split": "id",
+        "completed_trials": 400,
+        "successes": 152,
+        "success_rate": 0.38,
+        "unique_tasks": 8
+      },
+      {
+        "model": "rgb_action",
+        "split": "id",
+        "completed_trials": 400,
+        "successes": 153,
+        "success_rate": 0.3825,
+        "unique_tasks": 8
+      },
+      {
+        "model": "ewm_stride2",
+        "split": "id",
+        "completed_trials": 400,
+        "successes": 210,
+        "success_rate": 0.525,
+        "unique_tasks": 8
+      },
+      {
+        "model": "ewm_stride1",
+        "split": "id",
+        "completed_trials": 400,
+        "successes": 213,
+        "success_rate": 0.5325,
+        "unique_tasks": 8
+      },
+      {
+        "model": "ewm_asymmetric",
+        "split": "id",
+        "completed_trials": 400,
+        "successes": 233,
+        "success_rate": 0.5825,
+        "unique_tasks": 8
+      }
+    ],
+    "deletions_performed": false,
+    "ood_suite_snapshot": [
+      {
+        "model": "action_only",
+        "condition": "lighting_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 127,
+        "complete_tasks": 8
+      },
+      {
+        "model": "action_only",
+        "condition": "blur_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 132,
+        "complete_tasks": 8
+      },
+      {
+        "model": "action_only",
+        "condition": "background_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 63,
+        "complete_tasks": 8
+      },
+      {
+        "model": "action_only",
+        "condition": "speed_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      },
+      {
+        "model": "rgb_action",
+        "condition": "lighting_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 119,
+        "complete_tasks": 8
+      },
+      {
+        "model": "rgb_action",
+        "condition": "blur_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 143,
+        "complete_tasks": 8
+      },
+      {
+        "model": "rgb_action",
+        "condition": "background_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 48,
+        "complete_tasks": 8
+      },
+      {
+        "model": "rgb_action",
+        "condition": "speed_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      },
+      {
+        "model": "ewm_stride2",
+        "condition": "lighting_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 183,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_stride2",
+        "condition": "blur_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 211,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_stride2",
+        "condition": "background_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 104,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_stride2",
+        "condition": "speed_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      },
+      {
+        "model": "ewm_stride1",
+        "condition": "lighting_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 188,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_stride1",
+        "condition": "blur_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 243,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_stride1",
+        "condition": "background_ood",
+        "summary_available": true,
+        "completed_trials": 50,
+        "successes": 2,
+        "complete_tasks": 1
+      },
+      {
+        "model": "ewm_stride1",
+        "condition": "speed_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      },
+      {
+        "model": "ewm_asymmetric",
+        "condition": "lighting_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 179,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_asymmetric",
+        "condition": "blur_ood",
+        "summary_available": true,
+        "completed_trials": 400,
+        "successes": 228,
+        "complete_tasks": 8
+      },
+      {
+        "model": "ewm_asymmetric",
+        "condition": "background_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      },
+      {
+        "model": "ewm_asymmetric",
+        "condition": "speed_ood",
+        "summary_available": false,
+        "planned_root_exists": true
+      }
+    ]
+  },
+  "entries": [
+    {
+      "path": "results/piper_action_eval_224077_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_227797_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_234507_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_237659_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_239872_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_background_greygreen_min8_5090_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_background_speed_min8_5090_20261109",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "旧背景材质与未补齐速度 OOD 混在同一套件；新速度尚未完成，保留已有速度回合作为对照，不能整目录删除。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_continuous_5090_20261105",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_continuous_min4_5090_20261105",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_continuous_min8_5090_20261105",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "已核实无任何 trial_*_result.json，属于被替代的预检/占位目录；最终测评在保留目录。"
+    },
+    {
+      "path": "results/piper_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_conveyor_wrist_events_4x1_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_eight_eval_218011_step040000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_eight_eval_218011_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_eight_mainview_2x4_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_ewm_243038_262022_controller_cross_5090_20261106",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "旧/新模型×执行协议交叉对照，不是最终主表；是否作为控制器消融留待确认。"
+    },
+    {
+      "path": "results/piper_ewm_243038_262022_controller_cross_5090_20261106_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "控制器交叉对照及275582任务证据；是否保留论文消融留待确认。"
+    },
+    {
+      "path": "results/piper_ewm_eval_243038_step080000",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "包含旧 buffered16/Graph/exec10 多种对照，不能仅凭非最新名称判定无价值。"
+    },
+    {
+      "path": "results/piper_ewm_eval_243038_step080000_continuous_min8_5090_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_ewm_eval_243038_step080000_continuous_min8_decode_pro6000_20261108",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_background_speed_min8_decode_pro6000_20261109",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "旧背景材质和早期速度 OOD 部分结果；新速度完成前保留，需按 condition 子目录复核。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_continuous_5090_20261105",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_continuous_min4_5090_20261105",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_continuous_min8_5090_20261105",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_continuous_min8_error_record_5090_20261106",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "已核实无任何 trial_*_result.json，属于被替代的预检/占位目录；最终测评在保留目录。"
+    },
+    {
+      "path": "results/piper_ewm_eval_262022_step080000_continuous_min8_error_record_5090_20261106_v2",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_ewm_eval_276490_step080000_continuous_min8_decode_pro6000_20261107",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_five_speed_ood_step080000_continuous_min8_decode_5090_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_memory_eval_229899_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_no_memory_eval_229910_step080000",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "旧模型或旧执行协议的测评，已不在指定五模型最终ID/OOD集合中；仅列候选，不执行删除。"
+    },
+    {
+      "path": "results/piper_rgb_action_eval_262022_step080000_continuous_min8_error_record_5090_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_rolling_events_4x1_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_three_background_greygreen_after277129_pro6000_20261109",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "已核实无任何 trial_*_result.json，属于被替代的预检/占位目录；最终测评在保留目录。"
+    },
+    {
+      "path": "results/piper_three_background_greygreen_recovery_5090_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "results/piper_three_background_greygreen_recovery_pro6000_20261110",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "已核实无任何 trial_*_result.json，属于被替代的预检/占位目录；最终测评在保留目录。"
+    },
+    {
+      "path": "results/piper_three_ood_262022_step080000_continuous_min8_decode_5090_20261107",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "五模型最终ID/OOD的唯一或组合来源，或用户已制作的论文展示图片；保留完整内容。"
+    },
+    {
+      "path": "tmp/action_only_narrow_227797",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/background_greygreen_priority_277119_277129_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/background_resume_three_pro6000_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/background_speed_append_277119_277129_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/carton_boundary_v3_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_lowwall_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_no_memory_comparison_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_replace_20261030",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_stack_v2_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_tail_review_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_trial000_audit_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/carton_trial002_audit_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/checkpoint_cleanup_20261028",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/continual_prediction_grasp_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_dense_no_latency",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_memory_80k_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_memory_latency_fix",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_memory_no_latency",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_memory_ood_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_memory_ttt_ood_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_speed_ood_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_speed_strata_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/conveyor_speed_strata_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/cups_drawer_fix_20261017",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/dataset_layout_cleanup_20261018",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/deployment",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/event_action_correction_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_failure_review",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_frame_cache_build_20261018",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_laststep_ttt_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_lora_ablation_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_lora_continual_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_lora_ttt_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_prediction_correction_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_prediction_position_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/event_rgb_latent_pilot_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/ewm-causal-audit-20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm-cpu-regression-20261104",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "单次CPU回归启动器及日志；测试源码保留于项目测试目录，不是指定模型结果或latent实验。"
+    },
+    {
+      "path": "tmp/ewm-ddp-resume-ada-compile-20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm-ddp-resume-ada-compile-cuda-fix-20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm-ddp-resume-audit-20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm-formal-after-resume-248817-20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm-formal-direct-20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm-simple-smoke-3muzuj7v",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_243038_262022_controller_cross_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_243038_continuous8_complete_275582_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_243038_ood_append_277129_pro6000_20261108",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_276490_id_ood_pro6000_20261107",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_action_262022_eval_5090_continuous_20261105",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_action_joint_262022_min4_5090_20261105",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_action_joint_262022_min8_5090_20261105",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_action_only_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_action_only_eval_20261025",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_action_remaining_joint_262022_min8_record_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_action_zero_20261025",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_ada_eight_compile",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_alignment_short_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_cached_ada_speed20_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_cached_l40_speed20_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_continuous_inference_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_continuous_min4_development_20261105",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_conveyor_launch",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_cpu_denoise_124_20261106",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_cups_joint4_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_cups_texture_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_ddp_resume_ada_compile_20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_ddp_resume_ada_compile_cuda_fix_20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_dino_fixed_batch_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_dino_six_cache",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_dual_eval_allow_compile_error_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_dynamic_training_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_eager_zero_latency_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_eight_formal_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_eval_compile_20261022",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_eval_continue_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期218011测评续跑启动准备，不属于指定五模型最终结果。"
+    },
+    {
+      "path": "tmp/ewm_eval_id_5090_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期218011模型ID测评工作目录，不属于指定五模型最终结果。"
+    },
+    {
+      "path": "tmp/ewm_eval_import_fix_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期测评导入修复临时产物，非五组最终实验；删除前可选留存其中patch/报告。"
+    },
+    {
+      "path": "tmp/ewm_eval_latest_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期218011最新checkpoint评估启动准备，不属于指定五模型最终结果。"
+    },
+    {
+      "path": "tmp/ewm_eval_no_cudagraph_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期禁用Graph的测评调试工作目录，已被当前正式协议替代。"
+    },
+    {
+      "path": "tmp/ewm_eval_slurm_headers_20261022",
+      "kind": "directory",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "早期Slurm头部修复工作目录，旧测评任务已结束；只作为历史整理候选。"
+    },
+    {
+      "path": "tmp/ewm_formal_ada_serial_compile_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_formal_cached_ada_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_formal_joint_stride1_ada_after262022_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_formal_joint_stride1_l40_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_formal_joint_stride1_l40s_fix_20261105",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_formal_workerfix_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_gaussian_actions_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_input_opt_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_integrity_audit_20261108",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_io_profile_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_joint_262022_eval_5090_continuous_20261105",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_joint_cache",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_l40_eight_compile",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory120_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory120_speed20_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_eval_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_eval_no_bf16_cache_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_eval_pro6000_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_no_alignment_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_smoke",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_memory_speed",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_no_memory_no_alignment_20261027",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_rgb_action_262022_min8_5090_20261106",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_tail_mask_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_temporal_ensemble_20261106",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_three_ood_262022_5090_20261107",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ewm_window_routing_v3_20261026",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ewm_zero_noise_actions_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/groot_dynamic_eager_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/groot_dynamic_single_20261024",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/groot_eight_formal_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/laststep_motion_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/laststep_outcome_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/latent_expanded_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_expanded_20261104_results.json",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_expanded_20261104_subsample.json",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_pca_decoder_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_pca_middle_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_pca_reconstruction_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_predictability_probe_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_statistics_visualization_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/latent_visualization_20261104",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "event/RGB冗余度、PCA/预测性/重建实验的输入latent、源码、报告和图，用户明确保留。"
+    },
+    {
+      "path": "tmp/memory_consistency_20261029",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ood_boundary_revision_20261108",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ood_protocol_revision_20261108",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/ood_rescued_motion_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/openwam_random_1step_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/piper_240022_consistency_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_after_collect_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_bounds_20261023",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_eval_237659_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_first_four_retry_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_rgb2_compile_exec10_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_action_rgb2_latency_exec10_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_all_task_wrist_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_asymmetric_a40_e16_20261103",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/piper_background_beige_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_background_ood_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ball_skins_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_blur_ood_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_bowl_depth_tolerance_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_bowl_grasp_diagnosis_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_bowl_grasp_flow_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_bowl_handoff_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_bowl_tube_props_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carrier_shadows_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carton_expert20_20261022",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carton_face_grasp_20261022",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carton_grasp_smoothing_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carton_recollect_20261022",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_carton_second_grasp_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_chunk16_exec10_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container30_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_direction_audit_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_front_pan_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_long_flight_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_paired_launch_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_spatial_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_table_landing_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_v2_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_wide_v4_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_container_writer_fix_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_contour_quality_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_conveyor_capture_restore_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_conveyor_speed_protocol_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_conveyor_topdown_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_cups_success_audit_242049_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_dataset_quality_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_drawer_drop_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_dynamic_collection_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_dynamic_validation",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_edge_and_container40_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_collect_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_collection_runs",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_eval_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_expert20_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_id_max_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_refresh_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_refresh_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_eight_serial_launcher_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_event_fix_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_event_noise_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_event_quality_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_event_threshold_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_243038_compile_exec10_5090_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_243038_first_four_graph_exec16_worker_5090_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_243038_graph_exec16_allow_error_5090_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_243038_graph_exec16_worker_5090_20261103",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_ada_resubmit_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_ewm_ada_resume_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_falling_height_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_falling_ready_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_falling_v2_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_first_two_props_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_five_narrow_recollect_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_four_front_unified_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_four_task_shadows_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_four_tasks_showcase_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_four_tasks_showcase_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_front_rack_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_lighting_ood_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_low_geometry_20261030",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_marble_tabletop_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_moving_basket_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_narrow_recollect_20261025",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_narrow_v2_20261025",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_old_data_removal_20261019",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/piper_ood_unified_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_parabolic_exec4_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_parabolic_exec4_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_parabolic_v2_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_prop_scatter_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_props_trim_falling_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_push_t_pose_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_remove_table_rail_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_restore_narrow_defaults_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rgb2_eval_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rgb2_eval_after_train_20261102",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rgb2_train_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rgb_baselines_20261018",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/piper_rgb_twoframe_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rolling_frontal_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rolling_success_region_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rolling_tolerance4mm_20261021",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rolling_v2_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_room_background_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_room_default_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_room_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_room_wrist_shadows_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_rotating_tube_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_single_rgb_train_20261103",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/piper_square_nut_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_stack_light_3000_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_static_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tabletop_props_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tasks_promotion_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tennis_camera_20261030",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tennis_framing_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tennis_one_each_20261031_152500",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tennis_repair_20261026",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tennis_wrist_flight_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_three_expert_refine_20261101",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_cube_area_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_gravity_release_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_half_insert_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_layout_static_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_speed_id20_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_tube_visibility_20261031",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_turntable_cups_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_turntable_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_two_expert_fixes_20261017",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_wrist_reinstall_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_wrist_visibility_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/piper_wrist_visual_fix_20261019",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/project_organization_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/push_t_debug_208921",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/push_t_fix_20261018",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/push_t_pose_v2_20261017",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/stop_after_background_277119_277129_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/storage_cleanup_20261021",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/storage_cleanup_20261104T102112Z",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/storage_cleanup_event_dino_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/storage_cleanup_selected_20261103",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/tennis_extremes_audit_20261027",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/tennis_validation",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/three_background_greygreen_after277129_pro6000_20261109",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/training_cache",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/training_data_cache",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/training_setup",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/trial_006_h264_pred_events_failure.mp4",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/ttt_fixed_probe",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "tmp/wam_batch16_32_smoke_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/wam_lora_alignment_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/wam_random_serial_smoke_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/wam_speed_optimization_20261110",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "正式模型、当前任务/历史结果依赖、WAM后续实验、部署数据或审计追溯；不按tmp名称清理。"
+    },
+    {
+      "path": "tmp/worker_exit_debug_20261104",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/action_only_after_collect_237659.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/bowl_grasp_depth_238772.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/checkpoint_cleanup_20261031.json",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/checkpoint_cleanup_20261108_015539.json",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/conveyor_dense_no_latency",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_memory_80k_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_memory_latency_fix",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_memory_no_latency",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_memory_ood_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_memory_ttt_ood_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_speed_ood_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_speed_strata_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/conveyor_speed_strata_latency_eval",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/data_collection_archive_20261018",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/deployment",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/event_action_correction_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_frame_cache_build_20261018",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_laststep_ttt_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_lora_ablation_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_lora_continual_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_lora_ttt_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/event_prediction_correction_v2",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_243038_262022_2x2_5090_275582.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_a6000_loop_smoke_245653.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_a6000_smoke_245652.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_action_zero_225634.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_ada_eight_compile",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_alignment_short_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cached_ada_speed20",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cached_l40_speed20",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_joint4_234278.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_texture_234331.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_texture_234356.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_texture_234376.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_texture_234407.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_cups_texture_234437.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_ddp_resume_ada_compile_247639.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_ddp_resume_ada_compile_248817.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_dino_fixed_batch",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_dino_six_cache",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_dynamic_cache_217159.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_eight_action_only",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_eight_train",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_formal_ada_serial_262022.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_gaussian_actions_223474.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_input_opt20",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_io_profile_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_joint_stride1_ada_276490.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_joint_stride1_l40_262686.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ewm_l40_eight_compile",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_memory120_speed20",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_memory_smoke",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_memory_speed",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_protocol_tests_245475.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_protocol_tests_245486.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_zero_actions_223094.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ewm_zero_actions_223210.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/fastwam_lora_verify_207991.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/groot_eight_train",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/ood_rescued_motion_audit",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/openwam_random_1step_1732728.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_action_237659_id_238366.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_action_262022_cont5090_273942.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_action_eight_id_225261.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_action_eight_zero_235172.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_action_first_four_id_228501.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_action_first_four_id_228599.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_action_joint_262022_min4_5090_274408.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_action_remaining_joint_262022_min8_record_275074.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_action_rgb2_compile10_241976.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_action_rgb2_eval_240022.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_action_rgb2_latency10_242049.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_action_tennis_id_228245.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_background_beige_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_bg_speed_five_5090_1732584.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_carton_cache_221081.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_collect_220178.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_expert20_220077.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_face_219917.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_face_v03_219917.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_face_v04_219917.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_fast_220014.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_fast_220023.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_fast_220040.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_fast_220052.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_lowwall_234211.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_lowwall_234213.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_lowwall_234220.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_carton_lowwall_cache_234460.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container30_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container40_214684.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container40_5090.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container40_render_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_front_pan_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_long_flight_215200.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_long_flight_215200_v02.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_long_flight_215200_v03.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_long_flight_final_215200.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_long_flight_tight_215200.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_paired_launch_215200.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_spatial_cache_229562.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_spatial_collect_228590.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_spatial_collect_229561.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_container_v2_20261020",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_conveyor_capture_restore_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_drawer_drop_212628.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207107.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207441.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207442.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207449.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207496.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207513.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207514.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207519.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207523.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207524.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207531.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207537.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207550.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207560.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207566.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207589.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207598.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207612.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207613.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207647.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207648.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207660.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207670.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207671.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207685.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207686.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207717.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207723.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207727.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207734.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_dynamic_207736.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_edge_diagnostic_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_edge_fixed_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_eight_collect_20261031_237655.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_eight_collect_216144.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_eight_id80k_221108.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id80k_resume_221296.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id_218950.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id_218996.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id_219013.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id_219147.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_eight_id_max_215200.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_ewm_243038_compile10_244164.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_ewm_243038_first4_graph16_worker_244662.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_ewm_243038_graph16_244481.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_ewm_243038_graph16_worker_244626.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_ewm_276490_id_ood_pro6000_277129.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_ewm_eight_blur_235184.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213660_physics_v01.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213660_physics_v02.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213660_physics_v03.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213660_physics_v04.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213709_physics_v05.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213709_render_fast.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_213709_render_slow.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_ready_213709_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_falling_ready_213709_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_five_narrow_cache_242895.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_five_narrow_collect_242894.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_four_tasks_showcase_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lighting_216978.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_cpu_213365.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213503_v11_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213503_v12_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v05.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v05_retry.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v06.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v07.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v07_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v08.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v09.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v10_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v11_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v12_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v13_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v13_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v14_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v15_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v16_negative_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v16_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v16_positive_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v17_negative_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v17_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v17_positive_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v18_negative_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v18_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v18_positive_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v19_negative_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v19_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_interactive_213513_v19_positive_render.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_physics_213391.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_v2_213105.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_v2_213108.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_v2_213360.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_lob_v2_213376.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_marble_tabletop_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_marble_tabletop_v02_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_marble_tabletop_v03_214702.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eager_zero_233764.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eight_id_233387.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eight_id_233444.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eight_id_233462.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eight_id_233597.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_memory_eight_id_233598.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_moving_basket_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_narrow_cache_227546.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_narrow_collect_226158.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_no_memory_eager_zero_233765.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_no_memory_last_five_234503.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_no_memory_last_six_234177.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_parabolic_exec4_228601.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_parabolic_exec4_239406.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_promotion_reference_207119.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_remove_stand_236193.err",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_remove_stand_236193.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rgb_action_262022_min8_5090_276282.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_rgb_baselines",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v01_negative.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v01_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v01_positive.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v02_fast.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v02_negative.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v02_physics.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v02_positive.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_213660_v02_slow.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_front_213660_physics_v01.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_front_213660_physics_v02.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_front_213660_render_fast.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rolling_front_213660_render_positive.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_207399.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212664_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212673_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212678_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212682_1.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212682_2.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212682_3.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212718_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212718_1.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212718_2.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_room_background_212718_3.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_rotating_tube_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_six_id_220095.log",
+      "kind": "file",
+      "decision": "candidate",
+      "scope": "entire_entry",
+      "reason": "不在指定最终五模型测评中的旧评测任务日志，关联当前代码与正式结果不依赖其内容。"
+    },
+    {
+      "path": "logs/piper_stack_light3000_213094.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_table_landing_215188.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_table_landing_215195.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_camera_236098.err",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_camera_236098.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_lower_236117.err",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_lower_236117.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_lower_236119.err",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_tennis_lower_236119.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_three_background_greygreen_1196780.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_three_no_latency_222068.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_three_ood_262022_5090_277119.log",
+      "kind": "file",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/piper_three_preflight_239203.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_turntable_cups_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_turntable_v1",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_two_exec4_223827.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_all_212480_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_all_212480_1.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_all_212480_2.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_all_212480_3.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212366.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212381.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212387.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212389.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212394.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212400.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212450.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212463.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212470.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_render_212475.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212496_0.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212496_1.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212496_2.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212496_3.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212517_4294967294.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/piper_wrist_replay_212522_4294967294.log",
+      "kind": "file",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    },
+    {
+      "path": "logs/training_envs",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/training_weights",
+      "kind": "directory",
+      "decision": "keep",
+      "scope": "entire_entry",
+      "reason": "最终五模型训练/测评、当前运行任务、WAM实验或部署/清理审计日志。"
+    },
+    {
+      "path": "logs/ttt_fixed_probe",
+      "kind": "directory",
+      "decision": "review",
+      "scope": "entire_entry",
+      "reason": "历史实验/审计/采集或调试产物，尚未确认是否有独立价值或其他引用；不列入删除候选。"
+    }
+  ]
+}

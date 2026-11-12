@@ -1,5 +1,7 @@
 # EWM configurable event VAE latent flow
 
+> The defaults below describe the base codec configuration. Eight-task training presets and saved checkpoint configs override camera mode, temporal stride and compilation. Use the [current evaluation protocol](../../docs/evaluation_protocol.md) for formal runs; do not infer their settings from the historical base defaults here.
+
 ## Defaults and codec selection
 
 Production defaults: frozen **LeanVAE-16 BF16**, joint current1+future24 encoding, latent **4×4 patch**, Event D768 / Action D512, H8/L12/K24, wrist-only events with dual-view RGB context. Both experts project Q/K/V into the same 8×96 attention space, following OpenWAM MoT's heterogeneous residual-width layout. Gradient checkpointing and torch.compile are **off**. Online encoding uses codec_batch_size16 videos per call. Ordinary training steps do not decode.
@@ -29,6 +31,51 @@ sbatch --export=ALL,TRAINING_MODE=action_only scripts/train_ewm/train_ewm.sh
 
 Both joint codecs use temporal stride4. `EWM_VAE_PATH` overrides the selected weight directory; unset a previous codec's override before switching. Defaults are `pretrained/leanvae` (LeanVAE-dim16.ckpt) and `pretrained/wan2.2-vae`. The Python Lean codec also accepts an exact checkpoint file path. The Piper Slurm launcher explicitly overrides camera geometry and compilation; it is not a mixed event-only launcher.
 
+### Optional LeanVAE temporal input sampling
+
+`model.event_temporal_downsample=1|2|3` selects every Nth future frame **before**
+the frozen LeanVAE encoder. The default is 1, including old saved configs without
+this field. `event_temporal_compression` remains 4, the native pretrained VAE
+stride; this option does not modify the VAE architecture or weights. Both
+`leanvae16_joint` and `leanvae16_rgb_joint` support it. Wan keeps stride 1 here.
+
+For the current 24-step horizon and 256×256 images with patch4:
+
+| Input sampling stride | Input frames including observation | Latent slices including observation | Wrist / dual visual tokens | Dual visual + state/action tokens |
+|---|---:|---:|---:|---:|
+| 1 (default) | 25 | 7 | 448 / 896 | 921 |
+| 2 | 13 | 4 | 256 / 512 | 537 |
+| 3 | 9 | 3 | 192 / 384 | 409 |
+
+The observation stays at offset 0. Future offsets are `[2,4,...,24]` at stride2
+and `[3,6,...,24]` at stride3. Frames are selected, not averaged or accumulated;
+short event bursts between selected frames can be lost. All 24 action targets,
+their control rate and current RGB conditioning stay intact.
+Visual RoPE timestamps use the original frame/action time units.
+
+**Stride4 is not supported. No frames are added to make a sampling stride fit.**
+The horizon must be divisible by `4 * event_temporal_downsample`; incompatible
+values fail before VAE encoding. The pre-existing dataset tail-padding policy
+is unchanged: only complete groups of real source frames receive latent supervision.
+
+```bash
+# Example override; this starts training when executed.
+python scripts/train.py --config-name train_ewm_eight \
+  model.event_temporal_downsample=2
+# The joint and RGB-action Slurm launchers also accept this environment variable.
+sbatch --export=ALL,EVENT_TEMPORAL_DOWNSAMPLE=2 scripts/train_ewm/train_ewm.sh
+```
+
+Prediction APIs continue returning 24 actions and 24 display frames: each decoded
+sampled frame is repeated across its original interval. These repeated display
+frames do not recover missing temporal detail and are never fed back as added
+training frames. Decoded diagnostics score only the sampled timestamps.
+The selected stride is saved in `model_config`; use the same setting for training
+and evaluation. An existing stride1 policy is not a validated stride2/3 policy:
+train or fine-tune a separate run when changing it. Existing source frames and
+normalization formats need no changes for this option. This change alone does
+not establish a quality improvement or a measured GPU speedup.
+
 ### Action-only mode
 
 `model.training_mode=action_only` pairs with `dataloader.type=ewm_piper_action_only`.
@@ -37,14 +84,11 @@ current dual RGB, 8-D state and text condition `action[k:k+24]`. Only the
 current RGB frames are decoded; Parquet column projection reads state,
 action and task index, without loading event PNGs or future RGB targets.
 
-The event expert is frozen and completely bypassed: no VAE is loaded, no
-observed/future event tokens are constructed, and no event Q/K/V, event
-context attention or event FFN is evaluated. Each action layer attends only
-the state token plus the action sequence, and retains its RGB/text cross
-attention. The action expert retains D512 residuals and D768 shared Q/K/V
-geometry. Event modules remain in the policy weight layout, like the
-inactive action modules in event-only mode, but are excluded from gradients,
-optimizer updates and DDP tracking.
+The event expert is not constructed: no event input/head/camera parameters,
+per-layer event branches or VAE are allocated. Each action layer attends only
+the state token plus the action sequence and retains its RGB/text cross
+attention. The action expert retains D512 residuals and D768 attention geometry.
+New policy checkpoints contain only the active core and context projections.
 
 The objective is only action velocity MSE (`loss == loss_action`). Low-frequency
 diagnostics write normalized-action `action_x0_mse`/`action_x0_mae` to
@@ -52,12 +96,12 @@ diagnostics write normalized-action `action_x0_mse`/`action_x0_mae` to
 No event/latent diagnostics are computed. The shared debug CSV retains a
 legacy `loss_video=0` placeholder, which is not an event loss.
 
-Action-only policy payloads use `ewm_action_only_v1`, record their mode in
+New action-only policy payloads use `ewm_action_only_v2`, record their mode in
 `model_config`, and load through `eval_ewm_policy.load_policy`. `sample_policy`
 requires RGB/state/text and a normalizer, and returns only `action` and
 `action_normalized` (no future event/RGB/latent output). Since no VAE is
 involved, action horizon need not be divisible by four. The existing joint
-pure-noise callback and event-guided replanning do not apply to this mode.
+pure-noise callback does not apply to this mode. Event-guided replanning has been removed.
 Full-state training resume retains the existing model/data compatibility
 checks. Defaults for the other three modes are unchanged. The action-only
 batch launcher defaults compilation off; enable it only after profiling.
@@ -66,8 +110,8 @@ batch launcher defaults compilation off; enable it only after profiling.
 
 Use `scripts/eval_ewm/run_ewm_action_only_piper_eval.sh`, not the joint/event
 evaluation launcher. It starts its own `ewm_action_only_eval_server.py` and
-`eval_ewm_action_only_piper_sim.py`; the existing event evaluation scripts
-are unchanged. The server accepts only `ewm_action_only_v1` policies from
+`eval_ewm_action_only_piper_sim.py`. The server accepts `ewm_action_only_v2`
+and compatible single-frame `ewm_action_only_v1` policies from
 Piper action-only runs, and sends current dual RGB, normalized 8-D state
 and instruction to `sample_policy`. It rejects event arrays and event
 prediction/replan flags. No EVIS generation or event VAE decoding runs.
@@ -120,7 +164,7 @@ At sampling, encode only the observation, integrate future latent/action flow, c
 
 ## Checkpoints, dependencies and metrics
 
-Event-predicting policy payloads retain historical format string `ewm_wan_latent_v2`; RGB-action uses `ewm_rgb_action_latent_v1`, and action-only uses `ewm_action_only_v1`. Resolved model_config records the training mode, codec, path and patch geometry. VAE/DINO/T5 are external dependencies excluded from policy state (action-only does not load a VAE). Wan/Lean or patch2/patch4 trainable projections have different shapes: use the saved configuration to restore a policy, not the latest default. Strict policy loading rejects mismatched keys/shapes. Policy files do not include optimizer/RNG resume state; old dense ewm_trainable_v1 checkpoints are incompatible.
+Event-predicting policy payloads retain historical format string `ewm_wan_latent_v2`; RGB-action uses `ewm_rgb_action_latent_v1`, and action-only uses `ewm_action_only_v2`. Resolved model_config records the training mode, codec, path and patch geometry. VAE/DINO/T5 are external dependencies excluded from policy state (action-only does not load a VAE). Wan/Lean or patch2/patch4 trainable projections have different shapes: use the saved configuration to restore a policy, not the latest default. Strict policy loading rejects mismatched keys/shapes. Policy files do not include optimizer/RNG resume state; old dense ewm_trainable_v1 checkpoints are incompatible.
 
 For new runs, set `training.save_full_states_for_resume=true` (batch launcher:
 `SAVE_FULL_STATES_FOR_RESUME=true`). Each policy save also writes

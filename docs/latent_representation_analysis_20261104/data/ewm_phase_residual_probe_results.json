@@ -1,0 +1,750 @@
+{
+  "elapsed_seconds": 4.102382113225758,
+  "method": "5-fold leave-one-episode-out and nested train-only episode-CV; known first-versus-last phase input used to center X and Y; stage oracle is diagnostic and not available at deployment",
+  "regularization": [
+    0.001,
+    0.01,
+    0.1,
+    1.0,
+    10.0,
+    100.0
+  ],
+  "tasks": {
+    "conveyor": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9716460024318065,
+            "conditioned_mse": 0.03428965009791778,
+            "stage_baseline_mse": 0.034310980223841984,
+            "ratio": 0.9993783294506585
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9778614457714038,
+            "conditioned_mse": 0.039775871290802185,
+            "stage_baseline_mse": 0.039957445049416056,
+            "ratio": 0.9954558216024745
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9947843212968493,
+            "conditioned_mse": 0.03295280597400057,
+            "stage_baseline_mse": 0.03447936693257539,
+            "ratio": 0.955725377395704
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9732253646028562,
+            "conditioned_mse": 0.046483398903850066,
+            "stage_baseline_mse": 0.046575241863406454,
+            "ratio": 0.9980280733737091
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9990209118598073,
+            "conditioned_mse": 0.03090432837276723,
+            "stage_baseline_mse": 0.032000542147947494,
+            "ratio": 0.9657438998966904
+          }
+        ],
+        "pooled_ratio": 0.9844252301991775
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9885513998981676,
+            "conditioned_mse": 0.17826688125309306,
+            "stage_baseline_mse": 0.1792134360142046,
+            "ratio": 0.9947182823890697
+          },
+          {
+            "held_episode": 10,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9917249240475612,
+            "conditioned_mse": 0.18049131098463722,
+            "stage_baseline_mse": 0.182571390596459,
+            "ratio": 0.9886067603197513
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9940553600593178,
+            "conditioned_mse": 0.16678730822519042,
+            "stage_baseline_mse": 0.17049530343448915,
+            "ratio": 0.9782516284343076
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9886930860217352,
+            "conditioned_mse": 0.20312887870935595,
+            "stage_baseline_mse": 0.2033316246693597,
+            "ratio": 0.9990028803422318
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9970823382372829,
+            "conditioned_mse": 0.1705171901007926,
+            "stage_baseline_mse": 0.17357856319417322,
+            "ratio": 0.9823631845024778
+          }
+        ],
+        "pooled_ratio": 0.9890025790654969
+      }
+    },
+    "moving_carton": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9831384977765002,
+            "conditioned_mse": 0.038205090862948037,
+            "stage_baseline_mse": 0.037410340323688895,
+            "ratio": 1.0212441408547115
+          },
+          {
+            "held_episode": 10,
+            "alpha": 100.0,
+            "selected_cv_ratio": 1.0001401666039091,
+            "conditioned_mse": 0.03318161538202505,
+            "stage_baseline_mse": 0.03322411909774025,
+            "ratio": 0.9987206969855194
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.997152709656042,
+            "conditioned_mse": 0.03581105719154162,
+            "stage_baseline_mse": 0.03558235122298205,
+            "ratio": 1.0064275114122267
+          },
+          {
+            "held_episode": 30,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9968688293502674,
+            "conditioned_mse": 0.03258942415852092,
+            "stage_baseline_mse": 0.03271026214309287,
+            "ratio": 0.9963058081270233
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9966015329731874,
+            "conditioned_mse": 0.03953840289036445,
+            "stage_baseline_mse": 0.03936438868693547,
+            "ratio": 1.0044205996646591
+          }
+        ],
+        "pooled_ratio": 1.0058002161315438
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9855705352124192,
+            "conditioned_mse": 0.20822015094785837,
+            "stage_baseline_mse": 0.21598984870879065,
+            "ratio": 0.9640274864426253
+          },
+          {
+            "held_episode": 10,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9763246423196678,
+            "conditioned_mse": 0.1935735096049355,
+            "stage_baseline_mse": 0.19699510300372713,
+            "ratio": 0.9826310738357446
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9874668445055279,
+            "conditioned_mse": 0.18985937113636767,
+            "stage_baseline_mse": 0.19608227976260426,
+            "ratio": 0.9682637888861215
+          },
+          {
+            "held_episode": 30,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9804638375938536,
+            "conditioned_mse": 0.19175597276823517,
+            "stage_baseline_mse": 0.19483988363107355,
+            "ratio": 0.9841720760382011
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9863339629007648,
+            "conditioned_mse": 0.24176355472061162,
+            "stage_baseline_mse": 0.24803366202820762,
+            "ratio": 0.9747207404981871
+          }
+        ],
+        "pooled_ratio": 0.974553493373159
+      }
+    },
+    "turntable_cups": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9368399627029395,
+            "conditioned_mse": 0.030038851000638606,
+            "stage_baseline_mse": 0.03233020848952211,
+            "ratio": 0.9291264239874572
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9450185050098182,
+            "conditioned_mse": 0.031773702211626904,
+            "stage_baseline_mse": 0.030623920656700467,
+            "ratio": 1.0375452107460599
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9879900138509233,
+            "conditioned_mse": 0.06146466859903323,
+            "stage_baseline_mse": 0.06449254674238941,
+            "ratio": 0.953050727622049
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9427023080873478,
+            "conditioned_mse": 0.03569918307986443,
+            "stage_baseline_mse": 0.03991831340381498,
+            "ratio": 0.894305897113696
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9391924928101067,
+            "conditioned_mse": 0.026984901964760527,
+            "stage_baseline_mse": 0.02941533468297193,
+            "ratio": 0.9173753165005346
+          }
+        ],
+        "pooled_ratio": 0.9450198226077331
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9450478636651528,
+            "conditioned_mse": 0.1554815793963579,
+            "stage_baseline_mse": 0.16645210341699765,
+            "ratio": 0.9340920072775754
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9734630450903646,
+            "conditioned_mse": 0.17724503610807374,
+            "stage_baseline_mse": 0.1864999634982042,
+            "ratio": 0.9503757147372334
+          },
+          {
+            "held_episode": 20,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9790448771577855,
+            "conditioned_mse": 0.19736608778640033,
+            "stage_baseline_mse": 0.21321265644867363,
+            "ratio": 0.9256771669833399
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9556752707982634,
+            "conditioned_mse": 0.15604146837120722,
+            "stage_baseline_mse": 0.17177879209431798,
+            "ratio": 0.9083861079051603
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.01,
+            "selected_cv_ratio": 0.9294124965913183,
+            "conditioned_mse": 0.15046314619808596,
+            "stage_baseline_mse": 0.15537912153659023,
+            "ratio": 0.9683614163222913
+          }
+        ],
+        "pooled_ratio": 0.9365007481222154
+      }
+    },
+    "rotating_tube": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9988412637672304,
+            "conditioned_mse": 0.01618831776329086,
+            "stage_baseline_mse": 0.016204227932686773,
+            "ratio": 0.9990181470254549
+          },
+          {
+            "held_episode": 10,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9993591802646079,
+            "conditioned_mse": 0.020180445565154793,
+            "stage_baseline_mse": 0.020159967723707563,
+            "ratio": 1.0010157675710536
+          },
+          {
+            "held_episode": 20,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9998713992935948,
+            "conditioned_mse": 0.019272130250989523,
+            "stage_baseline_mse": 0.019328001028618102,
+            "ratio": 0.9971093349205717
+          },
+          {
+            "held_episode": 30,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9971924224877794,
+            "conditioned_mse": 0.018371199220006264,
+            "stage_baseline_mse": 0.018263700977376156,
+            "ratio": 1.0058858958960875
+          },
+          {
+            "held_episode": 40,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9984600064672933,
+            "conditioned_mse": 0.01770347681226756,
+            "stage_baseline_mse": 0.017711796816695196,
+            "ratio": 0.99953025633064
+          }
+        ],
+        "pooled_ratio": 1.00052226831816
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9927597725745858,
+            "conditioned_mse": 0.1429861813037093,
+            "stage_baseline_mse": 0.1434807479418691,
+            "ratio": 0.9965530801500967
+          },
+          {
+            "held_episode": 10,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9996872219389764,
+            "conditioned_mse": 0.136078461061114,
+            "stage_baseline_mse": 0.13702135324977277,
+            "ratio": 0.993118647814403
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9918914949684373,
+            "conditioned_mse": 0.14909571436469607,
+            "stage_baseline_mse": 0.14951205621349925,
+            "ratio": 0.9972153292560658
+          },
+          {
+            "held_episode": 30,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9986894907835787,
+            "conditioned_mse": 0.135599920349026,
+            "stage_baseline_mse": 0.13788128512159722,
+            "ratio": 0.9834541375897439
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9905853413976925,
+            "conditioned_mse": 0.13610607097956964,
+            "stage_baseline_mse": 0.13624635523251458,
+            "ratio": 0.9989703632606867
+          }
+        ],
+        "pooled_ratio": 0.993928141015427
+      }
+    },
+    "tennis_rolling": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9451903608904962,
+            "conditioned_mse": 0.009770524168369195,
+            "stage_baseline_mse": 0.012296069627765827,
+            "ratio": 0.7946054685886226
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9421575511285502,
+            "conditioned_mse": 0.01131602781974308,
+            "stage_baseline_mse": 0.013328579771428985,
+            "ratio": 0.8490047712360178
+          },
+          {
+            "held_episode": 20,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9124323779064221,
+            "conditioned_mse": 0.012959165694869832,
+            "stage_baseline_mse": 0.015413344384141684,
+            "ratio": 0.840775718227844
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.831169921352022,
+            "conditioned_mse": 0.011968955462302942,
+            "stage_baseline_mse": 0.012312585655684771,
+            "ratio": 0.9720911429173958
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9187760473674539,
+            "conditioned_mse": 0.01546932715157683,
+            "stage_baseline_mse": 0.018139384961911195,
+            "ratio": 0.8528032887586371
+          }
+        ],
+        "pooled_ratio": 0.8600368011382019
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9774533771867508,
+            "conditioned_mse": 0.1364633863278375,
+            "stage_baseline_mse": 0.1460818094286901,
+            "ratio": 0.934157283932413
+          },
+          {
+            "held_episode": 10,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9802877171072873,
+            "conditioned_mse": 0.1309857837295155,
+            "stage_baseline_mse": 0.13921877069000865,
+            "ratio": 0.9408629531801777
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9677264240179347,
+            "conditioned_mse": 0.1455363322865927,
+            "stage_baseline_mse": 0.15423226910888915,
+            "ratio": 0.9436179155468624
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.936899981035993,
+            "conditioned_mse": 0.1366418084808142,
+            "stage_baseline_mse": 0.1375910526544992,
+            "ratio": 0.9931009745519673
+          },
+          {
+            "held_episode": 40,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9741248518369987,
+            "conditioned_mse": 0.1473093978715643,
+            "stage_baseline_mse": 0.15708914199029336,
+            "ratio": 0.9377439841174169
+          }
+        ],
+        "pooled_ratio": 0.9492295383647045
+      }
+    },
+    "tennis_falling": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9965178325320122,
+            "conditioned_mse": 0.0135083125958229,
+            "stage_baseline_mse": 0.0139973693099126,
+            "ratio": 0.9650608122668192
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9707713662696135,
+            "conditioned_mse": 0.011164064725091247,
+            "stage_baseline_mse": 0.01089658651665566,
+            "ratio": 1.0245469723960563
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.986382916418539,
+            "conditioned_mse": 0.014258068307977753,
+            "stage_baseline_mse": 0.014423868605129017,
+            "ratio": 0.9885051436829987
+          },
+          {
+            "held_episode": 30,
+            "alpha": 100.0,
+            "selected_cv_ratio": 1.0000496776971148,
+            "conditioned_mse": 0.021105177568757474,
+            "stage_baseline_mse": 0.021125840856637056,
+            "ratio": 0.9990218951274031
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9760394685957787,
+            "conditioned_mse": 0.010005095136863993,
+            "stage_baseline_mse": 0.009800237380421096,
+            "ratio": 1.0209033463671158
+          }
+        ],
+        "pooled_ratio": 0.9971074452511527
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9977180443311934,
+            "conditioned_mse": 0.12909147684594796,
+            "stage_baseline_mse": 0.13089790277302554,
+            "ratio": 0.9861997336182697
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9906270308481718,
+            "conditioned_mse": 0.12350423020148144,
+            "stage_baseline_mse": 0.12369371417523939,
+            "ratio": 0.9984681196209412
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9931037055116269,
+            "conditioned_mse": 0.1266677777836669,
+            "stage_baseline_mse": 0.1271962034889278,
+            "ratio": 0.995845585868395
+          },
+          {
+            "held_episode": 30,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.999862146568113,
+            "conditioned_mse": 0.15125476456943002,
+            "stage_baseline_mse": 0.15210589068866728,
+            "ratio": 0.9944043842392708
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9914039704707684,
+            "conditioned_mse": 0.11206040284776907,
+            "stage_baseline_mse": 0.11117211997332933,
+            "ratio": 1.007990158635572
+          }
+        ],
+        "pooled_ratio": 0.9961443022851546
+      }
+    },
+    "tennis_parabolic": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9816795567784897,
+            "conditioned_mse": 0.042743441111432356,
+            "stage_baseline_mse": 0.04337824603940125,
+            "ratio": 0.9853658230581226
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9930462585910471,
+            "conditioned_mse": 0.06398585692067738,
+            "stage_baseline_mse": 0.06464577532700906,
+            "ratio": 0.9897917783027042
+          },
+          {
+            "held_episode": 20,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9872696599085692,
+            "conditioned_mse": 0.047978961204850186,
+            "stage_baseline_mse": 0.04785125873864477,
+            "ratio": 1.002668737867543
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.001,
+            "selected_cv_ratio": 0.9913977682046693,
+            "conditioned_mse": 0.040640708253383145,
+            "stage_baseline_mse": 0.04186577165322474,
+            "ratio": 0.9707383059844489
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.01,
+            "selected_cv_ratio": 0.9882990904259207,
+            "conditioned_mse": 0.046567369889027606,
+            "stage_baseline_mse": 0.048191515740224566,
+            "ratio": 0.9662980957073048
+          }
+        ],
+        "pooled_ratio": 0.9836693848237154
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9938270639272324,
+            "conditioned_mse": 0.2126984546164534,
+            "stage_baseline_mse": 0.21450849039409392,
+            "ratio": 0.9915619387637518
+          },
+          {
+            "held_episode": 10,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9956628577755706,
+            "conditioned_mse": 0.262410618361235,
+            "stage_baseline_mse": 0.2634853258212237,
+            "ratio": 0.9959211866670789
+          },
+          {
+            "held_episode": 20,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.994834071925593,
+            "conditioned_mse": 0.2418340979075758,
+            "stage_baseline_mse": 0.24226199610652965,
+            "ratio": 0.9982337378299909
+          },
+          {
+            "held_episode": 30,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9959518937459346,
+            "conditioned_mse": 0.21061265569480417,
+            "stage_baseline_mse": 0.21278890308371032,
+            "ratio": 0.9897727402257908
+          },
+          {
+            "held_episode": 40,
+            "alpha": 0.1,
+            "selected_cv_ratio": 0.9942234108321581,
+            "conditioned_mse": 0.2371698699832303,
+            "stage_baseline_mse": 0.23978074793540363,
+            "ratio": 0.9891113945775301
+          }
+        ],
+        "pooled_ratio": 0.9930938003728286
+      }
+    },
+    "tennis_container": {
+      "event": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9965164604022702,
+            "conditioned_mse": 0.10326942037533098,
+            "stage_baseline_mse": 0.10437105589861419,
+            "ratio": 0.9894450093103079
+          },
+          {
+            "held_episode": 10,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9960185817953883,
+            "conditioned_mse": 0.09389734797076688,
+            "stage_baseline_mse": 0.09478737836339683,
+            "ratio": 0.9906102435999681
+          },
+          {
+            "held_episode": 20,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9906914464879961,
+            "conditioned_mse": 0.11215816638785754,
+            "stage_baseline_mse": 0.11150654811911846,
+            "ratio": 1.0058437668435667
+          },
+          {
+            "held_episode": 30,
+            "alpha": 100.0,
+            "selected_cv_ratio": 1.000094774149556,
+            "conditioned_mse": 0.1405861953677937,
+            "stage_baseline_mse": 0.1405814184199408,
+            "ratio": 1.0000339799377942
+          },
+          {
+            "held_episode": 40,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9937393759702156,
+            "conditioned_mse": 0.0961625282646396,
+            "stage_baseline_mse": 0.09691318465516975,
+            "ratio": 0.9922543419329259
+          }
+        ],
+        "pooled_ratio": 0.996194671870756
+      },
+      "rgb": {
+        "folds": [
+          {
+            "held_episode": 0,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9959578090812168,
+            "conditioned_mse": 0.2984929201277781,
+            "stage_baseline_mse": 0.30103001694843434,
+            "ratio": 0.9915719473879216
+          },
+          {
+            "held_episode": 10,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9964011878114597,
+            "conditioned_mse": 0.31053762521603895,
+            "stage_baseline_mse": 0.31448498917716233,
+            "ratio": 0.9874481641510092
+          },
+          {
+            "held_episode": 20,
+            "alpha": 1.0,
+            "selected_cv_ratio": 0.9904431688248723,
+            "conditioned_mse": 0.33012509253400424,
+            "stage_baseline_mse": 0.3211841659871511,
+            "ratio": 1.0278373827033889
+          },
+          {
+            "held_episode": 30,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9994851366666155,
+            "conditioned_mse": 0.4010623776646682,
+            "stage_baseline_mse": 0.40174586422563435,
+            "ratio": 0.9982987091546454
+          },
+          {
+            "held_episode": 40,
+            "alpha": 10.0,
+            "selected_cv_ratio": 0.9944009064386894,
+            "conditioned_mse": 0.30712577101812294,
+            "stage_baseline_mse": 0.30882984287332643,
+            "ratio": 0.9944821658446316
+          }
+        ],
+        "pooled_ratio": 1.000041831117425
+      }
+    }
+  }
+}

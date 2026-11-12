@@ -5,13 +5,17 @@ heads: 8
 layers: 12
 # Default frozen BF16 LeanVAE-16: one-bin OFF/ON -> pseudo-RGB -> 16-channel latent.
 event_codec_impl: leanvae16_joint
-event_vae_path: ${oc.env:EWM_VAE_PATH,/projects/hdd/myproject/CVPR2027/pretrained/leanvae}
+event_vae_path: ${oc.env:EWM_VAE_PATH,${oc.env:EWM_PRETRAINED_ROOT,${oc.env:EWM_PROJECT_ROOT,..}/pretrained}/leanvae}
 voxel_bins: 1
 event_camera_mode: wrist_only
 # Total spatial stride = Lean VAE8 * latent patch4; 448 wrist or 896 dual event tokens at K24.
 event_patch_size: 4
 event_spatial_compression: 32
 event_temporal_compression: 4
+# Additional LeanVAE input frame stride (1/2/3); action horizon/rate stays fixed.
+event_temporal_downsample: 1
+# null follows the action horizon; a positive value sets a separate event endpoint.
+event_horizon: null
 codec_batch_size: 16
 # Flow uses native codec latent coordinates, without voxel event_scale.
 diagnostic_occupancy_threshold: 0.0333333333

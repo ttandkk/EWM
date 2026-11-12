@@ -72,6 +72,7 @@ else
   EVENT_PATCH_SIZE=$((EVENT_SPATIAL_COMPRESSION / CODEC_SPATIAL_STRIDE))
 fi
 EVENT_TEMPORAL_COMPRESSION=${EVENT_TEMPORAL_COMPRESSION:-4}
+EVENT_TEMPORAL_DOWNSAMPLE=${EVENT_TEMPORAL_DOWNSAMPLE:-1}
 CODEC_BATCH_SIZE=${CODEC_BATCH_SIZE:-8}
 DINO_INJECTION_INTERVAL=${DINO_INJECTION_INTERVAL:-1}
 
@@ -154,6 +155,15 @@ if [[ "$TRAINING_MODE" == joint ]] && (( CHUNK_SIZE % EVENT_TEMPORAL_COMPRESSION
   echo "CHUNK_SIZE=$CHUNK_SIZE must be divisible by EVENT_TEMPORAL_COMPRESSION=$EVENT_TEMPORAL_COMPRESSION." >&2
   exit 2
 fi
+if [[ ! "$EVENT_TEMPORAL_DOWNSAMPLE" =~ ^[123]$ ]] ||
+   [[ "$EVENT_CODEC_IMPL" != leanvae16_joint && "$EVENT_TEMPORAL_DOWNSAMPLE" != 1 ]]; then
+  echo 'EVENT_TEMPORAL_DOWNSAMPLE must be 1/2/3; values >1 require LeanVAE.' >&2
+  exit 2
+fi
+if [[ "$TRAINING_MODE" == joint ]] && (( CHUNK_SIZE % (EVENT_TEMPORAL_COMPRESSION * EVENT_TEMPORAL_DOWNSAMPLE) != 0 )); then
+  echo 'CHUNK_SIZE must be divisible by codec compression times temporal downsample; no frame padding.' >&2
+  exit 2
+fi
 if [[ "$VOXEL_BINS" != 1 || "$EVENT_TEMPORAL_COMPRESSION" != 4 ]] ||
    (( EVENT_PATCH_SIZE != 2 && EVENT_PATCH_SIZE != 4 && EVENT_PATCH_SIZE != 8 )) ||
    (( EVENT_SPATIAL_COMPRESSION != CODEC_SPATIAL_STRIDE * EVENT_PATCH_SIZE )); then
@@ -211,6 +221,7 @@ ARGS=(
   model.event_spatial_compression="$EVENT_SPATIAL_COMPRESSION"
   model.event_patch_size="$EVENT_PATCH_SIZE"
   model.event_temporal_compression="$EVENT_TEMPORAL_COMPRESSION"
+  model.event_temporal_downsample="$EVENT_TEMPORAL_DOWNSAMPLE"
   model.codec_batch_size="$CODEC_BATCH_SIZE"
   model.diagnostic_samples="$DIAGNOSTIC_SAMPLES"
   model.dino_injection_interval="$DINO_INJECTION_INTERVAL"

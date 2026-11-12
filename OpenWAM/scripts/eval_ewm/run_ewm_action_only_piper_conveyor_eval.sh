@@ -99,7 +99,9 @@ for argument in "${client_args[@]}"; do
     fi
 done
 warmup_iters="${WARMUP_ITERS:-$warmup_default}"
-benchmark_iters="${BENCHMARK_ITERS:-0}"
+benchmark_default=0
+if [[ "$compile_core" == "true" ]]; then benchmark_default=1; fi
+benchmark_iters="${BENCHMARK_ITERS:-$benchmark_default}"
 server_args=(--warmup-iters "$warmup_iters" --benchmark-iters "$benchmark_iters")
 if [[ "$compile_core" == "true" ]]; then
     server_args+=(--compile-core)

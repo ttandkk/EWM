@@ -5,6 +5,7 @@ dataset_dir: ${oc.env:EWM_DATASET_DIR}
 context_frames: 1
 # Future horizon; framewise VAE preserves each action-aligned timestep.
 chunk_size: 24
+event_horizon: ${model.event_horizon}
 window_stride: 1
 # Direct event-frame exports align RGB, state and event-frame on the same row.
 observation_row_offset: 0

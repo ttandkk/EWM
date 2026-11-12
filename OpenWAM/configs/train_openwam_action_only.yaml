@@ -1,0 +1,14 @@
+# Original Wan + ActionDiT architecture; separate from the EWM ablation.
+defaults:
+  - train
+  - override model: dual_system_action_only
+  - _self_
+
+model:
+  video_backbone:
+    model_path: ${oc.env:DIFFSYNTH_MODEL_BASE_PATH,../pretrained}/Wan-AI/Wan2.2-TI2V-5B
+
+training:
+  lambda_video: 0.0
+  lambda_action: 1.0
+  output_path: outputs/openwam_action_only

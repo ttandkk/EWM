@@ -156,6 +156,12 @@ class OpenWAMTrainer:
         # Loss weights from the training config
         self.lambda_video = float(t.lambda_video)
         self.lambda_action = float(t.lambda_action)
+        action_only = bool(getattr(self.architecture, "action_only", False))
+        requested_action_only = bool(cfg_get(getattr(m, "architecture", {}), "action_only", False))
+        if resume_path and requested_action_only != action_only:
+            raise ValueError("Resume action_only mode differs from the checkpoint; use the matching preset or finetune_ckpt_path")
+        if action_only and (self.lambda_video != 0 or self.lambda_action <= 0):
+            raise ValueError("action_only requires training.lambda_video=0 and training.lambda_action>0")
 
         # Push forward-time training flags onto the architecture so prepare_inputs
         # is self-contained.
@@ -183,20 +189,28 @@ class OpenWAMTrainer:
         num_epochs = num_epochs or cfg_get(t, "num_epochs", None)
         num_epochs = int(num_epochs) if num_epochs is not None else None
         max_steps = max_steps or getattr(t, "max_steps", None)
+        max_optimizer_steps = cfg_get(t, "max_optimizer_steps", None)
         batch_size = int(t.batch_size)
         grad_accum = int(t.gradient_accumulation_steps)
 
         debug = bool(getattr(t, "debug", False))
         if debug:
             max_steps = 20
+            max_optimizer_steps = None
             save_steps_override = 10
             logger.info("DEBUG mode: max_steps=20, save@10, constant LR")
 
-        # num_epochs=null means step-only training: max_steps is the sole stop condition.
-        if num_epochs is None and not max_steps:
+        if max_optimizer_steps is not None:
+            if isinstance(max_optimizer_steps, bool) or not isinstance(max_optimizer_steps, int) or max_optimizer_steps <= 0:
+                raise ValueError("max_optimizer_steps must be a positive integer")
+            if num_epochs is not None or max_steps is not None:
+                raise ValueError("max_optimizer_steps requires num_epochs=null and max_steps=null")
+            logger.info("Training budget: %d optimizer updates (gradient accumulation=%d)", max_optimizer_steps, grad_accum)
+
+        if num_epochs is None and not max_steps and max_optimizer_steps is None:
             raise ValueError(
                 "training.num_epochs and training.max_steps are both unset; "
-                "set num_epochs, or set max_steps for step-only training."
+                "set num_epochs, max_steps, or max_optimizer_steps for step-only training."
             )
 
         # finetune/resume validation + architecture construction happen in
@@ -210,7 +224,7 @@ class OpenWAMTrainer:
         n_proc = self.accelerator.num_processes
         steps_per_epoch = math.ceil(len(dataloader) / grad_accum)
         # max_steps counts micro-steps (global_step); convert to optimizer steps for the LR horizon.
-        max_opt_steps = math.ceil(max_steps / grad_accum) if max_steps else None
+        max_opt_steps = max_optimizer_steps or (math.ceil(max_steps / grad_accum) if max_steps else None)
         if num_epochs is not None:
             # prepare() shards the dataloader ~1/n_proc; fold that in so total_opt_steps is the
             # per-process optimizer steps the loop actually runs (same unit as max_opt_steps).
@@ -260,7 +274,7 @@ class OpenWAMTrainer:
             if max_steps:
                 total_steps = min(total_steps, max_steps)
         else:
-            total_steps = max_steps
+            total_steps = max_optimizer_steps or max_steps
 
         import time as _time
 
@@ -276,7 +290,7 @@ class OpenWAMTrainer:
             )
             already_done = (num_epochs is not None and start_epoch >= num_epochs) or (
                 max_steps and global_step >= max_steps
-            )
+            ) or (max_optimizer_steps is not None and opt_step >= max_optimizer_steps)
             if already_done:
                 logger.info("[resume] global_step=%d already complete; finishing.", global_step)
                 self.finish_training(output_path, global_step, save_steps, keep_last_k, is_main, wandb_run)
@@ -291,7 +305,10 @@ class OpenWAMTrainer:
                 )
 
         _step_t0 = _time.monotonic()
-        pbar = tqdm(total=total_steps, desc="Training", unit="step", initial=min(global_step, total_steps))
+        progress_step = opt_step if max_optimizer_steps is not None else global_step
+        pbar = tqdm(total=total_steps, desc="Training",
+                    unit="update" if max_optimizer_steps is not None else "step",
+                    initial=min(progress_step, total_steps))
 
         assert self.accelerator is not None, "OpenWAMTrainer requires an Accelerator"
 
@@ -329,10 +346,11 @@ class OpenWAMTrainer:
                             grad_norm_val = self.accelerator.clip_grad_norm_(all_params, max_grad_norm)
                             grad_norm = torch.tensor(float(grad_norm_val), device=loss.device)
                         optimizer.step()
-                        if scheduler is not None:
-                            scheduler.step()
+                        if not getattr(self.accelerator, "optimizer_step_was_skipped", False):
+                            if scheduler is not None:
+                                scheduler.step()
+                            opt_step += 1
                         optimizer.zero_grad()
-                        opt_step += 1
 
                 global_step += 1
 
@@ -359,14 +377,20 @@ class OpenWAMTrainer:
 
                 # save_steps: write the weights line (+ the resumable full state when
                 # save_full_states_for_resume=true), then prune in lockstep.
-                if save_steps and global_step > 0 and global_step % save_steps == 0:
+                # In update-budget mode, save only complete optimizer boundaries.
+                save_due = (global_step > 0 and global_step % save_steps == 0) if save_steps else False
+                if max_optimizer_steps is not None and save_steps:
+                    save_due = (self.accelerator.sync_gradients and opt_step > 0
+                                and not getattr(self.accelerator, "optimizer_step_was_skipped", False)
+                                and opt_step % save_steps == 0)
+                if save_due:
                     save_weights(self.accelerator, self.architecture, output_path, global_step, final=False)
                     if save_full_states_for_resume:
                         save_full_state(self.accelerator, output_path, global_step, opt_step, epoch)
                     if is_main:
                         manage_checkpoints(output_path, keep_last_k)
 
-                if max_steps and global_step >= max_steps:
+                if (max_steps and global_step >= max_steps) or (max_optimizer_steps is not None and opt_step >= max_optimizer_steps):
                     pbar.close()
                     self.finish_training(output_path, global_step, save_steps, keep_last_k, is_main, wandb_run)
                     return
@@ -539,8 +563,16 @@ class OpenWAMTrainer:
         # Align global_step to the grad_accum boundary skip was floored to, then derive
         # opt_step from it — otherwise floored-off batches re-train and per-step seeds
         # (keyed on global_step) drift. No-op at grad_accum=1.
-        start_epoch, skip, global_step = compute_resume_position(global_step, len(dataloader), grad_accum)
-        opt_step = global_step // grad_accum
+        if cfg_get(self.cfg.training, "max_optimizer_steps", None) is not None:
+            # Epoch tails can flush a partial accumulation. Use the saved update
+            # count, not global_step // grad_accum, which loses those updates.
+            start_epoch, skip = divmod(global_step, len(dataloader))
+            if skip % grad_accum or "opt_step" not in meta:
+                raise ValueError("Optimizer-budget resume requires a checkpoint at an optimizer boundary with opt_step metadata")
+            opt_step = int(meta["opt_step"])
+        else:
+            start_epoch, skip, global_step = compute_resume_position(global_step, len(dataloader), grad_accum)
+            opt_step = global_step // grad_accum
         if is_main:
             logger.info(
                 "[resume] resumed at global_step=%d opt_step=%d epoch=%d skip_first=%d",
@@ -602,7 +634,7 @@ class OpenWAMTrainer:
             postfix["lr"] = f"{lr:.2e}"
             postfix["epoch"] = epoch
             pbar.set_postfix(postfix)
-            pbar.update(1)
+            pbar.update(max(0, opt_step - pbar.n) if pbar.unit == "update" else 1)
 
         if wandb_run is not None:
             num_procs = self.accelerator.num_processes if self.accelerator is not None else 1

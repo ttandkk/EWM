@@ -7,11 +7,11 @@ defaults:
 
 model:
   training_mode: action_only
-  event_vae_path: null  # The unused event expert has no VAE dependency.
+  event_vae_path: null  # No event expert or VAE is constructed.
 
 dataloader:
   type: ewm_piper_action_only
-  dataset_dir: /projects/hdd/myproject/CVPR2027/datasets/piper_stack_fronttight_v3_50/job177683
+  dataset_dir: ${oc.env:EWM_DATASET_DIR,${oc.env:EWM_PROJECT_ROOT,..}/datasets/piper_stack_fronttight_v3_50/job177683}
   gpu_voxelization: false
   action_only_mmap_cache_dir: null  # Optional raw RGB/state/action .npy cache.
   event_frame_cache_dir: null

@@ -1,0 +1,2596 @@
+{
+  "baseline": "/tmp/ewm-refactor-baseline-j14qdy_k",
+  "comparison": "task-start working tree, not Git HEAD",
+  "files": [
+    {
+      "path": "Event-DataCollection/scripts/_isaacsim6_compat.py",
+      "status": "modified",
+      "sha256": "d9662d8e621c081c4b2afacf539a25d6e8f6929159c269002b7607a0e98d80ff",
+      "previous_sha256": "2b15ba9a38f24a8566e747e07a700f9667dedbaae55be8ecc862c1f92802df2a",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/build_piper_ball_props.py",
+      "status": "modified",
+      "sha256": "ddbe68252a4e9205ed91fc8edd02dbcf97a14e3c4c5214be0e967eea295def42",
+      "previous_sha256": "8c450f3f18afd2fa5baf2f39a689d44e898dc3d91726448fe17a1968a86739ad",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/build_piper_tabletop_props.py",
+      "status": "modified",
+      "sha256": "b1c192ba5ca782d28987874c77437042783f5a0f74e125cc61b90d1c72586be6",
+      "previous_sha256": "1dd04460f288a165f5ecad3708cfca83c0635132421359658d5d7eff9d3b0a95",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/collect_piper_tasks_evis.py",
+      "status": "modified",
+      "sha256": "787798856e12c6cd668075da043ed5285a0e9f73e64039aa2d15eaa23aa11d6f",
+      "previous_sha256": "78094482d9654f2b54befde1adb33e27529fca5e19ca59966491bbcb94a7f8d1",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/convert_piper_hdf5_to_lerobot.py",
+      "status": "modified",
+      "sha256": "51318226862a4fb250ce6500bc8a46c8b1836de8851f833b0b64b94b9893fda8",
+      "previous_sha256": "739b9ba770e92764a7d9563a0b8ab53ef5e5f106318fc55c01514f1de0bd9c1f",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_ball_props.py",
+      "status": "modified",
+      "sha256": "3d6f3443b36b336c8276d8e1478266e76e0e0bde39e555f4a7a4316827932ba7",
+      "previous_sha256": "bfbe9c618a149bec25cb8854d40ebbff02abd6b6cdfa1396e95637cb6a61c581",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor.py",
+      "status": "modified",
+      "sha256": "934b94564cd8d987af4a4835355961c2ed755d0f7d22c4b8b65e183b2a5ae901",
+      "previous_sha256": "e422bc6ecb6e26867286c9019b8a423b1a70f485fdfa1f716b6cc46d71f90248",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_basket.py",
+      "status": "modified",
+      "sha256": "300448d6195f02aa3e1fdae3fa3fe582c8bce603e1fc2c11e2b3f4b747110ca2",
+      "previous_sha256": "1bb9bad7fcbd1a36f0b3bb20e1f98ac2361b0d88a7004670f53e241e35b433bb",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_ik.py",
+      "status": "modified",
+      "sha256": "d265c7c844ba450d141e6575eace43407479db02a55ec5290d0e316cadd78caf",
+      "previous_sha256": "9039ef0e17958dce63350f98845f367fe06429cb7dc161e28afcaee44bb2dd88",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_io.py",
+      "status": "modified",
+      "sha256": "72b334345fe0923f0b6487c5652daab0aa78f54f045fb87f520335cf564f5d98",
+      "previous_sha256": "082b17ee0aa259eeb5c3aebaf2a97460cfff07080927cf3fcc8d7d5fa9ba31d0",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_motion.py",
+      "status": "modified",
+      "sha256": "347cfde4ec873b8c46e021c98f7f9fed404fdc1449d89e5cec4a0ffc1b4fd6df",
+      "previous_sha256": "cd36f5e340b6363f5110580adb92746a7ac88c9ad0cceaabd5abafbf403c2f67",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_oracle.py",
+      "status": "modified",
+      "sha256": "87d384cde93ef57b0cc64d684d089621908463caf862e2ec2d95da087e425482",
+      "previous_sha256": "96571a3505424cb9aafb5c4990ed65ab16c90e51053afebd57e37a56728b0554",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_resume.py",
+      "status": "modified",
+      "sha256": "a1496f78aa7cced7d583403d2754c9ab6b78cf2e812a349352c7b086d52b3d33",
+      "previous_sha256": "a7e5220e33ed5ad0ed6f2c0f950020a82060fb97de01365afd3e3feeb1444101",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_conveyor_speed.py",
+      "status": "modified",
+      "sha256": "39e58cd69ef21fad88d22be453fb8b8e17ad6ae0f801fe177aa411c9d89312e2",
+      "previous_sha256": "b584b2f952911883cdc6cb6a14d29e53c8a58502f1a29527ba78a9b84ce39aa0",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_event_archive.py",
+      "status": "modified",
+      "sha256": "b223e5ac52fa5a59873336a400d4d8884be99085588ef89eb3f9d4a13f9c076f",
+      "previous_sha256": "3bc142f20752a74e584187213109a3242b9aeb54543ed4f640c835c82c19a5d0",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_event_frames.py",
+      "status": "modified",
+      "sha256": "300f273a687249335cc9cf356de16e7948382e0206cd0c028671a28c436efa81",
+      "previous_sha256": "6a8c0952a708ff4be80039a9bf314defb8011beb5dc9698c62de9cfa48fd23a1",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_prop_textures.py",
+      "status": "modified",
+      "sha256": "c83d86f8fd8214e55ba56e7b04dc1a617cd2408ffb073903159f6f90e71c2a3c",
+      "previous_sha256": "55e1af107b9209d3bc56e8d4837d00c095e6e4de08042582047c91bb391c835f",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_scene_background.py",
+      "status": "modified",
+      "sha256": "552154f6d87b4c31884fa574572c72a40b1ba7763218529fe72bdf1ab6851d28",
+      "previous_sha256": "307f416c73a4abac56ea890ceed320c41369eff5e7ce1c729232fa801e2d3c13",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_scene_background_ood.py",
+      "status": "modified",
+      "sha256": "bf4dcf108da340662642c75a205c1e341dcb53898408c4c7e469d22b95d24faa",
+      "previous_sha256": "f639700d492ec974ef08b76225290f67eca032f141dfeabb98c06c3ab0c322c2",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_table_visual.py",
+      "status": "modified",
+      "sha256": "b809ab9f013c15fce327c5c0a47715b76c5a200c160b0e839179c7aa212d68a6",
+      "previous_sha256": "be39202ebebf4a1189c9518417d8ad1266fef46030566bbfc1246977763abb0c",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tabletop_marble.py",
+      "status": "modified",
+      "sha256": "cd438a618282e16163244bacfdb2a14e755dd7a7abb240bfa313412a70be5442",
+      "previous_sha256": "2c65bcc7ded5095b1b799143f98b03b134625211edbde582aa44902b96f33dea",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tabletop_props.py",
+      "status": "modified",
+      "sha256": "db69b5a95b78e5dbe4cc81d52c58363bc1687ba22969ec5cb62a4ccf0de93c00",
+      "previous_sha256": "697199f538cbab1d68de0a99a8d8943b12c0f65d1939da089a4b46b4f3a1ba2c",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/__init__.py",
+      "status": "modified",
+      "sha256": "70a87d292753c0f39d8d717de997b517e718702f94d699c7e8236b6fb380f292",
+      "previous_sha256": "74a0d07ecf524b84e6e5dbdc9aa811bcc6d638c8bab00c87e75b21dea35d0f04",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/carton_lowwall_collection.py",
+      "status": "modified",
+      "sha256": "bc523b46cf6c9a7d5441046f6c5612a6610854cc41c152992987337eecf391fe",
+      "previous_sha256": "3bf9f237ef585321062afe2ce7199add154e69335a706c387248dd23dbe0652b",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/collection_protocol.py",
+      "status": "modified",
+      "sha256": "d90e44ca4f1ce960a8ab62b7d55900aeb2805bf1519bfb9564e9584b8bf1e176",
+      "previous_sha256": "9d9b5e28e9e0d5ae7d7f439625b1633b7eb37082e0f6737ff758ce7c097adb59",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/collection_runtime.py",
+      "status": "modified",
+      "sha256": "6894d9f5900c8dcba1bdab9abbf85c21bbd9b4e6aa7049037a298da42b219dff",
+      "previous_sha256": "8c1c31fc38570ce14b5b8aab8e5e355d577e9230492a6b237f52f9e44fba4d2d",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/container_spatial_collection.py",
+      "status": "modified",
+      "sha256": "08e2464c7aa98131e46e255f19b998d854cd0adbf7557faedfdf727021bf4cc8",
+      "previous_sha256": "997ebf622838bb7c74cc1f14030bf9f4c08eedfd0548f0cfa5590866c5a9f29e",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/container_spatial_diagnostic.py",
+      "status": "modified",
+      "sha256": "78502cf7d9ba7418ab01d9fef8fc5582e025ecde03d922bbcfab29c5400534b4",
+      "previous_sha256": "ec912131867a1d16a9eaafe66562cd7340970670e2854ff330c24a338a3df604",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/conveyor/__init__.py",
+      "status": "modified",
+      "sha256": "5223876df9f6fe3b1591375670922ec8ef9609c7f1be1aeb14bd970cb705c6f9",
+      "previous_sha256": "3776bea11e29410c96df6596fcd30e9b21cf3c02185acbb9e33fce6da74f4715",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/conveyor/preview.py",
+      "status": "modified",
+      "sha256": "b006a2b7800b5f99663d042f8436657738bd8c7791b89e293930a38203415106",
+      "previous_sha256": "d07ac93b0c4056a46300913d30e8c771226d3c36cd51826cb3b674a28eb30333",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/conveyor/scene.py",
+      "status": "modified",
+      "sha256": "885924642238284a49262a23865651966a4eb9a9c66ea62a3b717dae9b14ff6d",
+      "previous_sha256": "73246af27121ad054d03b837d9c6206453488641ecd347d7213e1a4100ebd59a",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/__init__.py",
+      "status": "modified",
+      "sha256": "07d95f681b37565f38c5e6521548bc4d8f797ff7a1dd7fa8ea09fb9959f3f494",
+      "previous_sha256": "f40fdc6de428c2ebc9d0ae9720aa380371dd3e331ff61f2e5ea782a0a2eaa345",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/config.py",
+      "status": "modified",
+      "sha256": "e09a404703c546b10c4cca99d191846519a2ea90a056f53d5cf81b6b3bf73acc",
+      "previous_sha256": "0c5dd9e0575bd71db2e467959d7be72b9439afda57828c30582d6c010c424cc1",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/geometry.py",
+      "status": "modified",
+      "sha256": "a291deaf278a09cc1dceb479185cea01d50a1704c6115745b1376842e5ed002b",
+      "previous_sha256": "7ff145ea6b23d01920dda434b25fcd73908b7ef358d6c6124fb095e56f7f3b05",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/oracle.py",
+      "status": "modified",
+      "sha256": "7b338fd96b89eca4667795f1f0a4081aa454a4604fe6cf9e6e40b4c840d9564d",
+      "previous_sha256": "c122d33f3d1ffa734970891f03a72c5c22db8adb2a375b62016e98b6593da9ff",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/preview.py",
+      "status": "modified",
+      "sha256": "ead4385e75909480718fc916743c5d3471ff0902cbeaa89be8bdc09eff892a47",
+      "previous_sha256": "ebe4d23eae01f1f37fa784e9cfa614df8052e0634f2b08516c388779569a6bd2",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/drawer_cup/scene.py",
+      "status": "modified",
+      "sha256": "bdfe4e5e387e70c8aeb384e4505b8648679c4f5e8515b7d66fbb9aeb677d09c5",
+      "previous_sha256": "7c9cecfabf36efba105dadfc1d3896d07472354e23e08e1e3b28578bdca9490b",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/dynamic_collection.py",
+      "status": "modified",
+      "sha256": "f509b8d6b96a19e4a27e941bbf5dd0d7d5291d059ce7a222dbb076f6b22d16d2",
+      "previous_sha256": "3eb0dc723e9c88c9a5b0ad90987a6f6f04f8eb241b8b9bd8643c7897048cbe07",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/dynamic_evaluation.py",
+      "status": "modified",
+      "sha256": "6b6534750501643786359e34544f642540308ac03844dbea31d220019c44f958",
+      "previous_sha256": "9498f81637673f06fd24c5e3333b6763e7b2f5a037096c72e72a0eaff3d46f4f",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/evaluation_imaging.py",
+      "status": "modified",
+      "sha256": "e522823967774c36e9452c96cc16cd8fcca1a098749873788fccacc011c521d2",
+      "previous_sha256": "9094c42bb66ebfa4014bffeef51b28b8adf751eeec7e27d0aad073198ba2afca",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/evaluation_protocol.py",
+      "status": "modified",
+      "sha256": "d3b6ab8bd642909edd34afadf4f2237f1455da022f0a9a15ebbbacce7c5744ce",
+      "previous_sha256": "8d0d9461ccf0d5548d79c00b45d1a38fa4b280c86c59155db09e64ea43af5bcd",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/event_preview.py",
+      "status": "modified",
+      "sha256": "7c5ca7ad6dc17ea4b121b2af9674b048724003fe7f84157cdc808f0fd348b8a1",
+      "previous_sha256": "637c784dda134f817851dceadff0be336967cf4ccafcee56b2c4ffc15bf34148",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/lighting.py",
+      "status": "modified",
+      "sha256": "303e4917b68816fb8059ddf65eeca5954a6689be9b9f449b24e806b1cab906cc",
+      "previous_sha256": "79e58e36baf4d0ab47717c55dd5c4a72f029ffd8d1ccd9841e699dd8d50b09b7",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/low_geometry_collection.py",
+      "status": "modified",
+      "sha256": "108204b0cb3e464c720434eaf9a9c8460c8bb4fafb15a8904846c7b17cdb47d2",
+      "previous_sha256": "3a1a32d23b81acc4ef9d93024c3557709912808ed67ce37c43a00c34f4302bd4",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/motion_blur.py",
+      "status": "modified",
+      "sha256": "1b5bc7a9b3c0049e34b7c61783b2f0010c839b799d9a01fe256623d4b4e7c9bc",
+      "previous_sha256": "606a3c6833aea68c1cb683e6058a321047ca414af3bba220ebce70ec2b92a1f0",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/__init__.py",
+      "status": "modified",
+      "sha256": "2f843d5347ee007b1e20f1a388d67ac036488aa1478b9bd0caef02080a3638d5",
+      "previous_sha256": "2899d369f27e58782d152822fe15cabcdf32a88962aafe146adc604f4bf53b32",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/control.py",
+      "status": "modified",
+      "sha256": "bd08c859633aa2be649a318b6ed147bfa832e6f894b4b75abb42458738391e1c",
+      "previous_sha256": "298ce29d26e48fd6379aabe7fdb3bcb284bb5a602398ccdd1896cb7c55d9ddc5",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/geometry.py",
+      "status": "modified",
+      "sha256": "f86bb615e4399b91d2c3654744dd95e1f778eb9e2f8863e4cfdb6857c6c95de1",
+      "previous_sha256": "bf7c2965cba00d2a47bace0e8a0b31b57225d78c21d12dd1b5f57ec5f90053c4",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/lowwall.py",
+      "status": "modified",
+      "sha256": "9aac5c255e99ef7f4afaef30704127f76fac9c7ea5da9aaba87c805750247f51",
+      "previous_sha256": "991ea1855ba42a5f77a18ea6f173e32f56811a41096a00aff1e5c3f3cf7fd475",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/oracle.py",
+      "status": "modified",
+      "sha256": "71e2a8f308e988105c7e4723f359088fe2f9d3cee1c01a7067f30a2a17da5aec",
+      "previous_sha256": "66ad2337a063f6c18066b670c52dbea0a34db22050f44a59dd4fd3e52ebe6398",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/preview.py",
+      "status": "modified",
+      "sha256": "0fa15b45159f7493ed21286f325f9414187f94c673d9a28674f4d9515e1fa3e4",
+      "previous_sha256": "95d1b10fe7cd54466ed28f9479a0cf0aa117c82d0ddb3d3edd40b7c837e58556",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/moving_carton/scene.py",
+      "status": "modified",
+      "sha256": "4b731dfef34470c51fc3596d3c47c1421ee9cd0a1d5d43a0b307269975efb2cb",
+      "previous_sha256": "de70535d03ba93bb252e8afd706df731ea279351348320de6ac52d69887abfae",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/narrow_collection.py",
+      "status": "modified",
+      "sha256": "4f8643739fe92b1747c140d1d604e221600f96ae7cadaa6a5d5c25c775161200",
+      "previous_sha256": "b66f025f611cd8b11e60590459d46a88ac79e846a7f9735a98ade9a1af4dea5b",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/ood_protocol.py",
+      "status": "modified",
+      "sha256": "b0eff7ae12a1a890d14eeac4ed5235a3a2e0de2276a98e7c7cbc125205bde839",
+      "previous_sha256": "ac7c39b30814e64d96ebd2b12391d3a76f010c75b56e8c29a8843dd035d932a3",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/__init__.py",
+      "status": "modified",
+      "sha256": "d7bfad9a52afe61416dec22f74fd39ecc267acca527272ef5cee7d2566eaaf97",
+      "previous_sha256": "7eef5a5b1c9cd9d146aa3639b01f13b4428dc9263a5776aad6e1c67a1e41a671",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/config.py",
+      "status": "modified",
+      "sha256": "654333c3992a407997e08329ba7d4623d80f8904bacefe72295120dbebe64d1b",
+      "previous_sha256": "f77a5260df9451528974c408a845c4d5f5ebf14e67c99bc89b1bf708bed8ec76",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/geometry.py",
+      "status": "modified",
+      "sha256": "c9dc84c2d6f1acaf33969402db399c99f3d2a52fac9a91c49f4bd55bacc00b35",
+      "previous_sha256": "e876a9b103f07eae768e8c0bca5dc98a8f270d201d48b2d1b5db51b74de273b8",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/oracle.py",
+      "status": "modified",
+      "sha256": "6200a13816f96b59a74e8ff81fdac1d0e39c7f8363ee3a4ef557a7a717e0d39d",
+      "previous_sha256": "d59b118e293221c6037b1ed6bf60f401a8aaccd8b3d98c61acfd8d9cfc62e929",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/preview.py",
+      "status": "modified",
+      "sha256": "f2e29cbe31e89268e1d0c5f891c227388a5d0ade7ce5d82ce6ed427fae86ae16",
+      "previous_sha256": "77f837b9b08415e46b3b0cdbf130240da2be5b6408ad464e61d2451b37c42596",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/protocol.py",
+      "status": "modified",
+      "sha256": "237c8dd61ad86827087ee4f94e26614cfc52119dc7a53e9a2093680cd2cbe3eb",
+      "previous_sha256": "02febf22351c4850a8c9fb14b6b3ada7b631e3f9e77ef8c4575a5697a937cbe2",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/push_t/scene.py",
+      "status": "modified",
+      "sha256": "9b52134584f3bb2c32336dfaa4c479b13a7c9f7c055f253246cd34bc75a28082",
+      "previous_sha256": "d9d0645846d0424351a8645b3386f8e9aafc076f020408f6de9e21aca3e599dd",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/__init__.py",
+      "status": "modified",
+      "sha256": "ba11c6c062606d353d4cb44f4215a2319f5f97b07bbd327498ea4b2351460481",
+      "previous_sha256": "34e6970ff102ca9e1e0cde0201444aa3d629142bb206fd9da82c39ade48ec15d",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/config.py",
+      "status": "modified",
+      "sha256": "855069f43603467560bab3ee58e771d75a738cba1266bfbdacde3fff789eece4",
+      "previous_sha256": "fd900e08514ea968f7ec6ed412c10a1e7a1a21ecf0cd2529fa0e27bf5f626773",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/control.py",
+      "status": "modified",
+      "sha256": "08dcaaa72d034884acb61e92b40aa8e811da32786f895d8c37d93a0177614f73",
+      "previous_sha256": "c08dfe4d4b42724b34c19e0241976a6840f80d2ee180d50306beaa6fe6aaf229",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/geometry.py",
+      "status": "modified",
+      "sha256": "e43376467460d178723bb0228daf828195bdd7f3fe0a0583b27f5fced73b1603",
+      "previous_sha256": "4b6ff99dbea19f000a1f55f3d7ee0a987df0a821dc1b667606e7ca26b7d74b49",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/oracle.py",
+      "status": "modified",
+      "sha256": "57b2603d524a9bbe6cabad64fabcf4918b3aa0a720f14de952296e7caf126c40",
+      "previous_sha256": "889b131f40153a5e5231c733f019af25aa453df72b41976d75adf19fa0fbc793",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/physics.py",
+      "status": "modified",
+      "sha256": "e4a5c5a9ebf6602912cddeb75f7ffc7964340bf38ed2ea934d74baf11e521ab9",
+      "previous_sha256": "7bead50279e6b84f61936c66c50e9a45b899589d02bbcc8bcff83775d278beeb",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/preview.py",
+      "status": "modified",
+      "sha256": "0bd1d84789994a19388a975b34bbc712abb0de181a97dd9578e5c98c1b97bdeb",
+      "previous_sha256": "9424e1407b26c16729dda3f495267db5840815ae0276b3312c8ca0115db48cf7",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/rotating_tube/scene.py",
+      "status": "modified",
+      "sha256": "49b8b1171c88e31cdae0699007b1daa9dfa0838385d90dc58fae7449f7622804",
+      "previous_sha256": "cec13309de7c09313858f0232852ba78252f7a5032e7c4f536d3e11145d57220",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/__init__.py",
+      "status": "modified",
+      "sha256": "af13e44cd8768d264230d5cac6e969e819d49485e07288e962dd5cb9a7a1eb47",
+      "previous_sha256": "16cba0e02d1e005109ec3d6a0ad3be7450238a892f8b09fcb8e6b8181dcad5c6",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/config.py",
+      "status": "modified",
+      "sha256": "a0029da54a06e4c360ff350446082dc5790d16421a9afc4575647092a6fcbede",
+      "previous_sha256": "bb216771910abb935b4ebf84491ced37536d451d98f0263eaca5bc0c45012323",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/geometry.py",
+      "status": "modified",
+      "sha256": "c8407e669a296b09323de58ac177955f9bc8c2e92d885744f2571e9643a40e66",
+      "previous_sha256": "3ac0fc2eb5f06520281c2b8a30c824f5bbc15948dd29d3bca710813f296f6010",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/oracle.py",
+      "status": "modified",
+      "sha256": "8a612d7ba59f145efde36030c721e334401c5c98c454a19355132ee43de66e62",
+      "previous_sha256": "31c417024da323b59ccd0d391f9ce2b8149063d1e7dd4833eb373d0672824ac9",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/preview.py",
+      "status": "modified",
+      "sha256": "c1d34613b62fb16c5721ba415844374a0e219bdab309552c385e1ee1299d44c2",
+      "previous_sha256": "44df8080f1974df21b4dc4dc981ce09eaaac88688874f7b1e1dc7c19efd79517",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/square_nut/scene.py",
+      "status": "modified",
+      "sha256": "c3567a2b026d14401d76a782d2eacf8b2c5b910fc1bbd10e1607c1eb7560948b",
+      "previous_sha256": "82f470767ef657f2b08f801a303d550fd4c3f81cfa7056286cd5628ebc8011ee",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/static_common.py",
+      "status": "modified",
+      "sha256": "6b765506526e3f15096752a64b69e0785c210b3909ac74e733954e4786341279",
+      "previous_sha256": "72b18e7000a04fee41c6060b3de93f980357caec27c443bf6d6f913c754bc4cf",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/static_preview.py",
+      "status": "modified",
+      "sha256": "79e2dcf98d51dad3d6b43b9aa4b35f927cca478e9887936f18b027a8ed29d4e5",
+      "previous_sha256": "201e46d52c3e92d34403334661a669ce29b8412316d4d26b5bf75d32cae05c0f",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tabletop_assets.py",
+      "status": "modified",
+      "sha256": "7af0249de7ecbc134c64d897576dfb84c9424090e9738539743bd2e3c1953094",
+      "previous_sha256": "76a60a79bce377d6221132e2d40e0de01cafce802d90fdc3accda8c815f6df77",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/__init__.py",
+      "status": "modified",
+      "sha256": "342b59d9bd5abcc1cf2b75b90708413510e97c2a81c039c59675cd436416bdcc",
+      "previous_sha256": "8bf6135b09a42dbbaa361ad7e6c9451133ef69ffd25d979ccfe5fc334985dd38",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/appearance.py",
+      "status": "modified",
+      "sha256": "50a7500c183618f9410c4f7b0cfa19b4a0882de4865a2234f8f47a960cc35579",
+      "previous_sha256": "2f4bb07956690095e7e8d264632e60e62e93b7dfe1f64c49cb4a1cb4adc9c4db",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/background.py",
+      "status": "modified",
+      "sha256": "47561afd33044e8acf45af0ace9fba3af4f6caa96e9c246da51a190129ece741",
+      "previous_sha256": "0ee887bf9d36f245729925414daccdb7854ea817cbcd588326fef709fda91242",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/camera.py",
+      "status": "modified",
+      "sha256": "c283787dbe99081f773d8beffd4765e557b9f005e9b3b845fdca64fbcd7d6288",
+      "previous_sha256": "5bf66f701788c8aa91d19eb78f0cb49df82b534877e442de4673ddbc66a9c317",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/collection.py",
+      "status": "modified",
+      "sha256": "e1b2d8461ad7f71d3c1adea584faa61ca3b241e7a9e6d36f48232d7e23d600f0",
+      "previous_sha256": "9bb1a97e377cbe0a5461641e2e5943d9244170a9280755b707e4537e3d69b9d2",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/config.py",
+      "status": "modified",
+      "sha256": "fccd7543e3377952c8b2d64cc77d20c248c71b4da1b9557e82f60f8d0b755e78",
+      "previous_sha256": "9b45f96a30e347c2546b0668ce13e6bddab5fa778bc5d209a10f8cd66a44763d",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/control.py",
+      "status": "modified",
+      "sha256": "849a60e7d028b980b0d525b852e3f7fe7cf820649f92b3996cc013685f272035",
+      "previous_sha256": "d870242f9c951ba91a128c366e96972df06ab03766b86fe00f2ac301eb166a0d",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/geometry.py",
+      "status": "modified",
+      "sha256": "14f517658018c54f5e31da799b553f563a034f8e44517bd9e87b09c8167a1ca5",
+      "previous_sha256": "fa0cc634b3d82e51065478bb8d65fc1d6c47cab13c0925eda68b835e19409d11",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/metrics.py",
+      "status": "modified",
+      "sha256": "b13d44976f0bd90562dc73a7bd6780452ac5b9130a48d051874f3720fa8cedf9",
+      "previous_sha256": "bb6139fe83f3ab9a88f55532d2f30c135a1620011112de7fb41cfd0d3095095d",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/motion.py",
+      "status": "modified",
+      "sha256": "1cb3f9f21618faa7ee0391b21e75448f242f4c6d3b6fee6bcf17f7637731a8a8",
+      "previous_sha256": "72ed6b64132391b43165fa7c7be88c004eda5b6ae0db174a7fbab273284fcba5",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/oracle.py",
+      "status": "modified",
+      "sha256": "2efdd62b7fa70b82988d67cba57a61047bd8a13da1f507eea6884d12d3369e2d",
+      "previous_sha256": "8e99cb8eda1c3ba1ab3ecf5e7de11e6c8723ab3734b57438629249a2ebc4bd4a",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/scene.py",
+      "status": "modified",
+      "sha256": "15c76b6f6d541d460815b0eefb2c1cff4c841f2f3e7211f974ea398df987cff7",
+      "previous_sha256": "d2ac06b934405a1aeac5c218c9b9ff147b905aff8818fdab118eddf80bfd7ea0",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis/wrist.py",
+      "status": "modified",
+      "sha256": "ebfdc0bab40d556cc2164756ef613af2860ca1814452c6253131ceaca87368d0",
+      "previous_sha256": "458455b4be93eec360f1ffc72c67ade443c90e8e8da1973f99dd67c37d133ccd",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_container/__init__.py",
+      "status": "modified",
+      "sha256": "2d42be7a343c662599d7e8882e3a2f7c1466ae259925f77b3172f7fefaf66f83",
+      "previous_sha256": "a9c2c1d7e96acee194efdb440ea3d7df171fde7f3a09bb51b5186c0679adca99",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_container/oracle.py",
+      "status": "modified",
+      "sha256": "eabd6a08cebe3c9c153a81eeffddca89917ec1bb636ab98f7d19c7be5690495f",
+      "previous_sha256": "df5da075ded94e83546805cb4d264df51eda9daa3fe4811edabb4a88e68d4db5",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_container/preview.py",
+      "status": "modified",
+      "sha256": "1a12743b5a577bc839560436d4e696be3c695f78cb68ba11a57fbe96265915b0",
+      "previous_sha256": "e083f798348886a9ee5a35d739d24e5ac05b5d844c4db01105d24207c423ecc7",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_container/scene.py",
+      "status": "modified",
+      "sha256": "91762e80c3c7cd693428832e422989a487abd7623f054b9c0a2268c02b1a1ebb",
+      "previous_sha256": "f2e361eebc538d8851ecd4da0e2f17570bd5811b9bfcf34f046bf5d575ed268b",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_falling/__init__.py",
+      "status": "modified",
+      "sha256": "663d648e8a30c293b4981a77f4526740cbc2b61d93b8c26353a2d273334f88cc",
+      "previous_sha256": "d221ed08ded4ab288bb515bb1106d0899776d1ee272cf451188e008f22cf72f2",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_falling/preview.py",
+      "status": "modified",
+      "sha256": "91b87af2cac13e7dfd238a5ff0a866ba52d7d8b08697023c6ae17185c9d232b1",
+      "previous_sha256": "5851086742b821604402d6d088bf3f42be660a4bea2e3852e0914e49e758af81",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_falling/scene.py",
+      "status": "modified",
+      "sha256": "b049a9cdd2120ddf82011f33cb0da33151bee7186aedc39547c5da63e87e3a09",
+      "previous_sha256": "181cea62ec28f0b968a03dde55a845a83a855f62b493123074abb5011a048d89",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_parabolic/__init__.py",
+      "status": "modified",
+      "sha256": "27d1e0778a2002acf399169fe91138f8cd7e852609de7796bc07d63b7c3ada0c",
+      "previous_sha256": "32b18fd60fb9895394867dbe5c1c6417ec3f196e54cfb24f7051cecceb4711c4",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_parabolic/preview.py",
+      "status": "modified",
+      "sha256": "af4179cc87db18ebdba700ecab9e8ea150efa548eaedfaf3470fbeb3a35b9fa7",
+      "previous_sha256": "5643f2abe79a2b4ed990353b718c7c11b9ca51f9ea1c5537d54aec818ccf47b7",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_parabolic/scene.py",
+      "status": "modified",
+      "sha256": "e167f3ff81910011cf76895bc522a73d35f6d0fa8529610a26e05addef7536d8",
+      "previous_sha256": "c53912c71b2f0df31c361c338f39e2d24fb0691f472b89a94381c46fd6eba776",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_rolling/__init__.py",
+      "status": "modified",
+      "sha256": "c4ea992db254b7f45db28b76eed2a1940745297654a3a74f6c57b9dab0043fd2",
+      "previous_sha256": "5d303811841fbf557eb2f215814c6a21909d75ba7a34a16a6b0ff21b2aa3bfbd",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_rolling/preview.py",
+      "status": "modified",
+      "sha256": "bf9a1c7d3af2e05215f522be1716e917e54ddff5ff00c7bea0bc186f0750e3b3",
+      "previous_sha256": "9e118e66596ad94cb75d90d99ebd2c6347f29ce028cca3f6c72df320d78ff7d6",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/tennis_rolling/scene.py",
+      "status": "modified",
+      "sha256": "769e336923739cea033c704bdbf4bfdbf5a9773b367c469dac1f1a5c16d4d1c9",
+      "previous_sha256": "37f8c1fdea0aa8da4270456031adda7f40db1cff19da218cdb8b222990172a71",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/__init__.py",
+      "status": "modified",
+      "sha256": "68781dbcb061693d7568a6d450886782d0636c65924dd532cda98a024b7a9351",
+      "previous_sha256": "30372dcc22fb818fe3d05652325bf2d8ff28f5eab33cd3bb14b2e40e2b664313",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/config.py",
+      "status": "modified",
+      "sha256": "7feba6675dc5809b88739c399431cc64a49ae47bf10c4ac125a8d5bb8e9f8899",
+      "previous_sha256": "95a031b919a94b17f22d025fd2a3f8564984521b3f998f93d3e6005c721663fe",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/geometry.py",
+      "status": "modified",
+      "sha256": "d17ec19548dc8a190ebabc6429ec409c288fd6c16df5915ca42f397e70a39c88",
+      "previous_sha256": "c2edc80ccd86230cc48bfd509da4f54cac772c448eacef3c64cf7473d6d49c60",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/oracle.py",
+      "status": "modified",
+      "sha256": "fddef6e5038db31fef9647726d4993fad7c88d975341e169ae7e9c59f3a72a8b",
+      "previous_sha256": "e5ba9315578a357921aec933ad2c73559c2e766afc5f644b9e746360d5cca78a",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/preview.py",
+      "status": "modified",
+      "sha256": "baaa1ee84bf46c6656501f224efbac971917528965c7a1784dd66d6782f9ee57",
+      "previous_sha256": "657f626c7be489d96b53861ad572fb855f18ea90379c3daf6f26c0d194365477",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/scene.py",
+      "status": "modified",
+      "sha256": "4085c8e28d083f1681002f3bf0101342edf474ad4920ed1d9e28c98b814eb6ff",
+      "previous_sha256": "30fe4907555ac4d9f1c6bef37811a29ce4768d272b63adfd07f172425bf4ee8b",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_tasks/turntable_cups/turntable.py",
+      "status": "modified",
+      "sha256": "856426728ccee4227392d71c2f08894fcc81304fafbcff96911054f8b07338fa",
+      "previous_sha256": "64d642d9c5f0021f23171b570a48ca58c1d3fb4003a098ff2e77302904e20ddc",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_teleop_geometry.py",
+      "status": "modified",
+      "sha256": "0106a5105e9e7566d2d50f2bc919d6275e8bcbfec9c6494a619fb06178d91efc",
+      "previous_sha256": "89e39e64939c55e2dd42f25a8cf1e882d892e898148c72be3cedcb5b1542f97f",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_teleop_server.py",
+      "status": "modified",
+      "sha256": "a47b7e369678e4db2ee5d48799f04eb51ce57e936e09d3e51844f179539f22c3",
+      "previous_sha256": "13da2aae12f52410ce57387f8af6ac16af81208f2001c3125d9968f8e1f78703",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_wrist_camera.py",
+      "status": "modified",
+      "sha256": "793d23e3cda42ef50cb576e67759b99195fffe473e12f203b560d053b95a343f",
+      "previous_sha256": "87b99fc1843d8b385f65beab836656bf9c91c0553a0af054ce912afb860a11dd",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/piper_wrist_sensor.py",
+      "status": "modified",
+      "sha256": "a6d9f3b8bd56ef0f7136ffc9255aae14a4cc05c533466f9d541be63a3afc509a",
+      "previous_sha256": "a2ee7faba092141ad0fc0429a1e2b4ff365c4f57bf5fe79eeaa9bc3cecb909ec",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/validate_piper_tasks_lerobot.py",
+      "status": "modified",
+      "sha256": "47c18d1ec019c84773b6cc6981977c9a359aa91e2bf4617487a6b195dfdf0517",
+      "previous_sha256": "c57032e3d25b3cdb019adb3e1dbda645a521ae9fe4a69331e4ff7975c2c284ea",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/scripts/write_piper_stack_lerobot.py",
+      "status": "modified",
+      "sha256": "a79638476a540e0b3e3db7118355f52ed429b58b28dcd575e8f81859fe48efb1",
+      "previous_sha256": "8d0e488d1769ab8be091af1473cd6e181e7c6b7dc2220e6e06c642f4177dd167",
+      "previously_untracked": false
+    },
+    {
+      "path": "Event-DataCollection/scripts/write_piper_task_lerobot.py",
+      "status": "modified",
+      "sha256": "809653252d3d05e0a8f0d66513360f68effe0c9cae8d867035690165ad8696d4",
+      "previous_sha256": "4e8bb2309d482d14f68fd2b07382205ad192f71b0843f2b46558fbf931261c08",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/tests/test_piper_collection.py",
+      "status": "modified",
+      "sha256": "64664c880aaf3a4108e019e69e1e09bb40245c462187682a952a23195870d0cf",
+      "previous_sha256": "c70430d16428760a527791928c7403774b7f82716d1bc4faf019ff613e190f61",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/tests/test_piper_eight_launcher.py",
+      "status": "modified",
+      "sha256": "dd607d8891d1ad80f233f76cfd337ad31c935154a92950ece6f1f3399733a845",
+      "previous_sha256": "93d22dc668c0a098fa90b3edc7530fe1bc9568b15c4313fabd20312584f2664e",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/tests/test_piper_ood_protocol.py",
+      "status": "modified",
+      "sha256": "20eca1ed6d5189036ba719db86313477d5c5c082ae65c3a21131e214c516b088",
+      "previous_sha256": "8ceaac64fb0de53dfbcfe2454269341795e24beb8ae71d9d39537921fe597a49",
+      "previously_untracked": true
+    },
+    {
+      "path": "Event-DataCollection/tests/test_piper_tasks.py",
+      "status": "modified",
+      "sha256": "aac50148f304c4cb060ff8dfa018955fa2284e789f5a4484ac65f402956e67e6",
+      "previous_sha256": "9518886912001d3f5dfe1237fc6b3712188ba6ce3b87a510a35fa6c88fca6b3a",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/configs/model/ewm.yaml",
+      "status": "modified",
+      "sha256": "5df763ed1a58467131f5b194307f7a75717328391546e1a1df0592036e117f49",
+      "previous_sha256": "c6a9b90c8fecbbb5a2c5a86ee98c469653e7b5f392a9ee9ac9bd1f0c8f04fad6",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/model/ewm_leanvae16.yaml",
+      "status": "modified",
+      "sha256": "ce78c1ab2dccb334bbafd099db2f6baf86d7993d075e9e14900007e60bb82a4e",
+      "previous_sha256": "c8fb091c5a385fdbbba7ca0b1af9af719059d3e4d3d0af2cc938e7ca94278b64",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/model/ewm_wan22.yaml",
+      "status": "modified",
+      "sha256": "65079fa390602b60a613b9605d44e8eeddd784d5339289b919470dfeeb80f582",
+      "previous_sha256": "8457e2f37ac9dd7b53ff3e5561c8284d2e37c3b62a588954230f5461533f7529",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm.yaml",
+      "status": "modified",
+      "sha256": "e0375810e523d2ed850a2ff770c3a50d952b15347dfe5deb3bb400152a981ecf",
+      "previous_sha256": "638de177825577d723063b315769bc8782fcbb70c9ee069814f62b8070c8d6a5",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm_action_only_piper.yaml",
+      "status": "modified",
+      "sha256": "7ef60892ba8e6205782f4e5bfe4268cd3ebb64ccd27ba58ec19a4c163c38daf9",
+      "previous_sha256": "8786afae80bd826d7b334d709822034da26209d8b83b6926216a28030a182ea4",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm_eight.yaml",
+      "status": "modified",
+      "sha256": "5649a85fff131c141f6f6c80bbf3001eca2bb2581e5fee9bcfff8a1c03c2d592",
+      "previous_sha256": "bc592b0d4abd632792262f952eae0339fdccb5cec1042c5014d50f8409346f6e",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm_eight_action_only.yaml",
+      "status": "modified",
+      "sha256": "f6c1bab9fcace8932c6527af09a33d127531d2bc33acd8fe9131af6f4c7a8d57",
+      "previous_sha256": "ea03ddfaf45d8af726fc47be1ac99c51b06a757ad408d9777358237fe04c03d9",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm_event_only.yaml",
+      "status": "modified",
+      "sha256": "fb19c3c1dff1ab06c2e3c27f775ad1d103cba7023bcee1622124a9aa6c69b04e",
+      "previous_sha256": "9c0753a0229e89f95451d845d0d7e2b92e9fcd915e3aeb608002cf437d4cc4cd",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/configs/train_ewm_rgb_action_piper.yaml",
+      "status": "modified",
+      "sha256": "c103130b06fc0bab926ee8de9ab23df3e16daa97ba419ef58359cde81735b9fa",
+      "previous_sha256": "158c8c29cff2617392be9592cac568efe29a09fb826839b69fdd3ad54dc5c5f8",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/openwam/dataloader/__init__.py",
+      "status": "modified",
+      "sha256": "b5cec55befc0a0408519a096cf17f57379f22903e7ac1d04ab777d2757fd9937",
+      "previous_sha256": "c40a12c38e5fc345531433ad63f539d097e81d82bdfc9a28c117a751200b1fed",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/openwam/deploy/model_loader.py",
+      "status": "modified",
+      "sha256": "63b53a648849b9498e36da185dad6ab28f4825da21a38fc5cab5e079709c35ab",
+      "previous_sha256": "c5009815d43fb67b45185bb96e3d0f2ef881341ee204d281983e97359b8b4e70",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/openwam/model/architectures/ewm_inference.py",
+      "status": "modified",
+      "sha256": "069989304798861743b8ae65cdad65e2f1d0cb261d7ad8fefb2d1a42e3e9f21d",
+      "previous_sha256": "4cd8d106971743735d49cb477f72956aa4d6eb13654a8be5040bf4197673e8a7",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/eval_ewm_piper_conveyor_sim.py",
+      "status": "modified",
+      "sha256": "5cf2bd39361d2be1b74ec593aa1f4aee0df0967208f90e1f663a57d7680119ee",
+      "previous_sha256": "844f3eed4218f14f505eacd86bc7e958eebcdb4c43c69ad6301439fdb8985f53",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/eval_ewm_piper_tasks_sim.py",
+      "status": "modified",
+      "sha256": "61bb8cbe1ac5f634c033a759d48376332392350329031aa3e2cd701feb3e2b74",
+      "previous_sha256": "058f6ccbbabe79ab599b6320c5486977f74d668c712bb247aabe3164166e283e",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_action_only_eval_server.py",
+      "status": "modified",
+      "sha256": "eb2c249e5f4d6c0d67933fbbbaf0ccb97f0a64b43cd95f5131e62ffb56e0b8e3",
+      "previous_sha256": "6b354af2498c341aa6114fcbfeaa172bcc7e956672d1a88cc41e15906cd144a1",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_eval_recovery.py",
+      "status": "modified",
+      "sha256": "47b5b184b759e8569a56ceb348307a7bac4cd53bd82e2977b28d9cbe6c23a5a5",
+      "previous_sha256": "d078e1fe25702fb671f15b289c72c846c5e35c06cb3eb24015e4a5e56ded47b0",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_eval_server.py",
+      "status": "modified",
+      "sha256": "7ec82f55f01936ec6375e6b789b942e1ceb45560a6344b4302aac20575c48289",
+      "previous_sha256": "e67db1956a56ba4489e246b542b3791f4cb0ff8548bffd3a78ecc4441d2cdb30",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_eval_summary.py",
+      "status": "modified",
+      "sha256": "4ea7215b1ab8145da1bd1e287c0b93a1ac0b46e8207d13f84bc83429a7b6d204",
+      "previous_sha256": "d1d5ce98212a85608cce712a21e84a753d1000094711d00953c3442db77c6b57",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_eval_time_audit.py",
+      "status": "modified",
+      "sha256": "66e6dbd2d1609fee3ed4efd6fb044ff6d07259f166b5f7d0987b1a45e5cdd4cd",
+      "previous_sha256": "dc7c9fefd51eb219375f57a4018ecc6909b0a618ebd53a63be07365822711968",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_eval_wire.py",
+      "status": "modified",
+      "sha256": "f9e31545a9a7fc8b4e7a2bed707d4445b7da50ac3a38a7b83372100c8ce5ba31",
+      "previous_sha256": "b3ad98137e5cd2d236abaa71b0c508bd9568683fa60fb2c52ee7065179d3c4e9",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_event_visualization.py",
+      "status": "modified",
+      "sha256": "21f1f5780b40c3ac36de6161be673f8b3824da6032149a33e81374232ee17bb1",
+      "previous_sha256": "b7bc3bf7bd0d3668eebd04f9dd4efec891088edfe31942ce41749e5975b8b6fd",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_prediction_recording.py",
+      "status": "modified",
+      "sha256": "f3743969da3aa1924532b111a0d9f1cada82898ae9f2caedad2334e874e81815",
+      "previous_sha256": "c817567ad7fb9420d204357b6ccbfa432c4decc8a096ce745256cece8981e954",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/scripts/eval_ewm/ewm_rgb_ood.py",
+      "status": "modified",
+      "sha256": "21468ec26d765f9ec67bed3ed7c3c21a9820e9e810644b2d43a0563cc327bcc8",
+      "previous_sha256": "03afe62fbe56c90bf29ae6dd6a9525b6793ec50992c28e3abe77e7b2095854b1",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/scripts/train.py",
+      "status": "modified",
+      "sha256": "30ddbab5fad841b8c7c0d6943204858f36306d8364d0b56a0cdb39c2af9c891a",
+      "previous_sha256": "655f9c6392ad730ba042a51c67fd39803748496ef4f95baae714b9ed9aa61db5",
+      "previously_untracked": false
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_action_eight_eval.py",
+      "status": "modified",
+      "sha256": "9599006e63063a12159179d30a28cf36621ab56c9e54648cd56ab5db4f2aec8a",
+      "previous_sha256": "cf139cf2e41edc0c08592f459dd4187e689136fe201d270f4932b4ceaaeb9077",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_continuous_inference.py",
+      "status": "modified",
+      "sha256": "8b4005c6e42759ad2f5f6c03198882b2e6a6578bc5066e3500195d0bee3df540",
+      "previous_sha256": "3998e3b5d6cd99fa293cfff1bc186549f9a67d6f41294d778d4a245c146d2694",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_continuous_min4.py",
+      "status": "modified",
+      "sha256": "96ca96ba9845f859bee54d6a7a5b1e9f8d63fe05cbed0835616436ed2cf4d43e",
+      "previous_sha256": "28c2b5296a20e9c003fe07c5a1b287fb36fcd42cb387fbb4568fc2635a7e09f3",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_eight_rgb_action.py",
+      "status": "modified",
+      "sha256": "29cb49319c5712b1d5d05515084efe3225f435f22a765bb89423034750e1db4b",
+      "previous_sha256": "89ef2be0422c92b499b5d7ced5cb7686ab7b33bf64c478ea221552c84044ba5b",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_eval_suite_failures.py",
+      "status": "modified",
+      "sha256": "63c45ffa892b8bf989b3bd023023998de54e812ff5b8f767deba8da72a8a6de8",
+      "previous_sha256": "b5ca06d591cfaee805987d7ecdf3050a823bc395980c8bfe6d8b402d8588ff89",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_piper_dynamic_eval.py",
+      "status": "modified",
+      "sha256": "6e295a3b78071b7b707011afb32ab40ee07de30ef9c0e1e0263d5cebd150e014",
+      "previous_sha256": "c1faf94cbeac5fc9a45dc1d63aabc7c6f8c2a036025788ca7858fa7765d31423",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_piper_tasks_eval.py",
+      "status": "modified",
+      "sha256": "544696d7e9ee87cba59a32e390e7037826a35630666676c254b32dd08119ae80",
+      "previous_sha256": "61f1cf4506f3f70a674fc5ab5d0bc3225353aac42ec90fb66b03c66ddf51e8bc",
+      "previously_untracked": true
+    },
+    {
+      "path": "OpenWAM/tests/test_ewm_prediction_recording.py",
+      "status": "modified",
+      "sha256": "3b9a819b1d20d754758291bd1f8229c2e60677208bea66e8bce0daaa634f3e5a",
+      "previous_sha256": "de9b914dbb63d69298d162a37bd3fb61dac0b537981eda4c918034d9aacacd18",
+      "previously_untracked": true
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "sha256": "2eac276679f219ab65bc79d5e18592306f50a5fd62281bd490d3b01a6b748d27",
+      "previous_sha256": "59808191463cdd80cb3eb5d3cd2550a6a9e12e44791cba50d6e76f4195353e8b",
+      "previously_untracked": false
+    },
+    {
+      "path": "benchmark/migration-map.json",
+      "status": "new",
+      "sha256": "72605a78eab9f008d425a0fe9332512a8563459129255172fe21b2c5f87615ed"
+    },
+    {
+      "path": "benchmark/pyproject.toml",
+      "status": "new",
+      "sha256": "b6304e7dfc76aaad82e3f0f606e589e2f507eed756d2e6201d7ed1a74af28058"
+    },
+    {
+      "path": "benchmark/src/piper_bench/__init__.py",
+      "status": "new",
+      "sha256": "b0637bc373e6bcfc9b004738b17b0fcac83d80031d276fe9ef799db4a37dd67f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/__main__.py",
+      "status": "new",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/assets/__init__.py",
+      "status": "new",
+      "sha256": "0a4982dc0a1d02c5cd14cb4b712e363555e2d4e6efa969670968e6336ed9a7e1"
+    },
+    {
+      "path": "benchmark/src/piper_bench/assets/resolver.py",
+      "status": "new",
+      "sha256": "e90cdcb8508e4ede1d88a872091a3f9fdb903cbcfcbfe7a7c0c12f53a819ad8e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/__init__.py",
+      "status": "new",
+      "sha256": "d177af41a2b18b8d127e7816ede9764e25b3077b38417ccb83211ee8c9419bee"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/diagnostics.py",
+      "status": "new",
+      "sha256": "1053a21cda98dbf3a8c57f0c360c045ed2062df9bae515e83edac526eda017a2"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/evis.py",
+      "status": "new",
+      "sha256": "f9226d3f8fa72ca39d7a9c9c6e3c5a68b8e22f990ec19f9a5eb3ecbd0006ffc7"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/isaac.py",
+      "status": "new",
+      "sha256": "88edab878914a03bf8b6acc388144e8c979eff0ae741c7d58bfd52f2a6985f43"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/isaac_compat.py",
+      "status": "new",
+      "sha256": "2b15ba9a38f24a8566e747e07a700f9667dedbaae55be8ecc862c1f92802df2a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/usd_compat.py",
+      "status": "new",
+      "sha256": "de4836699bf06556de899b8cc691a93b5cd8ba083f991bd6d0d9075517919786"
+    },
+    {
+      "path": "benchmark/src/piper_bench/backend/video.py",
+      "status": "new",
+      "sha256": "d8747ead74cb6464f9efb519c9b3b3c5cc945328b0509ab8b3f822ca01b95c1f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/cli.py",
+      "status": "new",
+      "sha256": "3ab9734280c291f0c3575e543a90be591e0f752b21c95ac9d83139b75707ab17"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/__init__.py",
+      "status": "new",
+      "sha256": "4e3825b42ec2f03b515c93568f91830ebc84cdd63472adf644616a4736fd3c25"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/carton_lowwall.py",
+      "status": "new",
+      "sha256": "ee5d1b161022d300fa5abe0a43518a8d6ff17ca38be5f88eacf85ae7953a1751"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/container_diagnostic.py",
+      "status": "new",
+      "sha256": "314cad4b4a39951255f6b66ec49ecad5f567b03e694a741e64ea74ef27545659"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/container_spatial.py",
+      "status": "new",
+      "sha256": "0463d4686395c57dc61aeeb9b19758c9d054af7852c4b42e870b484a8e83b8fa"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/convert_hdf5.py",
+      "status": "new",
+      "sha256": "739b9ba770e92764a7d9563a0b8ab53ef5e5f106318fc55c01514f1de0bd9c1f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/conveyor_resume.py",
+      "status": "new",
+      "sha256": "a7e5220e33ed5ad0ed6f2c0f950020a82060fb97de01365afd3e3feeb1444101"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/conveyor_speed.py",
+      "status": "new",
+      "sha256": "87786d51268eeef6b53b06bd045d1e372c1940d0de4dae97b45b73e01cc0a1f5"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/freeze.py",
+      "status": "new",
+      "sha256": "6b3d92b426d34b33f4bc28124e24fd1d2370e5233c30a75535cd15b9b132f3b0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/lerobot_writer.py",
+      "status": "new",
+      "sha256": "1df52832361762e7b358241f5f206694ea862bdcef66c0613ea2aa1fa9caf72c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/low_geometry.py",
+      "status": "new",
+      "sha256": "47d789f12f5569a65d179aa1e1e3bb94bce69bf5d49f66fe186ad69828285857"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/narrow.py",
+      "status": "new",
+      "sha256": "d9fa1ba14f69517f53e716d7a7be9b6f2348fef934de1ab052f1f12475947b73"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/preview.py",
+      "status": "new",
+      "sha256": "b1989e667dedcc060666a4fb731f26a9b180d2dbc32e4f429f4f2bb6522bfe4d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/protocol.py",
+      "status": "new",
+      "sha256": "4d1e1b39512425587d8327da5dbb33aa9e69144c1c95e44dc418fe46cab73864"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/runner.py",
+      "status": "new",
+      "sha256": "d6e5556a6f9d453d3db2744a16c1b5f2321e8009d459a130c9b72c1248e612f9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/runtime.py",
+      "status": "new",
+      "sha256": "d50ece0526f40bbd272e59e83db90843bed877584039c3f962de2cb5490b7cf5"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/sampling.py",
+      "status": "new",
+      "sha256": "7c7912c63c42e843a7da7272e0f834332dbecebe4356375bf123d6f83b1f9d93"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/validation.py",
+      "status": "new",
+      "sha256": "cbf0604beceedcfc70d16102bfa00ccff059ff80898229714ee61f4a74654fec"
+    },
+    {
+      "path": "benchmark/src/piper_bench/collection/writer.py",
+      "status": "new",
+      "sha256": "84fd4e28346e1fa40ac90990bba7234b4c175230fd1e6e65376daa76269e1d49"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/__init__.py",
+      "status": "new",
+      "sha256": "8c9fd3f3fda0c6f6447b660a1b755d6cef2a64439e5b6925256779c1ce615f85"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/checks.py",
+      "status": "new",
+      "sha256": "4cb6df1cffe42068e7320315f0098b525318cc323e8fb69dd9284dc0288783bd"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/config.py",
+      "status": "new",
+      "sha256": "b918600fc0801d55cc82fef551597365b30ad9a2805aacfe27a9eb59cd60071d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/doctor.py",
+      "status": "new",
+      "sha256": "64ab32b1c55a522241943184243eda7c5333a45d332813149df8500559ad8971"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/process.py",
+      "status": "new",
+      "sha256": "28846cd42713ece5fa37a070a3a028706efc6ba68e8a5f608eb3e6326c2b2887"
+    },
+    {
+      "path": "benchmark/src/piper_bench/deployment/setup.py",
+      "status": "new",
+      "sha256": "366534b93d5475b477381cb787f3fea4bc5d3b557d397d518eb0fb1c42690407"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/__init__.py",
+      "status": "new",
+      "sha256": "d4ace0598fd400b5fd1bec55a1a82d5ae2fa647cf707efdd1489fa5948e1804b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/constants.py",
+      "status": "new",
+      "sha256": "69ed33073afbe3653fca914f3aedd14228a5dd2504b0a9c0d7e4886e8d00bb76"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/controllers.py",
+      "status": "new",
+      "sha256": "d84adb42eb09725aeefd441424d7e47e1586fa51f427d4deb2c7e9963dca8315"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/event_visualization.py",
+      "status": "new",
+      "sha256": "2683083a2812760ddb3610e8e1e294950c4b58fa93a3e6ebd00447c396af8f8e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/legacy.py",
+      "status": "new",
+      "sha256": "75900a1d26c2c3b2d26fc3edcecc31971e31f5d68cf3b2cf8d499026ffef93eb"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/policy_client.py",
+      "status": "new",
+      "sha256": "ebddcbbe080151fe73e9096b7d9afd676d05685d87957a1f27f865534c490a5a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/prediction_recording.py",
+      "status": "new",
+      "sha256": "609c7556288d36082a097927029200e112bdb82e6f66d8a0fe520374abe5b97c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/recording.py",
+      "status": "new",
+      "sha256": "7bbd16d87a0e8aca938e1fe9f0218d6c1152fc7bfb124e374b116a56fd5cd76f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/recovery.py",
+      "status": "new",
+      "sha256": "d078e1fe25702fb671f15b289c72c846c5e35c06cb3eb24015e4a5e56ded47b0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/replay.py",
+      "status": "new",
+      "sha256": "3e9a1ab410903d58d3ef26f7699715506638556d0bbd3e9746d9f2fa0a015886"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/reporting.py",
+      "status": "new",
+      "sha256": "d1d5ce98212a85608cce712a21e84a753d1000094711d00953c3442db77c6b57"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/rgb_ood.py",
+      "status": "new",
+      "sha256": "0c23b3db69ceb337b26ce28129ffd699f2dc90c44c25b9ce811ce62d063de584"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/runner.py",
+      "status": "new",
+      "sha256": "619645056140c0e1e640735e4f190d9cd1a5240b0889b63f5cdbd24c706c9cef"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/runtime.py",
+      "status": "new",
+      "sha256": "dbf39cf64c43e3601dd12049762bcda91861a89132879e001e6cea7011f79b29"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/suite.py",
+      "status": "new",
+      "sha256": "a7cecc23000da2c6cffbde9e80784817ec75d7076f896120cc128dc21db74757"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/time_audit.py",
+      "status": "new",
+      "sha256": "dc7c9fefd51eb219375f57a4018ecc6909b0a618ebd53a63be07365822711968"
+    },
+    {
+      "path": "benchmark/src/piper_bench/evaluation/wire.py",
+      "status": "new",
+      "sha256": "b3ad98137e5cd2d236abaa71b0c508bd9568683fa60fb2c52ee7065179d3c4e9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/__init__.py",
+      "status": "new",
+      "sha256": "bba07972211bd6871a8836435b573f9ea092268dd38308a592afc85612fc7d74"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/data.py",
+      "status": "new",
+      "sha256": "0fb76d76ab5b83dcf341fb206bd616d6125cbbb7b727797095531a5e87b909fa"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/dynamic_evaluation.py",
+      "status": "new",
+      "sha256": "2d436a68d6c3c1c66b39ddb41bb73db1c19ad7bef49edf6800ef925b4da1cf98"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/evaluation_imaging.py",
+      "status": "new",
+      "sha256": "9313d4489cd04890719650bc92065b7709c7945a2382f4517d8287dfedfd2c5a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/evaluation_protocol.py",
+      "status": "new",
+      "sha256": "82c6d74b607aa6a160fa798537fec4ca6a2f865076bc803c9e11094bdbbfc0e0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/execution.py",
+      "status": "new",
+      "sha256": "36e4a6923bbf84a743dc41474bf0c7debb8cf5dc64df80efe4577f3ef7a3cf41"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/ood_protocol.py",
+      "status": "new",
+      "sha256": "e7a350a4caa665c26a811d4969dae062126e347d98c84e3c5b521a7f5e140218"
+    },
+    {
+      "path": "benchmark/src/piper_bench/protocols/suite.py",
+      "status": "new",
+      "sha256": "16c49eec40fe4e9774724f768c8d430f5cb2ac7701bf979b747d4c7f5fdcf705"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/README.md",
+      "status": "new",
+      "sha256": "6f9041c9e66f6ef471f19279a5039f33b543e69c6c5734f36a6f823e07f832e3"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/baseball.usdc",
+      "status": "new",
+      "sha256": "98d3fab7811e9755c795dc1028b26750c83dcc80b1f8445e5af7ea84ee4db961"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/billiard_ball.usdc",
+      "status": "new",
+      "sha256": "abee98e74901bce7c61bc4a223f1abdcf6dd5945b870c45de104672472bbdb13"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/catalog.json",
+      "status": "new",
+      "sha256": "8e2a9f8151552d8d01d8fdba1522c2c5e6b245b71d46ab9a0e6b0679d6c6c8a6"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/globe_ball.usdc",
+      "status": "new",
+      "sha256": "afd4c9af46bb60d1ba098f5a56bad7354ee3b672107574923383dfd7afd463d3"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/mini_basketball.usdc",
+      "status": "new",
+      "sha256": "0bf51a319e34e1b448eda7044c358706073814467e20ee5cd61a697e36e3e582"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/soccer_ball.usdc",
+      "status": "new",
+      "sha256": "261b4ffab1cba3cf8a8a1210b37e438c18758bc11bea1df54fafd5937771c5b8"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/textures/baseball.png",
+      "status": "new",
+      "sha256": "17678829dfd34f15567ca79cc52dad66fb5ae501897072e23f22d8a41652d358"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/textures/billiard_ball.png",
+      "status": "new",
+      "sha256": "dcbff1606339697caffa609bc993c38986b8a146d172f6af3137c6311dd3fbe2"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/textures/globe_ball.png",
+      "status": "new",
+      "sha256": "f506d4e008e3fab5df1551333e58cd0d0e569cb03096378d903f7f66eb1f2f51"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/textures/mini_basketball.png",
+      "status": "new",
+      "sha256": "69212777271af2e7bf4ea12524f1ff69194cdf1731c5345c14a97578c7c6eec6"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_ball_props/textures/soccer_ball.png",
+      "status": "new",
+      "sha256": "73789ef5814634ed9de38d67480fb1b4cb2ced7861fbac2499cf846cba446720"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_cube_patterns/blue_cross.png",
+      "status": "new",
+      "sha256": "6b1b5449c4a4b8c9df2df7ea941d4de8f20595d6f530800ee4b57c70155f3f87"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_cube_patterns/green_checker.png",
+      "status": "new",
+      "sha256": "1320453e735c4a1de5acf8fff1a163f24ac7590b09fe91e1475b8c4bb61b5e03"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_cube_patterns/red_stripes.png",
+      "status": "new",
+      "sha256": "a73e8a1a2450bb05b3edc7b48e918344a7a40df6d74072111dafca87343703dd"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/README.md",
+      "status": "new",
+      "sha256": "83cc73bd5200fc837c23d490e715b9d048b5ead9b7ab2ff03d3720d62f51d8f7"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/cardboard_box.usdc",
+      "status": "new",
+      "sha256": "ef03dfd2b184a839e1fc156e763b10854f9a5c3a99cabcfcacd27d77133baf0f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/catalog.json",
+      "status": "new",
+      "sha256": "c0a7c315000c6777d7deb6731505f6af0095f925babc3aadc81c31bc0ae044fc"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/ceramic_box.usdc",
+      "status": "new",
+      "sha256": "ec9ad31f1c257594645dcfe3eec45b6eee6d0cfcc630203dd6ab8c3b41dffccf"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/cereal_box.usdc",
+      "status": "new",
+      "sha256": "668e3fc746045cd70c3b0c0184525226c6692155622c86caf7c225ab27b1273c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/checker_cube.usdc",
+      "status": "new",
+      "sha256": "c9bc8a8f69db42715d2dfdd0053f0a2a61f98cf071724381bee7bfa6be0948d1"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/dice.usdc",
+      "status": "new",
+      "sha256": "a454a8c8f8096784d2561dec1dd9292aeda82ac4da273eecebe008e6474e42dd"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/gift_box.usdc",
+      "status": "new",
+      "sha256": "ba04bf0cf8c892f8abff13f8bc263ca31d299bce71a45dec84d64bc2e23a0959"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/juice_box.usdc",
+      "status": "new",
+      "sha256": "1d0a33b7bd8e5be85da44491ccf65144d66cd01179c2ad5c049242b56d3f629a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/lego_block.usdc",
+      "status": "new",
+      "sha256": "f9641159012796390065d5503add8c9be5208ade9f9cebe69b5625e2d0b639c2"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/marker_cube.usdc",
+      "status": "new",
+      "sha256": "5f20e7f7eb698df1707387db972028be3422a0451efac3abfb902112d3b3843e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/milk_box.usdc",
+      "status": "new",
+      "sha256": "81faca88b53389d952f6424edbadebccb384a94a1acff7badc010c0915fa690d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/plastic_box.usdc",
+      "status": "new",
+      "sha256": "dd291849be1b1bcdfcdb2b1114088afc4e13e14ee1cf1d955b74732104176abe"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/rubik_cube.usdc",
+      "status": "new",
+      "sha256": "ee3e6996361f6771b7512b538a49ec411e5d76a54d313320bf49e507b122e547"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/cardboard_box.png",
+      "status": "new",
+      "sha256": "a6901ff65a91c30905b42abccc1779a53162a06e495600aa190e2e32cf7a2747"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/ceramic_box.png",
+      "status": "new",
+      "sha256": "d14afc7919e945b35e0948fb0ff057d2eec5b58434ac0a3e4ebd3a4c9cbac1ab"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/cereal_box.png",
+      "status": "new",
+      "sha256": "1eb5c29a995bc1e9d43dd4612aafd286c0466346edbd88df5f30ab10ffb2ee56"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/checker_cube.png",
+      "status": "new",
+      "sha256": "a784524369edec14cbdfb15e09e2dfc4004ed890a124c3d04aa7a4237a2b6146"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/dice.png",
+      "status": "new",
+      "sha256": "e544ef51099649a25eedd57f13b3a56aafa7dc8c49636dfd535c2127bce117e5"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/gift_box.png",
+      "status": "new",
+      "sha256": "043e7f8f8bf4c325528a9ef16dc7e6db035b373fd098e2478b7c8cd450092919"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/juice_box.png",
+      "status": "new",
+      "sha256": "b3b00b34184c4a901f56e911935472c751b3a016c0fb323da801b17d0fdaa4b4"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/marker_cube.png",
+      "status": "new",
+      "sha256": "3ddf0330fa725a04a42b42e67c3cada8dcf7ac8fb915f5b6fdf0f9715f9f847b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/milk_box.png",
+      "status": "new",
+      "sha256": "7cd5ea0900245c57a3db5f96516613db345d06d72bf5d501d3346d8eec7049d9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/rubik_cube.png",
+      "status": "new",
+      "sha256": "d51b4beb920097918afb62f62123be45873284f0570835b369569c07c25b7491"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/tissue_box.png",
+      "status": "new",
+      "sha256": "61d7aba53c68f3eff5ac5374936613976fd0b2ffc7053f47eb5183f26154b9fe"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/textures/wooden_block.png",
+      "status": "new",
+      "sha256": "b36034010a691c9b138f9e66b3c23ebd8022e4bae68c789f945d2a1a986ba2e8"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/tissue_box.usdc",
+      "status": "new",
+      "sha256": "9dad8061cade995b1d95429b68379005e25b3228a360a50ff8628b91f1dfa951"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/assets/piper_tabletop_props/wooden_block.usdc",
+      "status": "new",
+      "sha256": "8aced60777e38dca65ce1c02441424fa5b7e266c1f2f48bfc083f6d63ddbc531"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/assets.lock.json",
+      "status": "new",
+      "sha256": "6b1f9b468b79d0788a5b34a383ce7d6821639d16540b98454126b74b44f41389"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/fastwam.patch",
+      "status": "new",
+      "sha256": "774cee645689f040db9579e6b291bd1c3fc1ab23010666b6c4b03c4e48a15b32"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/fastwam.state.json",
+      "status": "new",
+      "sha256": "6fdcac9a680718b3fe5a713438afbac7888a4ccf5dec994ee89a0413ffb8960f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/policy-ewm.requirements.txt",
+      "status": "new",
+      "sha256": "c6916dc90d2315cf6931a590dba96100e70e73ad6b2b8e2b64b181d11310e20b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/policy-fastwam.requirements.txt",
+      "status": "new",
+      "sha256": "9b772232f9920d8f08f7965430f768e8c456cd5f49e8ce0e5b833fc0e67b0a93"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/simulation.lock.json",
+      "status": "new",
+      "sha256": "bf89aa940e65abe2a7b6ec109d6f116b4d38eba4889e60a1ce0c5d560307b788"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/simulation.requirements.txt",
+      "status": "new",
+      "sha256": "65f1e288bdd95f1dc3cf35ef731b82db21d7e627bc84f521d25235265ace8f8d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/deployment/writer.requirements.txt",
+      "status": "new",
+      "sha256": "93b6ab51ccf8276cc2f44ff2cd21896eab474271295e08deaaffc74b9377d92a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/licenses/NOTICE.txt",
+      "status": "new",
+      "sha256": "e54cfaf93b242fdb773eff46335055cda8805abe73981f015a0fcf03eb4a378b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/licenses/OpenWAM-Apache-2.0.txt",
+      "status": "new",
+      "sha256": "ac4ff0270f722d840125fa9d9e53f4c916d7a54adae913820518e6d277a7b167"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/conveyor.json",
+      "status": "new",
+      "sha256": "627fc2c230a50de824fde763cf87a2302aa042b5b807acddd125ca8d854b8677"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/moving_carton.json",
+      "status": "new",
+      "sha256": "aa4008c7f79f0dd57abd68efd49a2552fca328757357143443032d2a2c6465fe"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/rotating_tube.json",
+      "status": "new",
+      "sha256": "f3651126dfd4986a6b396e9a3b9bc5098c1b4b7ca966df31eeeff23011fc1d16"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/tennis_container.json",
+      "status": "new",
+      "sha256": "62aa7a3fb630868e5f3aac0e69e5b58feb0b6db7b3621fc9e1dfefa3346d8738"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/tennis_falling.json",
+      "status": "new",
+      "sha256": "58c422ac86fef953e57b9f5e01f2d59167dd2930b07942ab4f8dd3b97b59bbd6"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/tennis_parabolic.json",
+      "status": "new",
+      "sha256": "16da46d0f872062b8334fe690667edc925fb4dd28793251504decb3a078bac9f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/tennis_rolling.json",
+      "status": "new",
+      "sha256": "630185dc7e128fba99caefbead473b7bb20bf151439090b0a369aa6d938fc34e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/collections/turntable_cups.json",
+      "status": "new",
+      "sha256": "4835c314f4b6be8a341b7039ed2af0c17b7e9ed21a4d0cb91a9ec596ed19766f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/resources/suites/piper_eight_v1.json",
+      "status": "new",
+      "sha256": "fc5943e88573fddf7ed094b5c9e9a2a6e1902d2459c3ef86d36daced5753eab0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/__init__.py",
+      "status": "new",
+      "sha256": "de8194fca6b78b6e9bea32f071935e67894c1b873dac7b0c83f3e42f107ab6b9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/__init__.py",
+      "status": "new",
+      "sha256": "8403c0d592e47a51fcf3408ebed86ba63c3d5c211aac085cd2b1ea671826d72a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/cameras.py",
+      "status": "new",
+      "sha256": "c584d4575d601299e3fe5d8f9e87e56a8a909de5f355fdb54b4908d9676ed8df"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/control.py",
+      "status": "new",
+      "sha256": "9039ef0e17958dce63350f98845f367fe06429cb7dc161e28afcaee44bb2dd88"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/geometry.py",
+      "status": "new",
+      "sha256": "89e39e64939c55e2dd42f25a8cf1e882d892e898148c72be3cedcb5b1542f97f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/motion.py",
+      "status": "new",
+      "sha256": "cd36f5e340b6363f5110580adb92746a7ac88c9ad0cceaabd5abafbf403c2f67"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/piper_teleop.html",
+      "status": "new",
+      "sha256": "009562c3b57a6f0de4344ec76b35cff4aef54e563eeef07e35576587fa00d46a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/robots/piper/teleop_server.py",
+      "status": "new",
+      "sha256": "2de4ed742ebebd0ce1862b41917c7a69b0d794ed52ce516b63847a8974b57d14"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/__init__.py",
+      "status": "new",
+      "sha256": "2036a979275882190054f3e8a2588d54971f45d6c3ecaae66e3d67001c90e3df"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/background.py",
+      "status": "new",
+      "sha256": "f26f883fc0bbf478ae70175a0eca76515514115ac5ba3253892cd9fd0b307d93"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/background_ood.py",
+      "status": "new",
+      "sha256": "e4910a17230b55380c90da5ae0989f9822a1dea0f0f898ccfdeb522e93a1e31a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/ball_props.py",
+      "status": "new",
+      "sha256": "f6b4bcda0cd7e3a7f1738a9a525035be11ff65f9a80e70999769310df909a6af"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/build_ball_props.py",
+      "status": "new",
+      "sha256": "6d59b78b2e038d85946784b2de281618eae23f07b80487d4f82c19d4a3f082b0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/build_tabletop_props.py",
+      "status": "new",
+      "sha256": "d5e31995e03633efb9cdc3f74310900fb2d9bad4a638cd53129350aad71417a5"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/prop_textures.py",
+      "status": "new",
+      "sha256": "7d1762d6d8499bbeb5c4e1d0b2a3524e5819c82eeb4aacdc9af91fc58278ec72"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/table_visual.py",
+      "status": "new",
+      "sha256": "f11bb6c3ca648751739fff34b52032ef687e1a6197014b4fe893bf1e039ea635"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/tabletop_marble.py",
+      "status": "new",
+      "sha256": "a6aa8e3cfc3fc158b0856382c95e540f8db5813a1b578ddc86bb95f6b9462f4f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/tabletop_props.py",
+      "status": "new",
+      "sha256": "361584792baffe7bfec019ea8882ae04ed5f29193e8eba2db05ba73e9d1356bd"
+    },
+    {
+      "path": "benchmark/src/piper_bench/scenes/task_assets.py",
+      "status": "new",
+      "sha256": "a04c5a3b6642111a79255b1e5345d7f9e4d5281f0f36590586b2df061267cfc3"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/__init__.py",
+      "status": "new",
+      "sha256": "3e6fcb99f8c570c3e2a705576dfd2cbd0e53cd9c45bad37beba9304fa38d21e9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/capture.py",
+      "status": "new",
+      "sha256": "32b2e1f652e3eb464fe5a6ace8752341b4f094b131bc8f8e446509014da6fa14"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/event_archive.py",
+      "status": "new",
+      "sha256": "d50af7aace9e3d4200975adea3b664f1e6c5b03126e05010833ba3bc46c57f0e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/event_frames.py",
+      "status": "new",
+      "sha256": "6a8c0952a708ff4be80039a9bf314defb8011beb5dc9698c62de9cfa48fd23a1"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/lighting.py",
+      "status": "new",
+      "sha256": "100ff87f00865c0e919a25165dde6319b12666af7e9a4a5f445354ea60a1d553"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/motion_blur.py",
+      "status": "new",
+      "sha256": "606a3c6833aea68c1cb683e6058a321047ca414af3bba220ebce70ec2b92a1f0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/preview.py",
+      "status": "new",
+      "sha256": "584efcf4d40adff93d5ac8a91ef6f21d2757cf527bcff917c5607469fb110dbb"
+    },
+    {
+      "path": "benchmark/src/piper_bench/sensors/wrist.py",
+      "status": "new",
+      "sha256": "87279182c6a0e5b996d539503c527ae1a1b909ed7eeee76c114188ecea8fd424"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/__init__.py",
+      "status": "new",
+      "sha256": "a273ee8951fa04ff335ed2776f44562542ac20770797e21b5887a46c026a2591"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/common.py",
+      "status": "new",
+      "sha256": "ce90dea767b49d1e41b60e1d5b786e559bd7e908d1de562a9290096265c3c763"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/__init__.py",
+      "status": "new",
+      "sha256": "e01d9765cac07902b76eaac9712ea3b4494501d7daae9c2a3fae4750c8a31ec8"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/basket.py",
+      "status": "new",
+      "sha256": "1d2131979b27fd666ded9e335814113b9eb296f17d1f20be521f25f868efb09d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/core.py",
+      "status": "new",
+      "sha256": "10e46fc41a6263eb45628eb542d2d1709670dbaea3c299b18a12c95005d3696c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/oracle.py",
+      "status": "new",
+      "sha256": "0a0bcb492775fad6feab9a42c48f272cda1276014684b8ab003a0f40b4f6a950"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/preview.py",
+      "status": "new",
+      "sha256": "dd2a55b656461d705dc7543ccce803684fe3213988df9f9397f79275a0a39010"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/conveyor/scene.py",
+      "status": "new",
+      "sha256": "dca9b87fe2f54e63c4fba68c05593e59c965bde47a7a6a5ec1334b50bcaf070c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/__init__.py",
+      "status": "new",
+      "sha256": "0912f9975c224a9d6422b3d290478551ea6078a08f1e3cc12ad17e8f2c8ab76a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/config.py",
+      "status": "new",
+      "sha256": "cbfb8b499a358b3477976519290d56730b1e08f0512e01d6002db20f907916dc"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/geometry.py",
+      "status": "new",
+      "sha256": "dce20eed4b8db25de62c38f0f20bb41f8a65184b9f08ddffb4b342483c1d6f7f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/oracle.py",
+      "status": "new",
+      "sha256": "fff1871c0fc70a1a531976557f6e293e6b389309abbbde13414cfa3d9bd30f7a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/preview.py",
+      "status": "new",
+      "sha256": "3dcaeea96cb6e63df49541d2b907e0a8bbabff1085e0f281f847448d97338f08"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/drawer_cup/scene.py",
+      "status": "new",
+      "sha256": "82fb7c95e036fe05bc62526004ee901b89b3ca1dad583a0396cb6ba6cc72c732"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/__init__.py",
+      "status": "new",
+      "sha256": "11801b2d63141b9fe0b2d0b6f26305dd2233725d955c1f32d2b20845c5d8fb93"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/control.py",
+      "status": "new",
+      "sha256": "e4782a7c67a6c236329e861e9f0aade3be5e9e6c31276c1be7657c4c023ee5e0"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/geometry.py",
+      "status": "new",
+      "sha256": "be212ed35a28292269bb2cba4b23847463e81eb2b1515139dd6028f08f2d5393"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/lowwall.py",
+      "status": "new",
+      "sha256": "b918c4f9b5803f702f0279c807e761e0ff3995d7e223f5f4da2293da014a4a1b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/oracle.py",
+      "status": "new",
+      "sha256": "768db5b1b6063fc7eab1035624d07095799ba508addafb34c29bb72687c31152"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/preview.py",
+      "status": "new",
+      "sha256": "205dba1e717bb9d50e5d1b6c3fee21d1d9a60096dbedc2e283c0b7388d934201"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/moving_carton/scene.py",
+      "status": "new",
+      "sha256": "93b236c3e153b1f1bb03231c85068ba7f68c1c4856837ee58a86e52446b998fc"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/__init__.py",
+      "status": "new",
+      "sha256": "c72611510c6288d4998fd6410f6ccf1e9c7ba6197b38e19e179e4d159418c16c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/config.py",
+      "status": "new",
+      "sha256": "a46d8b133c63b7a260225e0939cfad9f5c726d5f95d58c621c51abe96da34e64"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/geometry.py",
+      "status": "new",
+      "sha256": "fee0c8b158b6159dbb5db67b9b1603bf9656ae39272dd936ff71797f45349726"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/oracle.py",
+      "status": "new",
+      "sha256": "8725004b76ceeb1d7c918d75098f6c355b6e8e9d97dca8fda1407260b45d2a20"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/preview.py",
+      "status": "new",
+      "sha256": "67db896fbbd6f69e174889c8f613df16d3b22e080e3926c4ec503eb5d1784c0d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/protocol.py",
+      "status": "new",
+      "sha256": "ad2868dadb6d9eff67eb478a6d947b857e06eb5862acbdc34b9d44ba8952d8cf"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/push_t/scene.py",
+      "status": "new",
+      "sha256": "c5b2134cd5a3d3a29d8916d171d289a8ba9436699d25c60a4d356e47758aeb8e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/__init__.py",
+      "status": "new",
+      "sha256": "779f0ef5ec25667c4a62527e46f961fcd8a1ccaf77c5c8f1d35e0c8dbfb9f7d3"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/config.py",
+      "status": "new",
+      "sha256": "d67c081d0ce93a0580b8fa0b43280038afac014dbccbb820715d4f3c06adda80"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/control.py",
+      "status": "new",
+      "sha256": "03897524989c368b360b8581df7f01d3b7509bc808674d68e0154f643ddbd172"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/geometry.py",
+      "status": "new",
+      "sha256": "d5e6caa5c5bfd0763364d420bec5dc056c5edb2cf1d89887046913a58397125a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/oracle.py",
+      "status": "new",
+      "sha256": "3417e277b5ce1f15f96cdacb27eb191aafb069deb4a0cfd8a4300bb776ee49aa"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/physics.py",
+      "status": "new",
+      "sha256": "3bf20540d10ae5234e45defda7cfbb00dcbabbf0e251b41db026d5dae3ab8743"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/preview.py",
+      "status": "new",
+      "sha256": "dc0c14c1e5890e20d1f8ecc04ec41d2d3bc5bed7c1da189e4ea07fb22c5b45e6"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/rotating_tube/scene.py",
+      "status": "new",
+      "sha256": "a9ab1bb7887588fcf45281aa6d455cc7d46419a5c29a89803ae97332bf93904f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/__init__.py",
+      "status": "new",
+      "sha256": "44ac6f061dcc47d55a036d170f0ae699efb4fd1c63a48ba39c2d092bc2bb8826"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/config.py",
+      "status": "new",
+      "sha256": "18e746c81bfd8d4c1be452f2cb5c5ec3055ea8912fb564cf1f0508b3a51dcc2d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/geometry.py",
+      "status": "new",
+      "sha256": "ae5bc5a6885fe6d4baa917202d4320dd08d18acb636e9f06fa6a8e10f59b6f28"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/oracle.py",
+      "status": "new",
+      "sha256": "97fa778d7ca2413870a3f3eba2def9099d1e4e1121634732c545acfd0a849d05"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/preview.py",
+      "status": "new",
+      "sha256": "46b10f74a49969a4653f3e4f17268aef830c86ecf5eece01e7191d0b3e31e1a8"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/square_nut/scene.py",
+      "status": "new",
+      "sha256": "3d7b141fd2bd1c499db7fa3c12e5419a5ceda1f007c6b682a5cbfe028eb76140"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/__init__.py",
+      "status": "new",
+      "sha256": "8bf6135b09a42dbbaa361ad7e6c9451133ef69ffd25d979ccfe5fc334985dd38"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/appearance.py",
+      "status": "new",
+      "sha256": "7f4cc1f72c634807dcaedfe38df92aebe73194d79a23cc54156f4d52de962633"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/background.py",
+      "status": "new",
+      "sha256": "7ec29098901cd871c8951758a52f8a7acc955aa7931da00f92c8934b3f81f43d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/camera.py",
+      "status": "new",
+      "sha256": "1aa4ac46353a0c71606dbd680eb2be6cb4efdd98b7be1fcd706f0e66634ac365"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/collection.py",
+      "status": "new",
+      "sha256": "8d5f51493b6809bbaac9eefa4d9e600a50009467cbfacc5017289fe95b8166e3"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/config.py",
+      "status": "new",
+      "sha256": "dbaaf700f07fcaa424a2d7d367bef6373dcd0f32068ccfb26e64f8040ec860e1"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/control.py",
+      "status": "new",
+      "sha256": "66246c613ee4a1a153a6ee6c76f59d5b4ad02d6bdd9980f8979faa2387575495"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/geometry.py",
+      "status": "new",
+      "sha256": "8a57298bf1e245f3bc205192457b4e8ee709948870e525a8232cb1f754ac4ba8"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/metrics.py",
+      "status": "new",
+      "sha256": "2ba74420b0528a9c2fe7bfe898bdfa008b2041020ec55a2500000e84f9114d71"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/motion.py",
+      "status": "new",
+      "sha256": "72ed6b64132391b43165fa7c7be88c004eda5b6ae0db174a7fbab273284fcba5"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/oracle.py",
+      "status": "new",
+      "sha256": "e352dfda8fc5e87f52fee7fedba65fa8b70115cf3c541598bf205c93a8bc6252"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/scene.py",
+      "status": "new",
+      "sha256": "3c1ca7ce15968530e6dc6a3f5f381aaf3c0c29315ab2b0ce53c8918cc705119d"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis/wrist.py",
+      "status": "new",
+      "sha256": "832e62581e0445254903b20881043bd926cc6d172e869328d6b60fc6001d0cc2"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_container/__init__.py",
+      "status": "new",
+      "sha256": "e303f05e280fa40870556f76b205f7b9a17af06efc047176c01bc042f9a0efef"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_container/oracle.py",
+      "status": "new",
+      "sha256": "e54c32f7dd9154356fa33e70b9c84a311a81eb0329fd8b9463480d5720739968"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_container/preview.py",
+      "status": "new",
+      "sha256": "ffd5bf47a203e35c14f32f0affe3c81e017856404205c55bc752e9f8295e7c6a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_container/scene.py",
+      "status": "new",
+      "sha256": "e22a92343db85d2066c8db7969de1a3dc170215832311bbb93f08554a596eb1f"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_falling/__init__.py",
+      "status": "new",
+      "sha256": "792e4fa42c380e2036c9ab1587758ec2ef830d11ff5b6cf2a4250953cc7880ff"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_falling/preview.py",
+      "status": "new",
+      "sha256": "d52bad0067a1a54118c4c7c1f0fa45f0fa6069991c935e775a7b70fab6d06b72"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_falling/scene.py",
+      "status": "new",
+      "sha256": "0a9940ee3457adee1e8ae4fcfb7bb6427e5ee8feec3c0394896f69f1091d6b7a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_parabolic/__init__.py",
+      "status": "new",
+      "sha256": "46503e2c56e6b820e1cf532757ba2c37b4ebcbb9e218e04430c99d095650499c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_parabolic/preview.py",
+      "status": "new",
+      "sha256": "22f845d89c5b2ab2578a37bc4572ac662af87201953aa6734a398e858113bc76"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_parabolic/scene.py",
+      "status": "new",
+      "sha256": "df76da7ee37e02cffd810a5d5789fda756e84fa81ae61e518937fe61de41ddd9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_rolling/__init__.py",
+      "status": "new",
+      "sha256": "15f4ba95a81365f3772e8e4476753e3a4c0e8dacb67181374bdb33495ae5095c"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_rolling/preview.py",
+      "status": "new",
+      "sha256": "b0c72ea75ff577b52349ced56d9482db650a7d393735d65152ba5b10c613051b"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/tennis_rolling/scene.py",
+      "status": "new",
+      "sha256": "0d6cada6fb41f7b0a34b4628f6f544d898bd82b05c6c28bbef9c498cc0af9a9a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/__init__.py",
+      "status": "new",
+      "sha256": "d1725e14941f5402d650a68c10ddcf63fc8d0b6b31ae4714e64e7b62b76a16d9"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/config.py",
+      "status": "new",
+      "sha256": "25f375466fea2cb2d2611682512615f97da872cc0d7e59378a55c3ff578d864a"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/geometry.py",
+      "status": "new",
+      "sha256": "2a53017d3128b497c0a7a7b3e2262f76494a1fb6be9214304f0c1e3ac0f9a91e"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/oracle.py",
+      "status": "new",
+      "sha256": "3c84616ee3199479e168b1aff40cd6bf571ec720bef8b69bd65ad56d95155509"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/preview.py",
+      "status": "new",
+      "sha256": "4db24ab81508080ba1a79b069ef77c622d31c5ce22771cf2c23da16b8000d183"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/scene.py",
+      "status": "new",
+      "sha256": "5139e78e683e0ee87aac49390a394296164b0242ab2cf921c987547054262b64"
+    },
+    {
+      "path": "benchmark/src/piper_bench/tasks/turntable_cups/turntable.py",
+      "status": "new",
+      "sha256": "fcdcb67d444272757e5b4b4f29332cc7f8b2be91868ca3df3a2ee75acc388939"
+    },
+    {
+      "path": "benchmark/tests/fixtures/controller_traces.json",
+      "status": "new",
+      "sha256": "a5ccac433cd8bd2675dc2d6a532b68f593989c0a106fb2f350e4351cb562a96a"
+    },
+    {
+      "path": "benchmark/tests/fixtures/legacy_task_fingerprints.json",
+      "status": "new",
+      "sha256": "6d17a068cd5cf0881b970d130db4d0f64a616b33a31581e9ce3f22f4d902c9b0"
+    },
+    {
+      "path": "benchmark/tests/fixtures/recorded_terminal_cases.json",
+      "status": "new",
+      "sha256": "5dcb57a0884566427a08f7c340481f07141ad076157505b957746c396e7b8149"
+    },
+    {
+      "path": "benchmark/tests/fixtures/v5_scene_hashes.json",
+      "status": "new",
+      "sha256": "3778c80a1c90e03bbdf091b0bc46cf935981af17cd4d1c40ac648b25ced8e07f"
+    },
+    {
+      "path": "benchmark/tests/test_collection_freeze.py",
+      "status": "new",
+      "sha256": "28c797c703417a50d0234e38297839022512fba0488d9e26ebbfdd2de8d4ff39"
+    },
+    {
+      "path": "benchmark/tests/test_deployment.py",
+      "status": "new",
+      "sha256": "9e786630fa7c7406f2fa813fd7f1d33f66a5856e5b155ee8d20564075e5b630b"
+    },
+    {
+      "path": "benchmark/tests/test_evaluation_migration.py",
+      "status": "new",
+      "sha256": "1924d7a787065f3fcda33f51fc6685015c25f72687f6ef6bfdb8feb7f51bd2f1"
+    },
+    {
+      "path": "benchmark/tests/test_launch_review.py",
+      "status": "new",
+      "sha256": "6dc32f0b2fcef3b5e262d54e824866589fadf7c88acefb4330e0fc5a45bfd517"
+    },
+    {
+      "path": "benchmark/tests/test_legacy_policy_entrypoints.py",
+      "status": "new",
+      "sha256": "2ee0c1b426b0ac66f5c189f2c73c3e13270d9032fbed36ae96dd42646c0739a0"
+    },
+    {
+      "path": "benchmark/tests/test_process_environment.py",
+      "status": "new",
+      "sha256": "28672f803f92ae1bcb7519683603b391f1d0b0a62fdd4e93ff7632ffefd6f133"
+    },
+    {
+      "path": "benchmark/tests/test_public_cli.py",
+      "status": "new",
+      "sha256": "facbb5b3deb374449256dcbafd38e0e15d83f227ba3ee9cb10fcbbd08572ce89"
+    },
+    {
+      "path": "benchmark/tests/test_replay.py",
+      "status": "new",
+      "sha256": "a9f8b899147ed2502ce6ada8a8653bd226f66f4a0eeacac8507e589224bb5894"
+    },
+    {
+      "path": "benchmark/tests/test_tasks_migration.py",
+      "status": "new",
+      "sha256": "95e0caee694b5b8609af567a605b0171c32280abb330069e234cabc40af3db38"
+    },
+    {
+      "path": "benchmark/tests/test_tasks_startup.py",
+      "status": "new",
+      "sha256": "281cc5af3a20d5484f44f20a4fe52b0a56c0c41f93c3badb16fd04cedc59ef27"
+    },
+    {
+      "path": "benchmark/tests/test_usd_compat.py",
+      "status": "new",
+      "sha256": "85f23865e70e895dea8b378ee601efba6917b39ba81ee8328bba15c73f26d00c"
+    },
+    {
+      "path": "deployment/README.md",
+      "status": "new",
+      "sha256": "de04021bc1102cf0a5430789a9a2e1d97e4f2f43154cbf01dc000071f6a5fef0"
+    },
+    {
+      "path": "deployment/install.sh",
+      "status": "new",
+      "sha256": "04163081ae9bf1ab50b51cdc3aea49e5802fbe562e81c44c1253f737929cd33a"
+    },
+    {
+      "path": "docs/benchmark_architecture.md",
+      "status": "new",
+      "sha256": "ecc3b50f1acc819daf28b48cb05eedf3d16c128300c1d458afb42e1560204bef"
+    },
+    {
+      "path": "docs/deployment.md",
+      "status": "new",
+      "sha256": "7b743e767ada7a6f93fc5100d58fdc8e2013f6eb002e32484a44205ce587eb83"
+    },
+    {
+      "path": "docs/evaluation_protocol.md",
+      "status": "modified",
+      "sha256": "5bb16ff4980060b901831b29125d593e331ba0a5bf52e2eccf1fde5ed0ded7e3",
+      "previous_sha256": "24743d43e4fc0fc33130fc025884c697f201088f416760e2728c0171e8e13770",
+      "previously_untracked": true
+    },
+    {
+      "path": "docs/migration-validation.md",
+      "status": "new",
+      "sha256": "9840ab8eedcf22536ade372d1e1f6d0a098863a11092db78cce946cdb622c20c"
+    },
+    {
+      "path": "docs/refactor-files.json",
+      "status": "new",
+      "sha256": null,
+      "hash_note": "This report does not hash itself."
+    },
+    {
+      "path": "ewm",
+      "status": "new",
+      "sha256": "f8b2b4d056c37a2041024a736cc394500e4bb011ee74ca2ca6cc800b21310107"
+    },
+    {
+      "path": "launch/README.md",
+      "status": "new",
+      "sha256": "5125340a27c22f7e4b78f07297fe802493321a34a2693bc541e8d4601c47eaa1"
+    },
+    {
+      "path": "launch/freeze.py",
+      "status": "new",
+      "sha256": "e0d7d95f06f46e2e50920f71614eb0e43a2033c982da831cf9991bf93da37fcb"
+    },
+    {
+      "path": "launch/slurm/submit_evaluation.py",
+      "status": "new",
+      "sha256": "fbe14921d6d700f0fcb3c652d2e3e6105e4aeea595bee38de524c043dbf5f88c"
+    },
+    {
+      "path": "policies/README.md",
+      "status": "new",
+      "sha256": "fc768ac566ebf99eb1cd45b0f4d02ff1b97d35240db7fdc36514224e5f852648"
+    },
+    {
+      "path": "policies/pyproject.toml",
+      "status": "new",
+      "sha256": "d806971699bcf1b4c577917a1e5b4b852974c5578eda7e25c9bb05e188b7319a"
+    },
+    {
+      "path": "policies/src/piper_policies/__init__.py",
+      "status": "new",
+      "sha256": "71430d7ac1778b4e5b587633588c254c26b89a338d7f6c12ccce14d4ffb86066"
+    },
+    {
+      "path": "policies/src/piper_policies/__main__.py",
+      "status": "new",
+      "sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4"
+    },
+    {
+      "path": "policies/src/piper_policies/cli.py",
+      "status": "new",
+      "sha256": "f388f82f8b95aea93f973f6b1c1fdebd9e6d7fe143392ea2e2706df8f3ad1dd7"
+    },
+    {
+      "path": "policies/src/piper_policies/contract.py",
+      "status": "new",
+      "sha256": "2ef352fcfaa10a75e3266f91926e70c12422ddc5fe60fa31875613213169fd03"
+    },
+    {
+      "path": "policies/src/piper_policies/ewm/__init__.py",
+      "status": "new",
+      "sha256": "c90f52aceef28e96b45e22b4938de4b0fbebe9681007e4489727606008c1d6b4"
+    },
+    {
+      "path": "policies/src/piper_policies/ewm/adapter.py",
+      "status": "new",
+      "sha256": "eda2fbeef36a0e5f2adb4f928f29d1dd02b3ee5871b7733efce1b37292073aa8"
+    },
+    {
+      "path": "policies/src/piper_policies/ewm/optimization.py",
+      "status": "new",
+      "sha256": "e3a0757d7aa2635075d090448aad519c1aa52abb5208495fa10a557c7921a2cd"
+    },
+    {
+      "path": "policies/src/piper_policies/fastwam/__init__.py",
+      "status": "new",
+      "sha256": "d61cd43d1a573a196bbfdde604be7e37a1e98a3378aefafadf4e06ea723f3e8b"
+    },
+    {
+      "path": "policies/src/piper_policies/fastwam/adapter.py",
+      "status": "new",
+      "sha256": "66e2f46209b3479340341bdbce801520e3939644a50e9104b5d05f94061387b3"
+    },
+    {
+      "path": "policies/src/piper_policies/legacy_suite.py",
+      "status": "new",
+      "sha256": "e9cc1d192f92dd5999c198385f1fa915a96d7a9310850aea9e69be6a01894e5a"
+    },
+    {
+      "path": "policies/src/piper_policies/metadata.py",
+      "status": "new",
+      "sha256": "576d66e83787e4f428cc90f094930c3d9bb6f9714a1e1f9852987148a157cb39"
+    },
+    {
+      "path": "policies/src/piper_policies/openwam/__init__.py",
+      "status": "new",
+      "sha256": "470e64140cb15bc03327f6c915027e215f8dab2f48b0b3a63bccaab0fa98664b"
+    },
+    {
+      "path": "policies/src/piper_policies/openwam/adapter.py",
+      "status": "new",
+      "sha256": "be83f51ec5af225ae228aaa9d6704afddb68f1eeee986be824c93c910ff5f663"
+    },
+    {
+      "path": "policies/src/piper_policies/openwam/normalization.py",
+      "status": "new",
+      "sha256": "73e6d34dafba9524d76adb26333f3576fcfad35352ea95f3ee972cc7ff08063d"
+    },
+    {
+      "path": "policies/src/piper_policies/resources.py",
+      "status": "new",
+      "sha256": "3eb32d47c69406fa11d1e3fa1b9bfbd8f4259c7d8131789b20ac7910ad82c2b4"
+    },
+    {
+      "path": "policies/src/piper_policies/server.py",
+      "status": "new",
+      "sha256": "ba4905b9b2852083b9dbff371530a63ebc86da360059c3323dfeac068fa502a6"
+    },
+    {
+      "path": "policies/tests/fixtures/hello_joint.json",
+      "status": "new",
+      "sha256": "7bc49eb74354e447c74a72e094677df4906a6c1967cd271e61f52a222060c4c1"
+    },
+    {
+      "path": "policies/tests/fixtures/openwam_piper_legacy_stats.json",
+      "status": "new",
+      "sha256": "7d8d4b4323007e9d25616581eeef5eb01877840a2a86e3ed5322fb4246904fe4"
+    },
+    {
+      "path": "policies/tests/test_ewm_native.py",
+      "status": "new",
+      "sha256": "01f579609a0cf899825cb9b4620323ffc95b122b9fda9a576e5cdb3a4c29820c"
+    },
+    {
+      "path": "policies/tests/test_ewm_optimization.py",
+      "status": "new",
+      "sha256": "bf27961af2a08de7359f0ee82e91ce88b1566631020971f07a5f6f901f22aeb8"
+    },
+    {
+      "path": "policies/tests/test_native_layout.py",
+      "status": "new",
+      "sha256": "e1042fe68f3c00a7f9d3c333a41c14c83112c9967a5db31f0e4720a9f799cb6b"
+    },
+    {
+      "path": "policies/tests/test_openwam_normalization.py",
+      "status": "new",
+      "sha256": "0459b822803671442c6932ab5a5bf5eb1d5af1f714f5a0c535d5c8f4c9aae1e9"
+    },
+    {
+      "path": "policies/tests/test_policy_contract.py",
+      "status": "new",
+      "sha256": "908ce4489979145d134a9852894dd37ca1a4cf420b7971ee0078506ff075f06b"
+    },
+    {
+      "path": "policies/tests/test_wam_boundaries.py",
+      "status": "new",
+      "sha256": "1b9de5e208e4b5a56116b07712434f28a41362e9ea6748e3205b947e31b01cb8"
+    },
+    {
+      "path": "policies/validation/README.md",
+      "status": "new",
+      "sha256": "c15bd9a73b143c8efdf9ea9019c735b6dcc912a4fa7ff50ea4eaf83defc7fce9"
+    },
+    {
+      "path": "policies/validation/bounded_probe.py",
+      "status": "new",
+      "sha256": "4e6653f67d818959db0601633f2016f1357b91355b094ad671e53a74af21ceb9"
+    },
+    {
+      "path": "policies/validation/ephemeral_openwam_probe.py",
+      "status": "new",
+      "sha256": "316424b544b274372305464f972aa1c4702a26f5fe6825150c81ceef71f60c70"
+    },
+    {
+      "path": "policies/validation/export_openwam_initialization.py",
+      "status": "new",
+      "sha256": "0fcbd36437c944d4dd591081630b47c1dc8e2c5abecdf9e55f8c6448c5171208"
+    },
+    {
+      "path": "policies/validation/instrumented_policy.py",
+      "status": "new",
+      "sha256": "938d63c7b76e6f807b3345440a01a6add2c7141d2eae6a33f83ad35f975ea7dd"
+    },
+    {
+      "path": "policies/validation/monitor_gpu.py",
+      "status": "new",
+      "sha256": "8d17da9fa181ae4a864bdf2878147b3f14ab55a02b78c03185f932c8417c3098"
+    },
+    {
+      "path": "policies/validation/service_gpu_probe.py",
+      "status": "new",
+      "sha256": "63de725e4cea352d0e0b9ae25fcecadf85f0b9f7fcff576fe06933294d932e40"
+    },
+    {
+      "path": "policies/validation/test_bounded_probe.py",
+      "status": "new",
+      "sha256": "4ad17488abce1391727b68da4e56251f46a91d300d942ab36ee6678faec4cdac"
+    },
+    {
+      "path": "policies/validation/test_ephemeral_openwam_probe.py",
+      "status": "new",
+      "sha256": "1e221805c069371cfedcf76f85ae0e8634a47d14056a36956fed69c20aa29287"
+    },
+    {
+      "path": "policies/validation/test_service_gpu_probe.py",
+      "status": "new",
+      "sha256": "0ed50c320cd9128ee65dfab3499a4d911609731f8b701707ce2dedcb07fca5c6"
+    },
+    {
+      "path": "scripts/collect_piper_eight_dynamic.py",
+      "status": "modified",
+      "sha256": "3808c43bc1797e1549d1dedf67f75f53703f5947eb75df100f4cc5822d31fda7",
+      "previous_sha256": "742ee8b55d0ffabbf831ede109a2d9eb26341a76171d764068c7458d9184ffec",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/collect_piper_push_t_pose_v2.sh",
+      "status": "modified",
+      "sha256": "d5ac156cf0a036cb1a41834a1108dd32a317d9d05d115c838789557e101cfd7e",
+      "previous_sha256": "e02d462e37b222ff81c2aad526f2b592a28983f2d5475cb968c9d7c57bab0648",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/collect_piper_six.sbatch",
+      "status": "modified",
+      "sha256": "98b4a9aabe6c052ad004357400ee9bf8299a821f54420d859d331b0b278de000",
+      "previous_sha256": "f3c74a8d28fea755094b249a5064fd2c51d00b1b933c34313bcf246990e38b98",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/collect_piper_six.sh",
+      "status": "modified",
+      "sha256": "af6ae62ac3ea684ee6b21b5642e5023d8d4471134983153da165c53602b24a0a",
+      "previous_sha256": "6502cdd7ae45a513126b6d5f4b8a030ea1b095f6d3da273a343c21e72f6ab093",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/eval_piper_eight_dynamic.py",
+      "status": "modified",
+      "sha256": "441e3a527be81f56b5eaa6d3535dfe287cdf2d6065f20f796c134fbf8ef7aeee",
+      "previous_sha256": "508020ea0daa7e0638924169fdebf03942b06e85d2c655729e7d938354e8a219",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/recollect_piper_moving_carton.py",
+      "status": "modified",
+      "sha256": "2cc5655ca7d9e0a5836748e697bab5d664c5314e1d3a18a07092dc486842fce9",
+      "previous_sha256": "988898e48acfa33f6262d57a72e9872058cd149dbb9e76350a944e57ca39a97f",
+      "previously_untracked": true
+    },
+    {
+      "path": "scripts/recollect_piper_narrow.py",
+      "status": "modified",
+      "sha256": "1bfbd33a3c4fbebbcadbe5ce52322a011b323b3436177f2e5b8c406d6c091602",
+      "previous_sha256": "98fc9de7c0804cd9ecc82f90d65eb7747f96a372c85e6348236fee00dfe18d94",
+      "previously_untracked": true
+    }
+  ],
+  "counts": {
+    "new": 288,
+    "modified": 163,
+    "deleted": 0
+  },
+  "staged": [],
+  "commit": false,
+  "push": false
+}

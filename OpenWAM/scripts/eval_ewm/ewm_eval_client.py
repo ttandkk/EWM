@@ -93,7 +93,7 @@ def main() -> None:
     seeds = list(args.seeds)
     if max(indices) >= len(dataset):
         raise IndexError(f"evaluation index exceeds dataset length {len(dataset)}")
-    alignment = verify_exported_event_alignment(dataset, indices, dataset.chunk_size)
+    alignment = verify_exported_event_alignment(dataset, indices, dataset.future_horizon)
     samples = {index: dataset[index] for index in indices}
     with connect_ready(args.ready_file, 300) as conn:
         hello, _ = call(conn, {"op": "hello"})
@@ -111,7 +111,10 @@ def main() -> None:
             raise ValueError("client/server horizon or event camera mode differ")
         if hello["voxel_bins"] != dataset.voxel_bins or hello["count_clip"] != dataset.count_clip:
             raise ValueError("client/server voxel normalization differs")
-        if not args.no_images and hello["horizon"] != 24:
+        event_horizon = hello.get('event_horizon', hello['horizon'])
+        if event_horizon != dataset.future_horizon:
+            raise ValueError('server and dataset event horizons differ')
+        if not args.no_images and event_horizon != 24:
             raise ValueError("comparison image layout requires horizon=24; use --no-images")
         output.mkdir(parents=True, exist_ok=True)
         mapping = []
@@ -183,7 +186,7 @@ def main() -> None:
                            **metric(prediction, target, args.occupancy_threshold),
                            "frame_f1": [metric(prediction[frame:frame + 1], target[frame:frame + 1],
                                                args.occupancy_threshold)["f1"]
-                                        for frame in range(hello["horizon"])]}
+                                        for frame in range(event_horizon)]}
                     rows.append(row)
                     print(json.dumps({key: value for key, value in row.items() if key != "frame_f1"}), flush=True)
                     save_json(output / "rows.json", rows)
@@ -198,7 +201,7 @@ def main() -> None:
                 values["per_seed_f1"] = {str(seed): statistics.mean(row["f1"] for row in selected
                                                              if row["seed"] == seed) for seed in seeds}
                 values["frame_f1"] = [statistics.mean(row["frame_f1"][frame] for row in selected)
-                                      for frame in range(hello["horizon"])]
+                                      for frame in range(event_horizon)]
             summary[method] = values
         if not args.no_images:
             render_comparisons(output, pictures, indices, steps, args.occupancy_threshold, dataset.count_clip)

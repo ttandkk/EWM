@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "release": "simulation-v1",
+  "platform": "linux-x86_64",
+  "profiles": {
+    "simulation": {
+      "python": "3.12",
+      "requirements": "simulation.requirements.txt",
+      "requirements_sha256": "65f1e288bdd95f1dc3cf35ef731b82db21d7e627bc84f521d25235265ace8f8d",
+      "sources": [
+        "runtime_isaaclab",
+        "event_plugin",
+        "agilex"
+      ],
+      "local_project": null,
+      "packages": 195
+    },
+    "policy-ewm": {
+      "python": "3.10",
+      "requirements": "policy-ewm.requirements.txt",
+      "requirements_sha256": "c6916dc90d2315cf6931a590dba96100e70e73ad6b2b8e2b64b181d11310e20b",
+      "sources": [],
+      "local_project": "OpenWAM",
+      "packages": 129
+    },
+    "policy-fastwam": {
+      "python": "3.10",
+      "requirements": "policy-fastwam.requirements.txt",
+      "requirements_sha256": "9b772232f9920d8f08f7965430f768e8c456cd5f49e8ce0e5b833fc0e67b0a93",
+      "sources": [
+        "fastwam"
+      ],
+      "local_project": null,
+      "packages": 110
+    },
+    "writer": {
+      "python": "3.12",
+      "requirements": "writer.requirements.txt",
+      "requirements_sha256": "93b6ab51ccf8276cc2f44ff2cd21896eab474271295e08deaaffc74b9377d92a",
+      "sources": [
+        "writer_lerobot"
+      ],
+      "local_project": null,
+      "packages": 68
+    }
+  },
+  "sources": [
+    {
+      "name": "fastwam",
+      "url": "https://github.com/yuantianyuan01/FastWAM.git",
+      "commit": "7faa71108368fbb3b6885649f112af607427a2d4",
+      "install": [
+        "."
+      ],
+      "patch": "fastwam.patch",
+      "patch_sha256": "774cee645689f040db9579e6b291bd1c3fc1ab23010666b6c4b03c4e48a15b32",
+      "patch_state": "fastwam.state.json",
+      "patch_state_sha256": "6fdcac9a680718b3fe5a713438afbac7888a4ccf5dec994ee89a0413ffb8960f"
+    },
+    {
+      "name": "runtime_isaaclab",
+      "url": "https://github.com/isaac-sim/IsaacLab.git",
+      "commit": "ffff603eafc6b74264a5261cc0183d6a65390d78",
+      "install": [
+        "source/isaaclab",
+        "source/isaaclab_assets",
+        "source/isaaclab_tasks",
+        "source/isaaclab_physx",
+        "source/isaaclab_teleop",
+        "source/isaaclab_visualizers",
+        "source/isaaclab_ppisp"
+      ]
+    },
+    {
+      "name": "event_plugin",
+      "url": "https://github.com/spikelab-jhu/isaac-sim-event-camera-plugin.git",
+      "commit": "d6fe47923fad09c4bfa2fd2cb13f82520114cfae",
+      "install": [
+        "."
+      ]
+    },
+    {
+      "name": "agilex",
+      "url": "https://github.com/agilexrobotics/Agilex-College.git",
+      "commit": "c2688be41e1bc99a9addd555f237a16bc839d936",
+      "install": [
+        "isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop"
+      ]
+    },
+    {
+      "name": "writer_lerobot",
+      "url": "https://github.com/huggingface/lerobot.git",
+      "commit": "7e241bd630a3719a56157a497ce5d08f244784f1",
+      "install": [
+        "."
+      ]
+    }
+  ],
+  "indexes": [
+    "https://pypi.org/simple",
+    "https://pypi.nvidia.com",
+    "https://download.pytorch.org/whl/cu128",
+    "https://download.pytorch.org/whl/cpu"
+  ],
+  "expected_simulation_versions": {
+    "isaacsim": "6.0.1.0",
+    "isaaclab": "6.1.14",
+    "dvs_gen": "0.1.0",
+    "agx_teleop": "0.1.0",
+    "torch": "2.11.0+cu128",
+    "torchvision": "0.26.0+cu128",
+    "numpy": "2.3.1"
+  },
+  "compatibility": {
+    "path": "backend/isaac_compat.py",
+    "sha256": "2b15ba9a38f24a8566e747e07a700f9667dedbaae55be8ecc862c1f92802df2a",
+    "purpose": [
+      "legacy HDR buffer alias",
+      "WXYZ to XYZW",
+      "legacy PhysX property",
+      "extension utility alias"
+    ]
+  },
+  "known_metadata_exceptions": [
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab-teleop",
+      "version": "0.5.2",
+      "requirement": "dex-retargeting",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab-teleop 0.5.2 requires dex-retargeting, which is not installed.",
+      "functional_impact": "XR/retargeting teleoperation is unavailable; Piper oracle and fixed camera paths do not use these extras."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab-teleop",
+      "version": "0.5.2",
+      "requirement": "isaacteleop",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab-teleop 0.5.2 requires isaacteleop, which is not installed.",
+      "functional_impact": "XR/retargeting teleoperation is unavailable; Piper oracle and fixed camera paths do not use these extras."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "daqp",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires daqp, which is not installed.",
+      "functional_impact": "Alternate robot IK/retargeting paths are unavailable; Piper uses its bundled IK implementation."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "pin",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires pin, which is not installed.",
+      "functional_impact": "Alternate robot IK/retargeting paths are unavailable; Piper uses its bundled IK implementation."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "pin-pink",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires pin-pink, which is not installed.",
+      "functional_impact": "Alternate robot IK/retargeting paths are unavailable; Piper uses its bundled IK implementation."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "debugpy",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires debugpy, which is not installed.",
+      "functional_impact": "Upstream debugging/test utilities are unavailable; this is not a full Isaac Lab developer environment."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "flaky",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires flaky, which is not installed.",
+      "functional_impact": "Upstream debugging/test utilities are unavailable; this is not a full Isaac Lab developer environment."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "flatdict",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires flatdict, which is not installed.",
+      "functional_impact": "Upstream debugging/test utilities are unavailable; this is not a full Isaac Lab developer environment."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "junitparser",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires junitparser, which is not installed.",
+      "functional_impact": "Upstream debugging/test utilities are unavailable; this is not a full Isaac Lab developer environment."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "pytest-mock",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires pytest-mock, which is not installed.",
+      "functional_impact": "Upstream debugging/test utilities are unavailable; this is not a full Isaac Lab developer environment."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "onnx",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires onnx, which is not installed.",
+      "functional_impact": "ONNX export, tetrahedral meshing and standalone USD tooling are unavailable; runtime uses Kit USD and the packaged rigid assets."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "pytetwild",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires pytetwild, which is not installed.",
+      "functional_impact": "ONNX export, tetrahedral meshing and standalone USD tooling are unavailable; runtime uses Kit USD and the packaged rigid assets."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "usd-core",
+      "actual": "not installed",
+      "pip_check_line": "isaaclab 6.1.14 requires usd-core, which is not installed.",
+      "functional_impact": "ONNX export, tetrahedral meshing and standalone USD tooling are unavailable; runtime uses Kit USD and the packaged rigid assets."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "dvs-gen",
+      "version": "0.1.0",
+      "requirement": "numpy<2",
+      "actual": "numpy==2.3.1",
+      "pip_check_line": "dvs-gen 0.1.0 has requirement numpy<2, but you have numpy 2.3.1.",
+      "functional_impact": "Pinned EVIS metadata predates NumPy 2; the two-episode GPU event diagnostic is mandatory to validate this combination."
+    },
+    {
+      "profile": "simulation",
+      "distribution": "isaaclab",
+      "version": "6.1.14",
+      "requirement": "coverage==7.6.1",
+      "actual": "coverage==7.4.4",
+      "pip_check_line": "isaaclab 6.1.14 has requirement coverage==7.6.1, but you have coverage 7.4.4.",
+      "functional_impact": "Upstream coverage reporting differs from its development pin; no claim of upstream test-suite compatibility."
+    }
+  ],
+  "validation": {
+    "existing_runtime": "Eight-task RGB/EVIS collection and evaluation",
+    "fresh_install": {
+      "status": "cpu_verified",
+      "date": "2026-11-11",
+      "scope": "New isolated virtualenv; public fixed Git sources; installed benchmark used outside the checkout with PYTHONPATH/PYTHONHOME cleared; 198 version entries, compatibility hash, exact metadata exceptions and all 53 assets verified.",
+      "gpu": "not_run"
+    },
+    "container": "not_run",
+    "tested_gpu_families": [
+      "RTX 5090",
+      "RTX PRO 6000"
+    ],
+    "host_driver": "Must satisfy pinned Isaac Sim and CUDA requirements; verify on target machine."
+  },
+  "official_docs": {
+    "python": "https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_python.html",
+    "container": "https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html"
+  },
+  "asset_derivation": {
+    "recipe": "piper-empty-world-reference-v1",
+    "path": "backend/usd_compat.py",
+    "sha256": "de4836699bf06556de899b8cc691a93b5cd8ba083f991bd6d0d9075517919786",
+    "source": "Agilex c2688be41e1bc99a9addd555f237a16bc839d936, five original hashes in assets.lock.json",
+    "operation": "Copy five-layer closure; remove only empty internal prepend reference /visuals/world at /piper/world/visuals in piper_base.usd; other four layers byte-identical.",
+    "acceptance": "All native composed USD values/metadata/schemas/flags/connections/targets/time samples exactly equal, including instance proxies; derived composition errors empty; source files unchanged.",
+    "cache": "Content-addressed managed runtime cache, derivation.json records recipe/source/derived hashes and semantic proof. Original source bundle is never modified."
+  }
+}

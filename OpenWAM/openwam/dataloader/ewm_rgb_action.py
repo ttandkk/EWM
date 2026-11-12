@@ -30,7 +30,14 @@ class PiperRGBActionDataset(EWMDataset):
         ep_local = int(np.searchsorted(self._cumulative, index, side="right") - 1)
         row = self.episodes.iloc[ep_local]
         k = self.first_anchor + int(index - self._cumulative[ep_local]) * self.window_stride
-        video = self._rgb(row, np.arange(k, k + self.chunk_size + 1, dtype=np.int64))
+        padded = getattr(self, "pad_tail", False)
+        future = np.arange(k + 1, k + self.future_horizon + 1, dtype=np.int64)
+        if padded:
+            length = int(row["length"])
+            action_valid = np.arange(k, k + self.chunk_size) < length
+            future_valid = future < length
+            future = np.minimum(future, length - 1)
+        video = self._rgb(row, np.concatenate(([k], future)))
         camera_indices = {"dual": (0, 1), "wrist_only": (1,), "global_only": (0,)}[self.event_camera_mode]
         selected = video[:, camera_indices].contiguous()
         data_path = self.dataset_dir / self.data_path.format(
@@ -38,17 +45,27 @@ class PiperRGBActionDataset(EWMDataset):
         start = int(row["_data_offset"]) + k
         table = _read_table(str(data_path))
         current = table.slice(start, 1).to_pandas().iloc[0]
-        targets = table.slice(start, self.chunk_size).to_pandas()
+        count = min(self.chunk_size, length - k) if padded else self.chunk_size
+        targets = table.slice(start, count).to_pandas()
         task_index = int(current["task_index"])
         if task_index not in self.prompts:
             raise KeyError(f"missing prompt for task_index={task_index}")
-        return {
-            "obs_video": video[0],
+        actions = np.zeros((self.chunk_size, 7), dtype=np.float32)
+        actions[:count] = np.stack(targets["action"].to_numpy()).astype(np.float32, copy=False)
+        normalized = self.normalizer.normalize_action(torch.from_numpy(actions))
+        cache = getattr(self, "current_dino_cache", None)
+        observation = cache.observation(row, k) if cache is not None else {"obs_video": video[0]}
+        sample = {
+            **observation,
             "obs_rgb": selected[0],
             "future_rgb": selected[1:],
             "proprio": self.normalizer.normalize_proprio(
                 torch.from_numpy(np.asarray(current["observation.state"], dtype=np.float32).copy())),
-            "action": self.normalizer.normalize_action(
-                torch.from_numpy(np.stack(targets["action"].to_numpy()).astype(np.float32, copy=False))),
+            "action": normalized,
             "prompt": self.prompts[task_index],
         }
+        if padded:
+            sample["action_valid_mask"] = torch.from_numpy(action_valid)
+            sample["future_valid_mask"] = torch.from_numpy(future_valid)
+            sample["action"][~sample["action_valid_mask"]] = 0
+        return sample

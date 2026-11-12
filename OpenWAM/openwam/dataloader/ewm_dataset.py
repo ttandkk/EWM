@@ -72,13 +72,24 @@ def _read_event_frame_cache(path):
 class EWMDataset(BaseDataset):
     """Returns current dual-view RGB/voxel and future action/voxel supervision."""
 
-    def __init__(self, dataset_dir, *, chunk_size=8, context_frames=1, window_stride=1,
+    event_horizon = None
+
+    @property
+    def future_horizon(self):
+        return self.chunk_size if self.event_horizon is None else self.event_horizon
+
+    def __init__(self, dataset_dir, *, chunk_size=24, event_horizon=None, context_frames=1, window_stride=1,
                  voxel_window_ms=None, voxel_bins=4, count_clip=15, event_cache_size=8,
                  normalization_stats_path=None, event_camera_mode="dual", gpu_voxelization=False,
                  observation_row_offset=0, event_frame_cache_dir=None,
-                 rgb_decode_backend="pyav"):
+                 rgb_decode_backend="pyav", pad_tail=False, compact_events=False,
+                 current_dino_cache_dir=None, current_dino_path=None):
         self.dataset_dir = Path(dataset_dir)
         self.chunk_size, self.context_frames = int(chunk_size), int(context_frames)
+        if event_horizon is not None and (type(event_horizon) is not int or event_horizon <= 0):
+            raise ValueError('event_horizon must be a positive integer or None')
+        self.event_horizon = event_horizon
+        self.pad_tail = bool(pad_tail)
         self.window_stride, self.voxel_bins = int(window_stride), int(voxel_bins)
         self.count_clip, self.event_cache_size = int(count_clip), int(event_cache_size)
         # Direct event-frame datasets store RGB/state/event at the same row.
@@ -185,9 +196,15 @@ class EWMDataset(BaseDataset):
 
         counts = []
         for _, row in self.episodes.iterrows():
-            available = int(row["length"]) - self.chunk_size - self.first_anchor
+            available = int(row["length"]) - (0 if self.pad_tail else max(self.chunk_size, self.future_horizon)) - self.first_anchor
             counts.append(max(0, (available - 1) // self.window_stride + 1))
         self._cumulative = np.concatenate(([0], np.cumsum(np.asarray(counts, dtype=np.int64))))
+        self.compact_events = bool(compact_events)
+        if self.compact_events and (not self.direct_event_frames or self.count_clip != 15):
+            raise ValueError('compact events require direct count frames with count_clip=15')
+        from .current_dino_cache import CurrentDinoCache
+        self.current_dino_cache = (CurrentDinoCache(self, current_dino_cache_dir, current_dino_path)
+                                   if current_dino_cache_dir else None)
         if len(self) == 0:
             raise ValueError("no valid samples for context_frames/chunk_size")
 
@@ -267,7 +284,7 @@ class EWMDataset(BaseDataset):
             else:
                 frames = cache[indices]
             camera_indices = tuple(CAMERAS.index(camera) for camera in self.event_cameras)
-            return self.normalizer.normalize_voxel(torch.from_numpy(frames[:, camera_indices].copy()))
+            return self._format_event_frames(torch.from_numpy(frames[:, camera_indices].copy()))
         table = _read_event_frame_table(str(path), self.event_cameras)
         views = []
         for camera in self.event_cameras:
@@ -284,9 +301,21 @@ class EWMDataset(BaseDataset):
                 frames.append(rgb[..., :2].transpose(2, 0, 1))
             views.append(np.stack(frames))
         # [time, camera, OFF/ON, H, W], with no event histogramming in the loader.
-        return self.normalizer.normalize_voxel(
+        return self._format_event_frames(
             torch.from_numpy(np.stack(views, axis=1).copy())
         )
+
+    def _format_event_frames(self, frames):
+        if self.compact_events:
+            if frames.dtype != torch.uint8:
+                raise ValueError('compact events require lossless uint8 count frames')
+            return frames
+        return self.normalizer.normalize_voxel(frames)
+
+    def _rgb_observation(self, row, indices):
+        if self.current_dino_cache is not None:
+            return self.current_dino_cache.observation(row, int(indices[0]))
+        return {"obs_video": self._rgb(row, indices)[0]}
 
     def _rgb(self, row, indices):
         views = []
@@ -313,25 +342,37 @@ class EWMDataset(BaseDataset):
         k = self.first_anchor + int(index - self._cumulative[ep_local]) * self.window_stride
         episode_index = int(row["episode_index"])
         context = np.arange(k - self.context_frames + 1, k + 1, dtype=np.int64)
-        future = np.arange(k + 1, k + self.chunk_size + 1, dtype=np.int64)
+        future = np.arange(k + 1, k + self.future_horizon + 1, dtype=np.int64)
+        length = int(row["length"])
+        action_valid = np.arange(k, k + self.chunk_size) < length
+        future_valid = future < length
+        # Repeat the last observed event frame for codec padding, never read
+        # into the next episode when several episodes share a Parquet file.
+        future = np.minimum(future, length - 1)
         path = self.dataset_dir / self.data_path.format(chunk_index=int(row["data/chunk_index"]), file_index=int(row["data/file_index"]))
         start = int(row["_data_offset"]) + k
         table = _read_table(str(path))
         current = table.slice(start + self.observation_row_offset, 1).to_pandas().iloc[0]
-        targets = table.slice(start, self.chunk_size).to_pandas()
+        targets = table.slice(start, min(self.chunk_size, length - k)).to_pandas()
+        actions = np.zeros((self.chunk_size, ACTION_DIM), dtype=np.float32)
+        actions[:len(targets)] = np.stack(targets["action"].to_numpy())
         task_index = int(current["task_index"])
         if task_index not in self.prompts:
             raise KeyError(f"missing prompt for task_index={task_index}")
         sample = {
-            "obs_video": self._rgb(row, context + self.observation_row_offset)[0],
+            **self._rgb_observation(row, context + self.observation_row_offset),
             "proprio": self.normalizer.normalize_proprio(
                 torch.from_numpy(np.asarray(current["observation.state"], dtype=np.float32).copy())
             ),
             "prompt": self.prompts[task_index],
             "action": self.normalizer.normalize_action(
-                torch.from_numpy(np.stack(targets["action"].to_numpy()).astype(np.float32, copy=False))
+                torch.from_numpy(actions)
             ),
         }
+        if self.pad_tail:
+            sample["action_valid_mask"] = torch.from_numpy(action_valid)
+            sample["future_valid_mask"] = torch.from_numpy(future_valid)
+            sample["action"][~sample["action_valid_mask"]] = 0
         if self.direct_event_frames:
             frames = self._direct_event_frames(path, start + np.concatenate(([0], future - k)))
             sample["obs_voxel"] = frames[0]
@@ -352,9 +393,11 @@ class EWMDataset(BaseDataset):
         root = get_cfg(config, "dataset_dir")
         if root is None:
             raise ValueError("EWMDataset requires dataset_dir")
-        return cls(root, chunk_size=int(get_cfg(config, "chunk_size", 8)),
+        return cls(root, chunk_size=int(get_cfg(config, "chunk_size", 24)),
+                   event_horizon=get_cfg(config, 'event_horizon', None),
                    context_frames=int(get_cfg(config, "context_frames", 1)),
                    window_stride=int(get_cfg(config, "window_stride", 1)),
+                   pad_tail=bool(get_cfg(config, "pad_tail", False)),
                    voxel_window_ms=get_cfg(config, "voxel_window_ms", None),
                    voxel_bins=int(get_cfg(config, "voxel_bins", 4)),
                    count_clip=int(get_cfg(config, "count_clip", 15)),
@@ -364,7 +407,10 @@ class EWMDataset(BaseDataset):
                    gpu_voxelization=bool(get_cfg(config, "gpu_voxelization", False)),
                    observation_row_offset=int(get_cfg(config, "observation_row_offset", 0)),
                    event_frame_cache_dir=get_cfg(config, "event_frame_cache_dir", None),
-                   rgb_decode_backend=str(get_cfg(config, "rgb_decode_backend", "pyav")))
+                   rgb_decode_backend=str(get_cfg(config, "rgb_decode_backend", "pyav")),
+                   compact_events=bool(get_cfg(config, 'compact_events', False)),
+                   current_dino_cache_dir=get_cfg(config, 'current_dino_cache_dir', None),
+                   current_dino_path=get_cfg(config, 'current_dino_path', None))
 
 
 def collate_ewm_sparse_events(samples):

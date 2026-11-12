@@ -1,0 +1,13 @@
+{
+  "source": "Completed 2026-11-10 v5 formal RGB-action evaluation; all five model scene manifests agree",
+  "tasks": {
+    "conveyor": "a8daf39269db77d7b457426757022107c5a166365fd0f2f6116f8335f345bdc6",
+    "tennis_parabolic": "ba8fccbfdab64f15346303c393bdd706b03dc8511c3911d14322bbdb44c70ea4",
+    "tennis_rolling": "d27fe0f8fd2ae535b672f47ded47e0453fc59560e97f6da3c503cb563dbcec35",
+    "tennis_falling": "cbbbc33d935a27b11987a6b5281f367bcee98e52b08841df0479298890478940",
+    "tennis_container": "0972165409a03aa2be2234d6dff2b91652ca39632b0e604b7c635e062c1744bf",
+    "moving_carton": "6c71eb9765941efc95b3967238f6d8aa9c4cefe69738e0a41b4dbaa652ddf1c2",
+    "rotating_tube": "4fd1a83ce7cd07ab89fdb5c052adabe356e5ae2126ae60b1aff48482e38698c7",
+    "turntable_cups": "0edbcd7f96a70db9b0b5a46975d51db3755a4a9f79f14478825f837dd7444be8"
+  }
+}

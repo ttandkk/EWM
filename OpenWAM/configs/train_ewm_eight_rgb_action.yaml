@@ -1,0 +1,24 @@
+# Eight-task RGB/action counterpart to train_ewm_eight.
+defaults:
+  - train_ewm_eight
+  - _self_
+
+model:
+  training_mode: rgb_action
+  event_codec_impl: leanvae16_rgb_joint
+  event_camera_mode: dual
+  event_horizon: 24
+  event_temporal_downsample: 2
+
+dataloader:
+  type: ewm_piper_multitask_rgb_action
+  event_camera_mode: dual
+  compact_events: false
+  current_dino_cache_root: ${oc.env:EWM_CURRENT_DINO_CACHE,null}
+
+training:
+  output_path: ${oc.env:EWM_RGB_ACTION_OUTPUT,outputs/ewm_eight_rgb_action}
+
+project:
+  wandb:
+    run_name: ${oc.env:EWM_RGB_ACTION_RUN_NAME,ewm-eight-rgb-action}

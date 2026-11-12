@@ -1,0 +1,5 @@
+{
+  "source": "tmp/training_data_cache/piper_rgb_dynamic_v1/openwam_normalization_stats.npy",
+  "sha256": "fda2ea9f370452305659f831e93a18ca162ea84a14ec11ecfa8cef6e74fcb7a6",
+  "purpose": "aggregate real Piper training statistics for legacy adapter regression; no trajectories or images"
+}

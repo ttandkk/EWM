@@ -36,6 +36,8 @@ def _force_flush_excepthook(exc_type, exc_value, exc_tb):
 sys.excepthook = _force_flush_excepthook
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# Stable across cwd changes and Hydra launch directories; explicit overrides win.
+os.environ.setdefault("EWM_PROJECT_ROOT", str(PROJECT_ROOT.parent))
 
 
 class _StartupNoiseFilter(logging.Filter):
@@ -110,7 +112,7 @@ def _inject_project_seed(cfg: DictConfig) -> None:
 def _train(cfg: DictConfig) -> None:
     """Package-native training path."""
     _inject_project_seed(cfg)
-    if OmegaConf.select(cfg, "model.type") in ("ewm", "ewm_sparse", "ewm_memory", "ewm_rgb_event_memory"):
+    if OmegaConf.select(cfg, "model.type") in ("ewm",):
         from scripts.train_ewm import train
         train(cfg)
         return

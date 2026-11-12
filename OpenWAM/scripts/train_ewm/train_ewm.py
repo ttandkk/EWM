@@ -22,7 +22,9 @@ from openwam.model.architectures.ewm import EWMModel
 from openwam.dataloader.ewm_event_only import EWMMixedEventOnlyDataset
 from openwam.dataloader.ewm_source_batch_sampler import SourceHomogeneousBatchSampler
 from openwam.dataloader.ewm_rgb_action import PiperRGBActionDataset
+from openwam.dataloader.ewm_piper_rgb_multitask import PiperMultiTaskRGBActionDataset
 from openwam.dataloader.ewm_action_only import PiperActionOnlyDataset
+from openwam.dataloader.ewm_piper_action_multitask import PiperMultiTaskActionDataset
 from openwam.train.utils.seeding import seed_everything
 from openwam.train.utils.training_utils import build_cosine_scheduler, init_wandb, write_debug_loss_row
 from openwam.train.utils.pure_noise_eval import eval_due, submit_pure_noise_eval
@@ -32,6 +34,40 @@ from openwam.train.utils.ewm_resume import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+def _finish_persistent_loader(loader):
+    """Finish already-prefetched work before stopping persistent workers.
+
+    DataLoader's destructor suppresses shutdown exceptions. On early training
+    exit, large pending batches can still be in worker result queues; consume
+    those finite batches first and surface any worker failure to the caller.
+    This runs only after the final checkpoint and never changes training input.
+    """
+    base_loader = getattr(loader, "base_dataloader", loader)
+    iterator = getattr(base_loader, "_iterator", None)
+    if iterator is None:
+        return
+    # These are PyTorch iterator internals: stop scheduling new indices while
+    # allowing the already submitted work to finish. Bound stalled reads at
+    # shutdown instead of allowing a successful training process to hang forever.
+    iterator._sampler_iter = iter(())
+    iterator._timeout = 120
+    try:
+        for _ in iterator:
+            pass
+    except BaseException:
+        try:
+            iterator._shutdown_workers()
+        except Exception:
+            logger.exception("DataLoader shutdown also failed after a prefetch failure")
+        finally:
+            base_loader._iterator = None
+        raise
+    try:
+        iterator._shutdown_workers()
+    finally:
+        base_loader._iterator = None
 
 
 def _publish_policy_snapshot(output, step):
@@ -51,8 +87,19 @@ def _repoint_latest_policy(output, step):
     temporary.replace(output / "checkpoint.pt")
 
 
+def _log_policy_artifact(run, output, step):
+    """Upload an immutable saved policy together with its deployment metadata."""
+    import wandb
+    artifact = wandb.Artifact(f'ewm-policy-{run.id}', type='model', metadata={'step': step})
+    artifact.add_file(str(output / f'checkpoint_step_{step:06d}.pt'), name='checkpoint.pt')
+    for name in ('config.yaml', 'normalization.json', 'training_manifest.json'):
+        if (output / name).is_file():
+            artifact.add_file(str(output / name), name=name)
+    run.log_artifact(artifact, aliases=[f'step-{step:06d}', 'latest'])
+
+
 def train(cfg, *, dataset=None, model=None, accelerator=None):
-    from accelerate import Accelerator
+    from accelerate import Accelerator, DataLoaderConfiguration
 
     from openwam.dataloader.registry import build_dataset
     from openwam.dataloader.ewm_dataset import collate_ewm_sparse_events
@@ -96,52 +143,48 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
         if not all(str(getattr(pure_noise_eval, key, "")) for key in ("partition", "gres", "time")):
             raise ValueError("training.pure_noise_eval requires partition, gres and time")
     accelerator = accelerator or Accelerator(
-        gradient_accumulation_steps=t.gradient_accumulation_steps, mixed_precision=str(t.mixed_precision)
+        gradient_accumulation_steps=t.gradient_accumulation_steps, mixed_precision=str(t.mixed_precision),
+        dataloader_config=DataLoaderConfiguration(
+            non_blocking=bool(getattr(t, "non_blocking", False))
+        ),
     )
     resume_state = find_latest_resume_state(resume_path, accelerator.num_processes) if resume_path else None
     seed_everything(int(cfg.project.seed), rank=accelerator.process_index)
     # Stable CPU diagnostics on hosts affected by oneDNN Conv3D backward.
     if accelerator.device.type == "cpu":
         torch.backends.mkldnn.enabled = False
+    action_horizon = int(cfg.dataloader.chunk_size)
+    if cfg.model.get('training_mode', 'joint') != 'action_only':
+        horizons = [section.get('event_horizon') for section in (cfg.model, cfg.dataloader)]
+        if len({action_horizon if h is None else h for h in horizons}) != 1:
+            raise ValueError('model and dataloader event_horizon must match')
     dataset = build_dataset(cfg.dataloader, split="train") if dataset is None else dataset
     if not len(dataset):
         raise ValueError("training dataset is empty")
     if model is None:
-        if str(getattr(cfg.model, "type", "ewm")) == "ewm_sparse":
-            raise ValueError("sparse-token training is retired; use ewm or ewm_rgb_event_memory")
-        if str(getattr(cfg.model, "type", "ewm")) == "ewm_rgb_event_memory":
-            from openwam.model.architectures.hierarchical_ewm import HierarchicalMemoryEWMModel
-            model = HierarchicalMemoryEWMModel.from_config(cfg.model)
-            logger.info("RGB/event memory Q/KV budget: %s", model.token_counts(horizon=int(cfg.dataloader.chunk_size)))
-        elif str(getattr(cfg.model, "type", "ewm")) == "ewm_memory":
-            from openwam.model.architectures.ewm_memory import MemoryEWMModel
-            model = MemoryEWMModel.from_config(cfg.model)
-            logger.info("Memory EWM Q/KV budget: %s", model.token_counts(horizon=int(cfg.dataloader.chunk_size)))
-        else:
-            model = EWMModel.from_config(cfg.model)
+        if str(getattr(cfg.model, "type", "ewm")) != "ewm":
+            raise ValueError("EWM training requires model.type=ewm")
+        model = EWMModel.from_config(cfg.model)
     init_policy = getattr(t, "init_policy_checkpoint", None)
     if init_policy:
         if resume_path:
             raise ValueError("init_policy_checkpoint and resume_ckpt_path are mutually exclusive")
-        if not hasattr(model, "initialize_from_dense_policy"):
-            raise ValueError("dense initialization requires a memory model")
-        initial = torch.load(init_policy, map_location="cpu", weights_only=True)
-        if initial.get("format") != "ewm_wan_latent_v2":
-            raise ValueError("init_policy_checkpoint must be a dense latent EWM policy")
-        model.initialize_from_dense_policy(initial["model"])
+        from openwam.model.architectures.ewm_checkpoint import normalize_policy_payload
+        initial = normalize_policy_payload(torch.load(init_policy, map_location="cpu", weights_only=True))
+        if initial["model_config"].get("training_mode", "joint") != model.training_mode:
+            raise ValueError("init_policy_checkpoint training mode must match")
+        model.load_policy_state_dict(initial["model"])
         del initial
     if isinstance(dataset, EWMMixedEventOnlyDataset) and getattr(model, "training_mode", "joint") != "event_only":
         raise ValueError("ewm_mixed_event_only requires model.training_mode=event_only")
     rgb_mode = getattr(model, "training_mode", "joint") == "rgb_action"
     action_only = getattr(model, "training_mode", "joint") == "action_only"
-    if rgb_mode != isinstance(dataset, PiperRGBActionDataset):
+    if rgb_mode != isinstance(dataset, (PiperRGBActionDataset, PiperMultiTaskRGBActionDataset)):
         raise ValueError("rgb_action mode requires the Piper RGB-action dataloader, and vice versa")
-    if action_only != isinstance(dataset, PiperActionOnlyDataset):
+    if action_only != isinstance(dataset, (PiperActionOnlyDataset, PiperMultiTaskActionDataset)):
         raise ValueError("action_only mode requires the Piper action-only dataloader, and vice versa")
     if getattr(model, "training_mode", "joint") != "joint" and pure_noise_eval is not None and bool(pure_noise_eval.enabled):
         raise ValueError("the pure_noise_eval launcher requires event-action training")
-    if getattr(model, "memory_enabled", False) and pure_noise_eval is not None and bool(pure_noise_eval.enabled):
-        raise ValueError("memory EWM requires history-aware evaluation; disable the legacy pure_noise_eval launcher")
     for name in ("voxel_bins", "event_camera_mode"):
         if not action_only and hasattr(dataset, name) and getattr(dataset, name) != getattr(model, name):
             raise ValueError(f"model and dataloader {name} must match")
@@ -153,7 +196,12 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
         device_name = torch.cuda.get_device_name(accelerator.device).lower() if torch.cuda.is_available() else ""
         # Conveyor action-only L40 launches are gated by a dual-GPU compile smoke.
         l40_action_only = action_only and device_name in {"nvidia l40", "l40", "nvidia l40s", "l40s"}
-        if "6000 ada" not in device_name and not l40_action_only:
+        # Explicit opt-in for short L40 joint benchmarks; other devices retain the guard.
+        l40_experimental = (bool(getattr(t, "experimental_l40_compile", False))
+                            and device_name in {"nvidia l40", "l40", "nvidia l40s", "l40s"})
+        if l40_experimental:
+            logger.warning("Explicit experimental L40 DDP compile enabled for mode=%s", model.training_mode)
+        if "6000 ada" not in device_name and not l40_action_only and not l40_experimental:
             logger.warning(
                 "Disabling training.compile_core for multi-GPU device %r: only RTX 6000 Ada DDP is validated; "
                 "other tested hardware produced a CUDA illegal-memory-access.",
@@ -173,6 +221,12 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
     loader_generator = torch.Generator()
     loader_generator.manual_seed(int(cfg.project.seed))
     source_batch_sampler = None
+    loader_options = {}
+    if int(t.dataset_num_workers) > 0:
+        for key in ("prefetch_factor", "persistent_workers", "multiprocessing_context"):
+            value = getattr(t, f"dataset_{key}", None)
+            if value is not None:
+                loader_options[key] = value
     homogeneous_sources = isinstance(dataset, EWMMixedEventOnlyDataset) and bool(
         getattr(cfg.dataloader, "homogeneous_source_batches", True)
     )
@@ -189,17 +243,33 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
         )
         loader = DataLoader(
             dataset, batch_sampler=source_batch_sampler, num_workers=t.dataset_num_workers,
+            pin_memory=bool(getattr(t, "pin_memory", False)),
             generator=loader_generator,
+            **loader_options,
         )
         logger.info("Same-source batches across %d ranks: windows=%s, groups=%s",
                     accelerator.num_processes, source_batch_sampler.source_sizes,
                     source_batch_sampler.source_group_counts)
+    elif hasattr(dataset, 'make_batch_sampler'):
+        if accelerator.split_batches:
+            raise ValueError('task-balanced batches require Accelerate split_batches=false')
+        source_batch_sampler = dataset.make_batch_sampler(
+            t.batch_size, num_processes=accelerator.num_processes, seed=cfg.project.seed,
+        )
+        loader = DataLoader(
+            dataset, batch_sampler=source_batch_sampler, num_workers=t.dataset_num_workers,
+            pin_memory=bool(getattr(t, 'pin_memory', False)), generator=loader_generator,
+            **loader_options,
+        )
+        logger.info('Task-balanced batches: tasks=%s per-rank batch=%d ranks=%d',
+                    dataset.tasks, t.batch_size, accelerator.num_processes)
     else:
         loader = DataLoader(
             dataset, batch_size=t.batch_size, shuffle=True, num_workers=t.dataset_num_workers,
             collate_fn=collate_ewm_sparse_events if gpu_voxelization else None,
-            pin_memory=gpu_voxelization,
+            pin_memory=bool(getattr(t, "pin_memory", gpu_voxelization)),
             generator=loader_generator,
+            **loader_options,
         )
     optimizer = torch.optim.AdamW(
         (p for p in model.parameters() if p.requires_grad),
@@ -213,6 +283,8 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
         else None
     )
     model, optimizer, loader = accelerator.prepare(model, optimizer, loader)
+    logger.info("Data transfer: pin_memory=%s non_blocking=%s workers=%s",
+                loader.pin_memory, accelerator.non_blocking, t.dataset_num_workers)
     if scheduler is not None:
         scheduler = accelerator.prepare(scheduler)
     output = Path(resume_path) if resume_path else Path(t.output_path)
@@ -223,7 +295,7 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
             raise ValueError("EWM resume normalization metadata does not match the saved run")
     elif accelerator.is_main_process:
         output.mkdir(parents=True, exist_ok=True)
-        OmegaConf.save(cfg, output / "config.yaml")
+        OmegaConf.save(cfg, output / "config.yaml", resolve=True)
         (output / "normalization.json").write_text(json.dumps(dataset.normalizer.metadata, indent=2))
     accelerator.wait_for_everyone()
     run = init_wandb(cfg) if accelerator.is_main_process else None
@@ -298,7 +370,8 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
                 timings = {"data_wait": now - profile_data_clock, "_clock": now}
             if gpu_voxelization:
                 batch = materialize_sparse_event_voxels(
-                    batch, num_cameras=num_event_cameras, count_clip=voxel_count_clip
+                    batch, num_cameras=num_event_cameras, count_clip=voxel_count_clip,
+                    event_horizon=cfg.dataloader.get('event_horizon')
                 )
             profile_mark(timings, "materialize")
             with accelerator.accumulate(model):
@@ -416,8 +489,7 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
                     temporary = output / "checkpoint.tmp"
                     torch.save(
                         dict(
-                            format=getattr(policy_model, "checkpoint_format",
-                                           "ewm_action_only_v1" if action_only else "ewm_rgb_action_latent_v1" if rgb_mode else "ewm_wan_latent_v2"),
+                            format=("ewm_action_only_v2" if action_only else "ewm_rgb_action_latent_v1" if rgb_mode else "ewm_wan_latent_v2"),
                             model=policy_model.policy_state_dict(state),
                             model_config=OmegaConf.to_container(cfg.model, resolve=True),
                             step=step,
@@ -437,6 +509,8 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
                     accelerator.wait_for_everyone()
                 if accelerator.is_main_process and should_pure_noise_eval:
                     submit_pure_noise_eval(output, step, pure_noise_eval)
+                if run is not None and bool(getattr(t, 'wandb_log_checkpoints', False)):
+                    _log_policy_artifact(run, output, step)
                 if accelerator.is_main_process and keep_policy_checkpoints is not None:
                     prune_policy_checkpoints(output, keep_policy_checkpoints)
                 accelerator.wait_for_everyone()
@@ -468,6 +542,7 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
                 break
         epoch += 1
         skip_batches = 0
+    _finish_persistent_loader(epoch_loader)
     if run is not None:
         run.finish()
     return output / "checkpoint.pt"
@@ -475,7 +550,11 @@ def train(cfg, *, dataset=None, model=None, accelerator=None):
 
 @hydra.main(version_base=None, config_path="../../configs", config_name="train_ewm")
 def main(cfg):
-    train(cfg)
+    try:
+        train(cfg)
+    finally:
+        if torch.distributed.is_available() and torch.distributed.is_initialized():
+            torch.distributed.destroy_process_group()
 
 
 if __name__ == "__main__":

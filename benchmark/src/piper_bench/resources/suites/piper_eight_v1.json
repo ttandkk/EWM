@@ -1,0 +1,127 @@
+{
+  "version": "piper_eight_suite_v1",
+  "execution_profile": "continuous_min8_v1",
+  "background_profile": "piper_eight_dynamic_background_ood_v5_grey_green",
+  "tasks": {
+    "conveyor": {
+      "collection_protocol": "piper_eight_dynamic_collection_v1",
+      "success_version": "clipped_basket_v2",
+      "camera_calibration": "piper_conveyor_front_wrist_v4_robotwin",
+      "max_steps": 350,
+      "collection_file_sha256": "627fc2c230a50de824fde763cf87a2302aa042b5b807acddd125ca8d854b8677",
+      "step_budget": {
+        "collected_max_steps": 329,
+        "max_steps": 350,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "moving_carton": {
+      "collection_protocol": "piper_low_geometry_v5",
+      "success_version": "moving_carton_stack_v4_lowwall_support_posewindow",
+      "camera_calibration": "piper_moving_carton_conveyor_front_v3",
+      "max_steps": 650,
+      "collection_file_sha256": "aa4008c7f79f0dd57abd68efd49a2552fca328757357143443032d2a2c6465fe",
+      "step_budget": {
+        "collected_max_steps": 508,
+        "max_steps": 650,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "turntable_cups": {
+      "collection_protocol": "piper_low_geometry_v5",
+      "success_version": "bowl_nested_upright_stable_1s_v1",
+      "camera_calibration": "piper_turntable_cups_conveyor_front_v3",
+      "max_steps": 600,
+      "collection_file_sha256": "4835c314f4b6be8a341b7039ed2af0c17b7e9ed21a4d0cb91a9ec596ed19766f",
+      "step_budget": {
+        "collected_max_steps": 469,
+        "max_steps": 600,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "rotating_tube": {
+      "collection_protocol": "piper_eight_dynamic_narrow_v2",
+      "success_version": "piper_rotating_tube_bore_seated_v2",
+      "camera_calibration": "piper_rotating_tube_conveyor_front_v3",
+      "max_steps": 350,
+      "collection_file_sha256": "f3651126dfd4986a6b396e9a3b9bc5098c1b4b7ca966df31eeeff23011fc1d16",
+      "step_budget": {
+        "collected_max_steps": 295,
+        "max_steps": 350,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "tennis_rolling": {
+      "collection_protocol": "piper_eight_dynamic_narrow_v2",
+      "success_version": "rolling_lifted_hold_v3",
+      "camera_calibration": "piper_tennis_rolling_frontal_v3_wrist_v1",
+      "max_steps": 100,
+      "collection_file_sha256": "630185dc7e128fba99caefbead473b7bb20bf151439090b0a369aa6d938fc34e",
+      "step_budget": {
+        "collected_max_steps": 86,
+        "max_steps": 100,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "tennis_falling": {
+      "collection_protocol": "piper_eight_dynamic_narrow_v2",
+      "success_version": "existing_physical_predicates_v1",
+      "camera_calibration": "piper_tennis_falling_tight_front_v4_wrist_v1",
+      "max_steps": 100,
+      "collection_file_sha256": "58c422ac86fef953e57b9f5e01f2d59167dd2930b07942ab4f8dd3b97b59bbd6",
+      "step_budget": {
+        "collected_max_steps": 44,
+        "max_steps": 100,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "tennis_parabolic": {
+      "collection_protocol": "piper_eight_dynamic_narrow_v2",
+      "success_version": "lob_finger_region_v3",
+      "camera_calibration": "piper_tennis_lob_long_flight_receiving_oblique_v12_wrist_flight_v1",
+      "max_steps": 100,
+      "collection_file_sha256": "16da46d0f872062b8334fe690667edc925fb4dd28793251504decb3a078bac9f",
+      "step_budget": {
+        "collected_max_steps": 109,
+        "max_steps": 100,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    },
+    "tennis_container": {
+      "collection_protocol": "piper_container_spatial_v3",
+      "success_version": "existing_physical_predicates_v1",
+      "camera_calibration": "piper_tennis_container_spatial_receiving_oblique_v20_wrist_flight_v1",
+      "max_steps": 100,
+      "collection_file_sha256": "62aa7a3fb630868e5f3aac0e69e5b58feb0b6db7b3621fc9e1dfefa3346d8738",
+      "step_budget": {
+        "collected_max_steps": 69,
+        "max_steps": 100,
+        "rule": "fixed_task_defaults_v1",
+        "episodes": 50,
+        "includes_launch_wait": true,
+        "shared_across_conditions": true
+      }
+    }
+  }
+}

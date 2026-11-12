@@ -1,3 +1,5 @@
+> 本目录包含上游 OpenWAM 和 EWM 本地实现。当前 Piper 八任务入口、五模型结果和正式 continuous/min8 协议见 [项目 README](../README.md) 与 [测评协议](../docs/evaluation_protocol.md)。下方保留上游说明，不代表本项目当前评测默认值。
+
 <p align="center">
   <img src="assets/repo_images/openwam_title.png" alt="OpenWAM" width="60%">
 </p>
@@ -273,6 +275,32 @@ bash scripts/deploy.sh <ckpt_dir_path>
 For fine-tuning, set training.finetune_ckpt_path in `configs/train.yaml` to the
 downloaded checkpoint directory. Benchmark data is still required.
 
+### Fine-tune only the original OpenWAM action expert
+
+`train_openwam_action_only` selects the original Wan + ActionDiT architecture,
+freezes the complete video backbone, and trains ActionDiT plus the small proprio
+projection with action loss only. It uses `attention_mask_mode=action_sees_video`:
+action can read video features, while video cannot read action tokens. This
+changes the default Mutual attention layout. Video attention and block updates
+run separately under `no_grad`, so the video branch retains no backward graph.
+Video feature conditions still include the configured clip; this differs from
+FastWAM's first-frame-only action visibility.
+
+```bash
+# From OpenWAM/, using the existing OpenWAM training environment:
+../envs/openwam/bin/python scripts/train.py \
+  --config-name train_openwam_action_only dataloader=libero \
+  training.finetune_ckpt_path=/path/to/openwam_checkpoint_directory
+```
+
+Set the dataloader paths/action space for the intended dataset. For a new action
+expert initialized on native Wan weights, omit `training.finetune_ckpt_path`;
+the default local Wan directory is `../pretrained/Wan-AI/Wan2.2-TI2V-5B`, or set
+`model.video_backbone.model_path`. Action-only training keeps the existing full
+checkpoint format and gradient-checkpointing support. Finetune starts a new run;
+full-state resume must use a checkpoint from the same Action-only configuration.
+This preset is independent of the custom EWM `train_ewm_action_only_piper` preset.
+
 
 ## Quick Start
 
@@ -473,6 +501,32 @@ Have a question, want to share results, or just follow development? Join us:
   </tr>
 </table>
 
+
+### Simplified EWM
+
+EWM uses one current RGB frame from each camera, current state and text.
+Joint EWM additionally conditions on current events and predicts future events
+and actions. `action_only` predicts actions with no event expert or codec;
+`rgb_action` retains its future-RGB expert, codec and action loss.
+The existing `event_only` pretraining mode is also supported.
+Memory, action/event alignment loss, activity window routing, two-frame RGB
+fusion, online TTT and event-triggered replanning have been removed.
+
+Use `train_ewm_eight` (launcher `../scripts/train_ewm_eight.sbatch`) for the eight-task
+joint baseline, or `train_ewm_eight_action_only` for its action-only comparison.
+Both default to 24 actions. The joint eight-task preset also predicts
+24 event steps with input stride 2; `train_ewm` and
+`train_ewm_rgb_action_piper` retain the 24-step visual horizon and stride 1.
+Current-frame DINO caching, compact event counts, normalization and tail masks
+remain available. No history or alignment cache is needed.
+
+New action-only policies use `ewm_action_only_v2` and omit all inactive event
+weights. The policy loader accepts old single-frame action-only policies and
+old memory-format policies whose memory was disabled, dropping only their
+unused weights before strict validation. Policies with enabled retired features
+require their archived source. Exact optimizer resume is supported for new runs;
+start a new run after changing the architecture/configuration.
+Historical checkpoints, data caches and result reports are retained.
 
 ### EWM event codec
 

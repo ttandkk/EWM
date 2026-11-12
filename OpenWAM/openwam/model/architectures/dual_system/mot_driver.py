@@ -23,6 +23,7 @@ from torch import Tensor
 from openwam.model.architectures.utils.common import compute_video_tokens_per_frame
 from openwam.model.architectures.utils.mask_modes import (
     ACTION_SEES_VIDEO,
+    ISOLATED,
     build_cross_modal_attention_mask,
     set_video_attention_mask_mode,
     validate_attention_mask_mode,
@@ -65,6 +66,7 @@ class DualSystemMoTDriver:
         mot_checkpoint_mixed_attn: bool = True,
         attention_mask_mode: str = ACTION_SEES_VIDEO,
         video_attention_mask_mode: Optional[str] = None,
+        action_only: bool = False,
     ) -> None:
         if vb.num_layers != ab.num_layers:
             raise ValueError(
@@ -90,6 +92,11 @@ class DualSystemMoTDriver:
         self.head_dim = vb.head_dim
         self.mot_checkpoint_mixed_attn = bool(mot_checkpoint_mixed_attn)
         self.attention_mask_mode = attention_mask_mode
+        self.action_only = bool(action_only)
+        if self.action_only and attention_mask_mode not in (ACTION_SEES_VIDEO, ISOLATED):
+            raise ValueError("action_only requires video independent of action (action_sees_video or isolated)")
+        if self.action_only and any(p.requires_grad for p in vb.parameters()):
+            raise ValueError("action_only requires the entire video_backbone to be frozen")
 
         # Allow the architecture / config to override the video v↔v sub-mode.
         # When None we defer to whatever ``vb.video_attention_mask_mode`` reports.
@@ -214,7 +221,12 @@ class DualSystemMoTDriver:
         vb = self.vb
         ab = self.ab
 
-        q_v, k_v, v_v, vpost = vb.pre_attn_at_layer(layer_id, vstate)
+        if self.action_only:
+            with torch.no_grad():
+                q_v, k_v, v_v, vpost = vb.pre_attn_at_layer(layer_id, vstate)
+                q_v, k_v, v_v = q_v.detach(), k_v.detach(), v_v.detach()
+        else:
+            q_v, k_v, v_v, vpost = vb.pre_attn_at_layer(layer_id, vstate)
         q_a, k_a, v_a, apost = ab.pre_attn_at_layer(layer_id, astate)
 
         if q_v.dtype != q_a.dtype:
@@ -230,6 +242,27 @@ class DualSystemMoTDriver:
 
         s_video = q_v.shape[1]
         s_action = q_a.shape[1]
+        if self.action_only:
+            if attn_mask is None:
+                attn_mask = self._build_attention_mask(
+                    s_video, s_action, self._video_tokens_per_frame(vstate), device=q_v.device,
+                )
+                attn_mask = widen_mask_for_prefix_kv(attn_mask, vstate)
+            # Separate query rows before SDPA: concatenating frozen video and
+            # trainable action Q/K/V would keep a video backward graph alive.
+            with torch.no_grad():
+                video_attn = self._mixed_attention(q_v, k_v, v_v, attn_mask[:s_video, :k_v.shape[1]])
+                vstate = vb.post_attn_at_layer(layer_id, vstate, video_attn.contiguous(), vpost)
+            keys = torch.cat([k_v, k_a], dim=1)
+            values = torch.cat([v_v, v_a], dim=1)
+            if self.mot_checkpoint_mixed_attn and ab.training and not suppress_inner_attn_ckpt:
+                action_attn = torch.utils.checkpoint.checkpoint(
+                    self._mixed_attention, q_a, keys, values, attn_mask[s_video:], use_reentrant=False,
+                )
+            else:
+                action_attn = self._mixed_attention(q_a, keys, values, attn_mask[s_video:])
+            astate = ab.post_attn_at_layer(layer_id, astate, action_attn.contiguous(), apost)
+            return vstate, astate
         q_cat = torch.cat([q_v, q_a], dim=1)
         k_cat = torch.cat([k_v, k_a], dim=1)
         v_cat = torch.cat([v_v, v_a], dim=1)

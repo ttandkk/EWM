@@ -108,7 +108,7 @@ from scripts.eval_ewm.ewm_action_only_protocol import OBSERVATION_CONTRACT
 from scripts.eval_ewm.ewm_eval_recovery import archive_interrupted_trial, load_completed_results
 from scripts.eval_ewm.ewm_scene_rng import restore_scene_rng, save_scene_rng, state_path
 from scripts.eval_ewm.ewm_eval_summary import write_summary as _write_summary
-from scripts.eval_ewm.ewm_event_replan import horizon_statistics
+from scripts.eval_ewm.ewm_eval_summary import horizon_statistics
 from scripts.eval_ewm.ewm_rgb_ood import RGBOODConfig, TrialRGBOOD, check_resume_rgb_ood
 
 rgb_ood_config = RGBOODConfig(
@@ -149,24 +149,22 @@ def set_views(env) -> None:
     eye = torch.tensor([CAM0_EYE_WORLD], dtype=torch.float32, device=env.device)
     target = torch.tensor([CAM0_TARGET_WORLD], dtype=torch.float32, device=env.device)
     env.scene["cam0"].set_world_poses_from_view(eye, target)
-    ee = env.scene["ee_frame"].data
-    position, rotation = ee.target_pos_w[:, 0, :], ee.target_quat_w[:, 0, :]
-    eye_local = torch.tensor(WRIST_EYE_LOCAL, dtype=torch.float32, device=env.device).expand_as(position)
-    target_local = torch.tensor(WRIST_TARGET_LOCAL, dtype=torch.float32, device=env.device).expand_as(position)
-    env.scene["cam_wrist"].set_world_poses_from_view(
-        position + quat_apply(rotation, eye_local),
-        position + quat_apply(rotation, target_local),
-    )
+    from piper_wrist_camera import set_wrist_view
+    set_wrist_view(env)
 
 
 def configure_env():
     cfg = parse_env_cfg(TASK, device=args.device, num_envs=1, use_fabric=True)
     migrate_piper_stack_cfg(cfg)
+    from piper_scene_background import configure_room_background
+    configure_room_background(cfg.scene)
     cfg.seed = scene_seed  # Stream mode matches the collector: seed once, then reset without a seed.
     cfg.events.init_piper_arm_pose = None
     cfg.sim.dt, cfg.decimation, cfg.sim.render_interval = 1.0 / 120.0, 4, 4
     cfg.episode_length_s = float(args.max_steps + RESET_WARMUP_STEPS + 2) / CONTROL_HZ
     cfg.scene.cam0, cfg.scene.cam_wrist = camera("cam0"), camera("cam_wrist")
+    from piper_wrist_camera import configure_wrist_camera
+    configure_wrist_camera(cfg.scene.cam_wrist)
     cfg.scene.light.spawn.color, cfg.scene.light.spawn.intensity = (1.0, 1.0, 1.0), 6000.0
     cfg.scene.table.spawn.visual_material = sim_utils.PreviewSurfaceCfg(
         diffuse_color=(0.16, 0.16, 0.16), roughness=1.0, metallic=0.0)
@@ -304,7 +302,7 @@ def write_summary(output: Path, *, max_steps: int, sampling_steps: int,
                    decode_predicted_events=decode_predicted_events, error=error,
                    rgb_ood=rgb_ood_config.metadata())
     with (output / "summary.txt").open("a", encoding="utf-8") as handle:
-        handle.write("training_mode: action_only\nevent_input: false\nevent_guided_replan: false\n")
+        handle.write("training_mode: action_only\nevent_input: false\n")
 
 class TrialVideo:
     """Stream the two conditioning RGB views to H.264; no event renderer."""
@@ -425,7 +423,6 @@ def main() -> None:
             "observation_contract": OBSERVATION_CONTRACT,
             "input_keys": ["obs_video", "proprio", "prompt"],
             "event_input": False, "event_prediction": False,
-            "event_replan": {"enabled": False, "record_only": False},
             "scene_rng_reference_dir": (str(args.scene_rng_reference_dir.resolve())
                                         if args.scene_rng_reference_dir else None),
             "config_sha256": hello["config_sha256"],
@@ -468,8 +465,6 @@ def main() -> None:
                 raise FileNotFoundError(f"cannot resume without a manifest: {manifest_path}")
             saved_manifest = json.loads(manifest_path.read_text())
             check_resume_rgb_ood(saved_manifest.get("rgb_ood"), manifest["rgb_ood"])
-            if saved_manifest.get("event_replan") != manifest["event_replan"]:
-                raise ValueError("resume event replan configuration differs")
             immutable = ("checkpoint_step", "trials", "max_steps", "sampling_steps",
                          "action_chunk_size", "seed",
                          "scene_seed", "scene_seed_mode",

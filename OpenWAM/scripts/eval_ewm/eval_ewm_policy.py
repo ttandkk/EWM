@@ -20,30 +20,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import torch
-import numpy as np
 
 from openwam.dataloader.ewm_normalizer import EWMNormalizer
 from openwam.model.architectures.ewm import EWMModel
+from openwam.model.architectures.ewm_checkpoint import normalize_policy_payload
 
 
 def load_policy(checkpoint, device="cpu"):
     checkpoint = Path(checkpoint)
-    payload = torch.load(checkpoint, map_location="cpu", weights_only=True)
-    if payload.get("format") not in ("ewm_wan_latent_v2", "ewm_action_only_v1", "ewm_rgb_event_memory_latent_v1"):
-        raise ValueError("Dense-voxel EWM checkpoints are incompatible with the framewise Wan latent architecture")
-    if (payload["model_config"].get("training_mode", "joint") == "action_only") != (payload["format"] == "ewm_action_only_v1"):
-        raise ValueError("action-only checkpoint format and training_mode must match")
-    model_cls = EWMModel
-    memory_format = payload["format"] == "ewm_rgb_event_memory_latent_v1"
-    if memory_format != (payload["model_config"].get("type") == "ewm_rgb_event_memory"):
-        raise ValueError("RGB/event memory checkpoint format and model type must match")
-    if memory_format:
-        from openwam.model.architectures.hierarchical_ewm import HierarchicalMemoryEWMModel
-        model_cls = HierarchicalMemoryEWMModel
-    if payload["model_config"].get("type", "ewm") == "ewm_sparse":
-        from openwam.model.architectures.sparse_token_ewm import SparseTokenEWMModel
-        model_cls = SparseTokenEWMModel
-    model = model_cls.from_config(payload["model_config"])
+    payload = normalize_policy_payload(torch.load(checkpoint, map_location="cpu", weights_only=True))
+    model = EWMModel.from_config(payload["model_config"])
     model.load_policy_state_dict(payload["model"])
     model.to(device).eval()
     normalizer = EWMNormalizer(checkpoint.parent / "normalization.json")
@@ -69,21 +55,45 @@ def validate_observation_timing(observation, *, fps: float = 30.0) -> None:
         raise ValueError("RGB/proprio time must equal the observed event interval end")
 
 
-def prepare_observation(observation, normalizer, device):
-    validate_observation_timing(observation)
+def prepare_observation(observation, normalizer, device, *, training_mode="joint", event_camera_mode="wrist_only"):
+    from scripts.eval_ewm.ewm_action_only_protocol import validate_timing
+    if training_mode in ("action_only", "rgb_action"):
+        validate_timing(observation)
+    else:
+        validate_observation_timing(observation)
     rgb = torch.as_tensor(observation["obs_video"])
-    voxel = torch.as_tensor(observation["obs_voxel"])
     state = torch.as_tensor(observation["proprio"])
     if rgb.ndim != 4 or rgb.shape[:2] != (2, 3) or rgb.dtype != torch.uint8:
         raise ValueError("environment RGB must be uint8 [2,3,H,W]")
-    if voxel.ndim != 4 or voxel.shape[0] not in (1, 2) or voxel.shape[1:] != (2 * normalizer.voxel_bins, *rgb.shape[-2:]) or state.shape != (8,):
-        raise ValueError("environment voxel/state shape mismatch")
-    return dict(
+    if state.shape != (8,):
+        raise ValueError("environment state shape mismatch")
+    batch = dict(
         obs_video=rgb[None].to(device),
-        obs_voxel=normalizer.normalize_voxel(voxel)[None].to(device),
         proprio=normalizer.normalize_proprio(state)[None].to(device),
         prompt=[str(observation["prompt"])],
     )
+    if training_mode not in ("action_only", "rgb_action"):
+        voxel = torch.as_tensor(observation["obs_voxel"])
+        if voxel.ndim != 4 or voxel.shape[0] not in (1, 2) or voxel.shape[1:] != (2 * normalizer.voxel_bins, *rgb.shape[-2:]):
+            raise ValueError("environment voxel shape mismatch")
+        batch['obs_voxel'] = normalizer.normalize_voxel(voxel)[None].to(device)
+    if training_mode == "rgb_action":
+        views = {"dual": slice(None), "wrist_only": slice(1, 2), "global_only": slice(0, 1)}
+        batch['obs_rgb'] = batch['obs_video'][:, views[event_camera_mode]]
+    return batch
+
+
+def prepare_sample(sample, model, device):
+    """Forward current observations (raw or cached), never future labels."""
+    cached = 'current_dino_features' in sample
+    keys = ['current_dino_features' if cached else 'obs_video', 'proprio', 'prompt']
+    if model.training_mode == 'rgb_action':
+        keys.append('obs_rgb')
+    elif model.training_mode != 'action_only':
+        keys.append('obs_voxel')
+    batch = {key: sample[key][None].to(device) if isinstance(sample[key], torch.Tensor)
+             else [sample[key]] for key in keys}
+    return batch
 
 
 @torch.no_grad()
@@ -101,18 +111,9 @@ def evaluate(model, normalizer, env, *, horizon, num_steps=20, episodes=1, max_s
         reset = env.reset()
         observation = reset[0] if isinstance(reset, tuple) else reset
         reward_sum = 0.0
-        history = None
-        if getattr(model, "checkpoint_format", "") == "ewm_rgb_event_memory_latent_v1":
-            from scripts.eval_ewm.ewm_memory_history import RGBEventHistoryBuffer
-            history = RGBEventHistoryBuffer()
         for step in range(max_steps):
-            batch = prepare_observation(observation, normalizer, device)
-            if history is not None:
-                inputs = history.observe(np.asarray(observation["obs_video"]), np.asarray(observation["obs_voxel"]), step)
-                for key,value in inputs.items():
-                    tensor = torch.from_numpy(value)
-                    if key == "memory_event": tensor = normalizer.normalize_voxel(tensor)
-                    batch[key] = tensor[None].to(device)
+            batch = prepare_observation(observation, normalizer, device,
+                training_mode=model.training_mode, event_camera_mode=model.event_camera_mode)
             result = model.sample_policy(batch, horizon=horizon, normalizer=normalizer, num_steps=num_steps)
             # Receding horizon: never execute the rest of the old chunk.
             action = result["action"][0, 0].detach().cpu().numpy()
@@ -178,20 +179,12 @@ def main():
         cfg.dataloader.observation_row_offset = 0  # Same-row RGB/state/event-frame.
         cfg.dataloader.normalization_stats_path = str(Path(args.checkpoint).parent / "normalization.json")
         dataset = build_dataset(cfg.dataloader, split="train")
-        if model.training_mode != "action_only":
+        if model.training_mode not in ("action_only", "rgb_action"):
             if not dataset.direct_event_frames:
                 raise ValueError("evaluation requires an aligned direct event-frame dataset")
-            verify_exported_event_alignment(dataset, [args.sample_index], horizon)
+            verify_exported_event_alignment(dataset, [args.sample_index], model.event_prediction_horizon(horizon))
         sample = dataset[args.sample_index]
-        batch = {k: sample[k][None].to(args.device) if isinstance(sample[k], torch.Tensor)
-                 else [sample[k]] for k in
-                 (("obs_video", "proprio", "prompt") if model.training_mode == "action_only" else
-                  ("obs_video", "obs_voxel", "proprio", "prompt"))}
-        if getattr(model, "checkpoint_format", "") == "ewm_rgb_event_memory_latent_v1":
-            for key,value in sample.items():
-                if key.startswith("memory_"):
-                    batch[key] = value[None].to(args.device)
-            batch["fps"] = torch.tensor([sample["fps"]],device=args.device)
+        batch = prepare_sample(sample, model, args.device)
         result = model.sample_policy(batch, horizon=horizon, normalizer=normalizer, num_steps=args.num_steps)
         output = Path(args.output)
         output.mkdir(parents=True, exist_ok=True)

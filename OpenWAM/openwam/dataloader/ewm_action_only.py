@@ -30,7 +30,8 @@ def _read_action_mmap(path):
 class PiperActionOnlyDataset(EWMDataset):
     """obs[k] conditions action[k:k+K]; no event payloads or future RGB targets."""
 
-    def __init__(self, dataset_dir, *, action_only_mmap_cache_dir=None, **kwargs):
+    def __init__(self, dataset_dir, *, action_only_mmap_cache_dir=None, current_dino_cache_dir=None,
+                 current_dino_path=None, **kwargs):
         kwargs["gpu_voxelization"] = False
         kwargs["event_frame_cache_dir"] = None
         super().__init__(dataset_dir, **kwargs)
@@ -39,11 +40,18 @@ class PiperActionOnlyDataset(EWMDataset):
                 self.observation_row_offset != 0):
             raise ValueError("Piper action-only requires aligned pre-action RGB/state/action rows")
         self._configure_action_mmap_cache(action_only_mmap_cache_dir)
+        from .current_dino_cache import CurrentDinoCache
+        self.current_dino_cache = (CurrentDinoCache(self, current_dino_cache_dir, current_dino_path)
+                                   if current_dino_cache_dir else None)
 
     @classmethod
     def from_config(cls, config, split="train"):
         dataset = super().from_config(config, split)
         dataset._configure_action_mmap_cache(get_cfg(config, "action_only_mmap_cache_dir", None))
+        from .current_dino_cache import CurrentDinoCache
+        cache = get_cfg(config, "current_dino_cache_dir", None)
+        dataset.current_dino_cache = (CurrentDinoCache(dataset, cache, get_cfg(config, "current_dino_path"))
+                                      if cache else None)
         return dataset
 
     def _configure_action_mmap_cache(self, cache_dir):
@@ -125,26 +133,37 @@ class PiperActionOnlyDataset(EWMDataset):
         data_path = self.dataset_dir / self.data_path.format(
             chunk_index=int(row["data/chunk_index"]), file_index=int(row["data/file_index"]))
         start = int(row["_data_offset"]) + k
+        count = min(self.chunk_size, int(row["length"]) - k) if self.pad_tail else self.chunk_size
         if self.action_only_mmap_cache_dir is None:
             table = _read_action_table(str(data_path))
             current = table.slice(start, 1).to_pandas().iloc[0]
-            targets = table.slice(start, self.chunk_size).to_pandas()
+            targets = table.slice(start, count).to_pandas()
             state = np.asarray(current["observation.state"], dtype=np.float32).copy()
             actions = np.stack(targets["action"].to_numpy()).astype(np.float32, copy=False)
             task_index = int(current["task_index"])
         else:
             files = self._action_mmap_files[str(data_path)]
             state = _read_action_mmap(files["state"])[start].copy()
-            actions = _read_action_mmap(files["action"])[start:start + self.chunk_size].copy()
+            actions = _read_action_mmap(files["action"])[start:start + count].copy()
             task_index = int(_read_action_mmap(files["task_index"])[start])
         if task_index not in self.prompts:
             raise KeyError(f"missing prompt for task_index={task_index}")
-        return {
-            "obs_video": self._rgb(row, np.array([k], dtype=np.int64))[0],
+        normalized = self.normalizer.normalize_action(torch.from_numpy(actions))
+        if self.pad_tail:
+            normalized = torch.nn.functional.pad(normalized, (0, 0, 0, self.chunk_size - count))
+        observation = (self.current_dino_cache.observation(
+                           row, k)
+                       if self.current_dino_cache else
+                       self._rgb_observation(row, np.array([k], dtype=np.int64)))
+        sample = {
+            **observation,
             "proprio": self.normalizer.normalize_proprio(torch.from_numpy(state)),
-            "action": self.normalizer.normalize_action(torch.from_numpy(actions)),
+            "action": normalized,
             "prompt": self.prompts[task_index],
         }
+        if self.pad_tail:
+            sample["action_valid_mask"] = torch.arange(self.chunk_size) < count
+        return sample
 
 
 def entry_rows(path):

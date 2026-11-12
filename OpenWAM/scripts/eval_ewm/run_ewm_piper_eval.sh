@@ -8,7 +8,6 @@
 #SBATCH --output=/projects/hdd/myproject/CVPR2027/logs/ewm_piper_sim_eval_%j.log
 #SBATCH --error=/projects/hdd/myproject/CVPR2027/logs/ewm_piper_sim_eval_%j.log
 # Submit the default 50-trial Piper/EVIS evaluation on one GPU.
-# Optional: --event-guided-replan (or --event-replan-record-only for calibration).
 # RGB-only OOD: --rgb-ood enables lighting + motion blur; default is clean RGB.
 # Individual switches: --rgb-lighting-ood / --rgb-motion-blur-ood.
 # See OpenWAM/docs/ewm_rgb_ood.md for severity, seeds, and event isolation.
@@ -62,7 +61,9 @@ compile_core="${COMPILE_CORE:-false}"
 cache_context_kv="${CACHE_CONTEXT_KV:-true}"
 # Preserve the established closed-loop Piper evaluation protocol by default.
 warmup_iters="${WARMUP_ITERS:-0}"
-benchmark_iters="${BENCHMARK_ITERS:-0}"
+benchmark_default=0
+if [[ "$compile_core" == "true" ]]; then benchmark_default=1; fi
+benchmark_iters="${BENCHMARK_ITERS:-$benchmark_default}"
 server_args=(--warmup-iters "$warmup_iters" --benchmark-iters "$benchmark_iters")
 if [[ "$compile_core" == "true" ]]; then
     server_args+=(--compile-core)

@@ -83,6 +83,36 @@ checkpoint formats cannot be mixed on resume. Set
 `SAVE_CHECKPOINTS=false SAVE_FULL_STATES_FOR_RESUME=false SAVE_STEPS=0` for diagnostics.
 The event-specific pure-noise evaluation callback is intentionally unsupported.
 
+## Post-trial prediction videos (2026-11-07)
+
+The eight-task ID/OOD suite and shared conveyor evaluator default to
+`--record-predictions` for both `rgb_action` and joint event-action policies.
+Action-only does not allocate a prediction archive. Use `--no-record-predictions`
+to disable this diagnostic explicitly. Controller, flow-step, and latency options
+remain independent of recording.
+
+During a trial the server samples actions and visual latents without decoding.
+It copies the exact observed latent and future latent into a bounded CPU archive
+(at most 1 GiB), so subsequent CUDA Graph requests cannot overwrite them.
+These copies are included in the measured action reply round trip; VAE decoding
+and prediction-video encoding are not. No visual latent is sent with action replies.
+
+After control stops, only plans actually used for actions are decoded, on the
+same inference thread. The saved trial video has three rows: real dual RGB,
+observed dual events, and predicted RGB/events. Prediction index `j` from
+observation `k` is displayed at frame `k+j+1`; skipped stale action prefixes stay
+skipped, and exhausted asymmetric event horizons display an unavailable panel.
+Unused plans are discarded and the archive is cleared before the next trial.
+The temporary real-only video is replaced only after successful video validation,
+without retaining a duplicate full video or latent files on disk.
+
+Manifest/summary fields record `record_predictions`, `prediction_decode_phase`,
+and `prediction_decode_in_equivalent_latency`. Per-trial `prediction_recording`
+records decoded anchors/seeds, the archive peak, and post-trial processing time.
+Resume checks reject mixing these settings with a different saved protocol.
+The older independent stack RGB diagnostic is a separate evaluator; it is not
+the eight-task ID/OOD entry point.
+
 ## Validation
 
 The RGB/model/attention/resume/action-only/event-only regression suite passes77 tests.

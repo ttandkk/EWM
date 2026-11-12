@@ -46,6 +46,8 @@ class DualSystemSelfAttnArchitecture(BaseWAMArchitecture):
 
     def __init__(self, cfg=None):
         super().__init__(cfg)
+        self.action_only = bool(self._cfg_get(cfg, "action_only", False)) if cfg is not None else False
+        self.video_lora_config = None
         self._mot_driver: DualSystemMoTDriver | None = None
         self._mot_driver_kwargs: dict = {}
         self._compiled_mot_run_joint_loop: Optional[Callable[..., Tuple[object, object]]] = None
@@ -96,9 +98,54 @@ class DualSystemSelfAttnArchitecture(BaseWAMArchitecture):
             "mot_checkpoint_mixed_attn": bool(cfg.get("mot_checkpoint_mixed_attn", True)),
             "attention_mask_mode": str(cfg.get("attention_mask_mode", ACTION_SEES_VIDEO)),
             "video_attention_mask_mode": str(cfg.get("video_attention_mask_mode", "first_frame_causal")),
+            "action_only": self.action_only,
         }
+        lora = self._cfg_get(cfg, "video_lora", None)
+        if lora is not None:
+            self.enable_video_lora(lora)
         if self.video_backbone is not None:
             self.build_mot_driver()
+
+    def enable_video_lora(self, config):
+        """Adapt the Wan blocks; keep the action model and proprio encoder trainable."""
+        from omegaconf import OmegaConf
+
+        from openwam.model.architectures.utils.video_lora import (
+            inject_video_lora,
+            mark_only_lora_trainable,
+        )
+
+        if self.action_only:
+            raise ValueError("action_only and video_lora are mutually exclusive")
+        if self.video_lora_config is not None:
+            raise ValueError("Video LoRA is already configured")
+        vb_cfg = self._cfg_get(self.cfg, "video_backbone", {})
+        if self._cfg_get(vb_cfg, "from_scratch", False):
+            raise ValueError("Video LoRA requires a pretrained video backbone")
+        if self.video_backbone is None or not hasattr(self.video_backbone, "dit"):
+            raise ValueError("video_lora requires a Wan video backbone with a dit module")
+        if OmegaConf.is_config(config):
+            config = OmegaConf.to_container(config, resolve=True)
+        self.video_lora_config = inject_video_lora(self.video_backbone.dit, config)
+        self.video_backbone.requires_grad_(False)
+        mark_only_lora_trainable(self.video_backbone.dit)
+        self.action_backbone.requires_grad_(True)
+        if self.proprio_encoder is not None:
+            self.proprio_encoder.requires_grad_(True)
+
+    def train(self, mode=True):
+        super().train(mode)
+        if getattr(self, "action_only", False) and self.video_backbone is not None:
+            for module in self.video_backbone.modules():
+                module.training = False
+        return self
+
+    def compute_loss(self, *, lambda_video=1.0, lambda_action=1.0, **inputs):
+        if self.action_only and (lambda_video != 0 or lambda_action <= 0):
+            raise ValueError("action_only requires lambda_video=0 and lambda_action>0")
+        if self.action_only and inputs.get("actions") is None:
+            raise ValueError("action_only requires ground-truth actions")
+        return super().compute_loss(lambda_video=lambda_video, lambda_action=lambda_action, **inputs)
 
     def build_mot_driver(self) -> DualSystemMoTDriver:
         """Construct the :class:`DualSystemMoTDriver` from the current backbones.
@@ -119,6 +166,8 @@ class DualSystemSelfAttnArchitecture(BaseWAMArchitecture):
                 "set. Architecture must be built from a non-None cfg."
             )
 
+        if self.action_only:
+            self.freeze_modules(["video_backbone"])
         self._mot_driver = DualSystemMoTDriver(
             self.video_backbone,
             self.action_backbone,
@@ -202,11 +251,19 @@ class DualSystemSelfAttnArchitecture(BaseWAMArchitecture):
         # pass False.
         pipeline_inputs.setdefault("force_per_token_t_mod", True)
         pipeline_inputs.setdefault("zero_clean_prefix_t_mod", True)
-        vstate = vb.prepare(
-            use_gradient_checkpointing=use_gradient_checkpointing,
-            use_gradient_checkpointing_offload=use_gradient_checkpointing_offload,
-            **pipeline_inputs,
-        )
+        if self.action_only:
+            with torch.no_grad():
+                vstate = vb.prepare(
+                    use_gradient_checkpointing=False,
+                    use_gradient_checkpointing_offload=False,
+                    **pipeline_inputs,
+                )
+        else:
+            vstate = vb.prepare(
+                use_gradient_checkpointing=use_gradient_checkpointing,
+                use_gradient_checkpointing_offload=use_gradient_checkpointing_offload,
+                **pipeline_inputs,
+            )
 
         if noisy_actions is None or ab is None:
             for block_id in range(vb.num_layers):

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPATH="$project_dir/benchmark/src:$project_dir/policies/src${PYTHONPATH:+:$PYTHONPATH}"
+exec "${PIPER_CLI_PYTHON:-python3}" -m piper_bench "$@"

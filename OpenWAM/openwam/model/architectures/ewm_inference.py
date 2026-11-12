@@ -31,3 +31,23 @@ def bf16_velocity_snapshot(model):
         return torch.func.functional_call(wrapper, weights, args, kwargs, strict=False)
 
     return call
+
+
+def configure_inference_compile(model, *, mode, cache_bf16_weights, cuda_graphs):
+    from torch._inductor import config, list_mode_options
+    options = dict(list_mode_options(mode))
+    if not cuda_graphs:
+        options['triton.cudagraphs'] = False
+    enabled = bool(options.get('triton.cudagraphs', config.triton.cudagraphs))
+    # torch.compile accepts either mode or options; resolve mode before overriding.
+    model.compile_inference(mode=None, cache_bf16_weights=cache_bf16_weights, options=options)
+    return enabled
+
+def configure_action_compile(model, *, mode, cuda_graphs):
+    from torch._inductor import config, list_mode_options
+    options = dict(list_mode_options(mode))
+    if not cuda_graphs:
+        options['triton.cudagraphs'] = False
+    enabled = bool(options.get('triton.cudagraphs', config.triton.cudagraphs))
+    model.predict_velocity = torch.compile(model.predict_velocity, dynamic=False, options=options)
+    return enabled

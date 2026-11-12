@@ -78,6 +78,7 @@ def _register_builtins():
     from openwam.dataloader.ebench import EBenchDataset
     from openwam.dataloader.interndata_a1 import InternDataA1Dataset
     from openwam.dataloader.libero import LiberoDataset
+    from openwam.dataloader.piper_rgb import PiperRGBDataset
     from openwam.dataloader.mixture import MixtureDataset
     from openwam.dataloader.muka_franka import MukaFrankaDataset
     from openwam.dataloader.oxe_droid import OxeDroidDataset
@@ -85,8 +86,9 @@ def _register_builtins():
     from openwam.dataloader.ewm_event_only import EWMMixedEventOnlyDataset
     from openwam.dataloader.ewm_rgb_action import PiperRGBActionDataset
     from openwam.dataloader.ewm_action_only import PiperActionOnlyDataset
-    from openwam.dataloader.ewm_memory import MemoryPiperDataset, MemoryEventOnlyDataset
-    from openwam.dataloader.hierarchical_dataset import HierarchicalMemoryPiperDataset
+    from openwam.dataloader.ewm_piper_action_multitask import PiperMultiTaskActionDataset
+    from openwam.dataloader.ewm_piper_multitask import PiperMultiTaskDataset
+    from openwam.dataloader.ewm_piper_rgb_multitask import PiperMultiTaskRGBActionDataset
     from openwam.dataloader.robocasa365 import MultiTaskRoboCasa365Dataset
     from openwam.dataloader.robocasa_gr1 import MultiRoboCasaGR1Dataset
     from openwam.dataloader.robocoin import MultiRobotCOINDataset
@@ -102,6 +104,7 @@ def _register_builtins():
     register_dataset("robocoin")(MultiRobotCOINDataset)
     register_dataset("ebench")(EBenchDataset)
     register_dataset("libero")(LiberoDataset)
+    register_dataset("piper_rgb")(PiperRGBDataset)
     register_dataset("muka_franka")(MukaFrankaDataset)
     register_dataset("oxe_droid")(OxeDroidDataset)
     register_dataset("robocasa365")(MultiTaskRoboCasa365Dataset)
@@ -114,9 +117,9 @@ def _register_builtins():
     register_dataset("ewm_mixed_event_only")(EWMMixedEventOnlyDataset)
     register_dataset("ewm_piper_rgb_action")(PiperRGBActionDataset)
     register_dataset("ewm_piper_action_only")(PiperActionOnlyDataset)
-    register_dataset("ewm_piper_memory")(MemoryPiperDataset)
-    register_dataset("ewm_piper_rgb_event_memory")(HierarchicalMemoryPiperDataset)
-    register_dataset("ewm_mixed_event_only_memory")(MemoryEventOnlyDataset)
+    register_dataset("ewm_piper_multitask_action_only")(PiperMultiTaskActionDataset)
+    register_dataset("ewm_piper_multitask")(PiperMultiTaskDataset)
+    register_dataset("ewm_piper_multitask_rgb_action")(PiperMultiTaskRGBActionDataset)
 
 
 _register_builtins()

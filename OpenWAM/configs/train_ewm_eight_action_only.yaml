@@ -1,0 +1,47 @@
+defaults:
+  - train_ewm_action_only_piper
+  - _self_
+
+model:
+  type: ewm
+  training_mode: action_only
+  event_vae_path: null
+
+dataloader:
+  type: ewm_piper_multitask_action_only
+  chunk_size: 24
+  project_root: ${oc.env:NEW_PROJECT_ROOT,${oc.env:EWM_PROJECT_ROOT,..}}
+  dataset_dir: ${dataloader.project_root}/datasets
+  tasks: [conveyor, moving_carton, turntable_cups, rotating_tube, tennis_rolling, tennis_falling, tennis_parabolic, tennis_container]
+  pad_tail: true
+  normalization_stats_path: ${oc.env:EWM_ACTION_STATS,${dataloader.project_root}/tmp/training_data_cache/piper_dynamic_v1/shared_normalization.json}
+  current_dino_cache_root: ${dataloader.project_root}/tmp/training_data_cache/piper_dynamic_v1/current_dino_fixed32
+  current_dino_path: ${model.dino_path}
+
+training:
+  max_steps: 80000
+  lr_schedule_steps: 80000
+  batch_size: 32
+  gradient_accumulation_steps: 1
+  mixed_precision: bf16
+  compile_core: true
+  dataset_num_workers: 4
+  dataset_prefetch_factor: 2
+  dataset_persistent_workers: true
+  dataset_multiprocessing_context: spawn
+  pin_memory: true
+  non_blocking: true
+  save_checkpoints: true
+  save_steps: 20000
+  save_full_states_for_resume: true
+  keep_last_k_resume_states: 2
+  keep_last_k_policy_checkpoints: 4
+  wandb_log_checkpoints: false
+  init_policy_checkpoint: null
+  resume_ckpt_path: null
+  output_path: ${oc.env:EWM_ACTION_OUTPUT,outputs/ewm_eight_action_only}
+
+project:
+  wandb:
+    project: CVPR2027-EWM
+    run_name: ${oc.env:EWM_ACTION_RUN_NAME,ewm-eight-action-only}

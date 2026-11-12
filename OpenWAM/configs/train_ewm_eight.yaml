@@ -1,0 +1,56 @@
+# Single current RGB frame per camera; joint event/action prediction.
+defaults:
+  - train_ewm
+  - _self_
+
+model:
+  event_camera_mode: dual
+  event_horizon: 24
+  event_temporal_downsample: 2
+
+dataloader:
+  type: ewm_piper_multitask
+  chunk_size: 24
+  event_camera_mode: dual
+  gpu_voxelization: false
+  current_dino_path: ${model.dino_path}
+  # Keep terminal observations; padded future labels are excluded by masks.
+  pad_tail: true
+  project_root: ${oc.env:NEW_PROJECT_ROOT,${oc.env:EWM_PROJECT_ROOT,..}}
+  dataset_dir: ${dataloader.project_root}/datasets
+  tasks: [conveyor, moving_carton, turntable_cups, rotating_tube, tennis_rolling, tennis_falling, tennis_parabolic, tennis_container]
+  cache_root: ${oc.env:EWM_EIGHT_CACHE,${dataloader.project_root}/tmp/training_data_cache/piper_dynamic_v1}
+  normalization_stats_path: ${oc.env:EWM_EIGHT_STATS,${dataloader.cache_root}/shared_normalization.json}
+  # Per-task paths are resolved by the multitask reader, recorded above.
+  event_frame_cache_dir: null
+  # Opt-in until the full-grid cache has been built and validated on the GPU.
+  compact_events: false
+  current_dino_cache_root: null
+
+training:
+  max_steps: 80000
+  lr_schedule_steps: 80000
+  batch_size: 32
+  gradient_accumulation_steps: 1
+  mixed_precision: bf16
+  compile_core: true
+  dataset_num_workers: 4
+  dataset_prefetch_factor: 2
+  dataset_persistent_workers: true
+  dataset_multiprocessing_context: spawn
+  pin_memory: true
+  non_blocking: true
+  save_checkpoints: true
+  save_steps: 20000
+  save_full_states_for_resume: true
+  keep_last_k_resume_states: 2
+  keep_last_k_policy_checkpoints: 4
+  wandb_log_checkpoints: false
+  init_policy_checkpoint: null
+  resume_ckpt_path: null
+  output_path: ${oc.env:EWM_EIGHT_OUTPUT,outputs/ewm_eight}
+
+project:
+  wandb:
+    project: CVPR2027-EWM
+    run_name: ${oc.env:EWM_EIGHT_RUN_NAME,ewm-eight}

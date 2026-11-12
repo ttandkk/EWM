@@ -1,8 +1,0 @@
-{
-  "name": "event_plugin",
-  "source_path": "Event-DataCollection/third_party/isaac-sim-event-camera-plugin",
-  "head": "d6fe47923fad09c4bfa2fd2cb13f82520114cfae",
-  "patch_bytes": 0,
-  "patch_file": "tmp/migration_bundle/source_audit/event_plugin.patch",
-  "untracked": []
-}

@@ -5,7 +5,8 @@ from __future__ import annotations
 import torch
 
 
-def materialize_sparse_event_voxels(batch, *, num_cameras: int, count_clip: float, height=256, width=256):
+def materialize_sparse_event_voxels(batch, *, num_cameras: int, count_clip: float, height=256, width=256,
+                                   event_horizon=None):
     """Replace ``event_sparse`` with normalized one-bin dense voxel tensors.
 
     ``frame_id`` enumerates sample-major ``(current, future...) x camera``
@@ -21,6 +22,10 @@ def materialize_sparse_event_voxels(batch, *, num_cameras: int, count_clip: floa
     if action.ndim != 3:
         raise ValueError("action must be [B,K,7] before GPU voxelization")
     batch_size, horizon = action.shape[:2]
+    if event_horizon is not None:
+        if type(event_horizon) is not int or event_horizon <= 0:
+            raise ValueError('event_horizon must be a positive integer or None')
+        horizon = event_horizon
     frame_count = horizon + 1
     expected_frames = batch_size * frame_count * num_cameras
     frame_id, x, y, polarity = (sparse[key].to(torch.long) for key in ("frame_id", "x", "y", "polarity"))

@@ -1,0 +1,1418 @@
+{
+  "task": "tennis_falling",
+  "protocol": "frozen LeanVAE, held-out episodes, 13 temporally sampled frames, metrics on 12 future frames, current latent block retained",
+  "latent_file": "tmp/latent_expanded_20261104/tennis_falling_latents.npz",
+  "pca_file": "tmp/latent_pca_reconstruction_20261104/pca/tennis_falling_pca.npz",
+  "event_clip": 15,
+  "train_episode_count": 40,
+  "test_episode_count": 10,
+  "evaluated_test_episodes": [
+    40,
+    41,
+    42,
+    43
+  ],
+  "evaluated_window_count": 8,
+  "ks": [
+    0,
+    8,
+    16,
+    32,
+    64
+  ],
+  "metrics": [
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 3.6849230293447634e-05,
+        "input_mae": 0.0008333523778484656,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.0032551217932292507,
+        "tp": 10162,
+        "fp": 590,
+        "fn": 4240,
+        "precision": 0.9451264880952381,
+        "recall": 0.7055964449382031
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00013297724292250372,
+        "input_mae": 0.00156848596370196,
+        "decoder_delta_mse": 0.00010339472313110794,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.013258298540580866,
+        "tp": 2643,
+        "fp": 371,
+        "fn": 11759,
+        "precision": 0.8769077637690776,
+        "recall": 0.18351617830856826
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 3.73029987846926e-05,
+        "input_mae": 0.0008222431271368199,
+        "decoder_delta_mse": 4.09653951768026e-06,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.0033035814271786547,
+        "tp": 10246,
+        "fp": 609,
+        "fn": 4156,
+        "precision": 0.9438968217411331,
+        "recall": 0.7114289681988613
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 3.729174258040913e-05,
+        "input_mae": 0.0008249969860401052,
+        "decoder_delta_mse": 3.8149796637299005e-06,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.0033043704505552646,
+        "tp": 10173,
+        "fp": 611,
+        "fn": 4229,
+        "precision": 0.9433419881305638,
+        "recall": 0.7063602277461464
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 3.731031490750203e-05,
+        "input_mae": 0.0008172222433131537,
+        "decoder_delta_mse": 3.137666074811326e-06,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.003312608173974144,
+        "tp": 10156,
+        "fp": 611,
+        "fn": 4246,
+        "precision": 0.9432525308813968,
+        "recall": 0.7051798361338703
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 3.727735638773681e-05,
+        "input_mae": 0.0008246949273882365,
+        "decoder_delta_mse": 2.8577323973877355e-06,
+        "active_fraction": 0.009156545003255209,
+        "active_mse": 0.003301984829208011,
+        "tp": 10142,
+        "fp": 612,
+        "fn": 4260,
+        "precision": 0.9430909429049656,
+        "recall": 0.7042077489237606
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 8.389302426117245e-05,
+        "input_mae": 0.0034011849924152748,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0010072748618085853,
+        "input_mae": 0.0090726529813817,
+        "decoder_delta_mse": 0.0009300149420030661
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.00015113949431855097,
+        "input_mae": 0.004169880791581093,
+        "decoder_delta_mse": 7.341275385302048e-05
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00013800614503670309,
+        "input_mae": 0.004109230844970292,
+        "decoder_delta_mse": 6.0234155310298726e-05
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00013001809670574327,
+        "input_mae": 0.004074676969731862,
+        "decoder_delta_mse": 5.238729436303336e-05
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.000128297246049398,
+        "input_mae": 0.0040576348927879495,
+        "decoder_delta_mse": 5.066119706031097e-05
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 7.94399706270529e-05,
+        "input_mae": 0.0012532708899660368,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.005193169753153004,
+        "tp": 10886,
+        "fp": 1759,
+        "fn": 6626,
+        "precision": 0.8608936338473705,
+        "recall": 0.6216308816811329
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00021884186701535868,
+        "input_mae": 0.00201036517639371,
+        "decoder_delta_mse": 0.00015392000169119532,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.017631116886092844,
+        "tp": 1067,
+        "fp": 1947,
+        "fn": 16445,
+        "precision": 0.354014598540146,
+        "recall": 0.06092964824120603
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 8.164036626808754e-05,
+        "input_mae": 0.0012665176013607986,
+        "decoder_delta_mse": 1.0481806254366196e-05,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.005439964480652808,
+        "tp": 10699,
+        "fp": 1824,
+        "fn": 6813,
+        "precision": 0.8543479996805877,
+        "recall": 0.610952489721334
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 8.10384632794425e-05,
+        "input_mae": 0.0012620136219254618,
+        "decoder_delta_mse": 8.536479775500538e-06,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.0054091103362987085,
+        "tp": 10656,
+        "fp": 1732,
+        "fn": 6856,
+        "precision": 0.8601872780109784,
+        "recall": 0.6084970306075834
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 8.089438078088075e-05,
+        "input_mae": 0.001267204524566523,
+        "decoder_delta_mse": 8.058633836090697e-06,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.005369585917794178,
+        "tp": 10686,
+        "fp": 1755,
+        "fn": 6826,
+        "precision": 0.8589341692789969,
+        "recall": 0.6102101416171768
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 8.061751849254465e-05,
+        "input_mae": 0.0012623293202504253,
+        "decoder_delta_mse": 7.2085402038624125e-06,
+        "active_fraction": 0.011133829752604166,
+        "active_mse": 0.00535094319916356,
+        "tp": 10695,
+        "fp": 1729,
+        "fn": 6817,
+        "precision": 0.8608338699291693,
+        "recall": 0.6107240749200549
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 0.000172112428307667,
+        "input_mae": 0.004203777096523432,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0016665218728572418,
+        "input_mae": 0.010484222858725781,
+        "decoder_delta_mse": 0.0015597006729543724
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.0003097168955631674,
+        "input_mae": 0.005168927957888887,
+        "decoder_delta_mse": 0.00016347094808014096
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00026236798878181977,
+        "input_mae": 0.005010947321092887,
+        "decoder_delta_mse": 0.00010837146357148168
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00025643332961309363,
+        "input_mae": 0.004986991519824081,
+        "decoder_delta_mse": 0.00010064492255306214
+      }
+    },
+    {
+      "episode": 40,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00024989600018984087,
+        "input_mae": 0.004954447312289013,
+        "decoder_delta_mse": 9.280928536993809e-05
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 3.805414450771731e-05,
+        "input_mae": 0.0008379521385109001,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.00332114482827971,
+        "tp": 10209,
+        "fp": 649,
+        "fn": 4271,
+        "precision": 0.9402284030208141,
+        "recall": 0.7050414364640883
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00013652919991505874,
+        "input_mae": 0.001581360898673741,
+        "decoder_delta_mse": 0.00010633309602781083,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.01354308130045238,
+        "tp": 2621,
+        "fp": 393,
+        "fn": 11859,
+        "precision": 0.869608493696085,
+        "recall": 0.18100828729281768
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 4.016700497565351e-05,
+        "input_mae": 0.0008461618298364707,
+        "decoder_delta_mse": 4.979009797049609e-06,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.0035135275445261874,
+        "tp": 10209,
+        "fp": 697,
+        "fn": 4271,
+        "precision": 0.9360902255639098,
+        "recall": 0.7050414364640883
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 3.9355935774787545e-05,
+        "input_mae": 0.0008378565023576812,
+        "decoder_delta_mse": 3.4766342954147453e-06,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.0034374012808494514,
+        "tp": 10223,
+        "fp": 675,
+        "fn": 4257,
+        "precision": 0.9380620297302257,
+        "recall": 0.7060082872928177
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 3.8905389222017844e-05,
+        "input_mae": 0.0008358272541215683,
+        "decoder_delta_mse": 3.144652055198094e-06,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.0033976101578361783,
+        "tp": 10169,
+        "fp": 677,
+        "fn": 4311,
+        "precision": 0.9375806749031901,
+        "recall": 0.7022790055248619
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 3.866405303494625e-05,
+        "input_mae": 0.0008340437707090587,
+        "decoder_delta_mse": 2.7291774434464364e-06,
+        "active_fraction": 0.009206136067708334,
+        "active_mse": 0.0033737082397942405,
+        "tp": 10262,
+        "fp": 668,
+        "fn": 4218,
+        "precision": 0.9388838060384264,
+        "recall": 0.7087016574585635
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 8.8589133882935e-05,
+        "input_mae": 0.003416979230592353,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0010869334018661794,
+        "input_mae": 0.00935269168189063,
+        "decoder_delta_mse": 0.0010136878544449342
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.0001905193368613887,
+        "input_mae": 0.004466532737213116,
+        "decoder_delta_mse": 0.00011308065750837887
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.0001549271632041567,
+        "input_mae": 0.004204495126424648,
+        "decoder_delta_mse": 7.502724506562135e-05
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00014967829899228727,
+        "input_mae": 0.004176098491713039,
+        "decoder_delta_mse": 6.991130180153662e-05
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.0001453756821908627,
+        "input_mae": 0.004142301572313854,
+        "decoder_delta_mse": 6.525412522652619e-05
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 0.0001124778559351127,
+        "input_mae": 0.0014308982910525476,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.007229659152825692,
+        "tp": 10816,
+        "fp": 2565,
+        "fn": 6590,
+        "precision": 0.8083102907107093,
+        "recall": 0.6213949212915086
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0002831423833682893,
+        "input_mae": 0.0024110006943563653,
+        "decoder_delta_mse": 0.0001966252983341595,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.022083943415573865,
+        "tp": 966,
+        "fp": 3048,
+        "fn": 16440,
+        "precision": 0.2406576980568012,
+        "recall": 0.055498104102033784
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.00022337750387750455,
+        "input_mae": 0.002019956468785722,
+        "decoder_delta_mse": 0.0001324755165417931,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.01686751748508451,
+        "tp": 3983,
+        "fp": 3243,
+        "fn": 13423,
+        "precision": 0.5512039856075284,
+        "recall": 0.22882913937722624
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00022283609996962312,
+        "input_mae": 0.002030659641746979,
+        "decoder_delta_mse": 0.0001313969585983917,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.01679165859474905,
+        "tp": 4028,
+        "fp": 3216,
+        "fn": 13378,
+        "precision": 0.556046383213694,
+        "recall": 0.23141445478570608
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00022169662674147018,
+        "input_mae": 0.0020189333800431086,
+        "decoder_delta_mse": 0.0001287078195370365,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.01674280907997045,
+        "tp": 4037,
+        "fp": 3144,
+        "fn": 13369,
+        "precision": 0.5621779696421111,
+        "recall": 0.23193151786740204
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00022155368753468447,
+        "input_mae": 0.0020174205811353354,
+        "decoder_delta_mse": 0.00012837887985976218,
+        "active_fraction": 0.011066436767578125,
+        "active_mse": 0.016761534404500105,
+        "tp": 4029,
+        "fp": 3087,
+        "fn": 13377,
+        "precision": 0.5661888701517707,
+        "recall": 0.23147190623922786
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 0.00025055405314110317,
+        "input_mae": 0.004364448299511202,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0024171088373824774,
+        "input_mae": 0.01245576515821709,
+        "decoder_delta_mse": 0.002275187902923818
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.001069210398720862,
+        "input_mae": 0.008063614203064636,
+        "decoder_delta_mse": 0.0009027551443639118
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.0009994537737854862,
+        "input_mae": 0.007624768650631985,
+        "decoder_delta_mse": 0.000830169154083758
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.0009975886030126413,
+        "input_mae": 0.007615423031196716,
+        "decoder_delta_mse": 0.0008271069186107705
+      }
+    },
+    {
+      "episode": 41,
+      "anchor": 18,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.000986043394297895,
+        "input_mae": 0.007555201213261142,
+        "decoder_delta_mse": 0.0008155185844490268
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 3.699015264191815e-05,
+        "input_mae": 0.0008282863558738048,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.0032090010272304696,
+        "tp": 10283,
+        "fp": 635,
+        "fn": 4291,
+        "precision": 0.9418391646821762,
+        "recall": 0.7055715658021133
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00013412602323924206,
+        "input_mae": 0.001573492340360379,
+        "decoder_delta_mse": 0.0001023360946419416,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.013235084520627036,
+        "tp": 2662,
+        "fp": 352,
+        "fn": 11912,
+        "precision": 0.8832116788321168,
+        "recall": 0.18265404144366681
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 3.977955538809094e-05,
+        "input_mae": 0.0008380785698373453,
+        "decoder_delta_mse": 5.187857520165077e-06,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.00347771726031178,
+        "tp": 10320,
+        "fp": 650,
+        "fn": 4254,
+        "precision": 0.9407474931631723,
+        "recall": 0.7081103334705641
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 3.8889905114946134e-05,
+        "input_mae": 0.0008407578405590735,
+        "decoder_delta_mse": 3.336697166863208e-06,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.0034042732640997687,
+        "tp": 10255,
+        "fp": 632,
+        "fn": 4319,
+        "precision": 0.9419491136217507,
+        "recall": 0.7036503362151777
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 3.847509239890864e-05,
+        "input_mae": 0.0008355717188663903,
+        "decoder_delta_mse": 2.8252902666281443e-06,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.003357391467913955,
+        "tp": 10294,
+        "fp": 641,
+        "fn": 4280,
+        "precision": 0.9413808870598994,
+        "recall": 0.7063263345684095
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 3.819365513313863e-05,
+        "input_mae": 0.0008286649893847198,
+        "decoder_delta_mse": 2.5618757414728557e-06,
+        "active_fraction": 0.009265899658203125,
+        "active_mse": 0.0033203510742237656,
+        "tp": 10288,
+        "fp": 661,
+        "fn": 4286,
+        "precision": 0.9396291898803544,
+        "recall": 0.7059146425140661
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 8.503520162825866e-05,
+        "input_mae": 0.0034107781688567465,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0010654318397015031,
+        "input_mae": 0.009266238212809894,
+        "decoder_delta_mse": 0.0009982304645189792
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.0001988219987543046,
+        "input_mae": 0.004334792851799286,
+        "decoder_delta_mse": 0.00012629721143394407
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00016880476059899602,
+        "input_mae": 0.0042290966768552506,
+        "decoder_delta_mse": 9.670034488740686e-05
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00015351027448916638,
+        "input_mae": 0.004182741077751591,
+        "decoder_delta_mse": 8.196987298737765e-05
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00014996814309666765,
+        "input_mae": 0.004165362497496538,
+        "decoder_delta_mse": 7.793149171528437e-05
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 9.958164670305216e-05,
+        "input_mae": 0.0013467956775248997,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.006361138731283413,
+        "tp": 10986,
+        "fp": 2229,
+        "fn": 6813,
+        "precision": 0.831328036322361,
+        "recall": 0.6172256868363392
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0002371534577829622,
+        "input_mae": 0.002055130583632566,
+        "decoder_delta_mse": 0.00016088217289696635,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.01902300484613391,
+        "tp": 1119,
+        "fp": 1895,
+        "fn": 16680,
+        "precision": 0.3712674187126742,
+        "recall": 0.0628687004887915
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.00010664225398211568,
+        "input_mae": 0.00135164468590195,
+        "decoder_delta_mse": 2.3738299480176767e-05,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.00733798267229943,
+        "tp": 10600,
+        "fp": 2018,
+        "fn": 7199,
+        "precision": 0.8400697416389286,
+        "recall": 0.5955390752289454
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00010298792027917895,
+        "input_mae": 0.0013460110321545926,
+        "decoder_delta_mse": 1.7135053411720946e-05,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.006976055119820433,
+        "tp": 10845,
+        "fp": 2039,
+        "fn": 6954,
+        "precision": 0.8417416951257374,
+        "recall": 0.6093038934771616
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00010196353965043984,
+        "input_mae": 0.0013471976616964791,
+        "decoder_delta_mse": 1.4853951569193669e-05,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.006891977650108937,
+        "tp": 10836,
+        "fp": 2073,
+        "fn": 6963,
+        "precision": 0.8394143620729724,
+        "recall": 0.6087982470925333
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00010190620843671897,
+        "input_mae": 0.0013385800513200745,
+        "decoder_delta_mse": 1.4373854024067137e-05,
+        "active_fraction": 0.011316299438476562,
+        "active_mse": 0.006876442400287895,
+        "tp": 10819,
+        "fp": 2066,
+        "fn": 6980,
+        "precision": 0.8396585176561894,
+        "recall": 0.6078431372549019
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 0.00019844214546096484,
+        "input_mae": 0.004239669011773885,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.001792694498466453,
+        "input_mae": 0.010619025623327814,
+        "decoder_delta_mse": 0.0017006653365839947
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.0004574884934038786,
+        "input_mae": 0.005523656777656822,
+        "decoder_delta_mse": 0.0003293946552658776
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.0004330849602062279,
+        "input_mae": 0.005445008694956776,
+        "decoder_delta_mse": 0.00029681298795647583
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.0004074044033026972,
+        "input_mae": 0.005369596062555715,
+        "decoder_delta_mse": 0.0002692502725472731
+      }
+    },
+    {
+      "episode": 42,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00039525131107137433,
+        "input_mae": 0.005325184960230563,
+        "decoder_delta_mse": 0.00025333895385438483
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 3.711196437057123e-05,
+        "input_mae": 0.0008298346896159122,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.0032807460395447683,
+        "tp": 10288,
+        "fp": 553,
+        "fn": 4292,
+        "precision": 0.9489899455769762,
+        "recall": 0.7056241426611797
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00013338664977942857,
+        "input_mae": 0.0015704515104080958,
+        "decoder_delta_mse": 0.00010399909767026354,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.013174145874751455,
+        "tp": 2688,
+        "fp": 326,
+        "fn": 11892,
+        "precision": 0.8918380889183809,
+        "recall": 0.18436213991769548
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 3.9217847030167035e-05,
+        "input_mae": 0.0008439139072701588,
+        "decoder_delta_mse": 6.271384184704705e-06,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.003455802687173595,
+        "tp": 10228,
+        "fp": 631,
+        "fn": 4352,
+        "precision": 0.9418915185560365,
+        "recall": 0.7015089163237311
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 3.811871596343109e-05,
+        "input_mae": 0.0008343104193689518,
+        "decoder_delta_mse": 3.9521055441582575e-06,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.0033608271200159553,
+        "tp": 10203,
+        "fp": 600,
+        "fn": 4377,
+        "precision": 0.9444598722577062,
+        "recall": 0.6997942386831276
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 3.8087903728611934e-05,
+        "input_mae": 0.0008305145964773905,
+        "decoder_delta_mse": 3.7119455858677006e-06,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.0033515349036762595,
+        "tp": 10276,
+        "fp": 597,
+        "fn": 4304,
+        "precision": 0.9450933505012417,
+        "recall": 0.70480109739369
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 3.7888053482944744e-05,
+        "input_mae": 0.0008347055691804902,
+        "decoder_delta_mse": 3.4980431943646786e-06,
+        "active_fraction": 0.00926971435546875,
+        "active_mse": 0.0033404663618009974,
+        "tp": 10204,
+        "fp": 594,
+        "fn": 4376,
+        "precision": 0.9449898129283201,
+        "recall": 0.6998628257887517
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 8.486774506721807e-05,
+        "input_mae": 0.0034208272572347673,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0010360205708701768,
+        "input_mae": 0.009280332621725526,
+        "decoder_delta_mse": 0.0009661154772200453
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.0001912278201972178,
+        "input_mae": 0.0044715057280658105,
+        "decoder_delta_mse": 0.00011761570052446524
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.00014995570979747834,
+        "input_mae": 0.0042064220213057345,
+        "decoder_delta_mse": 7.647975011805732e-05
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00014018066596971576,
+        "input_mae": 0.00415767811668033,
+        "decoder_delta_mse": 6.709812668031005e-05
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 0,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.00013576010343992222,
+        "input_mae": 0.0041276088202815385,
+        "decoder_delta_mse": 6.270867460212161e-05
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": null,
+      "metrics": {
+        "input_mse": 7.87963824528512e-05,
+        "input_mae": 0.0012461431599983068,
+        "decoder_delta_mse": 0.0,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.005279722182691522,
+        "tp": 10808,
+        "fp": 1697,
+        "fn": 6685,
+        "precision": 0.8642942822870852,
+        "recall": 0.6178471388555422
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.00021817745737387755,
+        "input_mae": 0.0020095636593566724,
+        "decoder_delta_mse": 0.00015462192004633835,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.01756535465878395,
+        "tp": 1015,
+        "fp": 1999,
+        "fn": 16478,
+        "precision": 0.3367617783676178,
+        "recall": 0.05802320928371348
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": 8,
+      "metrics": {
+        "input_mse": 8.255009047235751e-05,
+        "input_mae": 0.0012762005733482813,
+        "decoder_delta_mse": 1.1714617698999064e-05,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.0056308892620549195,
+        "tp": 10550,
+        "fp": 1753,
+        "fn": 6943,
+        "precision": 0.8575144273754369,
+        "recall": 0.6030983822100269
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": 16,
+      "metrics": {
+        "input_mse": 8.154934484971996e-05,
+        "input_mae": 0.0012655434130598071,
+        "decoder_delta_mse": 9.272511164226671e-06,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.005540359034526161,
+        "tp": 10558,
+        "fp": 1728,
+        "fn": 6935,
+        "precision": 0.8593521080905095,
+        "recall": 0.6035557079974847
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": 32,
+      "metrics": {
+        "input_mse": 8.09977121573698e-05,
+        "input_mae": 0.0012638930830632944,
+        "decoder_delta_mse": 8.78933561428615e-06,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.005487363375701666,
+        "tp": 10557,
+        "fp": 1710,
+        "fn": 6936,
+        "precision": 0.8606016140865738,
+        "recall": 0.6034985422740525
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "event",
+      "k": 64,
+      "metrics": {
+        "input_mse": 8.09067422975442e-05,
+        "input_mae": 0.0012551401201695473,
+        "decoder_delta_mse": 8.628590611200101e-06,
+        "active_fraction": 0.011121749877929688,
+        "active_mse": 0.005486199556772741,
+        "tp": 10563,
+        "fp": 1721,
+        "fn": 6930,
+        "precision": 0.8598990556821882,
+        "recall": 0.6038415366146459
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": null,
+      "metrics": {
+        "input_mse": 0.00015945216718873595,
+        "input_mae": 0.004164781896449594,
+        "decoder_delta_mse": 0.0
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 0,
+      "metrics": {
+        "input_mse": 0.0016857989982599257,
+        "input_mae": 0.01067380034700073,
+        "decoder_delta_mse": 0.0016112014114791676
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 8,
+      "metrics": {
+        "input_mse": 0.00032995211924888616,
+        "input_mae": 0.0053900507119624625,
+        "decoder_delta_mse": 0.00021097138044055757
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 16,
+      "metrics": {
+        "input_mse": 0.000304235926563891,
+        "input_mae": 0.0052557723271730895,
+        "decoder_delta_mse": 0.00018239933492855288
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 32,
+      "metrics": {
+        "input_mse": 0.00028331443422831786,
+        "input_mae": 0.005179788720965127,
+        "decoder_delta_mse": 0.00015812479938147035
+      }
+    },
+    {
+      "episode": 43,
+      "anchor": 15,
+      "modality": "rgb",
+      "k": 64,
+      "metrics": {
+        "input_mse": 0.0002711418428512311,
+        "input_mae": 0.005120729362158411,
+        "decoder_delta_mse": 0.00014312207933589048
+      }
+    }
+  ],
+  "runtime_seconds": 31.72540903702611
+}

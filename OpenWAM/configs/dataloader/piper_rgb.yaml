@@ -1,0 +1,12 @@
+type: piper_rgb
+dataset_dir: ${oc.env:PIPER_RGB_DATA_ROOT,../tmp/training_data_cache/piper_rgb_dynamic_v1}
+tasks: [conveyor, moving_carton, turntable_cups, rotating_tube, tennis_rolling, tennis_falling, tennis_parabolic, tennis_container]
+# 24 commands at 30 Hz; 13 dual-view frames at 15 Hz (current + future).
+num_frames: 25
+video_stride: 2
+window_stride: 1
+height: 256
+width: 512
+normalize_mode: min-max
+action_mode: eef
+unify_action: false

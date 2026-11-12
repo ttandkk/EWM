@@ -1,0 +1,40 @@
+{
+  "version": "piper_eight_continuous_min8_v1",
+  "tasks": [
+    "conveyor",
+    "moving_carton",
+    "turntable_cups",
+    "rotating_tube",
+    "tennis_rolling",
+    "tennis_falling",
+    "tennis_parabolic",
+    "tennis_container"
+  ],
+  "trials": 50,
+  "seed": 10000,
+  "scene_seed": 20280002,
+  "sampling_steps": 4,
+  "latency_aware": true,
+  "latency_controller": "continuous",
+  "min_execution_steps": 8,
+  "execution_horizon": 10,
+  "record_predictions": {
+    "action_only": false,
+    "joint": true,
+    "rgb_action": true
+  },
+  "prediction_decode_phase": "post_trial",
+  "prediction_decode_in_equivalent_latency": false,
+  "environment": {
+    "COMPILE_CORE": "true",
+    "COMPILE_MODE": "default",
+    "COMPILE_CUDA_GRAPHS": "false",
+    "POLICY_SERVER_PROBE": "true",
+    "CACHE_CONTEXT_KV": "true",
+    "CACHE_BF16_WEIGHTS": "true",
+    "ALLOW_COMPILE_ACTION_ERROR": "true",
+    "WARMUP_ITERS": "3",
+    "BENCHMARK_ITERS": "3",
+    "TORCHINDUCTOR_COMPILE_THREADS": "2"
+  }
+}

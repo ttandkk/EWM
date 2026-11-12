@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT))
 print("[ewm-action-server] importing numpy and torch", flush=True)
 import numpy as np
 import torch
+from openwam.model.architectures.ewm_checkpoint import normalize_policy_payload
 print("[ewm-action-server] numpy and torch ready", flush=True)
 from omegaconf import OmegaConf
 from websockets.exceptions import ConnectionClosed
@@ -33,6 +34,9 @@ def file_hash(path: Path) -> str:
     return digest.hexdigest()
 
 
+from openwam.model.architectures.ewm_inference import configure_action_compile
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--checkpoint-dir", required=True, type=Path)
@@ -40,14 +44,20 @@ def main() -> None:
     parser.add_argument("--compile-core", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--cache-context-kv", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--warmup-iters", type=int, default=0)
-    parser.add_argument("--benchmark-iters", type=int, default=0)
+    parser.add_argument("--benchmark-iters", type=int, default=None,
+                        help="Startup comparison iterations (default: 1 with compilation, otherwise 0)")
     parser.add_argument("--compile-mode", default="reduce-overhead")
+    parser.add_argument("--cuda-graphs", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--max-compile-action-error", type=float, default=0.02)
+    parser.add_argument("--allow-compile-action-error", action=argparse.BooleanOptionalAction, default=True,
+                        help="Record above-threshold compile deviations; use --no-allow-compile-action-error for strict fallback")
     parser.add_argument(
         "--warmup-prompt",
         default="Stack the blue-and-yellow patterned block on the red-and-white block, then stack the green-and-white block on top.",
     )
     args = parser.parse_args()
+    if args.benchmark_iters is None:
+        args.benchmark_iters = 1 if args.compile_core else 0
     if min(args.warmup_iters, args.benchmark_iters) < 0 or args.max_compile_action_error <= 0:
         parser.error("warmup/benchmark iterations must be nonnegative and max compile error positive")
     torch.set_num_threads(4)
@@ -66,7 +76,7 @@ def main() -> None:
     print(f"[ewm-action-server] checkpoint loaded; horizon={horizon}", flush=True)
     if model.training_mode != "action_only" or cfg.model.get("training_mode") != "action_only":
         raise ValueError("this server accepts only action_only checkpoints/configs")
-    if cfg.dataloader.type != "ewm_piper_action_only":
+    if cfg.dataloader.type not in ("ewm_piper_action_only", "ewm_piper_multitask_action_only"):
         raise ValueError("action-only evaluation requires the Piper RGB/state training contract")
     if int(cfg.dataloader.get("observation_row_offset", 0)) != 0:
         raise ValueError("action-only evaluation requires training observation_row_offset=0")
@@ -76,7 +86,7 @@ def main() -> None:
         raise ValueError("action-only policy unexpectedly instantiated an event codec")
     metadata = {
         "horizon": horizon, "training_mode": "action_only",
-        "checkpoint_format": "ewm_action_only_v1",
+        "checkpoint_format": "ewm_action_only_v2",
         "checkpoint_dir": str(directory),
         "config_sha256": file_hash(directory / "config.yaml"),
         "normalization_sha256": file_hash(directory / "normalization.json"),
@@ -94,6 +104,7 @@ def main() -> None:
 
     eager_predict_velocity = model.predict_velocity
     compile_active = False
+    cuda_graphs_enabled = False
     startup_benchmark = None
 
     def synthetic_sample(seed: int, *, cache_context_kv: bool):
@@ -140,8 +151,8 @@ def main() -> None:
         if not hasattr(torch, "compile"):
             raise RuntimeError("--compile-core requires torch.compile support")
         print(f"[ewm-action-server] enabling torch.compile mode={args.compile_mode}", flush=True)
-        model.predict_velocity = torch.compile(
-            eager_predict_velocity, dynamic=False, mode=args.compile_mode)
+        cuda_graphs_enabled = configure_action_compile(
+            model, mode=args.compile_mode, cuda_graphs=args.cuda_graphs)
         compile_active = True
 
     optimized_times = []
@@ -182,9 +193,13 @@ def main() -> None:
         candidate_errors = error_metrics(optimized_outputs)
         compiled_times = optimized_times if compiled_benchmark_active else []
         compiled_errors = candidate_errors if compiled_benchmark_active else None
-        compile_rejected_for_error = bool(
+        compile_error_exceeded = bool(
             compiled_benchmark_active
             and candidate_errors["action_max_abs_error"] > args.max_compile_action_error)
+        compile_rejected_for_error = compile_error_exceeded and not args.allow_compile_action_error
+        if compile_error_exceeded and args.allow_compile_action_error:
+            print(f"[ewm-action-server] retaining compiled core: action max abs error "
+                  f"{candidate_errors['action_max_abs_error']} exceeds {args.max_compile_action_error}", flush=True)
         if compile_rejected_for_error:
             print(
                 "[ewm-action-server] rejecting compiled core and falling back to eager: "
@@ -214,6 +229,9 @@ def main() -> None:
             "compile_attempt_succeeded": compiled_benchmark_active,
             "compile_accepted": compile_active,
             "compile_rejected_for_error": compile_rejected_for_error,
+            "compile_error_exceeded": compile_error_exceeded,
+            "allow_compile_action_error": args.allow_compile_action_error,
+            "max_compile_action_error": args.max_compile_action_error,
             "compiled_kv_cache_mean_seconds": (
                 float(np.mean(compiled_times)) if compiled_times else None),
             "compiled_kv_cache_p50_seconds": (
@@ -233,7 +251,10 @@ def main() -> None:
         "compile_core_requested": args.compile_core,
         "compile_core_active": compile_active,
         "compile_mode": args.compile_mode if compile_active else None,
+        "cuda_graphs_enabled": cuda_graphs_enabled if compile_active else False,
         "cache_context_kv": args.cache_context_kv,
+        "allow_compile_action_error": args.allow_compile_action_error,
+        "max_compile_action_error": args.max_compile_action_error,
         "warmup_iters": effective_warmup_iters,
         "startup_benchmark": startup_benchmark,
     })
@@ -261,8 +282,8 @@ def main() -> None:
                         if step not in checkpoints:
                             raise ValueError(f"checkpoint step {step} unavailable")
                         if step != current_step:
-                            payload = torch.load(checkpoints[step], map_location="cpu", weights_only=True)
-                            if payload.get("format") != "ewm_action_only_v1" or payload["model_config"].get("training_mode") != "action_only":
+                            payload = normalize_policy_payload(torch.load(checkpoints[step], map_location="cpu", weights_only=True))
+                            if payload.get("format") not in ("ewm_action_only_v1", "ewm_action_only_v2") or payload["model_config"].get("training_mode") != "action_only":
                                 raise ValueError("checkpoint is not an action-only policy")
                             if int(payload["horizon"]) != horizon:
                                 raise ValueError("checkpoint horizon differs")

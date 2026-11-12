@@ -16,10 +16,9 @@ import numpy as np
 import torch
 print("[ewm-rgb-server] numpy and torch ready", flush=True)
 from omegaconf import OmegaConf
-from websockets.exceptions import ConnectionClosed
-from websockets.sync.server import serve
-
-from scripts.eval_ewm.ewm_eval_wire import MAX_MESSAGE, decode_message, encode_message
+from scripts.eval_ewm.ewm_eval_wire import encode_message
+from scripts.eval_ewm.ewm_prediction_recording import PredictionArchive
+from scripts.eval_ewm.ewm_eval_server import configure_inference_compile, serve_on_inference_thread
 from scripts.eval_ewm.ewm_rgb_action_protocol import OBSERVATION_CONTRACT, prepare_request, prediction_array
 from openwam.dataloader.ewm_normalizer import EWMNormalizer
 from openwam.model.architectures.ewm import EWMModel
@@ -52,15 +51,22 @@ def main() -> None:
     parser.add_argument("--ready-file", required=True, type=Path)
     parser.add_argument("--compile-core", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--cache-context-kv", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--cache-bf16-weights", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--cuda-graphs", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--warmup-iters", type=int, default=0)
-    parser.add_argument("--benchmark-iters", type=int, default=0)
+    parser.add_argument("--benchmark-iters", type=int, default=None,
+                        help="Startup comparison iterations (default: 1 with compilation, otherwise 0)")
     parser.add_argument("--compile-mode", default="reduce-overhead")
     parser.add_argument("--max-compile-action-error", type=float, default=0.02)
+    parser.add_argument("--allow-compile-action-error", action=argparse.BooleanOptionalAction, default=True,
+                        help="Record above-threshold compile deviations; use --no-allow-compile-action-error for strict fallback")
     parser.add_argument(
         "--warmup-prompt",
         default="Stack the blue-and-yellow patterned block on the red-and-white block, then stack the green-and-white block on top.",
     )
     args = parser.parse_args()
+    if args.benchmark_iters is None:
+        args.benchmark_iters = 1 if args.compile_core else 0
     if min(args.warmup_iters, args.benchmark_iters) < 0 or args.max_compile_action_error <= 0:
         parser.error("warmup/benchmark iterations must be nonnegative and max compile error positive")
     torch.set_num_threads(4)
@@ -79,7 +85,7 @@ def main() -> None:
     print(f"[ewm-rgb-server] checkpoint loaded; horizon={horizon}", flush=True)
     if model.training_mode != "rgb_action" or cfg.model.get("training_mode") != "rgb_action":
         raise ValueError("this server accepts only rgb_action checkpoints/configs")
-    if cfg.dataloader.type != "ewm_piper_rgb_action":
+    if cfg.dataloader.type not in ("ewm_piper_rgb_action", "ewm_piper_multitask_rgb_action"):
         raise ValueError("RGB-action evaluation requires the Piper RGB/state training contract")
     if int(cfg.dataloader.get("observation_row_offset", 0)) != 0:
         raise ValueError("RGB-action evaluation requires training observation_row_offset=0")
@@ -107,8 +113,8 @@ def main() -> None:
     if ready_file.exists():
         raise FileExistsError(f"refusing to replace readiness file: {ready_file}")
 
-    eager_predict_velocity = model.predict_velocity
     compile_active = False
+    cuda_graphs_enabled = False
     startup_benchmark = None
 
     def synthetic_sample(seed: int, *, cache_context_kv: bool):
@@ -124,7 +130,7 @@ def main() -> None:
         with torch.inference_mode(), torch.autocast("cuda", dtype=torch.bfloat16):
             result = model.sample_policy(
                 batch, horizon=horizon, normalizer=normalizer, num_steps=4,
-                generator=generator, decode_future=True,
+                generator=generator, decode_future=False,
                 cache_context_kv=cache_context_kv)
         torch.cuda.synchronize()
         return result, time.perf_counter() - started
@@ -156,8 +162,9 @@ def main() -> None:
         if not hasattr(torch, "compile"):
             raise RuntimeError("--compile-core requires torch.compile support")
         print(f"[ewm-rgb-server] enabling torch.compile mode={args.compile_mode}", flush=True)
-        model.predict_velocity = torch.compile(
-            eager_predict_velocity, dynamic=False, mode=args.compile_mode)
+        cuda_graphs_enabled = configure_inference_compile(
+            model, mode=args.compile_mode, cache_bf16_weights=args.cache_bf16_weights,
+            cuda_graphs=args.cuda_graphs)
         compile_active = True
 
     optimized_times = []
@@ -171,7 +178,7 @@ def main() -> None:
         if not compile_active:
             raise
         print(f"[ewm-rgb-server] compiled core failed; falling back to eager: {type(exc).__name__}: {exc}", flush=True)
-        model.predict_velocity = eager_predict_velocity
+        model.disable_inference_compile()
         compile_active = False
         torch.cuda.empty_cache()
         for index in range(max(args.warmup_iters, 1)):
@@ -198,16 +205,20 @@ def main() -> None:
         candidate_errors = error_metrics(optimized_outputs)
         compiled_times = optimized_times if compiled_benchmark_active else []
         compiled_errors = candidate_errors if compiled_benchmark_active else None
-        compile_rejected_for_error = bool(
+        compile_error_exceeded = bool(
             compiled_benchmark_active
             and candidate_errors["action_max_abs_error"] > args.max_compile_action_error)
+        compile_rejected_for_error = compile_error_exceeded and not args.allow_compile_action_error
+        if compile_error_exceeded and args.allow_compile_action_error:
+            print(f"[ewm-rgb-server] retaining compiled core: action max abs error "
+                  f"{candidate_errors['action_max_abs_error']} exceeds {args.max_compile_action_error}", flush=True)
         if compile_rejected_for_error:
             print(
                 "[ewm-rgb-server] rejecting compiled core and falling back to eager: "
                 f"action max abs error {candidate_errors['action_max_abs_error']} exceeds "
                 f"{args.max_compile_action_error}",
                 flush=True)
-            model.predict_velocity = eager_predict_velocity
+            model.disable_inference_compile()
             compile_active = False
             torch.cuda.empty_cache()
             if args.cache_context_kv:
@@ -230,6 +241,9 @@ def main() -> None:
             "compile_attempt_succeeded": compiled_benchmark_active,
             "compile_accepted": compile_active,
             "compile_rejected_for_error": compile_rejected_for_error,
+            "compile_error_exceeded": compile_error_exceeded,
+            "allow_compile_action_error": args.allow_compile_action_error,
+            "max_compile_action_error": args.max_compile_action_error,
             "compiled_kv_cache_mean_seconds": (
                 float(np.mean(compiled_times)) if compiled_times else None),
             "compiled_kv_cache_p50_seconds": (
@@ -249,82 +263,84 @@ def main() -> None:
         "compile_core_requested": args.compile_core,
         "compile_core_active": compile_active,
         "compile_mode": args.compile_mode if compile_active else None,
+        "cuda_graphs_enabled": compile_active and cuda_graphs_enabled,
         "cache_context_kv": args.cache_context_kv,
+        "cache_bf16_weights": bool(getattr(model, "_inference_bf16_weights", False)),
+        "allow_compile_action_error": args.allow_compile_action_error,
+        "max_compile_action_error": args.max_compile_action_error,
         "warmup_iters": effective_warmup_iters,
         "startup_benchmark": startup_benchmark,
     })
 
-    def handler(conn) -> None:
+    archive = PredictionArchive()
+    metadata["post_trial_visualization_supported"] = True
+
+    def process_request(request, arrays):
         nonlocal current_step
         with torch.inference_mode():
-            while True:
-                try:
-                    request, arrays = decode_message(conn.recv(timeout=600))
-                except ConnectionClosed:
-                    break
-                try:
-                    operation = request.get("op")
-                    if operation == "hello":
-                        conn.send(encode_message({"ok": True, **metadata}))
-                    elif operation == "shutdown":
-                        conn.send(encode_message({"ok": True}))
-                        server.shutdown()
-                        break
-                    elif operation == "predict":
-                        batch, seed, steps, action_chunk_size = prepare_request(
-                            request, arrays, normalizer, horizon=horizon, device="cuda")
-                        step = int(request["step"])
-                        if step not in checkpoints:
-                            raise ValueError(f"checkpoint step {step} unavailable")
-                        if step != current_step:
-                            payload = torch.load(checkpoints[step], map_location="cpu", weights_only=True)
-                            if payload.get("format") != "ewm_rgb_action_latent_v1" or payload["model_config"].get("training_mode") != "rgb_action":
-                                raise ValueError("checkpoint is not an RGB-action policy")
-                            if int(payload["horizon"]) != horizon:
-                                raise ValueError("checkpoint horizon differs")
-                            if int(payload["step"]) != step:
-                                raise ValueError("checkpoint step disagrees with filename")
-                            model.load_policy_state_dict(payload["model"])
-                            del payload
-                            current_step = step
-                        generator = torch.Generator(device="cuda").manual_seed(seed)
-                        torch.cuda.synchronize()
-                        inference_started = time.perf_counter()
-                        with torch.autocast("cuda", dtype=torch.bfloat16):
-                            result = model.sample_policy(batch, horizon=horizon,
-                                                         normalizer=normalizer, num_steps=steps,
-                                                         generator=generator,
-                                                         decode_future=True,
-                                                         cache_context_kv=args.cache_context_kv)
-                        torch.cuda.synchronize()
-                        inference_seconds = time.perf_counter() - inference_started
-                        executed_actions = result["action"][0, :action_chunk_size].float().cpu().numpy()
-                        if executed_actions.shape != (action_chunk_size, 7) or not np.isfinite(executed_actions).all():
-                            raise FloatingPointError("invalid physical action chunk")
-                        arrays_out = {"executed_actions": executed_actions,
-                                      "future_rgb": prediction_array(result, horizon, model.num_event_cameras)}
-                        if action_chunk_size == 1:
-                            arrays_out["executed_action"] = executed_actions[0]
-                        conn.send(encode_message({
-                            "ok": True, "step": step, "seed": seed,
-                            "sampling_steps": steps, "action_chunk_size": action_chunk_size,
-                            "training_mode": "rgb_action", "future_decoded": True,
-                            "inference_seconds": inference_seconds,
-                        }, arrays_out))
-                    else:
-                        raise ValueError(f"unknown operation: {operation}")
-                except Exception as exc:
-                    conn.send(encode_message({"ok": False, "error": f"{type(exc).__name__}: {exc}"}))
+            operation = request.get("op")
+            if operation == "hello":
+                yield encode_message({"ok": True, **metadata})
+            elif operation in ("visualization_begin", "visualization_decode", "visualization_end"):
+                reply, values = archive.handle(request, model)
+                yield encode_message(reply, values)
+            elif operation == "predict":
+                batch, seed, steps, action_chunk_size = prepare_request(
+                    request, arrays, normalizer, horizon=horizon, device="cuda")
+                step = int(request["step"])
+                if step not in checkpoints:
+                    raise ValueError(f"checkpoint step {step} unavailable")
+                if step != current_step:
+                    payload = torch.load(checkpoints[step], map_location="cpu", weights_only=True)
+                    if payload.get("format") != "ewm_rgb_action_latent_v1" or payload["model_config"].get("training_mode") != "rgb_action":
+                        raise ValueError("checkpoint is not an RGB-action policy")
+                    if (int(payload["horizon"]) != horizon
+                            or payload["model_config"].get("event_horizon") != model.event_horizon
+                            or payload["model_config"].get("event_temporal_downsample", 1) != model.event_temporal_downsample):
+                        raise ValueError("checkpoint prediction horizons or RGB sampling differ")
+                    if int(payload["step"]) != step:
+                        raise ValueError("checkpoint step disagrees with filename")
+                    model.load_policy_state_dict(payload["model"])
+                    if compile_active and getattr(model, "_inference_velocity", None) is None:
+                        configure_inference_compile(model, mode=args.compile_mode,
+                            cache_bf16_weights=args.cache_bf16_weights, cuda_graphs=args.cuda_graphs)
+                    del payload
+                    current_step = step
+                generator = torch.Generator(device="cuda").manual_seed(seed)
+                recording = request.get("record_prediction") is not None
+                if recording and request.get("decode_future_rgb", True):
+                    raise ValueError("prediction recording requires post-trial decoding")
+                torch.cuda.synchronize()
+                inference_started = time.perf_counter()
+                with torch.autocast("cuda", dtype=torch.bfloat16):
+                    result = model.sample_policy(batch, horizon=horizon,
+                                                 normalizer=normalizer, num_steps=steps,
+                                                 generator=generator,
+                                                 decode_future=request.get("decode_future_rgb", True),
+                                                 cache_context_kv=args.cache_context_kv,
+                                                 return_observed_latent=recording)
+                torch.cuda.synchronize()
+                inference_seconds = time.perf_counter() - inference_started
+                recorded = archive.record(request, result)
+                executed_actions = result["action"][0, :action_chunk_size].float().cpu().numpy()
+                if executed_actions.shape != (action_chunk_size, 7) or not np.isfinite(executed_actions).all():
+                    raise FloatingPointError("invalid physical action chunk")
+                arrays_out = {"executed_actions": executed_actions}
+                if request.get("decode_future_rgb", True):
+                    arrays_out["future_rgb"] = prediction_array(result, horizon, model.num_event_cameras)
+                if action_chunk_size == 1:
+                    arrays_out["executed_action"] = executed_actions[0]
+                yield encode_message({
+                    "ok": True, "step": step, "seed": seed,
+                    "sampling_steps": steps, "action_chunk_size": action_chunk_size,
+                    "training_mode": "rgb_action", "future_decoded": request.get("decode_future_rgb", True),
+                    "prediction_recorded": recorded,
+                    "inference_seconds": inference_seconds,
+                }, arrays_out)
+            else:
+                raise ValueError(f"unknown operation: {operation}")
 
-    with serve(handler, "127.0.0.1", 0, max_size=MAX_MESSAGE,
-               compression=None, ping_interval=None) as server:
-        port = server.socket.getsockname()[1]
-        ready_file.write_text(json.dumps({"url": f"ws://127.0.0.1:{port}", **metadata}) + "\n")
-        print(f"EWM eval server ready: ws://127.0.0.1:{port}", flush=True)
-        try:
-            server.serve_forever()
-        finally:
-            ready_file.unlink(missing_ok=True)
+    serve_on_inference_thread(process_request, metadata, ready_file)
 
 
 if __name__ == "__main__":

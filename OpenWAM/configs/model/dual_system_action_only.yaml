@@ -1,0 +1,11 @@
+# Original OpenWAM: frozen Wan + fully trainable ActionDiT/proprio projection.
+defaults:
+  - dual_system
+  - _self_
+
+freeze:
+  - video_backbone
+
+architecture:
+  action_only: true
+  attention_mask_mode: action_sees_video

@@ -26,11 +26,12 @@ sys.path.insert(0, str(ROOT / "OpenWAM"))
 
 import numpy as np
 import torch
+from openwam.model.architectures.ewm_checkpoint import normalize_policy_payload
 from omegaconf import OmegaConf
 from PIL import Image, ImageDraw
 
 from openwam.dataloader.registry import build_dataset
-from scripts.eval_ewm.eval_ewm_policy import load_policy
+from scripts.eval_ewm.eval_ewm_policy import load_policy, prepare_sample
 from scripts.eval_ewm.ewm_eval_time_audit import EVENT_TIME_CONTRACT, verify_exported_event_alignment
 
 DEFAULT_SEEDS = (1234, 5678)
@@ -177,8 +178,10 @@ def main() -> None:
         raise ValueError("evaluation requires an aligned direct event-frame dataset")
     indices = list(args.indices) if args.indices is not None else aligned_default_indices(dataset)
     seeds, steps = list(args.seeds), list(args.steps)
-    alignment = verify_exported_event_alignment(dataset, indices, dataset.chunk_size)
+    alignment = verify_exported_event_alignment(dataset, indices, dataset.future_horizon)
     samples = {index: dataset[index] for index in indices}
+    cached_rgb = 'current_dino_features' in samples[indices[0]]
+    input_keys = ['current_dino_features' if cached_rgb else 'obs_video', 'obs_voxel', 'proprio', 'prompt']
     mapping = []
     for index in indices:
         episode_local = int(np.searchsorted(dataset._cumulative, index, side="right") - 1)
@@ -205,7 +208,7 @@ def main() -> None:
         "sampling_steps": args.sampling_steps,
         "sampling_method": "reverse Euler, shift=1, sigma 1 to 0",
         "dtype": "BF16 autocast; FP32 flow state",
-        "input_keys": ["obs_video", "obs_voxel", "proprio", "prompt"],
+        "input_keys": input_keys,
         "occupancy_threshold": args.occupancy_threshold,
         "visualization": ({"count_clip": int(cfg.dataloader.count_clip),
                            "prediction_threshold": args.occupancy_threshold,
@@ -229,26 +232,28 @@ def main() -> None:
             raise ValueError("checkpoint normalization and training dataset voxel settings differ")
         if dataset.normalizer.metadata != normalizer.metadata:
             raise ValueError("dataset and checkpoint normalization metadata differ")
-        if horizon != 24 and not args.no_images:
+        event_horizon = model.event_prediction_horizon(horizon)
+        if event_horizon != dataset.future_horizon:
+            raise ValueError('checkpoint and dataset event horizons differ')
+        if event_horizon != 24 and not args.no_images:
             raise ValueError("comparison image layout requires horizon=24; use --no-images")
         for step, path in zip(steps, paths):
             if step != steps[0]:
-                payload = torch.load(path, map_location="cpu", weights_only=True)
+                payload = normalize_policy_payload(torch.load(path, map_location="cpu", weights_only=True))
                 if int(payload["step"]) != step:
                     raise ValueError(f"{path}: saved step disagrees with filename")
                 model.load_policy_state_dict(payload["model"])
                 del payload
             model.eval()
             for index, sample in samples.items():
-                batch = {key: sample[key][None].cuda() for key in
-                         ("obs_video", "obs_voxel", "proprio")}
-                batch["prompt"] = [sample["prompt"]]
+                batch = prepare_sample(sample, model, 'cuda')
                 target = sample["future_voxel"].cuda()
                 action = sample["action"].cuda()
                 if step == steps[0]:
                     with torch.autocast("cuda", dtype=torch.bfloat16):
-                        full = torch.cat((batch["obs_voxel"][:, None], target[None]), 1)
-                        oracle = model.event_codec.decode(model.event_codec.encode(full))[0, 1:]
+                        full = torch.cat((batch["obs_voxel"][:, None], model.temporal_sampling.sample(target[None])), 1)
+                        latent = model.event_codec.encode(full)
+                        oracle = model._decode_future(latent[:, 0], latent[:, 1:])[0]
                     persistence = batch["obs_voxel"][0, None].expand_as(target)
                     baselines = (("persistence", persistence), ("clean_codec", oracle),
                                  ("zero", torch.zeros_like(target)))
@@ -276,7 +281,7 @@ def main() -> None:
                         "frame_f1": [
                             metric(pred[frame:frame + 1], target[frame:frame + 1],
                                    args.occupancy_threshold)["f1"]
-                            for frame in range(horizon)
+                            for frame in range(event_horizon)
                         ],
                     }
                     records.append(row)
@@ -298,7 +303,7 @@ def main() -> None:
             }
             values["frame_f1"] = [
                 statistics.mean(row["frame_f1"][frame] for row in selected)
-                for frame in range(horizon)
+                for frame in range(event_horizon)
             ]
         summary[method] = values
     if not args.no_images:

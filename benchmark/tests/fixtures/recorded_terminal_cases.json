@@ -1,0 +1,248 @@
+[
+  {
+    "provenance": "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109/ood/conveyor/background_ood/trial_000_result.json",
+    "source_sha256": "f8e365cfb0728343276995ce03513a1d43d8bbd77003de3a8c275fb23ce11093",
+    "result": {
+      "trial": 0,
+      "success": true,
+      "spec": {
+        "task": "conveyor",
+        "split": "evaluation",
+        "slot": 0,
+        "retry": 0,
+        "seed": 968939722,
+        "speed": 0.04245425207716376,
+        "stratum": 6,
+        "phase": null,
+        "cabinet_pose": null,
+        "object_poses": [
+          [
+            0.32902915989374343,
+            -0.12,
+            0.051000000000000004,
+            0.0,
+            0.0,
+            -0.01565508403753367,
+            0.9998774516628414
+          ],
+          [
+            0.33525084944313926,
+            -0.26,
+            0.051000000000000004,
+            0.0,
+            0.0,
+            -0.004111912801013785,
+            0.9999915460508239
+          ]
+        ],
+        "object_yaws": [
+          -0.031311447140777764,
+          -0.008223848776707163
+        ],
+        "config": {
+          "speed": 0.04245425207716376,
+          "arm_damping_scale": 0.5,
+          "spawn_interval": 0.0,
+          "object_spacing": 0.14,
+          "object_spacing_jitter": 0.0,
+          "max_seconds": 35.0,
+          "belt_x": 0.33,
+          "belt_length": 0.64,
+          "belt_width": 0.12,
+          "belt_top": 0.03,
+          "spawn_y": -0.26,
+          "pick_y": -0.1,
+          "basket_x": 0.18,
+          "basket_y": 0.18,
+          "basket_length": 0.12,
+          "basket_width": 0.1,
+          "basket_height": 0.05,
+          "wall_thickness": 0.002,
+          "basket_taper": 0.006,
+          "object_size": 0.04,
+          "position_jitter": 0.01,
+          "yaw_jitter": 0.05235987755982989,
+          "stable_seconds": 1.0,
+          "linear_threshold": 0.02,
+          "angular_threshold": 0.2,
+          "retreat_distance": 0.1
+        },
+        "imaging": {
+          "trial": 0,
+          "condition": "background_ood"
+        }
+      },
+      "terminal": {
+        "poses": [
+          [
+            0.14634740352630615,
+            0.17825032770633698,
+            0.021999895572662354,
+            5.247817625786411e-06,
+            4.214050932205282e-06,
+            0.2051377147436142,
+            0.9787331223487854
+          ],
+          [
+            0.2114921361207962,
+            0.18765532970428467,
+            0.02199995145201683,
+            3.7075569707667455e-06,
+            3.717512697676284e-07,
+            0.38042572140693665,
+            0.9248115420341492
+          ]
+        ],
+        "velocities": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "tcp": [
+          0.22193753719329834,
+          -0.013840021565556526,
+          0.22668185830116272
+        ],
+        "gripper_open": true,
+        "time": 10.8,
+        "stable_steps": 30
+      }
+    }
+  },
+  {
+    "provenance": "results/piper_ewm_eval_262022_step080000_background_greygreen_min8_decode_pro6000_20261109/ood/conveyor/background_ood/trial_002_result.json",
+    "source_sha256": "dae5bf485fb3441bc1a377875d1d6b9ef809c20a0e47d98afa220b39187e860f",
+    "result": {
+      "trial": 2,
+      "success": false,
+      "spec": {
+        "task": "conveyor",
+        "split": "evaluation",
+        "slot": 2,
+        "retry": 0,
+        "seed": 680637307,
+        "speed": 0.05906443624134655,
+        "stratum": 47,
+        "phase": null,
+        "cabinet_pose": null,
+        "object_poses": [
+          [
+            0.3313055203732313,
+            -0.12,
+            0.051000000000000004,
+            0.0,
+            0.0,
+            0.022170593543826816,
+            0.9997542021826737
+          ],
+          [
+            0.3381155095740366,
+            -0.26,
+            0.051000000000000004,
+            0.0,
+            0.0,
+            0.01305085588507403,
+            0.9999148339537058
+          ]
+        ],
+        "object_yaws": [
+          0.04434482043388484,
+          0.026102452788589622
+        ],
+        "config": {
+          "speed": 0.05906443624134655,
+          "arm_damping_scale": 0.5,
+          "spawn_interval": 0.0,
+          "object_spacing": 0.14,
+          "object_spacing_jitter": 0.0,
+          "max_seconds": 35.0,
+          "belt_x": 0.33,
+          "belt_length": 0.64,
+          "belt_width": 0.12,
+          "belt_top": 0.03,
+          "spawn_y": -0.26,
+          "pick_y": -0.1,
+          "basket_x": 0.18,
+          "basket_y": 0.18,
+          "basket_length": 0.12,
+          "basket_width": 0.1,
+          "basket_height": 0.05,
+          "wall_thickness": 0.002,
+          "basket_taper": 0.006,
+          "object_size": 0.04,
+          "position_jitter": 0.01,
+          "yaw_jitter": 0.05235987755982989,
+          "stable_seconds": 1.0,
+          "linear_threshold": 0.02,
+          "angular_threshold": 0.2,
+          "retreat_distance": 0.1
+        },
+        "imaging": {
+          "trial": 2,
+          "condition": "background_ood"
+        }
+      },
+      "terminal": {
+        "poses": [
+          [
+            0.15431813895702362,
+            0.18477146327495575,
+            0.02199995517730713,
+            1.7458503407397075e-06,
+            -1.1786995628426666e-06,
+            0.3362131118774414,
+            0.9417859315872192
+          ],
+          [
+            0.28749412298202515,
+            0.2290550172328949,
+            0.049999989569187164,
+            0.6323179602622986,
+            0.3165026009082794,
+            0.31650254130363464,
+            0.6323181986808777
+          ]
+        ],
+        "velocities": [
+          [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            2.2354347493092064e-06,
+            0.059062857180833817,
+            -3.6536930565489456e-06,
+            0.00011653763067442924,
+            6.326325092231855e-05,
+            -1.9710156266228296e-05
+          ]
+        ],
+        "tcp": [
+          0.24736367166042328,
+          0.16554933786392212,
+          0.13842642307281494
+        ],
+        "gripper_open": true,
+        "time": 11.666666666666666,
+        "stable_steps": 0
+      }
+    }
+  }
+]

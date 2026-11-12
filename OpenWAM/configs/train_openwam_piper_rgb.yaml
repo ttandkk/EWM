@@ -1,0 +1,25 @@
+defaults:
+  - train
+  - override dataloader: piper_rgb
+  - override model: dual_system_wan_lora
+  - _self_
+
+model:
+  video_backbone:
+    model_path: ${oc.env:DIFFSYNTH_MODEL_BASE_PATH,../pretrained}/Wan-AI/Wan2.2-TI2V-5B
+  architecture:
+    action_dim: 7
+    state_dim: 8
+
+training:
+  num_epochs: null
+  max_steps: null
+  max_optimizer_steps: 30000
+  weight_decay: 0.0
+  batch_size: ${oc.decode:${oc.env:PIPER_BATCH_SIZE,1}}  # GPU probe selects the per-device batch.
+  gradient_accumulation_steps: 1
+  dataset_num_workers: 2
+  output_path: outputs/openwam_piper_rgb
+
+project:
+  name: piper_rgb_baselines

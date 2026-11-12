@@ -35,12 +35,13 @@ def prepare_request(request: dict, arrays: dict, normalizer, *, horizon: int,
         raise ValueError("action-only simulation expects raw RGB/state observations")
     if request.get("decode_future_events", False) is not False:
         raise ValueError("action-only policies do not predict events")
-    if set(arrays) != {"obs_video", "proprio"}:
-        raise ValueError("action-only input accepts exactly obs_video and proprio; no events")
+    expected = {"obs_video", "proprio"}
+    if set(arrays) != expected:
+        raise ValueError(f"action-only input accepts exactly {sorted(expected)}; no events")
     validate_timing(request.get("timing", {}))
     values = {}
-    for name, shape, dtype in (("obs_video", (2, 3, 256, 256), "uint8"),
-                               ("proprio", (8,), "float32")):
+    fields = [("obs_video", (2, 3, 256, 256), "uint8"), ("proprio", (8,), "float32")]
+    for name, shape, dtype in fields:
         value = arrays[name]
         if not isinstance(value, np.ndarray) or value.shape != shape or value.dtype.name != dtype:
             raise ValueError(f"{name} must be {dtype} {shape}")

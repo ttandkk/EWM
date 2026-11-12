@@ -32,13 +32,6 @@ parser.add_argument("--execution-horizon", "--action-chunk-size", dest="executio
                     type=int, default=16, help="Number of predicted actions executed before replanning")
 parser.add_argument("--decode-predicted-events", action="store_true",
                     help="Decode future event frames and add a predicted-event row to the MP4")
-parser.add_argument("--event-guided-replan", action=argparse.BooleanOptionalAction, default=False)
-parser.add_argument("--event-replan-record-only", action="store_true",
-                    help="Record event errors without changing fixed-horizon execution")
-parser.add_argument("--event-replan-threshold", type=float, default=0.6)
-parser.add_argument("--event-replan-patience", type=int, default=2)
-parser.add_argument("--event-replan-min-horizon", type=int, default=4)
-parser.add_argument("--event-replan-min-pixels", type=int, default=4)
 parser.add_argument("--predicted-event-threshold", type=float, default=1 / 30)
 parser.add_argument("--predicted-event-min-neighbors", type=int, default=2)
 parser.add_argument("--profile-timing", action=argparse.BooleanOptionalAction, default=False)
@@ -74,17 +67,6 @@ if min(args.trials, args.max_steps, args.sampling_steps, args.execution_horizon,
     parser.error("trials, max-steps, sampling-steps and execution-horizon must be positive")
 if not 0 < args.predicted_event_threshold <= 1 or not 1 <= args.predicted_event_min_neighbors <= 9:
     parser.error("invalid predicted-event threshold or neighbor filter")
-if (not 0 <= args.event_replan_threshold <= 1 or args.event_replan_patience < 1
-        or args.event_replan_min_horizon < 1
-        or args.event_replan_min_pixels < 1):
-    parser.error("invalid event replan threshold, patience, minimum horizon or pixel gate")
-if args.event_guided_replan and args.event_replan_record_only:
-    parser.error("choose event-guided-replan or record-only")
-event_monitor = args.event_guided_replan or args.event_replan_record_only
-if event_monitor and args.event_replan_min_horizon > args.execution_horizon:
-    parser.error("event minimum horizon exceeds maximum execution horizon")
-if event_monitor:
-    args.decode_predicted_events = True
 rgb_ood_seed = args.seed if args.rgb_ood_seed is None else args.rgb_ood_seed
 if not 0 <= rgb_ood_seed < 2**63:
     parser.error("RGB OOD seed must be in [0,2**63)")
@@ -133,7 +115,7 @@ from scripts.eval_ewm.ewm_event_visualization import predicted_event_counts
 from scripts.eval_ewm.ewm_eval_recovery import archive_interrupted_trial, load_completed_results
 from scripts.eval_ewm.ewm_scene_rng import restore_scene_rng, save_scene_rng, state_path
 from scripts.eval_ewm.ewm_eval_summary import write_summary as _write_summary
-from scripts.eval_ewm.ewm_event_replan import event_error, EventReplanGate, horizon_statistics
+from scripts.eval_ewm.ewm_eval_summary import horizon_statistics
 from scripts.eval_ewm.ewm_rgb_ood import RGBOODConfig, TrialRGBOOD, check_resume_rgb_ood
 
 rgb_ood_config = RGBOODConfig(
@@ -175,24 +157,22 @@ def set_views(env) -> None:
     eye = torch.tensor([CAM0_EYE_WORLD], dtype=torch.float32, device=env.device)
     target = torch.tensor([CAM0_TARGET_WORLD], dtype=torch.float32, device=env.device)
     env.scene["cam0"].set_world_poses_from_view(eye, target)
-    ee = env.scene["ee_frame"].data
-    position, rotation = ee.target_pos_w[:, 0, :], ee.target_quat_w[:, 0, :]
-    eye_local = torch.tensor(WRIST_EYE_LOCAL, dtype=torch.float32, device=env.device).expand_as(position)
-    target_local = torch.tensor(WRIST_TARGET_LOCAL, dtype=torch.float32, device=env.device).expand_as(position)
-    env.scene["cam_wrist"].set_world_poses_from_view(
-        position + quat_apply(rotation, eye_local),
-        position + quat_apply(rotation, target_local),
-    )
+    from piper_wrist_camera import set_wrist_view
+    set_wrist_view(env)
 
 
 def configure_env():
     cfg = parse_env_cfg(TASK, device=args.device, num_envs=1, use_fabric=True)
     migrate_piper_stack_cfg(cfg)
+    from piper_scene_background import configure_room_background
+    configure_room_background(cfg.scene)
     cfg.seed = scene_seed  # Stream mode matches the collector: seed once, then reset without a seed.
     cfg.events.init_piper_arm_pose = None
     cfg.sim.dt, cfg.decimation, cfg.sim.render_interval = 1.0 / 120.0, 4, 4
     cfg.episode_length_s = float(args.max_steps + RESET_WARMUP_STEPS + 2) / CONTROL_HZ
     cfg.scene.cam0, cfg.scene.cam_wrist = camera("cam0"), camera("cam_wrist")
+    from piper_wrist_camera import configure_wrist_camera
+    configure_wrist_camera(cfg.scene.cam_wrist)
     cfg.scene.light.spawn.color, cfg.scene.light.spawn.intensity = (1.0, 1.0, 1.0), 6000.0
     cfg.scene.table.spawn.visual_material = sim_utils.PreviewSurfaceCfg(
         diffuse_color=(0.16, 0.16, 0.16), roughness=1.0, metallic=0.0)
@@ -528,12 +508,6 @@ def main() -> None:
             raise ValueError("execution-horizon exceeds the trained action horizon")
         manifest = {
             "rgb_ood": rgb_ood_config.metadata(),
-            "event_replan": {
-                "enabled": args.event_guided_replan, "record_only": args.event_replan_record_only,
-                "threshold": args.event_replan_threshold, "patience": args.event_replan_patience,
-                "min_horizon": args.event_replan_min_horizon, "min_pixels": args.event_replan_min_pixels,
-                "metric": "occupancy_tolerant_f1_64x64_radius1_camera_mean_v1",
-            },
             "checkpoint_step": step, "checkpoint_dir": ready.get("checkpoint_dir"),
             "training_observation_row_offset": hello["training_observation_row_offset"],
             "inference_observation_row_offset": 0,
@@ -575,8 +549,6 @@ def main() -> None:
                 raise FileNotFoundError(f"cannot resume without a manifest: {manifest_path}")
             saved_manifest = json.loads(manifest_path.read_text())
             check_resume_rgb_ood(saved_manifest.get("rgb_ood"), manifest["rgb_ood"])
-            if saved_manifest.get("event_replan") != manifest["event_replan"]:
-                raise ValueError("resume event replan configuration differs")
             immutable = ("checkpoint_step", "trials", "max_steps", "sampling_steps",
                          "decode_predicted_events", "predicted_event_threshold",
                          "predicted_event_min_neighbors", "action_chunk_size", "seed",
@@ -703,8 +675,6 @@ def main() -> None:
                                 min_neighbors=args.predicted_event_min_neighbors,
                             )
                         replans += 1
-                        gate = EventReplanGate(args.event_replan_threshold,
-                                               args.event_replan_patience, args.event_replan_min_horizon)
                         for chunk_index, action in enumerate(actions):
                             phase_started = time.perf_counter() if args.profile_timing else None
                             command = torch.from_numpy(action.copy())[None].to(env.device)
@@ -717,24 +687,15 @@ def main() -> None:
                             success_now = bool(success_term.func(env, **success_term.params)[0])
                             success_check_seconds = time.perf_counter() - phase_started if phase_started is not None else 0.0
                             stable_success = stable_success + 1 if success_now else 0
-                            score, camera_scores = (None, None)
-                            trigger = False
-                            if event_monitor:
-                                score, camera_scores = event_error(
-                                    observation["obs_voxel"], predicted_counts[chunk_index],
-                                    min_pixels=args.event_replan_min_pixels)
-                                trigger = gate.update(score, chunk_index + 1) and args.event_guided_replan
                             end_reason = (
                                 "success" if stable_success >= 10 else "terminated" if done else
                                 "step_budget" if control_step >= args.max_steps else
-                                "max_horizon" if chunk_index + 1 == execution_horizon else
-                                "event_mismatch" if trigger else None)
+                                "max_horizon" if chunk_index + 1 == execution_horizon else None)
                             phase_started = time.perf_counter() if args.profile_timing else None
                             video.write(
                                 observation, control_step, stable_success,
                                 predicted_counts=None if predicted_counts is None else predicted_counts[chunk_index],
-                                replan_label=(f"error={score:.3f} horizon={chunk_index + 1} "
-                                              f"{end_reason or ''}" if score is not None else ""),
+                                replan_label="",
                             )
                             video_write_seconds = time.perf_counter() - phase_started if phase_started is not None else 0.0
                             if args.profile_timing:
@@ -754,9 +715,6 @@ def main() -> None:
                                 "event_end_s": observation["timing"]["obs_event_end_s"],
                                 "success_now": success_now, "stable_success": stable_success,
                                 "terminated": terminated, "reward": extra["reward"],
-                                "event_error": score, "event_error_per_camera": camera_scores,
-                                "event_error_streak": gate.streak,
-                                "event_replan_triggered": end_reason == "event_mismatch",
                                 "chunk_end_reason": end_reason,
                             }
                             if args.profile_timing:

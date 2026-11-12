@@ -6,6 +6,7 @@ defaults:
 
 model:
   training_mode: rgb_action
+  # This future-RGB reader supplies only current RGB conditioning.
   event_codec_impl: leanvae16_rgb_joint
   event_camera_mode: wrist_only
   event_patch_size: 4
@@ -13,7 +14,7 @@ model:
 
 dataloader:
   type: ewm_piper_rgb_action
-  dataset_dir: /projects/hdd/myproject/CVPR2027/datasets/piper_stack_fronttight_v3_50/job177683
+  dataset_dir: ${oc.env:EWM_DATASET_DIR,${oc.env:EWM_PROJECT_ROOT,..}/datasets/piper_stack_fronttight_v3_50/job177683}
   event_camera_mode: wrist_only
   gpu_voxelization: false
   event_frame_cache_dir: null

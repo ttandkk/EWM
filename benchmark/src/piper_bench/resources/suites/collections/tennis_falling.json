@@ -1,0 +1,798 @@
+{
+  "version": "piper_eight_dynamic_narrow_v2",
+  "task": "tennis_falling",
+  "task_id": "Isaac-Tennis-Free-Fall-Catch-Piper-IK-Rel-v0",
+  "plan": {
+    "version": "piper_eight_dynamic_narrow_v2",
+    "task": "tennis_falling",
+    "split": "train",
+    "seed": 20261031,
+    "episodes": 50,
+    "speed": {
+      "parameter": "initial_downward_speed_m_s",
+      "low": 0.25,
+      "high": 0.35,
+      "unit": "m/s",
+      "sampling": "shuffled_uniform_strata",
+      "retry": "keep_slot_speed_and_launch_time"
+    },
+    "flight_duration": null,
+    "launch_time": {
+      "low": 0.5,
+      "high": 0.5,
+      "hz": 30,
+      "sampling": "fixed_tick",
+      "retry": "keep_slot_time"
+    },
+    "retry": "resample_pose_keep_speed_and_time",
+    "slots": [
+      {
+        "slot": 0,
+        "speed": 0.33658345839297055,
+        "stratum": 43,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 1,
+        "speed": 0.26184672413427823,
+        "stratum": 5,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 2,
+        "speed": 0.33236800807530076,
+        "stratum": 41,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 3,
+        "speed": 0.2955360522353519,
+        "stratum": 22,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 4,
+        "speed": 0.25695236704301266,
+        "stratum": 3,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 5,
+        "speed": 0.34653926342916697,
+        "stratum": 48,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 6,
+        "speed": 0.3124823820059678,
+        "stratum": 31,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 7,
+        "speed": 0.34813320730277353,
+        "stratum": 49,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 8,
+        "speed": 0.32459154777984733,
+        "stratum": 37,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 9,
+        "speed": 0.3315169758520864,
+        "stratum": 40,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 10,
+        "speed": 0.3234511725072069,
+        "stratum": 36,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 11,
+        "speed": 0.3268375314941197,
+        "stratum": 38,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 12,
+        "speed": 0.3422577598902087,
+        "stratum": 46,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 13,
+        "speed": 0.3016206635088734,
+        "stratum": 25,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 14,
+        "speed": 0.3416245590338045,
+        "stratum": 45,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 15,
+        "speed": 0.3399696519005442,
+        "stratum": 44,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 16,
+        "speed": 0.2726851256871874,
+        "stratum": 11,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 17,
+        "speed": 0.2992992973223566,
+        "stratum": 24,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 18,
+        "speed": 0.2529317692633258,
+        "stratum": 1,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 19,
+        "speed": 0.25868332631612206,
+        "stratum": 4,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 20,
+        "speed": 0.2918653559704586,
+        "stratum": 20,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 21,
+        "speed": 0.2707425427121562,
+        "stratum": 10,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 22,
+        "speed": 0.3029453837779127,
+        "stratum": 26,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 23,
+        "speed": 0.3153741143655823,
+        "stratum": 32,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 24,
+        "speed": 0.2648160220317966,
+        "stratum": 7,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 25,
+        "speed": 0.27690074902507406,
+        "stratum": 13,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 26,
+        "speed": 0.28747495620772257,
+        "stratum": 18,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 27,
+        "speed": 0.2841862503713064,
+        "stratum": 17,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 28,
+        "speed": 0.2694920170371793,
+        "stratum": 9,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 29,
+        "speed": 0.32970245181832325,
+        "stratum": 39,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 30,
+        "speed": 0.2753135734514227,
+        "stratum": 12,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 31,
+        "speed": 0.335253437842489,
+        "stratum": 42,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 32,
+        "speed": 0.2508592473244943,
+        "stratum": 0,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 33,
+        "speed": 0.34411123162512913,
+        "stratum": 47,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 34,
+        "speed": 0.3098785767880502,
+        "stratum": 29,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 35,
+        "speed": 0.31784319914108683,
+        "stratum": 33,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 36,
+        "speed": 0.32004699550407584,
+        "stratum": 35,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 37,
+        "speed": 0.26366220844324895,
+        "stratum": 6,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 38,
+        "speed": 0.3040208044689224,
+        "stratum": 27,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 39,
+        "speed": 0.27861461585538727,
+        "stratum": 14,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 40,
+        "speed": 0.3182508212417172,
+        "stratum": 34,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 41,
+        "speed": 0.28170018379969053,
+        "stratum": 15,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 42,
+        "speed": 0.2938609574245643,
+        "stratum": 21,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 43,
+        "speed": 0.3100044742954309,
+        "stratum": 30,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 44,
+        "speed": 0.2899006074656686,
+        "stratum": 19,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 45,
+        "speed": 0.26653928942402894,
+        "stratum": 8,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 46,
+        "speed": 0.3067787834341721,
+        "stratum": 28,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 47,
+        "speed": 0.28355862050437397,
+        "stratum": 16,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 48,
+        "speed": 0.2970773103073852,
+        "stratum": 23,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      },
+      {
+        "slot": 49,
+        "speed": 0.25565790945108136,
+        "stratum": 2,
+        "flight_duration_s": null,
+        "launch_time_s": 0.5,
+        "pair_slot": null,
+        "pair_member": null
+      }
+    ],
+    "config_overrides": {
+      "launch_delay_min": 0.5,
+      "launch_delay_max": 0.5,
+      "position_jitter": 0.002,
+      "downward_speed_min": 0.25,
+      "downward_speed_max": 0.35
+    },
+    "paired": false
+  },
+  "task_prompt": "Catch the vertically falling soccer ball with the gripper and hold it aloft.",
+  "camera": {
+    "calibration_id": "piper_tennis_falling_tight_front_v4_wrist_v1",
+    "resolution_hw": [
+      256,
+      256
+    ],
+    "cam0_eye_world_m": [
+      1.18,
+      0.0,
+      0.75
+    ],
+    "cam0_target_world_m": [
+      0.35,
+      0.0,
+      0.45
+    ],
+    "cam0_focal_length_cm": 20.5,
+    "cam0_horizontal_aperture_cm": 20.955,
+    "wrist_calibration_id": "piper_centered_bracket_square75_v2",
+    "wrist_mount_mode": "rigid_tcp",
+    "wrist_eye_local_m": [
+      -0.055,
+      0.0,
+      -0.102
+    ],
+    "wrist_target_local_m": [
+      0.0,
+      0.0,
+      0.04
+    ],
+    "wrist_mount_rotation_local_opengl": [
+      [
+        3.082926494133336e-06,
+        -0.932496765552656,
+        -0.36117832468786176
+      ],
+      [
+        -0.9999999999945349,
+        -3.3060988606103657e-06,
+        0.0
+      ],
+      [
+        -1.1940912477277007e-06,
+        0.3611783246858879,
+        -0.9324967655577522
+      ]
+    ],
+    "wrist_tcp_to_camera_opengl": [
+      [
+        3.082926494133336e-06,
+        -0.932496765552656,
+        -0.36117832468786176,
+        -0.055
+      ],
+      [
+        -0.9999999999945349,
+        -3.3060988606103657e-06,
+        0.0,
+        0.0
+      ],
+      [
+        -1.1940912477277007e-06,
+        0.3611783246858879,
+        -0.9324967655577522,
+        -0.102
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "wrist_focal_length_cm": 13.654543843943731,
+    "wrist_horizontal_aperture_cm": 20.955,
+    "wrist_intrinsic_matrix": [
+      [
+        166.81284772367434,
+        0.0,
+        128.0
+      ],
+      [
+        0.0,
+        166.81284772367434,
+        128.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "wrist_reference_urdf_sha256": "fa27856fc91f085877c4d022790372fe8d38f27000e7bc0c8bd091cc986c02c2",
+    "wrist_reference_source": "https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/resolve/main/embodiments.zip",
+    "wrist_calibration_scope": "simulation_adapted_bracket_not_measured_hand_eye"
+  },
+  "base_config": {
+    "mode": "fall",
+    "radius": 0.0335,
+    "mass": 0.057,
+    "restitution": 0.55,
+    "gravity": 9.81,
+    "launch_delay": 1.0,
+    "launch_delay_min": 0.5,
+    "launch_delay_max": 0.5,
+    "source_x": 0.4,
+    "source_y": 0.0,
+    "source_z": 0.8,
+    "velocity_x": 0.0,
+    "velocity_y": 0.0,
+    "velocity_z": 0.0,
+    "catch_z": 0.18,
+    "rolling_speed": 0.12,
+    "position_jitter": 0.002,
+    "close_lead": 0.04,
+    "lift_height": 0.1,
+    "stable_seconds": 0.5,
+    "max_seconds": 16.0,
+    "container_inner": 0.14,
+    "container_height": 0.09,
+    "wall": 0.006,
+    "handle_length": 0.045,
+    "handle_width": 0.025,
+    "container_x": 0.37,
+    "container_y": -0.17,
+    "container_hold_z": 0.12,
+    "stable_position_diameter_m": 0.002,
+    "grasp_depth": 0.025,
+    "reaction_delay": 0.06666666666666667,
+    "translation_limit": 0.16,
+    "angular_limit": 0.2,
+    "approach_gain": 1.5,
+    "downward_speed_min": 0.25,
+    "downward_speed_max": 0.35
+  },
+  "oracle_profile": "tennis_falling_sampled_speed_contact_v2",
+  "success_version": "existing_physical_predicates_v1",
+  "source_sha256": {
+    "_isaacsim6_compat.py": "2b15ba9a38f24a8566e747e07a700f9667dedbaae55be8ecc862c1f92802df2a",
+    "build_piper_ball_props.py": "8c450f3f18afd2fa5baf2f39a689d44e898dc3d91726448fe17a1968a86739ad",
+    "build_piper_tabletop_props.py": "1dd04460f288a165f5ecad3708cfca83c0635132421359658d5d7eff9d3b0a95",
+    "collect_piper_conveyor_evis.py": "31b87aa59b086bcc7c71b7d092cc0027ce257c7de8f4353f72d4a584041eca4a",
+    "collect_piper_drawer_evis.py": "f2cfc9a2c4b3d353fbe3ea0d49060de41d1bd286bd8102058062af643898d569",
+    "collect_piper_stack_evis.py": "8eeee22e0497a98a9babd09d4dd5a06db2e733f8166808e759501d1447a8b988",
+    "collect_piper_stack_teleop.py": "ba033877b2b7fb679b340f6a5afd3eed69560d615d74d474517f9a8e408fddd3",
+    "collect_piper_tasks_evis.py": "78094482d9654f2b54befde1adb33e27529fca5e19ca59966491bbcb94a7f8d1",
+    "convert_piper_hdf5_to_lerobot.py": "739b9ba770e92764a7d9563a0b8ab53ef5e5f106318fc55c01514f1de0bd9c1f",
+    "eval_piper_conveyor.py": "15bcb17a926f47a0945f09c743dfd184a099fe87d5cbb4d0e6e58533d3592b33",
+    "eval_piper_dynamic.py": "0b9e354883580ae50f5a13d6fc6bf6df130eaeb7acc1d3219852b96db28bee4f",
+    "eval_piper_stack_dummy.py": "fa7bb7da2578d01d3bb40dc169a81fb071bbbd2a6e3bc9868adba6d0d075419f",
+    "generate_cube_pattern_textures.py": "8c84cefc6096fd589aa039b1710582da4e4bc56a8069fa7739509238cc670607",
+    "piper_ball_props.py": "bfbe9c618a149bec25cb8854d40ebbff02abd6b6cdfa1396e95637cb6a61c581",
+    "piper_conveyor.py": "e422bc6ecb6e26867286c9019b8a423b1a70f485fdfa1f716b6cc46d71f90248",
+    "piper_conveyor_basket.py": "1bb9bad7fcbd1a36f0b3bb20e1f98ac2361b0d88a7004670f53e241e35b433bb",
+    "piper_conveyor_ik.py": "9039ef0e17958dce63350f98845f367fe06429cb7dc161e28afcaee44bb2dd88",
+    "piper_conveyor_io.py": "082b17ee0aa259eeb5c3aebaf2a97460cfff07080927cf3fcc8d7d5fa9ba31d0",
+    "piper_conveyor_motion.py": "cd36f5e340b6363f5110580adb92746a7ac88c9ad0cceaabd5abafbf403c2f67",
+    "piper_conveyor_oracle.py": "96571a3505424cb9aafb5c4990ed65ab16c90e51053afebd57e37a56728b0554",
+    "piper_conveyor_resume.py": "a7e5220e33ed5ad0ed6f2c0f950020a82060fb97de01365afd3e3feeb1444101",
+    "piper_conveyor_speed.py": "b584b2f952911883cdc6cb6a14d29e53c8a58502f1a29527ba78a9b84ce39aa0",
+    "piper_event_archive.py": "3bc142f20752a74e584187213109a3242b9aeb54543ed4f640c835c82c19a5d0",
+    "piper_event_frames.py": "6a8c0952a708ff4be80039a9bf314defb8011beb5dc9698c62de9cfa48fd23a1",
+    "piper_prop_textures.py": "55e1af107b9209d3bc56e8d4837d00c095e6e4de08042582047c91bb391c835f",
+    "piper_scene_background.py": "307f416c73a4abac56ea890ceed320c41369eff5e7ce1c729232fa801e2d3c13",
+    "piper_scene_background_ood.py": "a75acc939c4f08e0fd944321859fd93eaf5625bbb792e9e0cc149fb5f4ac9ea3",
+    "piper_table_visual.py": "be39202ebebf4a1189c9518417d8ad1266fef46030566bbfc1246977763abb0c",
+    "piper_tabletop_marble.py": "59726d31248df5050e54efac0e003a289bda64d51db475eff58444a1269b5cff",
+    "piper_tabletop_props.py": "697199f538cbab1d68de0a99a8d8943b12c0f65d1939da089a4b46b4f3a1ba2c",
+    "piper_tasks/__init__.py": "74a0d07ecf524b84e6e5dbdc9aa811bcc6d638c8bab00c87e75b21dea35d0f04",
+    "piper_tasks/carton_lowwall_collection.py": "3bf9f237ef585321062afe2ce7199add154e69335a706c387248dd23dbe0652b",
+    "piper_tasks/collection_protocol.py": "9d9b5e28e9e0d5ae7d7f439625b1633b7eb37082e0f6737ff758ce7c097adb59",
+    "piper_tasks/collection_runtime.py": "8c1c31fc38570ce14b5b8aab8e5e355d577e9230492a6b237f52f9e44fba4d2d",
+    "piper_tasks/container_spatial_collection.py": "997ebf622838bb7c74cc1f14030bf9f4c08eedfd0548f0cfa5590866c5a9f29e",
+    "piper_tasks/container_spatial_diagnostic.py": "ec912131867a1d16a9eaafe66562cd7340970670e2854ff330c24a338a3df604",
+    "piper_tasks/conveyor/__init__.py": "3776bea11e29410c96df6596fcd30e9b21cf3c02185acbb9e33fce6da74f4715",
+    "piper_tasks/conveyor/preview.py": "d07ac93b0c4056a46300913d30e8c771226d3c36cd51826cb3b674a28eb30333",
+    "piper_tasks/conveyor/scene.py": "73246af27121ad054d03b837d9c6206453488641ecd347d7213e1a4100ebd59a",
+    "piper_tasks/drawer_cup/__init__.py": "f40fdc6de428c2ebc9d0ae9720aa380371dd3e331ff61f2e5ea782a0a2eaa345",
+    "piper_tasks/drawer_cup/config.py": "0c5dd9e0575bd71db2e467959d7be72b9439afda57828c30582d6c010c424cc1",
+    "piper_tasks/drawer_cup/geometry.py": "7ff145ea6b23d01920dda434b25fcd73908b7ef358d6c6124fb095e56f7f3b05",
+    "piper_tasks/drawer_cup/oracle.py": "c122d33f3d1ffa734970891f03a72c5c22db8adb2a375b62016e98b6593da9ff",
+    "piper_tasks/drawer_cup/preview.py": "ebe4d23eae01f1f37fa784e9cfa614df8052e0634f2b08516c388779569a6bd2",
+    "piper_tasks/drawer_cup/scene.py": "7c9cecfabf36efba105dadfc1d3896d07472354e23e08e1e3b28578bdca9490b",
+    "piper_tasks/dynamic_collection.py": "3eb0dc723e9c88c9a5b0ad90987a6f6f04f8eb241b8b9bd8643c7897048cbe07",
+    "piper_tasks/dynamic_evaluation.py": "2750469d805f10e85c671137d91df9dd907c5428e3c4d2ecdd65ed5396082872",
+    "piper_tasks/evaluation_imaging.py": "9094c42bb66ebfa4014bffeef51b28b8adf751eeec7e27d0aad073198ba2afca",
+    "piper_tasks/evaluation_protocol.py": "5c09740e4859c4f677240c9f67b79513b790c929a977a76d323f1032d87d9c50",
+    "piper_tasks/event_preview.py": "637c784dda134f817851dceadff0be336967cf4ccafcee56b2c4ffc15bf34148",
+    "piper_tasks/lighting.py": "79e58e36baf4d0ab47717c55dd5c4a72f029ffd8d1ccd9841e699dd8d50b09b7",
+    "piper_tasks/low_geometry_collection.py": "3a1a32d23b81acc4ef9d93024c3557709912808ed67ce37c43a00c34f4302bd4",
+    "piper_tasks/motion_blur.py": "606a3c6833aea68c1cb683e6058a321047ca414af3bba220ebce70ec2b92a1f0",
+    "piper_tasks/moving_carton/__init__.py": "2899d369f27e58782d152822fe15cabcdf32a88962aafe146adc604f4bf53b32",
+    "piper_tasks/moving_carton/control.py": "298ce29d26e48fd6379aabe7fdb3bcb284bb5a602398ccdd1896cb7c55d9ddc5",
+    "piper_tasks/moving_carton/geometry.py": "bf7c2965cba00d2a47bace0e8a0b31b57225d78c21d12dd1b5f57ec5f90053c4",
+    "piper_tasks/moving_carton/lowwall.py": "991ea1855ba42a5f77a18ea6f173e32f56811a41096a00aff1e5c3f3cf7fd475",
+    "piper_tasks/moving_carton/oracle.py": "66ad2337a063f6c18066b670c52dbea0a34db22050f44a59dd4fd3e52ebe6398",
+    "piper_tasks/moving_carton/preview.py": "95d1b10fe7cd54466ed28f9479a0cf0aa117c82d0ddb3d3edd40b7c837e58556",
+    "piper_tasks/moving_carton/scene.py": "de70535d03ba93bb252e8afd706df731ea279351348320de6ac52d69887abfae",
+    "piper_tasks/narrow_collection.py": "b66f025f611cd8b11e60590459d46a88ac79e846a7f9735a98ade9a1af4dea5b",
+    "piper_tasks/ood_protocol.py": "f78753fa018b12dbfe1fcfbc1aaf24ed1180f5a2c6165adc62c312aa84054d33",
+    "piper_tasks/push_t/__init__.py": "7eef5a5b1c9cd9d146aa3639b01f13b4428dc9263a5776aad6e1c67a1e41a671",
+    "piper_tasks/push_t/config.py": "f77a5260df9451528974c408a845c4d5f5ebf14e67c99bc89b1bf708bed8ec76",
+    "piper_tasks/push_t/geometry.py": "e876a9b103f07eae768e8c0bca5dc98a8f270d201d48b2d1b5db51b74de273b8",
+    "piper_tasks/push_t/oracle.py": "d59b118e293221c6037b1ed6bf60f401a8aaccd8b3d98c61acfd8d9cfc62e929",
+    "piper_tasks/push_t/preview.py": "77f837b9b08415e46b3b0cdbf130240da2be5b6408ad464e61d2451b37c42596",
+    "piper_tasks/push_t/protocol.py": "02febf22351c4850a8c9fb14b6b3ada7b631e3f9e77ef8c4575a5697a937cbe2",
+    "piper_tasks/push_t/scene.py": "d9d0645846d0424351a8645b3386f8e9aafc076f020408f6de9e21aca3e599dd",
+    "piper_tasks/rotating_tube/__init__.py": "34e6970ff102ca9e1e0cde0201444aa3d629142bb206fd9da82c39ade48ec15d",
+    "piper_tasks/rotating_tube/config.py": "fd900e08514ea968f7ec6ed412c10a1e7a1a21ecf0cd2529fa0e27bf5f626773",
+    "piper_tasks/rotating_tube/control.py": "c08dfe4d4b42724b34c19e0241976a6840f80d2ee180d50306beaa6fe6aaf229",
+    "piper_tasks/rotating_tube/geometry.py": "4b6ff99dbea19f000a1f55f3d7ee0a987df0a821dc1b667606e7ca26b7d74b49",
+    "piper_tasks/rotating_tube/oracle.py": "889b131f40153a5e5231c733f019af25aa453df72b41976d75adf19fa0fbc793",
+    "piper_tasks/rotating_tube/physics.py": "7bead50279e6b84f61936c66c50e9a45b899589d02bbcc8bcff83775d278beeb",
+    "piper_tasks/rotating_tube/preview.py": "9424e1407b26c16729dda3f495267db5840815ae0276b3312c8ca0115db48cf7",
+    "piper_tasks/rotating_tube/scene.py": "cec13309de7c09313858f0232852ba78252f7a5032e7c4f536d3e11145d57220",
+    "piper_tasks/square_nut/__init__.py": "16cba0e02d1e005109ec3d6a0ad3be7450238a892f8b09fcb8e6b8181dcad5c6",
+    "piper_tasks/square_nut/config.py": "bb216771910abb935b4ebf84491ced37536d451d98f0263eaca5bc0c45012323",
+    "piper_tasks/square_nut/geometry.py": "3ac0fc2eb5f06520281c2b8a30c824f5bbc15948dd29d3bca710813f296f6010",
+    "piper_tasks/square_nut/oracle.py": "31c417024da323b59ccd0d391f9ce2b8149063d1e7dd4833eb373d0672824ac9",
+    "piper_tasks/square_nut/preview.py": "44df8080f1974df21b4dc4dc981ce09eaaac88688874f7b1e1dc7c19efd79517",
+    "piper_tasks/square_nut/scene.py": "82f470767ef657f2b08f801a303d550fd4c3f81cfa7056286cd5628ebc8011ee",
+    "piper_tasks/static_common.py": "72b18e7000a04fee41c6060b3de93f980357caec27c443bf6d6f913c754bc4cf",
+    "piper_tasks/static_preview.py": "201e46d52c3e92d34403334661a669ce29b8412316d4d26b5bf75d32cae05c0f",
+    "piper_tasks/tabletop_assets.py": "76a60a79bce377d6221132e2d40e0de01cafce802d90fdc3accda8c815f6df77",
+    "piper_tasks/tennis/__init__.py": "8bf6135b09a42dbbaa361ad7e6c9451133ef69ffd25d979ccfe5fc334985dd38",
+    "piper_tasks/tennis/appearance.py": "2f4bb07956690095e7e8d264632e60e62e93b7dfe1f64c49cb4a1cb4adc9c4db",
+    "piper_tasks/tennis/background.py": "56680d6612268bdc86f742090b79b1e01d52cc9e3aa8441fca91227372925ba0",
+    "piper_tasks/tennis/camera.py": "5bf66f701788c8aa91d19eb78f0cb49df82b534877e442de4673ddbc66a9c317",
+    "piper_tasks/tennis/collection.py": "9bb1a97e377cbe0a5461641e2e5943d9244170a9280755b707e4537e3d69b9d2",
+    "piper_tasks/tennis/config.py": "8e45044f6be1ea5a064f47294f6a9aafff43dcf6e97e9667db92017a962085d9",
+    "piper_tasks/tennis/control.py": "d870242f9c951ba91a128c366e96972df06ab03766b86fe00f2ac301eb166a0d",
+    "piper_tasks/tennis/geometry.py": "fa0cc634b3d82e51065478bb8d65fc1d6c47cab13c0925eda68b835e19409d11",
+    "piper_tasks/tennis/metrics.py": "bb6139fe83f3ab9a88f55532d2f30c135a1620011112de7fb41cfd0d3095095d",
+    "piper_tasks/tennis/motion.py": "72ed6b64132391b43165fa7c7be88c004eda5b6ae0db174a7fbab273284fcba5",
+    "piper_tasks/tennis/oracle.py": "8e99cb8eda1c3ba1ab3ecf5e7de11e6c8723ab3734b57438629249a2ebc4bd4a",
+    "piper_tasks/tennis/scene.py": "d2ac06b934405a1aeac5c218c9b9ff147b905aff8818fdab118eddf80bfd7ea0",
+    "piper_tasks/tennis/wrist.py": "458455b4be93eec360f1ffc72c67ade443c90e8e8da1973f99dd67c37d133ccd",
+    "piper_tasks/tennis_container/__init__.py": "a9c2c1d7e96acee194efdb440ea3d7df171fde7f3a09bb51b5186c0679adca99",
+    "piper_tasks/tennis_container/oracle.py": "df5da075ded94e83546805cb4d264df51eda9daa3fe4811edabb4a88e68d4db5",
+    "piper_tasks/tennis_container/preview.py": "e083f798348886a9ee5a35d739d24e5ac05b5d844c4db01105d24207c423ecc7",
+    "piper_tasks/tennis_container/scene.py": "f2e361eebc538d8851ecd4da0e2f17570bd5811b9bfcf34f046bf5d575ed268b",
+    "piper_tasks/tennis_falling/__init__.py": "d221ed08ded4ab288bb515bb1106d0899776d1ee272cf451188e008f22cf72f2",
+    "piper_tasks/tennis_falling/preview.py": "5851086742b821604402d6d088bf3f42be660a4bea2e3852e0914e49e758af81",
+    "piper_tasks/tennis_falling/scene.py": "181cea62ec28f0b968a03dde55a845a83a855f62b493123074abb5011a048d89",
+    "piper_tasks/tennis_parabolic/__init__.py": "32b18fd60fb9895394867dbe5c1c6417ec3f196e54cfb24f7051cecceb4711c4",
+    "piper_tasks/tennis_parabolic/preview.py": "5643f2abe79a2b4ed990353b718c7c11b9ca51f9ea1c5537d54aec818ccf47b7",
+    "piper_tasks/tennis_parabolic/scene.py": "c53912c71b2f0df31c361c338f39e2d24fb0691f472b89a94381c46fd6eba776",
+    "piper_tasks/tennis_rolling/__init__.py": "5d303811841fbf557eb2f215814c6a21909d75ba7a34a16a6b0ff21b2aa3bfbd",
+    "piper_tasks/tennis_rolling/preview.py": "9e118e66596ad94cb75d90d99ebd2c6347f29ce028cca3f6c72df320d78ff7d6",
+    "piper_tasks/tennis_rolling/scene.py": "37f8c1fdea0aa8da4270456031adda7f40db1cff19da218cdb8b222990172a71",
+    "piper_tasks/turntable_cups/__init__.py": "30372dcc22fb818fe3d05652325bf2d8ff28f5eab33cd3bb14b2e40e2b664313",
+    "piper_tasks/turntable_cups/config.py": "95a031b919a94b17f22d025fd2a3f8564984521b3f998f93d3e6005c721663fe",
+    "piper_tasks/turntable_cups/geometry.py": "c2edc80ccd86230cc48bfd509da4f54cac772c448eacef3c64cf7473d6d49c60",
+    "piper_tasks/turntable_cups/oracle.py": "e5ba9315578a357921aec933ad2c73559c2e766afc5f644b9e746360d5cca78a",
+    "piper_tasks/turntable_cups/preview.py": "657f626c7be489d96b53861ad572fb855f18ea90379c3daf6f26c0d194365477",
+    "piper_tasks/turntable_cups/scene.py": "30fe4907555ac4d9f1c6bef37811a29ce4768d272b63adfd07f172425bf4ee8b",
+    "piper_tasks/turntable_cups/turntable.py": "64d642d9c5f0021f23171b570a48ca58c1d3fb4003a098ff2e77302904e20ddc",
+    "piper_teleop_geometry.py": "89e39e64939c55e2dd42f25a8cf1e882d892e898148c72be3cedcb5b1542f97f",
+    "piper_teleop_server.py": "13da2aae12f52410ce57387f8af6ac16af81208f2001c3125d9968f8e1f78703",
+    "piper_wrist_camera.py": "87b99fc1843d8b385f65beab836656bf9c91c0553a0af054ce912afb860a11dd",
+    "piper_wrist_sensor.py": "a2ee7faba092141ad0fc0429a1e2b4ff365c4f57bf5fe79eeaa9bc3cecb909ec",
+    "render_piper_background.py": "569f52557c7ca3ebe0224c20d8e76b14fa0ee795ea5232d4c8cb68f7c39d2758",
+    "render_piper_hdf5_preview.py": "0d392510a6154140b9aa7479cda41646e604d73dd5d7df9ba6a2bff4ab3b2564",
+    "render_piper_lerobot_four_view.py": "df4e6659b824d331945a475b78af344ba827553d5c5cd5016f8887758bf3513e",
+    "render_piper_lighting.py": "5400ce3bdac7f7cc4ec8ca0d4bcc6cc48d27f45cd3355745204280d7645a3550",
+    "render_piper_motion_blur.py": "feed044d03bb5cb5d617cffcf4697037e9d02a2c63f18b2fa602dd7b1241cd1b",
+    "render_piper_tabletop_props.py": "6fc877b6519fc511f78675a03568a94f74fe791473134c9260e7f551ff2c4405",
+    "render_piper_wrist_calibration.py": "604b3015d5144e6eff113c59b269a334b5ed73198dba3b776909f44fa365acac",
+    "validate_piper_conveyor_lerobot.py": "0425255c1302c1cf0f6289dac4c21fc5eeb2639b552da4397876ac72c757411e",
+    "validate_piper_stack_lerobot.py": "83b91c2b8c14ed2416b99e881bca452ced68f9c33199b8152d4c33730767c8cb",
+    "validate_piper_tasks_lerobot.py": "c57032e3d25b3cdb019adb3e1dbda645a521ae9fe4a69331e4ff7975c2c284ea",
+    "write_piper_conveyor_lerobot.py": "81bddd9ed4bdb59f10ad8fc87804885c782a4851a62a8936b56f0a9e64895813",
+    "write_piper_stack_lerobot.py": "8d0e488d1769ab8be091af1473cd6e181e7c6b7dc2220e6e06c642f4177dd167",
+    "write_piper_task_lerobot.py": "4e8bb2309d482d14f68fd2b07382205ad192f71b0843f2b46558fbf931261c08"
+  },
+  "pathtracing_spp": 64,
+  "acceptance_trials": 20,
+  "acceptance_rate": 0.7,
+  "initial_hold_steps": 0,
+  "control_hz": 30,
+  "physics_hz": 120,
+  "event_hz": 240,
+  "renderer": "pathtracing",
+  "standard_imaging": true,
+  "text_overlays": false,
+  "event_archive": {
+    "version": "raw_xypt_with_aligned_frames_v1",
+    "raw_timestamp_unit": "seconds",
+    "raw_fields": [
+      "x",
+      "y",
+      "t",
+      "p"
+    ],
+    "raw_polarity": [
+      -1,
+      1
+    ],
+    "raw_count_clipping": false,
+    "frame_hz": 30,
+    "frame_window": "(t_(k-1), t_k]",
+    "first_frame": "empty at t=0",
+    "raw_path": "events/{camera}/episode_{episode:06d}.npz",
+    "video_path": "videos/observation.event_frame.{camera}/episode_{episode:06d}.mp4",
+    "video_encoding": "H264 visualization: white background, OFF blue, ON red, overlap purple",
+    "training_frames": "lossless OFF/ON count PNG in Parquet, clipped at 15",
+    "terminal_tail": "raw events after the last recorded observation through final action end; not framed"
+  }
+}

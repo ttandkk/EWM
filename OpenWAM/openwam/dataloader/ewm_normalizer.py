@@ -32,11 +32,25 @@ class EWMNormalizer:
         action = payload["action"]
         self.state_mean = self._vector(proprio, "mean", 8)
         self.state_std = self._vector(proprio, "std", 8)
-        self.action_q01 = self._vector(action, "q01", 7)
-        self.action_q50 = self._vector(action, "q50", 7)
-        self.action_q99 = self._vector(action, "q99", 7)
+        self.action_type = action.get("type", "quantile")
+        if self.action_type == "quantile":
+            # Preserve the exact mapping used by existing checkpoints.
+            self.action_low = self._vector(action, "q01", 7)
+            self.action_high = self._vector(action, "q99", 7)
+        elif self.action_type == "minmax":
+            self.action_low = self._vector(action, "min", 7)
+            self.action_high = self._vector(action, "max", 7)
+        else:
+            raise ValueError(f"unsupported EWM action normalization: {self.action_type}")
+        if np.any(self.action_low > self.action_high):
+            raise ValueError("action normalization lower bound exceeds upper bound")
+        # Quantiles remain useful diagnostics; they are not the minmax bounds.
+        self.action_q01 = self._vector(action, "q01", 7) if "q01" in action else self.action_low
+        self.action_q99 = self._vector(action, "q99", 7) if "q99" in action else self.action_high
+        self.action_q50 = (self._vector(action, "q50", 7) if "q50" in action
+                           else (self.action_low + self.action_high) * 0.5)
         self.degenerate_threshold = float(action.get("degenerate_threshold", NORM_EPS))
-        self._degenerate_action = (self.action_q99 - self.action_q01) < self.degenerate_threshold
+        self._degenerate_action = (self.action_high - self.action_low) < self.degenerate_threshold
         self.metadata = payload
 
     @staticmethod
@@ -44,6 +58,8 @@ class EWMNormalizer:
         value = np.asarray(group[key], dtype=np.float32)
         if value.shape != (dim,):
             raise ValueError(f"normalization {key} must have shape ({dim},), got {value.shape}")
+        if not np.isfinite(value).all():
+            raise ValueError(f"normalization {key} must be finite")
         return value
 
     @classmethod
@@ -100,20 +116,20 @@ class EWMNormalizer:
 
     def normalize_action(self, action: torch.Tensor) -> torch.Tensor:
         action = self._require_tensor(action).to(torch.float32)
-        q01 = self._stats_on(self.action_q01, action)
-        q99 = self._stats_on(self.action_q99, action)
-        scale = q99 - q01
-        normalized = (2.0 * (action - q01) / scale.clamp_min(NORM_EPS) - 1.0).clamp(-1.0, 1.0)
+        low = self._stats_on(self.action_low, action)
+        high = self._stats_on(self.action_high, action)
+        scale = high - low
+        normalized = (2.0 * (action - low) / scale.clamp_min(NORM_EPS) - 1.0).clamp(-1.0, 1.0)
         mask = self._stats_on(self._degenerate_action, action).to(torch.bool)
         return torch.where(mask, torch.zeros_like(normalized), normalized)
 
     def denormalize_action(self, action_normalized: torch.Tensor) -> torch.Tensor:
         """Map policy output in [-1, 1] to raw 7-D Piper action coordinates."""
         action_normalized = self._require_tensor(action_normalized).to(torch.float32)
-        q01 = self._stats_on(self.action_q01, action_normalized)
+        low = self._stats_on(self.action_low, action_normalized)
         q50 = self._stats_on(self.action_q50, action_normalized)
-        q99 = self._stats_on(self.action_q99, action_normalized)
-        raw = (action_normalized.clamp(-1.0, 1.0) + 1.0) * 0.5 * (q99 - q01) + q01
+        high = self._stats_on(self.action_high, action_normalized)
+        raw = (action_normalized.clamp(-1.0, 1.0) + 1.0) * 0.5 * (high - low) + low
         mask = self._stats_on(self._degenerate_action, action_normalized).to(torch.bool)
         return torch.where(mask, q50, raw)
 

@@ -25,11 +25,27 @@ class EvalRecoveryTests(unittest.TestCase):
             partial = output / "trial_002_h264_recording.mp4"
             partial.write_bytes(b"partial")
             (output / "trial_002_steps.json").write_text("[1]")
+            events = output / "trial_002_events"
+            events.mkdir()
+            (events / "cam0_raw.npz").write_bytes(b"partial raw events")
             archived = archive_interrupted_trial(output, 2)
-            self.assertEqual(len(archived), 2)
+            self.assertEqual(len(archived), 3)
+            self.assertFalse(events.exists())
+            self.assertEqual((output / "trial_002_events_interrupted_01/cam0_raw.npz").read_bytes(), b"partial raw events")
             self.assertTrue(all(path.exists() for path in archived))
             self.assertFalse(partial.exists())
             self.assertEqual(len(load_completed_results(output, 3)), 2)
+
+    def test_missing_event_archive_fails_closed(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            output = Path(temporary)
+            video = output / "trial_000_h264_success.mp4"
+            video.write_bytes(b"video")
+            (output / "trial_000_steps.json").write_text("[]")
+            (output / "trial_000_result.json").write_text(json.dumps(dict(
+                trial=0, video=str(video), event_archive=dict(directory=str(output / "trial_000_events")))))
+            with self.assertRaisesRegex(ValueError, "incomplete event archive"):
+                load_completed_results(output, 1)
 
     def test_missing_completed_video_fails_closed(self):
         with tempfile.TemporaryDirectory() as temporary:

@@ -1,0 +1,305 @@
+{
+  "version": "piper_tabletop_props_v1",
+  "units": "metres",
+  "up_axis": "Z",
+  "origin": "bottom_center",
+  "visual_only": true,
+  "collision": false,
+  "artwork": "Original deterministic procedural artwork",
+  "props": {
+    "rubik_cube": {
+      "usd": "rubik_cube.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "multicolour tiles / black plastic"
+    },
+    "lego_block": {
+      "usd": "lego_block.usdc",
+      "dimensions_m": [
+        0.08,
+        0.08,
+        0.082
+      ],
+      "bounds_m": [
+        [
+          -0.03999999910593033,
+          -0.03999999910593033,
+          0.0
+        ],
+        [
+          0.03999999910593033,
+          0.03999999910593033,
+          0.0820000022649765
+        ]
+      ],
+      "appearance": "orange plastic / four raised studs"
+    },
+    "wooden_block": {
+      "usd": "wooden_block.usdc",
+      "dimensions_m": [
+        0.075,
+        0.075,
+        0.075
+      ],
+      "bounds_m": [
+        [
+          -0.03750000149011612,
+          -0.03750000149011612,
+          0.0
+        ],
+        [
+          0.03750000149011612,
+          0.03750000149011612,
+          0.07500000298023224
+        ]
+      ],
+      "appearance": "light wood / side grain and end grain"
+    },
+    "checker_cube": {
+      "usd": "checker_cube.usdc",
+      "dimensions_m": [
+        0.07,
+        0.07,
+        0.07
+      ],
+      "bounds_m": [
+        [
+          -0.03500000014901161,
+          -0.03500000014901161,
+          0.0
+        ],
+        [
+          0.03500000014901161,
+          0.03500000014901161,
+          0.07000000029802322
+        ]
+      ],
+      "appearance": "black and ivory checker pattern"
+    },
+    "marker_cube": {
+      "usd": "marker_cube.usdc",
+      "dimensions_m": [
+        0.07,
+        0.07,
+        0.07
+      ],
+      "bounds_m": [
+        [
+          -0.03500000014901161,
+          -0.03500000014901161,
+          0.0
+        ],
+        [
+          0.03500000014901161,
+          0.03500000014901161,
+          0.07000000029802322
+        ]
+      ],
+      "appearance": "decorative black and white fiducial motifs"
+    },
+    "dice": {
+      "usd": "dice.usdc",
+      "dimensions_m": [
+        0.065,
+        0.065,
+        0.065
+      ],
+      "bounds_m": [
+        [
+          -0.032499998807907104,
+          -0.032499998807907104,
+          0.0
+        ],
+        [
+          0.032499998807907104,
+          0.032499998807907104,
+          0.06499999761581421
+        ]
+      ],
+      "appearance": "red resin / white pips / opposite faces sum to seven"
+    },
+    "cardboard_box": {
+      "usd": "cardboard_box.usdc",
+      "dimensions_m": [
+        0.1,
+        0.1,
+        0.1004
+      ],
+      "bounds_m": [
+        [
+          -0.05000000074505806,
+          -0.05000000074505806,
+          0.0
+        ],
+        [
+          0.05000000074505806,
+          0.05000000074505806,
+          0.10040000081062317
+        ]
+      ],
+      "appearance": "kraft paper / packing tape / handling symbols"
+    },
+    "tissue_box": {
+      "usd": "tissue_box.usdc",
+      "dimensions_m": [
+        0.105,
+        0.09,
+        0.146887
+      ],
+      "bounds_m": [
+        [
+          -0.05249999836087227,
+          -0.04500000178813934,
+          0.0
+        ],
+        [
+          0.05249999836087227,
+          0.04500000178813934,
+          0.14688658714294434
+        ]
+      ],
+      "appearance": "blue floral paper / folded white tissue"
+    },
+    "milk_box": {
+      "usd": "milk_box.usdc",
+      "dimensions_m": [
+        0.075,
+        0.075,
+        0.147
+      ],
+      "bounds_m": [
+        [
+          -0.03750000149011612,
+          -0.03750000149011612,
+          0.0
+        ],
+        [
+          0.03750000149011612,
+          0.03750000149011612,
+          0.1469999998807907
+        ]
+      ],
+      "appearance": "blue and ivory printed carton / gable top"
+    },
+    "cereal_box": {
+      "usd": "cereal_box.usdc",
+      "dimensions_m": [
+        0.085,
+        0.065,
+        0.1204
+      ],
+      "bounds_m": [
+        [
+          -0.042500000447034836,
+          -0.032499998807907104,
+          0.0
+        ],
+        [
+          0.042500000447034836,
+          0.032499998807907104,
+          0.12039999663829803
+        ]
+      ],
+      "appearance": "cream cereal packaging / original artwork"
+    },
+    "juice_box": {
+      "usd": "juice_box.usdc",
+      "dimensions_m": [
+        0.08,
+        0.07,
+        0.1004
+      ],
+      "bounds_m": [
+        [
+          -0.03999999910593033,
+          -0.03500000014901161,
+          0.0
+        ],
+        [
+          0.03999999910593033,
+          0.03500000014901161,
+          0.10040000081062317
+        ]
+      ],
+      "appearance": "orange juice packaging / original artwork"
+    },
+    "gift_box": {
+      "usd": "gift_box.usdc",
+      "dimensions_m": [
+        0.094,
+        0.094,
+        0.106599
+      ],
+      "bounds_m": [
+        [
+          -0.04699999839067459,
+          -0.04699999839067459,
+          0.0
+        ],
+        [
+          0.04699999839067459,
+          0.04699999839067459,
+          0.10659901797771454
+        ]
+      ],
+      "appearance": "red patterned paper / gold ribbon and bow"
+    },
+    "plastic_box": {
+      "usd": "plastic_box.usdc",
+      "dimensions_m": [
+        0.11,
+        0.1,
+        0.083
+      ],
+      "bounds_m": [
+        [
+          -0.054999999701976776,
+          -0.05000000074505806,
+          0.0
+        ],
+        [
+          0.054999999701976776,
+          0.05000000074505806,
+          0.08299999684095383
+        ]
+      ],
+      "appearance": "translucent plastic walls / blue lid and clips"
+    },
+    "ceramic_box": {
+      "usd": "ceramic_box.usdc",
+      "dimensions_m": [
+        0.087,
+        0.087,
+        0.0852
+      ],
+      "bounds_m": [
+        [
+          -0.04349999874830246,
+          -0.04349999874830246,
+          0.0
+        ],
+        [
+          0.04349999874830246,
+          0.04349999874830246,
+          0.0851999968290329
+        ]
+      ],
+      "appearance": "blue and white floral glaze / separate lid"
+    }
+  }
+}

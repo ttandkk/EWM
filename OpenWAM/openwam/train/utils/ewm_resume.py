@@ -19,9 +19,19 @@ def _fingerprint(value):
 def resume_contract(cfg, dataset, loader, accelerator, lr_schedule_steps):
     """Fields that must match before restoring optimizer and sampler state."""
     t = cfg.training
-    return {
-        "model": _fingerprint(OmegaConf.to_container(cfg.model, resolve=True)),
-        "dataloader": _fingerprint(OmegaConf.to_container(cfg.dataloader, resolve=True)),
+    model_config = OmegaConf.to_container(cfg.model, resolve=True)
+    # Adding the identity sampler must not invalidate legacy full-state resumes.
+    if model_config.get('event_temporal_downsample', 1) == 1:
+        model_config.pop('event_temporal_downsample', None)
+    # The disabled RGB-history option must preserve legacy single-frame resumes.
+    loader_config = OmegaConf.to_container(cfg.dataloader, resolve=True)
+    # Explicit null retains legacy equal-horizon resume fingerprints.
+    for options in (model_config, loader_config):
+        if options.get('event_horizon') is None:
+            options.pop('event_horizon', None)
+    contract = {
+        "model": _fingerprint(model_config),
+        "dataloader": _fingerprint(loader_config),
         "normalization": _fingerprint(dataset.normalizer.metadata),
         "dataset_length": len(dataset),
         "loader_length": len(loader),
@@ -38,6 +48,7 @@ def resume_contract(cfg, dataset, loader, accelerator, lr_schedule_steps):
         "lr_min_ratio": float(t.lr_min_ratio),
         "mixed_precision": str(t.mixed_precision),
     }
+    return contract
 
 
 def capture_rng():
@@ -125,7 +136,7 @@ def load_resume_state(state_dir, metadata, accelerator, model, optimizer, schedu
     training_mode = getattr(policy_model, "training_mode", "joint")
     expected_format = {"joint": "ewm_wan_latent_v2", "event_only": "ewm_wan_latent_v2",
                        "rgb_action": "ewm_rgb_action_latent_v1",
-                       "action_only": "ewm_action_only_v1"}.get(training_mode)
+                       "action_only": "ewm_action_only_v2"}.get(training_mode)
     if expected_format is None or policy.get("format") != expected_format or int(policy.get("step", -1)) != step:
         raise ValueError("EWM resume policy checkpoint does not match training state")
     policy_model.load_policy_state_dict(policy["model"])

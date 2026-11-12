@@ -1,0 +1,84 @@
+{
+  "ok": true,
+  "version": "piper_policy_v1",
+  "family": "ewm",
+  "mode": "joint",
+  "action_horizon": 24,
+  "event_horizon": 24,
+  "action_dim": 7,
+  "state_dim": 8,
+  "control_hz": 30,
+  "action_contract": "piper_delta_eef_gripper_v1",
+  "rgb_shape": [
+    2,
+    3,
+    256,
+    256
+  ],
+  "event_camera_mode": "dual",
+  "event_cameras": 2,
+  "voxel_bins": 1,
+  "count_clip": 15.0,
+  "observation_contract": "rgb_state_pre_action_v1",
+  "event_time_contract": "aligned_event_frame_pre_action_v1",
+  "prediction_kind": "events",
+  "checkpoint_step": 80000,
+  "checkpoint_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "config_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "normalization_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "training_data": {
+    "conveyor": {
+      "collection_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  },
+  "post_trial_visualization_supported": true,
+  "training_observation_row_offset": 0,
+  "inference_observation_row_offset": 0,
+  "policy_descriptor": {
+    "version": "piper_policy_v1",
+    "family": "ewm",
+    "mode": "joint",
+    "action_horizon": 24,
+    "event_horizon": 24,
+    "action_dim": 7,
+    "state_dim": 8,
+    "control_hz": 30,
+    "action_contract": "piper_delta_eef_gripper_v1",
+    "rgb_shape": [
+      2,
+      3,
+      256,
+      256
+    ],
+    "event_camera_mode": "dual",
+    "event_cameras": 2,
+    "voxel_bins": 1,
+    "count_clip": 15.0,
+    "observation_contract": "rgb_state_pre_action_v1",
+    "event_time_contract": "aligned_event_frame_pre_action_v1",
+    "prediction_kind": "events",
+    "checkpoint_step": 80000,
+    "checkpoint_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "config_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+    "normalization_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+    "training_data": {
+      "conveyor": {
+        "collection_sha256": "3333333333333333333333333333333333333333333333333333333333333333"
+      }
+    },
+    "post_trial_visualization_supported": true,
+    "training_observation_row_offset": 0,
+    "inference_observation_row_offset": 0,
+    "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+    "source_files_sha256": {}
+  },
+  "horizon": 24,
+  "checkpoints": [
+    80000
+  ],
+  "deferred_visualization_supported": false,
+  "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+  "source_files_sha256": {},
+  "optimization": {},
+  "training_mode": "joint"
+}

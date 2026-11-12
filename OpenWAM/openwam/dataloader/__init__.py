@@ -1,38 +1,30 @@
-from openwam.dataloader.bases import BaseDataset
-from openwam.dataloader.ebench import EBenchDataset, MultiEBenchDataset
-from openwam.dataloader.registry import (
-    DATASET_REGISTRY,
-    build_dataset,
-    list_registered_datasets,
-    register_dataset,
-)
-from openwam.dataloader.robodojo import (
-    MultiTaskRoboDojoDataset,
-    RoboDojoDataset,
-)
-from openwam.dataloader.robotwin import (
-    EEF_ACTION_DIM,
-    EEF_GRIPPER_INDICES,
-    JOINT_GRIPPER_INDICES,
-    ROBOTWIN_ALL_TASKS,
-    MultiTaskRoboTwinDataset,
-    RoboTwinDataset,
-)
+"""Public dataset API, loaded lazily so inference can import normalization alone.
 
-__all__ = [
-    "BaseDataset",
-    "RoboTwinDataset",
-    "MultiTaskRoboTwinDataset",
-    "RoboDojoDataset",
-    "MultiTaskRoboDojoDataset",
-    "EBenchDataset",
-    "MultiEBenchDataset",
-    "DATASET_REGISTRY",
-    "register_dataset",
-    "build_dataset",
-    "list_registered_datasets",
-    "ROBOTWIN_ALL_TASKS",
-    "EEF_ACTION_DIM",
-    "EEF_GRIPPER_INDICES",
-    "JOINT_GRIPPER_INDICES",
-]
+Requesting the registry still performs the existing full built-in registration;
+importing a single normalizer does not require every dataset's I/O dependencies.
+"""
+from importlib import import_module
+
+_EXPORTS = {
+    "BaseDataset": "bases",
+    "EBenchDataset": "ebench", "MultiEBenchDataset": "ebench",
+    "DATASET_REGISTRY": "registry", "build_dataset": "registry",
+    "list_registered_datasets": "registry", "register_dataset": "registry",
+    "RoboDojoDataset": "robodojo", "MultiTaskRoboDojoDataset": "robodojo",
+    "RoboTwinDataset": "robotwin", "MultiTaskRoboTwinDataset": "robotwin",
+    "ROBOTWIN_ALL_TASKS": "robotwin", "EEF_ACTION_DIM": "robotwin",
+    "EEF_GRIPPER_INDICES": "robotwin", "JOINT_GRIPPER_INDICES": "robotwin",
+}
+__all__ = list(_EXPORTS)
+
+
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    value = getattr(import_module(f"{__name__}.{_EXPORTS[name]}"), name)
+    globals()[name] = value
+    return value
+
+
+def __dir__():
+    return sorted(set(globals()) | set(__all__))

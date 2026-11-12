@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "repository": "kritokronos/ewm_assets",
+  "repo_type": "dataset",
+  "revision": "b1dd4cb29dec099ba7c60262ecb1dd714807599f",
+  "access": "public-upstream-and-packaged",
+  "license": "Mixed upstream licenses; no project-wide asset license declared.",
+  "files": {
+    "Event-DataCollection/assets/piper_ball_props/README.md": {
+      "size": 3581,
+      "sha256": "6f9041c9e66f6ef471f19279a5039f33b543e69c6c5734f36a6f823e07f832e3",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/README.md"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/baseball.usdc": {
+      "size": 584407,
+      "sha256": "98d3fab7811e9755c795dc1028b26750c83dcc80b1f8445e5af7ea84ee4db961",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/baseball.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/billiard_ball.usdc": {
+      "size": 584416,
+      "sha256": "abee98e74901bce7c61bc4a223f1abdcf6dd5945b870c45de104672472bbdb13",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/billiard_ball.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/catalog.json": {
+      "size": 2465,
+      "sha256": "8e2a9f8151552d8d01d8fdba1522c2c5e6b245b71d46ab9a0e6b0679d6c6c8a6",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/catalog.json"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/globe_ball.usdc": {
+      "size": 584410,
+      "sha256": "afd4c9af46bb60d1ba098f5a56bad7354ee3b672107574923383dfd7afd463d3",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/globe_ball.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/mini_basketball.usdc": {
+      "size": 584417,
+      "sha256": "0bf51a319e34e1b448eda7044c358706073814467e20ee5cd61a697e36e3e582",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/mini_basketball.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/soccer_ball.usdc": {
+      "size": 584414,
+      "sha256": "261b4ffab1cba3cf8a8a1210b37e438c18758bc11bea1df54fafd5937771c5b8",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/soccer_ball.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/textures/baseball.png": {
+      "size": 7810,
+      "sha256": "17678829dfd34f15567ca79cc52dad66fb5ae501897072e23f22d8a41652d358",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/textures/baseball.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/textures/billiard_ball.png": {
+      "size": 7746,
+      "sha256": "dcbff1606339697caffa609bc993c38986b8a146d172f6af3137c6311dd3fbe2",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/textures/billiard_ball.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/textures/globe_ball.png": {
+      "size": 8117,
+      "sha256": "f506d4e008e3fab5df1551333e58cd0d0e569cb03096378d903f7f66eb1f2f51",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/textures/globe_ball.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/textures/mini_basketball.png": {
+      "size": 481935,
+      "sha256": "69212777271af2e7bf4ea12524f1ff69194cdf1731c5345c14a97578c7c6eec6",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/textures/mini_basketball.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_ball_props/textures/soccer_ball.png": {
+      "size": 11555,
+      "sha256": "73789ef5814634ed9de38d67480fb1b4cb2ced7861fbac2499cf846cba446720",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_ball_props/textures/soccer_ball.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_cube_patterns/blue_cross.png": {
+      "size": 812,
+      "sha256": "6b1b5449c4a4b8c9df2df7ea941d4de8f20595d6f530800ee4b57c70155f3f87",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/blue_cross.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_cube_patterns/green_checker.png": {
+      "size": 862,
+      "sha256": "1320453e735c4a1de5acf8fff1a163f24ac7590b09fe91e1475b8c4bb61b5e03",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/green_checker.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_cube_patterns/red_stripes.png": {
+      "size": 787,
+      "sha256": "a73e8a1a2450bb05b3edc7b48e918344a7a40df6d74072111dafca87343703dd",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/red_stripes.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/README.md": {
+      "size": 6924,
+      "sha256": "83cc73bd5200fc837c23d490e715b9d048b5ead9b7ab2ff03d3720d62f51d8f7",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/README.md"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/cardboard_box.usdc": {
+      "size": 22635,
+      "sha256": "ef03dfd2b184a839e1fc156e763b10854f9a5c3a99cabcfcacd27d77133baf0f",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/cardboard_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/catalog.json": {
+      "size": 6380,
+      "sha256": "c0a7c315000c6777d7deb6731505f6af0095f925babc3aadc81c31bc0ae044fc",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/catalog.json"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/ceramic_box.usdc": {
+      "size": 30416,
+      "sha256": "ec9ad31f1c257594645dcfe3eec45b6eee6d0cfcc630203dd6ab8c3b41dffccf",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/ceramic_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/cereal_box.usdc": {
+      "size": 22633,
+      "sha256": "668e3fc746045cd70c3b0c0184525226c6692155622c86caf7c225ab27b1273c",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/cereal_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/checker_cube.usdc": {
+      "size": 14643,
+      "sha256": "c9bc8a8f69db42715d2dfdd0053f0a2a61f98cf071724381bee7bfa6be0948d1",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/checker_cube.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/dice.usdc": {
+      "size": 14635,
+      "sha256": "a454a8c8f8096784d2561dec1dd9292aeda82ac4da273eecebe008e6474e42dd",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/dice.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/gift_box.usdc": {
+      "size": 75315,
+      "sha256": "ba04bf0cf8c892f8abff13f8bc263ca31d299bce71a45dec84d64bc2e23a0959",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/gift_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/juice_box.usdc": {
+      "size": 22631,
+      "sha256": "1d0a33b7bd8e5be85da44491ccf65144d66cd01179c2ad5c049242b56d3f629a",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/juice_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/lego_block.usdc": {
+      "size": 37877,
+      "sha256": "f9641159012796390065d5503add8c9be5208ade9f9cebe69b5625e2d0b639c2",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/lego_block.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/marker_cube.usdc": {
+      "size": 14638,
+      "sha256": "5f20e7f7eb698df1707387db972028be3422a0451efac3abfb902112d3b3843e",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/marker_cube.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/milk_box.usdc": {
+      "size": 23145,
+      "sha256": "81faca88b53389d952f6424edbadebccb384a94a1acff7badc010c0915fa690d",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/milk_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/plastic_box.usdc": {
+      "size": 79865,
+      "sha256": "dd291849be1b1bcdfcdb2b1114088afc4e13e14ee1cf1d955b74732104176abe",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/plastic_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/rubik_cube.usdc": {
+      "size": 14641,
+      "sha256": "ee3e6996361f6771b7512b538a49ec411e5d76a54d313320bf49e507b122e547",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/rubik_cube.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/cardboard_box.png": {
+      "size": 836835,
+      "sha256": "a6901ff65a91c30905b42abccc1779a53162a06e495600aa190e2e32cf7a2747",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/cardboard_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/ceramic_box.png": {
+      "size": 28339,
+      "sha256": "d14afc7919e945b35e0948fb0ff057d2eec5b58434ac0a3e4ebd3a4c9cbac1ab",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/ceramic_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/cereal_box.png": {
+      "size": 103199,
+      "sha256": "1eb5c29a995bc1e9d43dd4612aafd286c0466346edbd88df5f30ab10ffb2ee56",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/cereal_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/checker_cube.png": {
+      "size": 7201,
+      "sha256": "a784524369edec14cbdfb15e09e2dfc4004ed890a124c3d04aa7a4237a2b6146",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/checker_cube.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/dice.png": {
+      "size": 9952,
+      "sha256": "e544ef51099649a25eedd57f13b3a56aafa7dc8c49636dfd535c2127bce117e5",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/dice.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/gift_box.png": {
+      "size": 12680,
+      "sha256": "043e7f8f8bf4c325528a9ef16dc7e6db035b373fd098e2478b7c8cd450092919",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/gift_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/juice_box.png": {
+      "size": 43974,
+      "sha256": "b3b00b34184c4a901f56e911935472c751b3a016c0fb323da801b17d0fdaa4b4",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/juice_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/marker_cube.png": {
+      "size": 7364,
+      "sha256": "3ddf0330fa725a04a42b42e67c3cada8dcf7ac8fb915f5b6fdf0f9715f9f847b",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/marker_cube.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/milk_box.png": {
+      "size": 26748,
+      "sha256": "7cd5ea0900245c57a3db5f96516613db345d06d72bf5d501d3346d8eec7049d9",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/milk_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/rubik_cube.png": {
+      "size": 10317,
+      "sha256": "d51b4beb920097918afb62f62123be45873284f0570835b369569c07c25b7491",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/rubik_cube.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/tissue_box.png": {
+      "size": 24592,
+      "sha256": "61d7aba53c68f3eff5ac5374936613976fd0b2ffc7053f47eb5183f26154b9fe",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/tissue_box.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/textures/wooden_block.png": {
+      "size": 1382584,
+      "sha256": "b36034010a691c9b138f9e66b3c23ebd8022e4bae68c789f945d2a1a986ba2e8",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/textures/wooden_block.png"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/tissue_box.usdc": {
+      "size": 27302,
+      "sha256": "9dad8061cade995b1d95429b68379005e25b3228a360a50ff8628b91f1dfa951",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/tissue_box.usdc"
+      }
+    },
+    "Event-DataCollection/assets/piper_tabletop_props/wooden_block.usdc": {
+      "size": 14642,
+      "sha256": "8aced60777e38dca65ce1c02441424fa5b7e266c1f2f48bfc083f6d63ddbc531",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_tabletop_props/wooden_block.usdc"
+      }
+    },
+    "assets/piper_cube_patterns/blue_cross.png": {
+      "size": 812,
+      "sha256": "6b1b5449c4a4b8c9df2df7ea941d4de8f20595d6f530800ee4b57c70155f3f87",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/blue_cross.png"
+      }
+    },
+    "assets/piper_cube_patterns/green_checker.png": {
+      "size": 862,
+      "sha256": "1320453e735c4a1de5acf8fff1a163f24ac7590b09fe91e1475b8c4bb61b5e03",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/green_checker.png"
+      }
+    },
+    "assets/piper_cube_patterns/red_stripes.png": {
+      "size": 787,
+      "sha256": "a73e8a1a2450bb05b3edc7b48e918344a7a40df6d74072111dafca87343703dd",
+      "source": {
+        "kind": "packaged",
+        "path": "piper_cube_patterns/red_stripes.png"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_base.usd": {
+      "size": 30637961,
+      "sha256": "d5c2e463f490ae1f2c661da31855ad5f5a6519a5bb2c77b38cfc1bbcd7482618",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_base.usd"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_physics.usd": {
+      "size": 5639,
+      "sha256": "93ccfb4a14c663d78717a140b6cc03e1c363877a1e2a5e8baaf3d432dd09d52a",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_physics.usd"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_robot.usd": {
+      "size": 1847,
+      "sha256": "17fae2ae0e3034fef85c3588c98b5cc015d45cff74d98adef91bdc6b29b97e2c",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_robot.usd"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_sensor.usd": {
+      "size": 645,
+      "sha256": "c747ff27a6695ee3dd35fe61fab7490a17f12ecaadedaecc640bed54f906cf80",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/configuration/piper_sensor.usd"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/piper.usd": {
+      "size": 1454,
+      "sha256": "e25ffb00ec997e4affed34e3bbef88d3a60342f60e277bbdc6a894259b4d70dc",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/piper/usd/piper.usd"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/LICENSE": {
+      "size": 1065,
+      "sha256": "247944c63de1573653722ba784f96123da267105b7b48577e0c8826a24b809f6",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/source/agx_teleop/agx_description/agx_arm_urdf/LICENSE"
+      }
+    },
+    "Event-DataCollection/third_party/agilex-college/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/LICENSE": {
+      "size": 1490,
+      "sha256": "f728199fbae31f83f77d027d1e201d608d2e551177f8e7c7166282dd6e741738",
+      "source": {
+        "kind": "url",
+        "url": "https://raw.githubusercontent.com/agilexrobotics/Agilex-College/c2688be41e1bc99a9addd555f237a16bc839d936/isaac_sim/agx_arm_IsaacLab/IsaacLab_Data_Collection/LICENSE"
+      }
+    }
+  },
+  "external": {
+    "isaac_sim_version": "6.0.1.0",
+    "isaac_assets_version": "6.0",
+    "isaaclab_commit": "ffff603eafc6b74264a5261cc0183d6a65390d78",
+    "agilex_commit": "c2688be41e1bc99a9addd555f237a16bc839d936",
+    "offline_self_contained": false,
+    "required": [
+      {
+        "name": "SeattleLabTable",
+        "url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Props/Mounts/SeattleLabTable/table_instanceable.usd",
+        "provided_by": "NVIDIA Isaac Sim asset service"
+      },
+      {
+        "name": "GroundPlane",
+        "url": "https://omniverse-content-production.s3-us-west-2.amazonaws.com/Assets/Isaac/6.0/Isaac/Environments/Grid/default_environment.usd",
+        "provided_by": "NVIDIA Isaac Sim asset service"
+      },
+      {
+        "name": "OmniPBR.mdl",
+        "provided_by": "Isaac Sim Kit built-in MDL search path",
+        "installed_relative_path": "kit/mdl/core/Base/OmniPBR.mdl"
+      }
+    ],
+    "note": "Official root USDs may reference additional NVIDIA assets. Use the installed Isaac Sim resolver; this is not a complete NVIDIA asset mirror."
+  },
+  "archive": {
+    "repository": "kritokronos/ewm_assets",
+    "revision": "b1dd4cb29dec099ba7c60262ecb1dd714807599f",
+    "access": "private_at_release"
+  },
+  "provenance_note": "Runtime subset of the archived asset release. All 5 Piper USD layers and 2 license files match the pinned public Agilex Git blobs byte-for-byte. Procedural-source snapshots in the archival HF bundle are not runtime assets.",
+  "asset_derivation": {
+    "recipe": "piper-empty-world-reference-v1",
+    "path": "backend/usd_compat.py",
+    "sha256": "de4836699bf06556de899b8cc691a93b5cd8ba083f991bd6d0d9075517919786",
+    "source": "Agilex c2688be41e1bc99a9addd555f237a16bc839d936, five original hashes in assets.lock.json",
+    "operation": "Copy five-layer closure; remove only empty internal prepend reference /visuals/world at /piper/world/visuals in piper_base.usd; other four layers byte-identical.",
+    "acceptance": "All native composed USD values/metadata/schemas/flags/connections/targets/time samples exactly equal, including instance proxies; derived composition errors empty; source files unchanged.",
+    "cache": "Content-addressed managed runtime cache, derivation.json records recipe/source/derived hashes and semantic proof. Original source bundle is never modified."
+  }
+}

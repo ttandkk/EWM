@@ -1,0 +1,115 @@
+{
+  "version": "piper_sports_ball_skins_v1",
+  "units": "metres",
+  "origin": "bottom_center",
+  "visual_only": true,
+  "collision": false,
+  "artwork": "Original procedural patterns; decorative globe silhouettes",
+  "props": {
+    "baseball": {
+      "usd": "baseball.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "ivory leather / red double-curved stitching"
+    },
+    "globe_ball": {
+      "usd": "globe_ball.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "blue ocean / stylized green continents"
+    },
+    "mini_basketball": {
+      "usd": "mini_basketball.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "orange leather / black panel channels"
+    },
+    "soccer_ball": {
+      "usd": "soccer_ball.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "twelve black pentagons / twenty white hexagons"
+    },
+    "billiard_ball": {
+      "usd": "billiard_ball.usdc",
+      "dimensions_m": [
+        0.06,
+        0.06,
+        0.06
+      ],
+      "bounds_m": [
+        [
+          -0.029999999329447746,
+          -0.029999999329447746,
+          0.0
+        ],
+        [
+          0.029999999329447746,
+          0.029999999329447746,
+          0.05999999865889549
+        ]
+      ],
+      "appearance": "polished black resin / white circles and numeral eight"
+    }
+  }
+}

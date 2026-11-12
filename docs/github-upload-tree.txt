@@ -1,0 +1,173 @@
+GitHub 源码上传目录（精简发布）
+生成时间：2026-11-12T07:41:51.380724+00:00
+候选文件：1060 个；完整列表见 docs/github-upload-files.txt。
+依据：仍存在的已跟踪文件 + 未被 Git 忽略的未跟踪文件；本地已删除文件不计入。
+已将四个排除目录的 84 个旧文件从 Git 索引移除，本地文件未删除。
+源码新增/修改尚未暂存，未执行 commit 或 push。
+目录展开至两级，数量包含全部子目录文件。
+
+EWM/
+├── .gitattributes
+├── .gitignore
+├── AGENTS.md
+├── OpenWAM/  [607 files]
+│   ├── .github/  [2 files]
+│   ├── .gitignore
+│   ├── .gitmodules
+│   ├── .pre-commit-config.yaml
+│   ├── CITATION.cff
+│   ├── CONTRIBUTING.md
+│   ├── LICENSE
+│   ├── Makefile
+│   ├── README.md
+│   ├── assets/  [14 files]
+│   ├── compose.yaml
+│   ├── configs/  [50 files]
+│   ├── docker/  [16 files]
+│   ├── docs/  [4 files]
+│   ├── openwam/  [238 files]
+│   ├── pyproject.toml
+│   ├── pytest.ini
+│   ├── scripts/  [67 files]
+│   └── tests/  [205 files]
+├── README.md
+├── benchmark/  [244 files]
+│   ├── migration-map.json
+│   ├── pyproject.toml
+│   ├── src/  [227 files]
+│   └── tests/  [15 files]
+├── deployment/  [4 files]
+│   ├── README.md
+│   ├── activate_training.sh
+│   ├── install.sh
+│   └── runtime_env.sh
+├── docs/  [86 files]
+│   ├── README.md
+│   ├── artifact_retention_20261110.json
+│   ├── artifact_retention_20261110.md
+│   ├── benchmark_architecture.md
+│   ├── compute_bottleneck.md
+│   ├── data_structure.md
+│   ├── deployment.md
+│   ├── droid_event_conversion_plan.md
+│   ├── dvla_reassemble_joint_pretraining.md
+│   ├── evaluation_protocol.md
+│   ├── event_future_correction.md
+│   ├── ewm_d768_l12_reconstruction_experiment.md
+│   ├── ewm_experiment_plan_20261104.md
+│   ├── external_data.md
+│   ├── figure.md
+│   ├── github-upload-files.txt
+│   ├── github-upload-tree.txt
+│   ├── gpt-guide.md
+│   ├── latent_representation_analysis_20261104/  [55 files]
+│   ├── migration-validation.md
+│   ├── parameters.md
+│   ├── piper_browser_teleop.md
+│   ├── piper_eight_task_collection_eval_protocol_v1.md
+│   ├── piper_rgb_baselines.md
+│   ├── problem.md
+│   ├── proto.md
+│   ├── refactor-files.json
+│   ├── speed_ood_probe_metrics.csv
+│   ├── speed_ood_probe_report.md
+│   ├── speed_ood_probe_runs.csv
+│   ├── speed_probe_rgb.md
+│   └── visualize.md
+├── ewm
+├── launch/  [3 files]
+│   ├── README.md
+│   ├── freeze.py
+│   └── slurm/  [1 files]
+├── policies/  [36 files]
+│   ├── README.md
+│   ├── pyproject.toml
+│   ├── src/  [16 files]
+│   ├── tests/  [8 files]
+│   └── validation/  [10 files]
+└── scripts/  [75 files]
+    ├── check_groot_compile.py
+    ├── collect_piper_conveyor_a40.sbatch
+    ├── collect_piper_conveyor_pro6000.sbatch
+    ├── collect_piper_conveyor_rtx5090.sbatch
+    ├── collect_piper_conveyor_uniform.sbatch
+    ├── collect_piper_eight_dynamic.py
+    ├── collect_piper_eight_dynamic.sbatch
+    ├── collect_piper_eight_dynamic.sh
+    ├── collect_piper_push_t_pose_v2.sh
+    ├── collect_piper_six.sbatch
+    ├── collect_piper_six.sh
+    ├── collect_piper_stack_50_pro6000.sbatch
+    ├── compare_dvla_event_rates.py
+    ├── compare_dvla_rgb_event_video.sh
+    ├── convert_dvla_place7obj_25fps.py
+    ├── convert_reassemble_event_frames.py
+    ├── download_droid_processed.sh
+    ├── download_dvla_place7obj_events.sh
+    ├── download_reassemble.sh
+    ├── dvla_place7obj_25fps_chunk.sbatch
+    ├── dvla_place7obj_25fps_finalize.sbatch
+    ├── dvla_place7obj_25fps_prepare.sbatch
+    ├── dvla_place7obj_25fps_training.sbatch
+    ├── eval_piper_conveyor_a40.sbatch
+    ├── eval_piper_conveyor_rtx5090.sbatch
+    ├── eval_piper_eight_dynamic.py
+    ├── eval_piper_eight_dynamic.sh
+    ├── eval_piper_ewm_276490_id_ood_pro6000.sbatch
+    ├── eval_piper_final.py
+    ├── eval_piper_final.sh
+    ├── eval_piper_three_ood_262022_5090.sbatch
+    ├── eval_profiles/  [1 files]
+    ├── export_dvla_25hz_training.py
+    ├── export_reassemble_training.py
+    ├── extract_reassemble_timestamps.py
+    ├── piper_narrow_cache.sbatch
+    ├── piper_narrow_collect.sbatch
+    ├── prepare_ewm_dynamic_data.sbatch
+    ├── prepare_ewm_simple_formal.py
+    ├── prepare_piper_carton_lowwall_cache.sbatch
+    ├── prepare_piper_rgb_baselines.py
+    ├── reassemble_training_export.sbatch
+    ├── recollect_piper_carton_lowwall.sbatch
+    ├── recollect_piper_container_spatial.py
+    ├── recollect_piper_moving_carton.py
+    ├── recollect_piper_moving_carton.sbatch
+    ├── recollect_piper_narrow.py
+    ├── render_dvla_event_video.py
+    ├── render_piper_lighting.sbatch
+    ├── render_piper_wrist_rtx5090.sbatch
+    ├── render_reassemble_alignment.py
+    ├── resume_piper_carton_cache.py
+    ├── resume_piper_carton_cache.sbatch
+    ├── smoke_groot_eight.py
+    ├── start_piper_teleop_pro6000.sh
+    ├── submit_dvla_place7obj_25fps.sh
+    ├── submit_reassemble_training_export.sh
+    ├── test_piper_conveyor_a40.sbatch
+    ├── test_piper_conveyor_events_a40.sbatch
+    ├── test_piper_conveyor_events_rtx5090.sbatch
+    ├── test_piper_conveyor_rtx5090.sbatch
+    ├── test_piper_dynamic_pro6000.sbatch
+    ├── test_piper_stack_regression_a40.sbatch
+    ├── test_piper_tennis_l40.sbatch
+    ├── test_recollect_piper_container_spatial.py
+    ├── test_recollect_piper_moving_carton.py
+    ├── test_recollect_piper_narrow.py
+    ├── train_ewm_d768_l12_bin1_80k.sh
+    ├── train_ewm_eight.sbatch
+    ├── train_ewm_eight_action_only.sbatch
+    ├── train_ewm_simple_a6000.sbatch
+    ├── train_ewm_simple_ada_serial.sbatch
+    ├── train_groot_eight.sbatch
+    ├── train_piper_rgb_baseline.sh
+    └── verify_piper_rgb_baselines.py
+
+本次明确排除，原工作区保留：migration/、Event-DataCollection/、根 assets/、archive/。
+运行所需资产和部署锁保留在 benchmark/src/piper_bench/resources/。
+仍使用的环境选择脚本为 deployment/runtime_env.sh 和 deployment/activate_training.sh。
+FastWAM 补丁及其许可在 benchmark 包内；旧 GR00T 适配未纳入本次发布。
+
+同时排除：环境、第三方工作树、数据集、权重、tmp/、logs/、results/、输出、缓存及凭据。
+新部署、采集和测评使用 ./ewm；scripts/ 中历史作业可能仍依赖原工作区。
+本清单不表示已安装新环境、完成训练或运行新的 GPU 验收。
+提交时应包含既有修改和删除记录；本清单不会自动更新。

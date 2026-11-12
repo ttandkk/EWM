@@ -62,6 +62,8 @@ def load_from_checkpoint_dir(
     ckpt_dir: str,
     device: str = "cuda",
     ckpt_name: Optional[str] = None,
+    *,
+    config_override: Optional[DictConfig] = None,
 ) -> Tuple[DictConfig, BaseWAMArchitecture]:
     """Load full model from a self-contained checkpoint directory.
 
@@ -74,6 +76,8 @@ def load_from_checkpoint_dir(
         device: Target device (e.g. ``"cuda"`` or ``"cuda:0"``).
         ckpt_name: Specific checkpoint filename.  If *None*, the latest
             (highest step number) checkpoint is used.
+        config_override: Optional in-memory copy with explicitly relocated resource
+            paths. The checkpoint config and normalization file are never rewritten.
 
     Returns:
         ``(cfg, architecture)`` — the resolved config and architecture
@@ -83,7 +87,8 @@ def load_from_checkpoint_dir(
     config_path = os.path.join(ckpt_dir, "config.yaml")
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"config.yaml not found in {ckpt_dir}")
-    cfg = OmegaConf.load(config_path)
+    cfg = (OmegaConf.load(config_path) if config_override is None else
+           OmegaConf.create(OmegaConf.to_container(config_override, resolve=True)))
 
     # 2. Resolve checkpoint file
     if ckpt_name is not None:

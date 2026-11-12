@@ -1,0 +1,206 @@
+{
+  "train_windows": 6,
+  "test_windows": 4,
+  "active_train_targets": 15,
+  "active_test_targets": 10,
+  "tasks": {
+    "event": {
+      "latent_alpha": 0.001,
+      "latent_cv_relative_mse": [
+        0.7817074677175553,
+        0.7869751381680546,
+        0.8285191912108901,
+        0.9425527704122408,
+        0.9927110408229448,
+        0.9992584830406979,
+        0.9999257529645762
+      ],
+      "physical": {
+        "position": {
+          "chosen_alpha": 0.001,
+          "cv_error_on_ground_truth_latent": [
+            0.005567735642847276,
+            0.005570535769677317,
+            0.005598356525369168,
+            0.005831455704731097,
+            0.006490830863161346,
+            0.006764685567560302,
+            0.00680004852951001
+          ],
+          "phase_baseline": 0.005908274657290523,
+          "ground_truth_latent_probe": 0.004330194302492778,
+          "predicted_latent_probe": 0.006016311069156402,
+          "by_phase": {
+            "1": {
+              "phase_baseline": 0.0017317118624832423,
+              "ground_truth": 0.0016460624659765215,
+              "predicted": 0.0026787227985110734
+            },
+            "2": {
+              "phase_baseline": 0.006866762472496383,
+              "ground_truth": 0.004307643543243755,
+              "predicted": 0.006357164909855757
+            },
+            "3": {
+              "phase_baseline": 0.006173368362882019,
+              "ground_truth": 0.004095946019703593,
+              "predicted": 0.006698217575485168
+            },
+            "4": {
+              "phase_baseline": 0.007480797223750299,
+              "ground_truth": 0.005917328746799377,
+              "predicted": 0.007022172175209904
+            },
+            "5": {
+              "phase_baseline": 0.007288733364840668,
+              "ground_truth": 0.00568399073674064,
+              "predicted": 0.007325277886720109
+            }
+          }
+        },
+        "velocity": {
+          "chosen_alpha": 0.001,
+          "cv_error_on_ground_truth_latent": [
+            0.03970262551916863,
+            0.03972354802253124,
+            0.03990311945546941,
+            0.040645789934199344,
+            0.04177805745938171,
+            0.04194663954762145,
+            0.041961648024058065
+          ],
+          "phase_baseline": 0.03140590206714426,
+          "ground_truth_latent_probe": 0.02954150444072474,
+          "predicted_latent_probe": 0.0358528689124868,
+          "by_phase": {
+            "1": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.015723231863980423,
+              "predicted": 0.024347628070717282
+            },
+            "2": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.011603912963362741,
+              "predicted": 0.019732827057083655
+            },
+            "3": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.012297522269632651,
+              "predicted": 0.026885627942991732
+            },
+            "4": {
+              "phase_baseline": 0.07623049863854375,
+              "ground_truth": 0.0829351097654896,
+              "predicted": 0.08158975117049565
+            },
+            "5": {
+              "phase_baseline": 0.016393093575839696,
+              "ground_truth": 0.025147745341158288,
+              "predicted": 0.026708510321145663
+            }
+          }
+        }
+      }
+    },
+    "rgb": {
+      "latent_alpha": 0.001,
+      "latent_cv_relative_mse": [
+        0.9050849508520008,
+        0.9072631746332644,
+        0.9246987518060995,
+        0.9743157245630208,
+        0.9967085430272768,
+        0.9996634643794683,
+        0.9999662768438372
+      ],
+      "physical": {
+        "position": {
+          "chosen_alpha": 0.001,
+          "cv_error_on_ground_truth_latent": [
+            0.00632381104304915,
+            0.006325830711626442,
+            0.006344739441978584,
+            0.006463669117884625,
+            0.0066980783706845765,
+            0.0067903810564618056,
+            0.006802678022100574
+          ],
+          "phase_baseline": 0.005908274657290523,
+          "ground_truth_latent_probe": 0.004877179043448076,
+          "predicted_latent_probe": 0.005697949775445033,
+          "by_phase": {
+            "1": {
+              "phase_baseline": 0.0017317118624832423,
+              "ground_truth": 0.0016962974750911763,
+              "predicted": 0.0023510900125014566
+            },
+            "2": {
+              "phase_baseline": 0.006866762472496383,
+              "ground_truth": 0.005175222462113543,
+              "predicted": 0.006262765559626099
+            },
+            "3": {
+              "phase_baseline": 0.006173368362882019,
+              "ground_truth": 0.005023018844304953,
+              "predicted": 0.0058407279940495115
+            },
+            "4": {
+              "phase_baseline": 0.007480797223750299,
+              "ground_truth": 0.0058860617811471155,
+              "predicted": 0.0070732631475313975
+            },
+            "5": {
+              "phase_baseline": 0.007288733364840668,
+              "ground_truth": 0.006605294654583589,
+              "predicted": 0.006961902163516697
+            }
+          }
+        },
+        "velocity": {
+          "chosen_alpha": 1000.0,
+          "cv_error_on_ground_truth_latent": [
+            0.043506404201031544,
+            0.04349913116149563,
+            0.04343139453253406,
+            0.043000582964605225,
+            0.04223003746880909,
+            0.04199479966989224,
+            0.04196648761016999
+          ],
+          "phase_baseline": 0.03140590206714426,
+          "ground_truth_latent_probe": 0.03140010618439774,
+          "predicted_latent_probe": 0.03140372634371263,
+          "by_phase": {
+            "1": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.02146466018201016,
+              "predicted": 0.021462637272660415
+            },
+            "2": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.021450940655342834,
+              "predicted": 0.021461161707344523
+            },
+            "3": {
+              "phase_baseline": 0.021468639373779297,
+              "ground_truth": 0.021456375550293012,
+              "predicted": 0.02146287953195215
+            },
+            "4": {
+              "phase_baseline": 0.07623049863854375,
+              "ground_truth": 0.07624321598997028,
+              "predicted": 0.07623976063301996
+            },
+            "5": {
+              "phase_baseline": 0.016393093575839696,
+              "ground_truth": 0.01638533854437241,
+              "predicted": 0.01639219257358611
+            }
+          }
+        }
+      }
+    }
+  },
+  "notes": "current RGB latent to future event/RGB latent; physical readout fit only on ground-truth train latent; test readout on predicted future latent; physical model given phase; both regularizers selected using leave-one-training-trajectory-out CV; active points only",
+  "elapsed_s": 1.0155226928181946
+}

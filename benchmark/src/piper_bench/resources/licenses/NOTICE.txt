@@ -1,0 +1,15 @@
+Piper benchmark source provenance
+
+The evaluation modules were extracted and modified from this project's
+OpenWAM/scripts/eval_ewm source tree on 2026-11-11. OpenWAM's original
+Apache-2.0 license is retained in OpenWAM-Apache-2.0.txt.
+
+The task, collection, robot and sensor modules were migrated from this
+project's Event-DataCollection source tree. External Isaac Lab, EVIS, Agilex
+and LeRobot source revisions are listed in resources/deployment/simulation.lock.json;
+their original licenses remain authoritative in the separately installed source.
+
+The asset lock identifies the files, fixed upstream revision and bundled license
+files for Piper USD. NVIDIA runtime, online assets, model weights and datasets
+are not included in this Python wheel. This notice does not assign a new license
+to third-party assets or the project's original contributions.

@@ -1,0 +1,110 @@
+{
+  "source_sha256": "844f3eed4218f14f505eacd86bc7e958eebcdb4c43c69ad6301439fdb8985f53",
+  "cases": [
+    {
+      "class": "LatencyAwareActionStream",
+      "options": {
+        "horizon": 10
+      },
+      "latencies": [
+        0.0
+      ],
+      "trace_sha256": "f0c8df3af402ff245de0b7a3e2163b37512d436426b6b3a5d433b5367d7c4469"
+    },
+    {
+      "class": "LatencyAwareActionStream",
+      "options": {
+        "horizon": 10
+      },
+      "latencies": [
+        0.04
+      ],
+      "trace_sha256": "e54f0a292c14fe522d6337d0dd9a2504d20f105ff95c7ec53d00feceb372d48e"
+    },
+    {
+      "class": "LatencyAwareActionStream",
+      "options": {
+        "horizon": 10
+      },
+      "latencies": [
+        0.01,
+        0.17,
+        0.8,
+        0.03
+      ],
+      "trace_sha256": "b9f18b13cda71fe12e836fe17a7354c468b1a46ff2f30d8500ce5af0da09ab67"
+    },
+    {
+      "class": "BufferedLatencyActionStream",
+      "options": {
+        "horizon": 10,
+        "plan_horizon": 24
+      },
+      "latencies": [
+        0.0
+      ],
+      "trace_sha256": "4528cdfa6f9416f8ecdd305e20de8fd8bf432dacc3690bcca8e5dcbf91c6d60e"
+    },
+    {
+      "class": "BufferedLatencyActionStream",
+      "options": {
+        "horizon": 10,
+        "plan_horizon": 24
+      },
+      "latencies": [
+        0.04
+      ],
+      "trace_sha256": "af634a9159f3bcd9ddf48dda5beeba4ea86557ec27b5f279d920bb7822c7ffb2"
+    },
+    {
+      "class": "BufferedLatencyActionStream",
+      "options": {
+        "horizon": 10,
+        "plan_horizon": 24
+      },
+      "latencies": [
+        0.01,
+        0.17,
+        0.8,
+        0.03
+      ],
+      "trace_sha256": "ed69bb586b3d1f139dcaef4b833dd592829aae2b8698e326097f02227228f919"
+    },
+    {
+      "class": "ContinuousLatencyActionStream",
+      "options": {
+        "plan_horizon": 24,
+        "min_execution_steps": 8
+      },
+      "latencies": [
+        0.0
+      ],
+      "trace_sha256": "adf8a5a5b42375eaeaf85ff2dc42362bc0b850b02511f1ba7986c3819c55f302"
+    },
+    {
+      "class": "ContinuousLatencyActionStream",
+      "options": {
+        "plan_horizon": 24,
+        "min_execution_steps": 8
+      },
+      "latencies": [
+        0.04
+      ],
+      "trace_sha256": "fdce4eab33f1014fdf47d1428398a37ed37ce9a0cda58a085bca1e14132c32d4"
+    },
+    {
+      "class": "ContinuousLatencyActionStream",
+      "options": {
+        "plan_horizon": 24,
+        "min_execution_steps": 8
+      },
+      "latencies": [
+        0.01,
+        0.17,
+        0.8,
+        0.03
+      ],
+      "trace_sha256": "d257d45d7fe02d47b1cf07824f883ab5c3a0392a1a32bdde92c8cc86041ea15f"
+    }
+  ]
+}

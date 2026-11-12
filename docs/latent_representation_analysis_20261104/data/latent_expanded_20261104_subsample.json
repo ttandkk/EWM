@@ -1,0 +1,1138 @@
+{
+  "input_dir": "/projects/_hdd/isaachdd/EWM/tmp/latent_expanded_20261104",
+  "repeats": 200,
+  "sample_size_trajectories": 25,
+  "seed": 20261104,
+  "method": "Repeatedly sample trajectories uniformly without replacement within each task, using the same paired selected episode IDs for both modalities and all phases. Retain both windows for all, one window for start/end. Calculate future-latent coordinate-averaged sample population variance and centered Gram entropy effective rank. Report fraction of repeated subsets where event < rgb, and the median and 2.5%, 97.5% quantiles of event/rgb ratio across subsets.",
+  "caveats": "Repeated subsets overlap and share the same finite dataset; fraction is descriptive stability, not probability in a larger population or an independent-replicate confidence interval. Effective rank changes with sample size; comparisons are paired at equal size. Low variance or effective rank does not establish greater predictability, information retention, or task performance.",
+  "tasks": {
+    "conveyor": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.341052454635296,
+              0.3432783873667383,
+              0.345590842120962
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.34034354971349645,
+              0.34694639074868444
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.4190138060701878,
+              0.4269435758276058,
+              0.43614837465485656
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.418135513265596,
+              0.44186176306246444
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.16892424796845867,
+              0.1750193409039841,
+              0.18091587424256197
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.1659971462742568,
+              0.18401830771993466
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.6704704613396001,
+              0.7028869325072846,
+              0.7324998798882274
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.6481887378570378,
+              0.743961465942497
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.27175140101038237,
+              0.2779935848004859,
+              0.2840833815103926
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.2704638894867997,
+              0.286154565884209
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 0,
+            "event_lower_fraction": 0.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              1.020551578297356,
+              1.0266939929048529,
+              1.0334044388524743
+            ],
+            "event_over_rgb_ratio_min_max": [
+              1.0192044290954008,
+              1.0365795312341257
+            ]
+          }
+        }
+      }
+    },
+    "moving_carton": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.23113548977509107,
+              0.23400506615769814,
+              0.23678397070971266
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.23003653660253384,
+              0.23770483142201806
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.4593250639120436,
+              0.47119714237868504,
+              0.4802591524242702
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.45053761702938133,
+              0.48522231116078124
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.04859384999323545,
+              0.05150012953450744,
+              0.05351948358359126
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.04791275884916655,
+              0.054705125896723765
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.7228511727614885,
+              0.7591779160095937,
+              0.7894170847074677
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.7147756147756401,
+              0.8015283588770542
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.24728520397520243,
+              0.2518734463733838,
+              0.2564729936927971
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.24498212460673824,
+              0.258157274557645
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.9456077977161804,
+              0.9662863022494896,
+              0.9869307756668261
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.9359087668870537,
+              0.9945003090983678
+            ]
+          }
+        }
+      }
+    },
+    "turntable_cups": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.32269276995707347,
+              0.32574628978410836,
+              0.3289370256574174
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.3208663277548834,
+              0.3296952047929363
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.3379100945937357,
+              0.35491633283130875,
+              0.37252519820808977
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.3283541172219178,
+              0.37734061489703247
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.14058250964914867,
+              0.14526790395053693,
+              0.14985279164196436
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.13663309781860133,
+              0.15130837655451082
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.8436608798363048,
+              0.8670066282429574,
+              0.8882929689063919
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.835004555944682,
+              0.8914061066938974
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.1812310862029752,
+              0.19823436764634414,
+              0.21704121125113215
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.17500974725039845,
+              0.21920493464833352
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 197,
+            "event_lower_fraction": 0.985,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.8386796337112592,
+              0.9269865742231072,
+              0.9911045340481782
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.8278964643340735,
+              1.0015988357385588
+            ]
+          }
+        }
+      }
+    },
+    "rotating_tube": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.244393966515022,
+              0.24612788529726312,
+              0.24805849490816165
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.24385564227675155,
+              0.24866458300965505
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.35569306632617587,
+              0.3621324203456965,
+              0.3697749401356903
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.35118351414430377,
+              0.3723130905495966
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.06244444381098883,
+              0.06437041904421228,
+              0.06612030912657493
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.061161222067875526,
+              0.06679757579914361
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.7824740626686603,
+              0.8132773162795177,
+              0.840362575261286
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.7666575024496247,
+              0.8500261356354261
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.2046440183754032,
+              0.20889801597361907,
+              0.21371004979721794
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.2025354245657067,
+              0.2151951014300733
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.9130888053622392,
+              0.9302414928186364,
+              0.9469697284158751
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.9080996177002637,
+              0.9561358035490619
+            ]
+          }
+        }
+      }
+    },
+    "tennis_rolling": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.1590860280576503,
+              0.16044488422868092,
+              0.16197385103924875
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.15858147964058453,
+              0.16220171527250674
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.30405403005009035,
+              0.3226210526911734,
+              0.33794499435741887
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.2942010722049864,
+              0.3439085663021464
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.04248109816694626,
+              0.04706612111388535,
+              0.050663099706483895
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.040506112311253326,
+              0.05218450179700349
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.4735941419049606,
+              0.5182015290141897,
+              0.5648178588597645
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.44615185969702154,
+              0.5797883910485697
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.12131642055891068,
+              0.12602498941530232,
+              0.12990888395406403
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.1191950996597713,
+              0.1319027693721841
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.6665748672780356,
+              0.7076068690267174,
+              0.7408000348243909
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.642270915915553,
+              0.7457343297276338
+            ]
+          }
+        }
+      }
+    },
+    "tennis_falling": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.258548296135018,
+              0.2635953188479896,
+              0.26820252488619045
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.2548182594818651,
+              0.2690029845076569
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.22579661763794107,
+              0.2525680125530764,
+              0.2736901879942973
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.20349995065463763,
+              0.2774917410116793
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.06259285325077747,
+              0.06682506421927317,
+              0.07049599768966087
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.06116343829406971,
+              0.0713936720381526
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.4861385844161494,
+              0.5379341049558226,
+              0.5889473619620386
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.4583381531415978,
+              0.607087074247694
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.16938251439045834,
+              0.20555644500248788,
+              0.2282862966948234
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.1395126852547267,
+              0.2329953086520202
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.4040354295839042,
+              0.4752426714873037,
+              0.5429590598196706
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.3935356495348569,
+              0.5535643394529056
+            ]
+          }
+        }
+      }
+    },
+    "tennis_parabolic": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.23715956847830713,
+              0.24544910685480914,
+              0.2526902434689312
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.23410643164468262,
+              0.254611732465394
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.5555607985245586,
+              0.5772165186976336,
+              0.598233817700868
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.546324261405758,
+              0.6049331201202929
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.0914165991109563,
+              0.09887990439746014,
+              0.10349394339131254
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.08918285381526413,
+              0.1062118246601615
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.3037170937944677,
+              0.33095076457371797,
+              0.35705684573227325
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.28861796717565286,
+              0.3700052499888594
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.27387180058693916,
+              0.28693449215776984,
+              0.29641016561856964
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.2710727903415614,
+              0.3010913541084154
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.8776428404510734,
+              0.9090866744188811,
+              0.9395915991740559
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.8516352580261499,
+              0.9477612446940592
+            ]
+          }
+        }
+      }
+    },
+    "tennis_container": {
+      "trajectories_available": 50,
+      "episode_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ],
+      "groups": {
+        "all": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.31828857800606003,
+              0.32443836810723103,
+              0.33105188275073916
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.3148039696359236,
+              0.3342423157917117
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.6007519167574548,
+              0.6171173494973008,
+              0.6292400431435808
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.5947714338948987,
+              0.6370776406127079
+            ]
+          }
+        },
+        "start": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.01173254358201208,
+              0.012769462224909576,
+              0.016515796766452696
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.011473374328726492,
+              0.016776784239368913
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.5700997142521282,
+              0.6883833224811402,
+              0.7441128764264718
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.5616620967288821,
+              0.7561204699609649
+            ]
+          }
+        },
+        "end": {
+          "variance": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.40274931731756597,
+              0.4113769018660689,
+              0.4206697619838188
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.3980914930299101,
+              0.42346011487290125
+            ]
+          },
+          "effective_rank": {
+            "event_lower_count": 200,
+            "event_lower_fraction": 1.0,
+            "event_over_rgb_ratio_quantiles_2_5_50_97_5": [
+              0.946212377002799,
+              0.9637973098270072,
+              0.9756903042267799
+            ],
+            "event_over_rgb_ratio_min_max": [
+              0.9368891301093374,
+              0.9790540474385157
+            ]
+          }
+        }
+      }
+    }
+  }
+}

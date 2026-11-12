@@ -14,8 +14,8 @@ OBSERVATION_CONTRACT = "rgb_state_pre_action_rgb_latent_v1"
 def prepare_request(request, arrays, normalizer, *, horizon, device="cuda"):
     if request.get("observation_contract") != OBSERVATION_CONTRACT:
         raise ValueError("requires the RGB-action observation contract")
-    if request.get("decode_future_rgb") is not True:
-        raise ValueError("this evaluator requires RGB video decoding")
+    if not isinstance(request.get("decode_future_rgb", True), bool):
+        raise ValueError("decode_future_rgb must be a boolean")
     header = dict(request, observation_contract=ACTION_CONTRACT)
     batch, seed, steps, chunk = prepare_action_request(
         header, arrays, normalizer, horizon=horizon, device=device)

@@ -82,12 +82,11 @@ def test_action_only_no_event_loss_attention_codec_or_gradients(monkeypatch, che
     monkeypatch.setattr("openwam.model.architectures.ewm.LeanEventCodec", forbidden)
     model = make_model(gradient_checkpointing=checkpointing, gradient_checkpointing_skip_first_blocks=skip)
     assert model.event_codec is None
-    for module in (model.event_input, model.event_head, *(b.event for b in model.blocks)):
-        monkeypatch.setattr(module, "forward", forbidden)
-    for block in model.blocks:
-        monkeypatch.setattr(block.event, "prepare", forbidden)
-        monkeypatch.setattr(block.event, "finish", forbidden)
-        monkeypatch.setattr(block.event.context, "project_kv", forbidden)
+    assert model.event_input is None and model.event_head is None and model.camera is None
+    assert all(block.event is None for block in model.blocks)
+    assert not any(key == 'camera' or key.startswith(('event_input.', 'event_head.'))
+                   or (key.startswith('blocks.') and '.event.' in key)
+                   for key in model.policy_state_dict())
     monkeypatch.setattr(model, "_decode_future", forbidden)
     inputs = batch()
     fixed = dict(t=torch.tensor([.3, .8]), action_noise=torch.randn_like(inputs["action"]), diagnostics=True)
@@ -103,7 +102,6 @@ def test_action_only_no_event_loss_attention_codec_or_gradients(monkeypatch, che
             assert parameter.grad is not None and parameter.grad.isfinite().all(), name
         else:
             assert parameter.grad is None, name
-    assert not model.camera.requires_grad
     assert model.action_head[-1].weight.grad is not None
     assert model.context_encoder.rgb_projection.weight.grad is not None
     assert model.context_encoder.dino.weight.grad is None
@@ -123,8 +121,8 @@ def test_action_only_no_event_loss_attention_codec_or_gradients(monkeypatch, che
 
 
 def test_action_only_block_attention_has_only_state_and_action_tokens(monkeypatch):
-    block = EWMJointBlock(32, 2, 16)
-    monkeypatch.setattr(block.event, "prepare", forbidden)
+    block = EWMJointBlock(32, 2, 16, action_only=True)
+    assert block.event is None
     action = torch.randn(2, 4, 16, requires_grad=True)
     context = torch.randn(2, 3, 32)
     _, coords = event_action_coordinates(3, 1, 1, num_cameras=1)
@@ -146,7 +144,7 @@ def test_action_only_block_attention_has_only_state_and_action_tokens(monkeypatc
     second = block(None, action, torch.tensor([.2, .8]), changed, mask, None, coords, action_only=True)
     torch.testing.assert_close(first[1], second[1])
     first[1].square().mean().backward()
-    assert all(p.grad is None for p in block.event.parameters())
+    assert all(p.grad is not None for p in block.action.parameters())
 
 
 def test_action_only_profile_has_no_vae_segment():
@@ -168,7 +166,7 @@ def test_action_only_compiled_core_preserves_loss_and_gradients():
     torch.testing.assert_close(actual, reference)
     actual.backward()
     assert model.action_head[-1].weight.grad is not None
-    assert model.event_input.weight.grad is None
+    assert model.event_input is None
 
 
 def test_action_only_checkpoint_roundtrip_and_format_guard(tmp_path, monkeypatch):
@@ -179,7 +177,7 @@ def test_action_only_checkpoint_roundtrip_and_format_guard(tmp_path, monkeypatch
              "proprio": {"mean": [0] * 8, "std": [1] * 8},
              "action": {"q01": [-1] * 7, "q50": [0] * 7, "q99": [1] * 7}}
     (tmp_path / "normalization.json").write_text(json.dumps(stats))
-    payload = dict(format="ewm_action_only_v1", model=model.policy_state_dict(),
+    payload = dict(format="ewm_action_only_v2", model=model.policy_state_dict(),
                    model_config={"training_mode": "action_only"}, horizon=3, step=10)
     path = tmp_path / "policy.pt"
     torch.save(payload, path)
@@ -215,6 +213,7 @@ def test_action_only_dataset_projects_parquet_and_decodes_only_current_rgb(tmp_p
         init_options.append(kwargs)
         self.dataset_dir, self.first_anchor, self.window_stride = Path(dataset_dir), 0, 1
         self.observation_row_offset, self.chunk_size = 0, 3
+        self.pad_tail = False
         self.data_path = "data.parquet"
         self._cumulative = np.array([0, 3])
         self.episodes = pd.DataFrame([{"data/chunk_index": 0, "data/file_index": 0, "_data_offset": 0}])
@@ -253,7 +252,8 @@ def test_action_only_preset_and_training_smoke(tmp_path, monkeypatch):
 
     config_dir = str(Path(__file__).resolve().parents[1] / "configs")
     with initialize_config_dir(version_base=None, config_dir=config_dir):
-        preset = compose(config_name="train_ewm_action_only_piper")
+        preset = compose(config_name="train_ewm_action_only_piper",
+                         overrides=[f"dataloader.dataset_dir={tmp_path / 'optional_real_export'}"])
     assert preset.model.training_mode == "action_only" and preset.model.event_vae_path is None
     assert preset.dataloader.type == "ewm_piper_action_only"
     assert not preset.dataloader.gpu_voxelization and not preset.training.pure_noise_eval.enabled

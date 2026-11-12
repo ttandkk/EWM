@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "piper-bench"
+version = "0.1.0"
+description = "Portable Piper robotics tasks, synchronized event sensing, collection and policy evaluation"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "Pillow>=10"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+writer = ["pyarrow>=15", "h5py>=3.10"]
+client = ["websockets>=12"]
+video = ["opencv-python-headless>=4.8", "imageio-ffmpeg>=0.4.9"]
+teleop = ["aiohttp>=3.9"]
+
+[project.scripts]
+piper-bench = "piper_bench.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+piper_bench = ["resources/**/*.json", "resources/**/*.toml", "resources/**/*.txt", "resources/**/*.yaml", "resources/**/*.patch", "resources/assets/**/*", "robots/piper/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

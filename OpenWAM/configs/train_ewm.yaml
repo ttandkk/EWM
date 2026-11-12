@@ -24,8 +24,8 @@ model:
 
   # --- 冻结编码器 ---
   # 环境变量可覆盖本地权重目录；调 D/L 不会改变冻结 DINO/T5 的规模。
-  dino_path: ${oc.env:EWM_DINO_PATH,/projects/hdd/myproject/CVPR2027/pretrained/dinov3-vitl16}
-  text_path: ${oc.env:EWM_T5_PATH,/projects/hdd/myproject/CVPR2027/pretrained/t5-small}
+  dino_path: ${oc.env:EWM_DINO_PATH,${oc.env:EWM_PRETRAINED_ROOT,${oc.env:EWM_PROJECT_ROOT,..}/pretrained}/dinov3-vitl16}
+  text_path: ${oc.env:EWM_T5_PATH,${oc.env:EWM_PRETRAINED_ROOT,${oc.env:EWM_PROJECT_ROOT,..}/pretrained}/t5-small}
   text_max_length: 64            # T5 prompt 最大 token 长度（含 padding/truncation）
 
 dataloader:

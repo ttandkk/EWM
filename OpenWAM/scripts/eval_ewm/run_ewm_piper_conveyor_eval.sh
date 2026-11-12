@@ -14,8 +14,6 @@
 # --latency-controller serial retains the observe/wait/execute comparison controller.
 # --speed-ood slow|fast changes only belt speed; omitted keeps the training scene.
 # --conveyor-speed 0.07 sets an exact speed instead of a preset.
-# --event-guided-replan enables event-error triggers; use buffered control with latency.
-# --event-replan-threshold 0.3 matches the exploratory static-task setting.
 # No image corruptions are applied.
 set -euo pipefail
 
@@ -97,7 +95,9 @@ for argument in "${client_args[@]}"; do
     fi
 done
 warmup_iters="${WARMUP_ITERS:-$warmup_default}"
-benchmark_iters="${BENCHMARK_ITERS:-0}"
+benchmark_default=0
+if [[ "$compile_core" == "true" ]]; then benchmark_default=1; fi
+benchmark_iters="${BENCHMARK_ITERS:-$benchmark_default}"
 server_args=(--warmup-iters "$warmup_iters" --benchmark-iters "$benchmark_iters")
 if [[ "$compile_core" == "true" ]]; then
     server_args+=(--compile-core)

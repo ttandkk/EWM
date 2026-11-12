@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "upstream_url": "https://github.com/yuantianyuan01/FastWAM.git",
+  "base_commit": "7faa71108368fbb3b6885649f112af607427a2d4",
+  "patch_sha256": "774cee645689f040db9579e6b291bd1c3fc1ab23010666b6c4b03c4e48a15b32",
+  "files": {
+    ".gitignore": {
+      "sha256": "b9cce4e5949172491cf72248009933fcf0f5c9defcdd92602c9e831f8acefa0f",
+      "mode": "100644"
+    },
+    "README.md": {
+      "sha256": "58feacb11ec6d1f3faed13ff6be1e2493e850508f9616a30eaff7267eb217230",
+      "mode": "100644"
+    },
+    "configs/data/piper_rgb.yaml": {
+      "sha256": "323e782eab2561127ed3b7294a670b3d0259249b41a29b485666b682579f2d73",
+      "mode": "100644"
+    },
+    "configs/model/fastwam_action_only.yaml": {
+      "sha256": "0ca6005071a0a5a2f281fa080416ea16cfc5b644fbc87810ca9cad522cab9174",
+      "mode": "100644"
+    },
+    "configs/model/fastwam_lora.yaml": {
+      "sha256": "d6cc81b502d5f9520761a72e415e5775492b1e4b496b7b2ae382df3a594284ad",
+      "mode": "100644"
+    },
+    "configs/task/piper_rgb.yaml": {
+      "sha256": "727452c0324d257b8986708c421ccc69f047e377ad92634496f007cbd352f605",
+      "mode": "100644"
+    },
+    "configs/train.yaml": {
+      "sha256": "d9c916b1e3c8c421a13a9b6afb428ec25c9a5dacaa1bf05fd9fbbba9ce302d66",
+      "mode": "100644"
+    },
+    "src/fastwam/models/wan22/fastwam.py": {
+      "sha256": "c05f6658437661343aa357cd091ec85aff6187eed528689a512e7f2090e7a9fe",
+      "mode": "100644"
+    },
+    "src/fastwam/models/wan22/lora.py": {
+      "sha256": "b3bec86f714d88b2a4c15b9610179e967c0b50ea68b98b874b8b2d13c70915f1",
+      "mode": "100644"
+    },
+    "src/fastwam/models/wan22/mot.py": {
+      "sha256": "8c9fd096e2af6d237011fd7e50c7f11d19a8e366cbbc45524a94a9843e396e55",
+      "mode": "100644"
+    },
+    "src/fastwam/runtime.py": {
+      "sha256": "a320ea9b770b2c9cda3f6ea60d074db5574f9ffdcba757cefe6809d82f210cdf",
+      "mode": "100644"
+    },
+    "src/fastwam/trainer.py": {
+      "sha256": "985d0e1bf2658559dc1a9fb46b204312a44296cea742e473ae97d8cc28e174d6",
+      "mode": "100644"
+    },
+    "tests/test_action_only.py": {
+      "sha256": "a9aaeb37dd758660925773947dc244e2dcc29b663546e7d7f17de0338ed7ff12",
+      "mode": "100644"
+    },
+    "tests/test_video_lora.py": {
+      "sha256": "83baea7b1202ce5c3989cb6ccf4307d567e5e7bd3887feabc5a661e7c233bb2b",
+      "mode": "100644"
+    }
+  },
+  "license": {
+    "source_path": "LICENSE",
+    "sha256": "8379dddfbbb1154ad9cc57f008f1f8d4a8d26c3de99bd6b36aa4d8067888aa92"
+  }
+}

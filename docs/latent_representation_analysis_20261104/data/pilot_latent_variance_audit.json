@@ -1,0 +1,1092 @@
+{
+  "method": "Future latent blocks 1:4, flatten all 3x16x32x32 coordinates. Per coordinate center across the specified windows; population variance divides by n, then averages coordinates. Entropy effective rank = exp(-sum p*log p), p = normalized eigenvalues of centered sample Gram matrix. Train-baseline test MSE uses the mean of all 6 training windows. Phase refers to window start=0 versus last available start.",
+  "input_dir": "/projects/_hdd/isaachdd/EWM/tmp/event_rgb_latent_pilot_20261104",
+  "train_episodes": [
+    0,
+    10,
+    20
+  ],
+  "limitations": "Five trajectories per task; two windows per trajectory are dependent; phase comparisons contain five windows each. This is descriptive for the same fixed encoder and representation scaling, not a general proof of compactness or predictability.",
+  "tasks": {
+    "conveyor": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        298,
+        0,
+        298,
+        0,
+        297,
+        0,
+        297,
+        0,
+        294
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.07873379971419246,
+              "trace_covariance_population": 3869.9237235519877,
+              "sample_pca_entropy_effective_rank": 3.4121519426259765,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5813896039681904
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.07634551989228938,
+              "trace_covariance_population": 3752.5349937458077,
+              "sample_pca_entropy_effective_rank": 2.447754917705559,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5819082913353903
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.07424840839538883,
+              "trace_covariance_population": 3649.457769450152,
+              "sample_pca_entropy_effective_rank": 1.931304107353319,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5806106023600972
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.021457956957879772,
+              "trace_covariance_population": 1054.7015003937065,
+              "sample_pca_entropy_effective_rank": 3.5282569721034087,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5638844021895822
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0264968785537202,
+              "trace_covariance_population": 1302.3745746724553,
+              "sample_pca_entropy_effective_rank": 3.9856513292972426,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5982807105138211
+            }
+          },
+          "test_mse_to_training_window_mean": 0.08769476014815253
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.22789140711816439,
+              "trace_covariance_population": 11201.318442672016,
+              "sample_pca_entropy_effective_rank": 5.655479955898656,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.8740974909458074
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.21477305089158116,
+              "trace_covariance_population": 10556.524997422997,
+              "sample_pca_entropy_effective_rank": 3.5591266687979775,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.8748697170629867
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.20297630847612605,
+              "trace_covariance_population": 9976.691514218548,
+              "sample_pca_entropy_effective_rank": 2.4646835065870114,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.872935246244607
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.13328963586913847,
+              "trace_covariance_population": 6551.452182239895,
+              "sample_pca_entropy_effective_rank": 3.9286310685291657,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8766221347029955
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09946308551548508,
+              "trace_covariance_population": 4888.809579257122,
+              "sample_pca_entropy_effective_rank": 3.9949847856432203,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.871560912894511
+            }
+          },
+          "test_mse_to_training_window_mean": 0.2772973634459813
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.34548823367161036,
+        "train": 0.3554706681092364,
+        "test": 0.36579839761999555,
+        "start": 0.16098743775507673,
+        "end": 0.2663991210044956
+      }
+    },
+    "moving_carton": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        478,
+        0,
+        480,
+        0,
+        476,
+        0,
+        476,
+        0,
+        474
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.050611633685439965,
+              "trace_covariance_population": 2487.663018906745,
+              "sample_pca_entropy_effective_rank": 4.299126617455153,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.53071038620207
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.04855709226262386,
+              "trace_covariance_population": 2386.678198892488,
+              "sample_pca_entropy_effective_rank": 2.9246158164334477,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5302234209618373
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.047384318057796415,
+              "trace_covariance_population": 2329.0340011768094,
+              "sample_pca_entropy_effective_rank": 2.1048127724883354,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5314399679988582
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.004941266455446644,
+              "trace_covariance_population": 242.87312881811343,
+              "sample_pca_entropy_effective_rank": 3.8788128879698394,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5407044952348775
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.04070134768200987,
+              "trace_covariance_population": 2000.5526412661493,
+              "sample_pca_entropy_effective_rank": 3.9270087438800068,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5205137431108509
+            }
+          },
+          "test_mse_to_training_window_mean": 0.057899530994242714
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.21644683500604406,
+              "trace_covariance_population": 10638.794834217078,
+              "sample_pca_entropy_effective_rank": 6.7682453453407625,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.8338961472038897
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.1938415814084411,
+              "trace_covariance_population": 9527.701409387697,
+              "sample_pca_entropy_effective_rank": 4.113882148929481,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.8333624380202512
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.18825017235170752,
+              "trace_covariance_population": 9252.872471431128,
+              "sample_pca_entropy_effective_rank": 2.660150288331057,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.8346957225053958
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.10348073380861833,
+              "trace_covariance_population": 5086.285028161208,
+              "sample_pca_entropy_effective_rank": 3.9473817177329042,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8436966913613663
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.1658161051377889,
+              "trace_covariance_population": 8150.193199732601,
+              "sample_pca_entropy_effective_rank": 3.9345215568317053,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8238002973939548
+            }
+          },
+          "test_mse_to_training_window_mean": 0.2917577441029425
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.23382940057324786,
+        "train": 0.25049884503526537,
+        "test": 0.25170929442374357,
+        "start": 0.04775059350260535,
+        "end": 0.24546076298311373
+      }
+    },
+    "turntable_cups": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        443,
+        0,
+        438,
+        0,
+        441,
+        0,
+        443,
+        0,
+        439
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.08221210728608135,
+              "trace_covariance_population": 4040.88949732547,
+              "sample_pca_entropy_effective_rank": 3.216355857706172,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5879150760825885
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0809592658873912,
+              "trace_covariance_population": 3979.3098368970523,
+              "sample_pca_entropy_effective_rank": 2.5086890995055575,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5879814431136139
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0758219883462005,
+              "trace_covariance_population": 3726.802371192447,
+              "sample_pca_entropy_effective_rank": 1.7386292841249733,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5878153598210742
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.013253855004151075,
+              "trace_covariance_population": 651.4534811640336,
+              "sample_pca_entropy_effective_rank": 3.8399369769431426,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5587198217492101
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.037121907933551045,
+              "trace_covariance_population": 1824.6160187499008,
+              "sample_pca_entropy_effective_rank": 3.3593898590481577,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.615708154575275
+            }
+          },
+          "test_mse_to_training_window_mean": 0.08960429007606056
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.2365828124553297,
+              "trace_covariance_population": 11628.518397804364,
+              "sample_pca_entropy_effective_rank": 5.204625559315385,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.8406404130362817
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.22887067645774264,
+              "trace_covariance_population": 11249.451489250967,
+              "sample_pca_entropy_effective_rank": 3.569969525363564,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.8412003961062636
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.20585185925699326,
+              "trace_covariance_population": 10118.030586199733,
+              "sample_pca_entropy_effective_rank": 2.2314860985283804,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.8397996319342302
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09167547342580469,
+              "trace_covariance_population": 4506.032869825152,
+              "sample_pca_entropy_effective_rank": 3.9844370931319566,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8180229653952831
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.13701512164485993,
+              "trace_covariance_population": 6734.567259088155,
+              "sample_pca_entropy_effective_rank": 3.6915915648551114,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8626617698083515
+            }
+          },
+          "test_mse_to_training_window_mean": 0.2763504545815219
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.3474982245449644,
+        "train": 0.3537336767663159,
+        "test": 0.3683327836817906,
+        "start": 0.14457361940844254,
+        "end": 0.27093292687627707
+      }
+    },
+    "rotating_tube": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        270,
+        0,
+        270,
+        0,
+        270,
+        0,
+        270,
+        0,
+        270
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.05023863725306001,
+              "trace_covariance_population": 2469.3294982624057,
+              "sample_pca_entropy_effective_rank": 2.699905152201232,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5421749706432236
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.049160799224408816,
+              "trace_covariance_population": 2416.3516034781424,
+              "sample_pca_entropy_effective_rank": 2.1321434340850334,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5418715938893788
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.04818559259795624,
+              "trace_covariance_population": 2368.418247374745,
+              "sample_pca_entropy_effective_rank": 1.6360557920964227,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5426296926535766
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.005619618435247282,
+              "trace_covariance_population": 276.2154853292744,
+              "sample_pca_entropy_effective_rank": 3.910619093261661,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5265441285005118
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.017847311351398165,
+              "trace_covariance_population": 877.2310475439226,
+              "sample_pca_entropy_effective_rank": 3.9771327551288542,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5573345714990329
+            }
+          },
+          "test_mse_to_training_window_mean": 0.054301928761423875
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.19924628525333457,
+              "trace_covariance_population": 9793.353412771901,
+              "sample_pca_entropy_effective_rank": 5.016478220826768,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.8130005352220705
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.19190294649414089,
+              "trace_covariance_population": 9432.413626080013,
+              "sample_pca_entropy_effective_rank": 3.390728969147503,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.8132260530913865
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.1777600579218912,
+              "trace_covariance_population": 8737.262366976796,
+              "sample_pca_entropy_effective_rank": 2.2953815245065385,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.8126602766276917
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.08918218543968918,
+              "trace_covariance_population": 4383.482778731603,
+              "sample_pca_entropy_effective_rank": 3.987454346667901,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8031029065437819
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09107811478667957,
+              "trace_covariance_population": 4476.671497994874,
+              "sample_pca_entropy_effective_rank": 3.977278779716511,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8226918374817781
+            }
+          },
+          "test_mse_to_training_window_mean": 0.2319287837056142
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.2521434072870336,
+        "train": 0.2561753225915673,
+        "test": 0.27107097714341016,
+        "start": 0.06301279126028633,
+        "end": 0.1959560910236186
+      }
+    },
+    "tennis_rolling": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        61,
+        0,
+        60,
+        0,
+        60,
+        0,
+        60,
+        0,
+        61
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.024503085173894403,
+              "trace_covariance_population": 1204.3756424672576,
+              "sample_pca_entropy_effective_rank": 3.5718935993479866,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.4953131986410482
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.023497606002393197,
+              "trace_covariance_population": 1154.9543302296304,
+              "sample_pca_entropy_effective_rank": 2.529368930556718,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.4951819691799778
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.023262384652471182,
+              "trace_covariance_population": 1143.3927304382635,
+              "sample_pca_entropy_effective_rank": 2.0164011101289607,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.4955099702779943
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0023741650941634263,
+              "trace_covariance_population": 116.69496270832073,
+              "sample_pca_entropy_effective_rank": 3.452901760731051,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.4932621309688251
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.015927265792475283,
+              "trace_covariance_population": 782.8569682317451,
+              "sample_pca_entropy_effective_rank": 3.5319659944507475,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.49734595561514844
+            }
+          },
+          "test_mse_to_training_window_mean": 0.02784391678359621
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.14891752696435911,
+              "trace_covariance_population": 7319.594285352179,
+              "sample_pca_entropy_effective_rank": 6.687772929116275,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.7462078714711117
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.14106446957267443,
+              "trace_covariance_population": 6933.600808436094,
+              "sample_pca_entropy_effective_rank": 4.102041068346738,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.7469004951071635
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.13117102499327457,
+              "trace_covariance_population": 6447.318220469431,
+              "sample_pca_entropy_effective_rank": 2.6339184250879724,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.7451668145954911
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.058388641665984745,
+              "trace_covariance_population": 2869.9185151664824,
+              "sample_pca_entropy_effective_rank": 3.9798292546926493,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7397223897964366
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.12956989756534465,
+              "trace_covariance_population": 6368.61960513182,
+              "sample_pca_entropy_effective_rank": 3.8184531471409895,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7526269914166073
+            }
+          },
+          "test_mse_to_training_window_mean": 0.18038117175762716
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.16454131137806768,
+        "train": 0.1665735253786749,
+        "test": 0.17734392678309785,
+        "start": 0.04066142020814529,
+        "end": 0.12292412120217082
+      }
+    },
+    "tennis_falling": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        15,
+        0,
+        15,
+        0,
+        15,
+        0,
+        15,
+        0,
+        15
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.03992888236832792,
+              "trace_covariance_population": 1962.584426168054,
+              "sample_pca_entropy_effective_rank": 2.518148913788128,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5279201148643502
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.038929994306903,
+              "trace_covariance_population": 1913.4870801728962,
+              "sample_pca_entropy_effective_rank": 1.9631902769445881,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.528217509380846
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0388653548683132,
+              "trace_covariance_population": 1910.3099224873304,
+              "sample_pca_entropy_effective_rank": 1.7558450251212347,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5274736817474558
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.004388426887733711,
+              "trace_covariance_population": 215.69995838588738,
+              "sample_pca_entropy_effective_rank": 3.380607874860604,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5204671260905304
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.013594012195467676,
+              "trace_covariance_population": 668.1728874316273,
+              "sample_pca_entropy_effective_rank": 3.216462890796604,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5352652426524176
+            }
+          },
+          "test_mse_to_training_window_mean": 0.043135120855233335
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.1499332909605017,
+              "trace_covariance_population": 7369.52111729058,
+              "sample_pca_entropy_effective_rank": 5.99531958587096,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.7574780403959569
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.14066957652572584,
+              "trace_covariance_population": 6914.191025392476,
+              "sample_pca_entropy_effective_rank": 3.791538193365591,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.7582484590285568
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.13128381541136463,
+              "trace_covariance_population": 6452.8620950993945,
+              "sample_pca_entropy_effective_rank": 2.5691915775349536,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.7563209355595664
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.06789652947376314,
+              "trace_covariance_population": 3337.250216694406,
+              "sample_pca_entropy_effective_rank": 3.932613936875538,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7454893230065328
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09724032328762934,
+              "trace_covariance_population": 4779.556370233558,
+              "sample_pca_entropy_effective_rank": 3.861511023399173,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.769247066197305
+            }
+          },
+          "test_mse_to_training_window_mean": 0.18552556074686608
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.26631098478887355,
+        "train": 0.2767477891694899,
+        "test": 0.29604071717852287,
+        "start": 0.06463403831899105,
+        "end": 0.13979809749560007
+      }
+    },
+    "tennis_parabolic": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        39,
+        0,
+        67,
+        0,
+        54,
+        0,
+        39,
+        0,
+        39
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.051892562228941515,
+              "trace_covariance_population": 2550.6232186769334,
+              "sample_pca_entropy_effective_rank": 5.4918349352304325,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5218348416624046
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.04823870425233131,
+              "trace_covariance_population": 2371.0287914105884,
+              "sample_pca_entropy_effective_rank": 3.5470481172966313,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5195175469522788
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.04522601092465512,
+              "trace_covariance_population": 2222.9488889686486,
+              "sample_pca_entropy_effective_rank": 2.035913762881722,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5252905454310447
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.008716994511328163,
+              "trace_covariance_population": 428.45771422080185,
+              "sample_pca_entropy_effective_rank": 2.9980045182793185,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5074637312698401
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.05424174276828897,
+              "trace_covariance_population": 2666.0901405469394,
+              "sample_pca_entropy_effective_rank": 3.897691069571458,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.5358175398226601
+            }
+          },
+          "test_mse_to_training_window_mean": 0.06547157470665789
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.21259702841264697,
+              "trace_covariance_population": 10449.569140538424,
+              "sample_pca_entropy_effective_rank": 7.616281593360389,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.7545345820267826
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.19741815592380865,
+              "trace_covariance_population": 9703.497199967043,
+              "sample_pca_entropy_effective_rank": 4.5074383227030825,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.7520023784410625
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.18275390469815886,
+              "trace_covariance_population": 8982.719923723904,
+              "sample_pca_entropy_effective_rank": 2.7020379169490205,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.7583051471778249
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.1069903882863894,
+              "trace_covariance_population": 5258.791565052612,
+              "sample_pca_entropy_effective_rank": 3.973157740607556,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7470056092595865
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.19325293032889665,
+              "trace_covariance_population": 9498.768031525928,
+              "sample_pca_entropy_effective_rank": 3.9550234345767934,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7619614641133653
+            }
+          },
+          "test_mse_to_training_window_mean": 0.2704396254444013
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.24408884082904017,
+        "train": 0.24434786165740754,
+        "test": 0.24746946446562434,
+        "start": 0.08147455720970666,
+        "end": 0.28067746593014187
+      }
+    },
+    "tennis_container": {
+      "episodes": [
+        0,
+        0,
+        10,
+        10,
+        20,
+        20,
+        30,
+        30,
+        40,
+        40
+      ],
+      "anchors": [
+        0,
+        26,
+        0,
+        26,
+        0,
+        27,
+        0,
+        31,
+        0,
+        27
+      ],
+      "modalities": {
+        "event": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.10650937574538882,
+              "trace_covariance_population": 5235.148836637351,
+              "sample_pca_entropy_effective_rank": 4.924344080239205,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.5808534317348402
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09922821823629714,
+              "trace_covariance_population": 4877.265382750477,
+              "sample_pca_entropy_effective_rank": 3.1294464378803126,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.5807533872115066
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.09645632094295374,
+              "trace_covariance_population": 4741.021086988062,
+              "sample_pca_entropy_effective_rank": 2.0435723157200854,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.5810028640146606
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.0030928556899316893,
+              "trace_covariance_population": 152.02004287152238,
+              "sample_pca_entropy_effective_rank": 2.499313858589075,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.500521631666395
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.13723599818686572,
+              "trace_covariance_population": 6745.423782880824,
+              "sample_pca_entropy_effective_rank": 3.9066986093833616,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.6512753260468321
+            }
+          },
+          "test_mse_to_training_window_mean": 0.13141430605307478
+        },
+        "rgb": {
+          "groups": {
+            "all": {
+              "n_windows": 10,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.3118392397438182,
+              "trace_covariance_population": 15327.522311888153,
+              "sample_pca_entropy_effective_rank": 6.896891950957257,
+              "sample_pca_rank_upper_bound": 9,
+              "global_elements_std_not_sample_variance": 0.7948431637871405
+            },
+            "train": {
+              "n_windows": 6,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.28299854082929826,
+              "trace_covariance_population": 13909.944278841667,
+              "sample_pca_entropy_effective_rank": 4.068585211702585,
+              "sample_pca_rank_upper_bound": 5,
+              "global_elements_std_not_sample_variance": 0.7934419558504932
+            },
+            "test": {
+              "n_windows": 4,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.2778471506238069,
+              "trace_covariance_population": 13656.743147461355,
+              "sample_pca_entropy_effective_rank": 2.640616053133893,
+              "sample_pca_rank_upper_bound": 3,
+              "global_elements_std_not_sample_variance": 0.7969383186772941
+            },
+            "start": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.10573778197844792,
+              "trace_covariance_population": 5197.2234598046725,
+              "sample_pca_entropy_effective_rank": 3.974958353636535,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.7412302505302223
+            },
+            "end": {
+              "n_windows": 5,
+              "dimension": 49152,
+              "mean_coordinate_variance_population": 0.31596458709974945,
+              "trace_covariance_population": 15530.291385126886,
+              "sample_pca_entropy_effective_rank": 3.9162771598207518,
+              "sample_pca_rank_upper_bound": 4,
+              "global_elements_std_not_sample_variance": 0.8447800864012373
+            }
+          },
+          "test_mse_to_training_window_mean": 0.406602379776792
+        }
+      },
+      "event_to_rgb_mean_coordinate_variance_ratio": {
+        "all": 0.34155219154872324,
+        "train": 0.3506315543024321,
+        "test": 0.34715605586163256,
+        "start": 0.029250241796845076,
+        "end": 0.4343398082885173
+      }
+    }
+  }
+}

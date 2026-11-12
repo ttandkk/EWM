@@ -5,14 +5,12 @@ import pytest
 import torch
 
 from openwam.model.architectures.ewm import EWMModel
-from openwam.model.architectures.sparse_token_ewm import SparseTokenEWMModel
-from tests.test_sparse_token_ewm import model_options, small_batch
+from tests.ewm_helpers import options as model_options, full_grid_batch as small_batch
 
 
-@pytest.mark.parametrize("cls", [EWMModel, SparseTokenEWMModel])
 @pytest.mark.parametrize("training_mode", ["joint", "event_only"])
-def test_compiled_sampling_preserves_training_and_handles_new_requests(cls, training_mode):
-    model = cls(**model_options(training_mode=training_mode))
+def test_compiled_sampling_preserves_training_and_handles_new_requests(training_mode):
+    model = EWMModel(**model_options(mode=training_mode))
     original_velocity = model.predict_velocity
     keys = set(model.state_dict())
     options = dict(horizon=4, num_steps=3, decode_future=False,
@@ -56,11 +54,10 @@ def test_inference_compile_defaults_to_fullgraph_reduce_overhead(monkeypatch):
     assert calls == [dict(mode="reduce-overhead", dynamic=False, fullgraph=True)]
 
 
-@pytest.mark.parametrize("cls", [EWMModel, SparseTokenEWMModel])
 @pytest.mark.parametrize("starts_training", [False, True])
 @pytest.mark.parametrize("fails", [False, True])
-def test_sampling_mode_switches_only_when_needed(cls, starts_training, fails, monkeypatch):
-    model = cls(**model_options()).train(starts_training)
+def test_sampling_mode_switches_only_when_needed(starts_training, fails, monkeypatch):
+    model = EWMModel(**model_options()).train(starts_training)
     calls = []
     train = model.train
 
@@ -83,10 +80,9 @@ def test_sampling_mode_switches_only_when_needed(cls, starts_training, fails, mo
     assert not model.event_codec.training
 
 
-@pytest.mark.parametrize("cls", [EWMModel, SparseTokenEWMModel])
 @pytest.mark.parametrize("invalidate", ["train", "load", "policy_load", "move", "disable"])
-def test_cached_compile_keeps_parameters_and_invalidates_snapshot(cls, invalidate, monkeypatch):
-    model = cls(**model_options()).eval()
+def test_cached_compile_keeps_parameters_and_invalidates_snapshot(invalidate, monkeypatch):
+    model = EWMModel(**model_options()).eval()
     before = {k: v.detach().clone() for k, v in model.state_dict().items()}
     grads = {k: v.requires_grad for k, v in model.named_parameters()}
     calls, resets = [], []
@@ -127,9 +123,8 @@ def test_cached_weights_require_eval_and_bf16_autocast(monkeypatch):
     model.disable_inference_compile()
 
 
-@pytest.mark.parametrize("cls", [EWMModel, SparseTokenEWMModel])
-def test_training_after_cached_inference_uses_original_fp32_parameters(cls, monkeypatch):
-    model = cls(**model_options()).eval()
+def test_training_after_cached_inference_uses_original_fp32_parameters(monkeypatch):
+    model = EWMModel(**model_options()).eval()
     weight = model.event_input.weight
     monkeypatch.setattr(torch, 'compile', lambda f, **kw: f)
     model.compile_inference(cache_bf16_weights=True)

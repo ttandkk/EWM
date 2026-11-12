@@ -1157,13 +1157,16 @@ class BaseWAMArchitecture(ABC, nn.Module):
         )
 
         # --- Video loss ---
-        loss_video = self._compute_video_loss(
-            video_noise_pred,
-            video_target,
-            video_timestep_ids,
-            inputs,
-            _device,
-        )
+        if lambda_video == 0:
+            loss_video = torch.zeros((), device=_device, dtype=torch.float32)
+        else:
+            loss_video = self._compute_video_loss(
+                video_noise_pred,
+                video_target,
+                video_timestep_ids,
+                inputs,
+                _device,
+            )
 
         if lambda_action == 0 or action_noise_pred is None:
             return {

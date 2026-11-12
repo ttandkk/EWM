@@ -1,8 +1,0 @@
-{
-  "name": "collector_lerobot",
-  "source_path": "Event-DataCollection/third_party/lerobot",
-  "head": "7e241bd630a3719a56157a497ce5d08f244784f1",
-  "patch_bytes": 0,
-  "patch_file": "tmp/migration_bundle/source_audit/collector_lerobot.patch",
-  "untracked": []
-}

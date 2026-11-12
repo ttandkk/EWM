@@ -73,7 +73,9 @@ compile_core="${COMPILE_CORE:-false}"
 cache_context_kv="${CACHE_CONTEXT_KV:-true}"
 # Preserve the established closed-loop Piper evaluation protocol by default.
 warmup_iters="${WARMUP_ITERS:-0}"
-benchmark_iters="${BENCHMARK_ITERS:-0}"
+benchmark_default=0
+if [[ "$compile_core" == "true" ]]; then benchmark_default=1; fi
+benchmark_iters="${BENCHMARK_ITERS:-$benchmark_default}"
 server_args=(--warmup-iters "$warmup_iters" --benchmark-iters "$benchmark_iters")
 if [[ "$compile_core" == "true" ]]; then
     server_args+=(--compile-core)
